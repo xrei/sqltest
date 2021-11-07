@@ -3,15 +3,24 @@ import type {RouteObject} from 'react-router'
 import {MainLayout} from 'src/components/MainLayout'
 import * as Pages from 'src/pages'
 
+export const routesPaths = {
+  index: '/',
+  about: '/about',
+  materials: '/materials',
+  news: '/news',
+  authors: '/authors',
+  tasks: '/tasks',
+}
+
 export const routes: RouteObject[] = [
   {
     path: '/',
     children: [
-      {path: '/', index: true, element: <Pages.HomePage />},
-      {path: '/about', element: <Pages.AboutPage />},
-      {path: '/materials', element: <Pages.MaterialsPage />},
-      {path: '/news', element: <Pages.NewsPage />},
-      {path: '/authors', element: <Pages.AuthorsPage />},
+      {path: routesPaths.index, index: true, element: <Pages.HomePage />},
+      {path: routesPaths.about, element: <Pages.AboutPage />},
+      {path: routesPaths.materials, element: <Pages.MaterialsPage />},
+      {path: routesPaths.news, element: <Pages.NewsPage />},
+      {path: routesPaths.authors, element: <Pages.AuthorsPage />},
     ],
   },
 ]
