@@ -37,6 +37,7 @@ export const UserBlock: React.FC = () => {
       </Tooltip>
 
       <Menu
+        MenuListProps={{dense: true}}
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
