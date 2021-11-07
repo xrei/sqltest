@@ -1,5 +1,5 @@
 import React from 'react'
 
-export const TheoryPage = () => {
+export const MaterialsPage = () => {
   return <div></div>
 }
