@@ -1,6 +1,9 @@
 import React from 'react'
 import type {RouteObject} from 'react-router'
 import * as Pages from 'src/pages'
+import {AuthOnly} from './AuthOnly'
+
+const TasksPage = React.lazy(() => import('src/pages/tasks'))
 
 export const routesPaths = {
   index: '/',
@@ -20,6 +23,16 @@ export const routes: RouteObject[] = [
       {path: routesPaths.materials, element: <Pages.MaterialsPage />},
       {path: routesPaths.news, element: <Pages.NewsPage />},
       {path: routesPaths.authors, element: <Pages.AuthorsPage />},
+      {
+        path: routesPaths.tasks,
+        element: (
+          <React.Suspense fallback={<></>}>
+            <AuthOnly>
+              <TasksPage />
+            </AuthOnly>
+          </React.Suspense>
+        ),
+      },
     ],
   },
 ]

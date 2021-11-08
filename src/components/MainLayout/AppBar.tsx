@@ -16,7 +16,7 @@ const barContainer = css`
 `
 
 export const AppBar: React.FC = () => {
-  const hasUser = useStore(AuthModel.$hasUser)
+  const hasAuth = useStore(AuthModel.$hasAuth)
   return (
     <MuiAppBar elevation={0} position="fixed">
       <Toolbar variant="dense">
@@ -38,7 +38,7 @@ export const AppBar: React.FC = () => {
           </Hidden>
         </div>
 
-        {hasUser ? <UserBlock></UserBlock> : <AuthBlock></AuthBlock>}
+        {hasAuth ? <UserBlock></UserBlock> : <AuthBlock></AuthBlock>}
         <ModeButton></ModeButton>
       </Toolbar>
     </MuiAppBar>

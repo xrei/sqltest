@@ -10,4 +10,4 @@ type User = {
 }
 
 export const $user = createStore<User | null>(null)
-export const $hasUser = $user.map((v) => Boolean(v))
+export const $hasAuth = $user.map((v) => Boolean(v))
