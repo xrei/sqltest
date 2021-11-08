@@ -54,7 +54,6 @@ export const LoginForm = () => {
           />
           <TextField
             value={pwd}
-            autoFocus
             placeholder="Пароль:"
             label="Пароль:"
             type="password"

@@ -1,5 +1,5 @@
 import * as AuthModel from './model'
 import * as DialogModel from './dialog'
-import {LoginForm} from './LoginForm'
+import {AuthDialogs} from './AuthDialogs'
 
-export {AuthModel, LoginForm, DialogModel}
+export {AuthModel, AuthDialogs, DialogModel}

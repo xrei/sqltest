@@ -6,7 +6,7 @@ import {useStore} from 'effector-react'
 import {AppBar} from './AppBar'
 import {AppLinks} from './AppLinks'
 import {$drawer, onClose, onOpen} from './drawerModel'
-import {LoginForm} from 'src/features/Auth'
+import {AuthDialogs} from 'src/features/Auth'
 
 const LayoutCss = css`
   display: flex;
@@ -39,7 +39,7 @@ export const MainLayout: React.FC = ({children}) => {
         </Container>
       </main>
 
-      <LoginForm></LoginForm>
+      <AuthDialogs />
     </div>
   )
 }
