@@ -75,9 +75,7 @@ export const RegisterForm = () => {
             disabled={isPending}
             onChange={RegisterModel.pwdChanged}
           />
-
           <GroupSelect></GroupSelect>
-
           <StudentCodeCheck />
         </Stack>
       </DialogContent>
