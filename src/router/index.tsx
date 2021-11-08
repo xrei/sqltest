@@ -1,6 +1,5 @@
 import React from 'react'
 import type {RouteObject} from 'react-router'
-import {MainLayout} from 'src/components/MainLayout'
 import * as Pages from 'src/pages'
 
 export const routesPaths = {
