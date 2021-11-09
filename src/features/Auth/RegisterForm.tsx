@@ -120,10 +120,10 @@ const GroupSelect = () => {
 }
 
 const StudentCodeCheck = () => {
-  const t = useStore(RegisterModel.$studCode)
+  const codeDialog = useStore(RegisterModel.$studCode)
   return (
     <Box sx={{cursor: 'pointer'}} display="flex" onClick={() => DialogModel.studentCodeOpened()}>
-      {t ? <CheckBox color="primary" /> : <CheckBoxOutlineBlank color="primary" />}
+      {codeDialog ? <CheckBox color="primary" /> : <CheckBoxOutlineBlank color="primary" />}
       <Typography sx={{ml: 1}}>Согласен с кодексом чести студента, изучающего курс</Typography>
     </Box>
   )
