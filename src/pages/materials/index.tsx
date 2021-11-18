@@ -1,5 +1,10 @@
 import React from 'react'
+import {MaterialsPageGate} from './model'
 
-export const MaterialsPage = () => {
-  return <div></div>
+export const MaterialsPage: React.FC = () => {
+  return (
+    <div>
+      <MaterialsPageGate />
+    </div>
+  )
 }
