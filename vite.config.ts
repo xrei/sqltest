@@ -6,6 +6,14 @@ import {resolve} from 'path'
 export default defineConfig({
   server: {
     port: 9000,
+    host: '0.0.0.0',
+    proxy: {
+      '/api': {
+        target: 'http://192.168.1.59:9999/sqltest/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
   plugins: [react()],
   resolve: {
