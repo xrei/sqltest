@@ -6,7 +6,7 @@ import {DarkMode, LightMode, Menu} from '@mui/icons-material'
 import {AppLinks} from './AppLinks'
 import {useStore} from 'effector-react'
 import {$themeMode, changeThemeMode} from 'src/theme'
-import {AuthModel} from 'src/features/Auth'
+import {UserModel} from 'src/features/User'
 import {onOpen} from './drawerModel'
 import {AuthBlock} from './AuthBlock'
 import {UserBlock} from './UserBlock'
@@ -16,7 +16,7 @@ const barContainer = css`
 `
 
 export const AppBar: React.FC = () => {
-  const hasAuth = useStore(AuthModel.$hasAuth)
+  const hasUser = useStore(UserModel.$hasUser)
   return (
     <MuiAppBar elevation={0} position="fixed">
       <Toolbar variant="dense">
@@ -38,7 +38,7 @@ export const AppBar: React.FC = () => {
           </Hidden>
         </div>
 
-        {hasAuth ? <UserBlock></UserBlock> : <AuthBlock></AuthBlock>}
+        {hasUser ? <UserBlock></UserBlock> : <AuthBlock></AuthBlock>}
         <ModeButton></ModeButton>
       </Toolbar>
     </MuiAppBar>

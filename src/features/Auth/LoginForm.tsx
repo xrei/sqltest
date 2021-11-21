@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react'
 import {
   Button,
@@ -12,8 +13,10 @@ import {
   Checkbox,
   useMediaQuery,
   useTheme,
+  IconButton,
+  Typography,
 } from '@mui/material'
-
+import {Close as CloseIcon} from '@mui/icons-material'
 import {useStore} from 'effector-react'
 import * as DialogModel from './dialog'
 import * as LoginModel from './loginModel'
@@ -26,6 +29,7 @@ export const LoginForm = () => {
   const pwd = useStore(LoginModel.$pwd)
   const rememberMe = useStore(LoginModel.$rememberMe)
   const isPending = useStore(LoginModel.$isPending)
+  const error = useStore(LoginModel.$error)
 
   return (
     <Dialog
@@ -37,7 +41,12 @@ export const LoginForm = () => {
       sx={{}}
       PaperProps={{sx: {justifyContent: fullscreen ? 'center' : 'flex-start'}}}
     >
-      <DialogTitle>Вход в систему</DialogTitle>
+      <DialogTitle sx={{display: 'flex', alignItems: 'center'}}>
+        <div css={{flex: 1}}>Вход в систему</div>
+        <IconButton tabIndex={-1} onClick={() => DialogModel.dialogClosed()}>
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
       <DialogContent sx={{flex: 'none'}} dividers>
         <Stack direction="column" spacing={2} sx={{pt: 1}}>
           <TextField
@@ -67,14 +76,17 @@ export const LoginForm = () => {
             label="Запомнить меня"
             control={<Checkbox value={rememberMe} onChange={LoginModel.rememberMeChanged} />}
           />
+
+          {error && (
+            <Typography variant="overline" sx={{color: 'error.main'}}>
+              {error.error}
+            </Typography>
+          )}
         </Stack>
       </DialogContent>
       <DialogActions sx={{flexDirection: 'row-reverse', justifyContent: 'flex-start', mx: 2}}>
         <Button disabled={isPending} variant="outlined" onClick={() => LoginModel.login()}>
           Вход
-        </Button>
-        <Button sx={{mr: 2}} color="secondary" onClick={() => DialogModel.dialogClosed()}>
-          Закрыть
         </Button>
         <Box sx={{flex: 1}}>
           <Button onClick={() => DialogModel.dialogOpened('register')}>Регистрация</Button>
