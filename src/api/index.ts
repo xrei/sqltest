@@ -18,3 +18,4 @@ export const getDBInfos = createRequestFx('Admin/GetDBInfos')
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')
+export const authLogOff = createRequestFx<void, void>('Auth/LogOff', 'POST')

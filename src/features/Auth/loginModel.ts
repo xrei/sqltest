@@ -1,9 +1,10 @@
-import {createStore, createEvent, createEffect, combine, guard} from 'effector'
+import {createStore, createEvent, createEffect, combine, guard, forward} from 'effector'
 import type {ChangeEvent} from 'react'
 import {reject, isNil} from 'ramda'
 import {authLogOn} from 'src/api'
 import type {LoginDTO, User} from 'src/types'
 import {ResponseError} from 'src/api/error'
+import {dialogClosed} from './dialog'
 
 const rejectIsNil = reject(isNil)
 
@@ -50,9 +51,15 @@ export const $isSubmitEnabled = combine(
   $isPwdValid,
   (loginFxPending, lv, pv) => !loginFxPending && lv && pv
 )
+
 guard({
   clock: login,
   filter: $isSubmitEnabled,
   source: $form,
   target: loginFx,
+})
+
+forward({
+  from: loginFx.doneData,
+  to: dialogClosed,
 })

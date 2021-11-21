@@ -10,6 +10,7 @@ import {
   ListItemIcon,
   Divider,
 } from '@mui/material'
+import {authLogOff} from 'src/api'
 
 export const UserBlock: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -55,7 +56,7 @@ export const UserBlock: React.FC = () => {
         <MenuItem>Скрипты для создания БД</MenuItem>
         <MenuItem>Описание баз данных</MenuItem>
         <Divider />
-        <MenuItem>
+        <MenuItem onClick={() => authLogOff()}>
           <ListItemIcon>
             <LogoutIcn></LogoutIcn>
           </ListItemIcon>
