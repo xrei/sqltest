@@ -1,7 +1,8 @@
 import {createEffect, createEvent, createStore, forward} from 'effector'
-import {getUser, authLogOff} from 'src/api'
 import type {User} from 'src/types'
+import {getUser, authLogOff} from 'src/api'
 import {loginFx} from '../Auth/loginModel'
+import {registerFx} from '../Auth/registerModel'
 
 export const $user = createStore<User | null>(null)
 export const $hasUser = $user.map((v) => Boolean(v))
@@ -20,6 +21,7 @@ $user.on(clearUser, () => null)
 
 forward({from: fetchUser.doneData, to: setUser})
 forward({from: loginFx.doneData, to: setUser})
+forward({from: registerFx.doneData, to: setUser})
 forward({from: authLogOff.doneData, to: clearUser})
 
 $user.watch((u) => {

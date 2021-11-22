@@ -1,10 +1,10 @@
 import {createRequestFx} from './request'
-import type {DBInfo, LoginDTO, User} from 'src/types'
+import type {DBInfo, LoginDTO, User, StudentGroup, RegisterDTO} from 'src/types'
 
 // home
 export const getSomeNews = createRequestFx<void>('Home/GetSomeNews')
 export const getAbout = createRequestFx<void>('Home/GetAbout')
-export const getGroupList = createRequestFx<void>('Home/GetGroupList')
+export const getGroupList = createRequestFx<void, StudentGroup[]>('Home/GetGroupList')
 export const getMaterials = createRequestFx<void>('Home/GetMaterials')
 export const getAvailableSubjects = createRequestFx<{Id: number}>('Home/GetAvailableSubjects')
 export const getStudentSuggestions = createRequestFx<{Login: number}>('Home/GetStudentSuggestions')
@@ -19,3 +19,4 @@ export const getDBInfos = createRequestFx<void, DBInfo[]>('Admin/GetDBInfos')
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')
 export const authLogOff = createRequestFx<void, void>('Auth/LogOff', 'POST')
+export const authRegister = createRequestFx<RegisterDTO, User>('Auth/Register', 'POST')

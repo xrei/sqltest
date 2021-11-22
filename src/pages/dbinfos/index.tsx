@@ -35,7 +35,7 @@ export const DBInfosPage = () => {
         </Typography>
         {list.map((val) => {
           return (
-            <Accordion key={val.id} TransitionProps={{unmountOnExit: true}}>
+            <Accordion elevation={3} key={val.id} TransitionProps={{unmountOnExit: true}}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls={`db-${val.id}`}

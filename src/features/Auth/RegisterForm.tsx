@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react'
 import {
   Button,
@@ -15,8 +16,9 @@ import {
   Select,
   Typography,
   MenuItem,
+  IconButton,
 } from '@mui/material'
-import {CheckBoxOutlineBlank, CheckBox} from '@mui/icons-material'
+import {CheckBoxOutlineBlank, CheckBox, Close as CloseIcon} from '@mui/icons-material'
 import {useStore} from 'effector-react'
 import * as DialogModel from './dialog'
 import * as RegisterModel from './registerModel'
@@ -30,6 +32,7 @@ export const RegisterForm = () => {
   const pwd = useStore(RegisterModel.$pwd)
   const isPending = useStore(RegisterModel.$isPending)
   const isSubmitEnabled = useStore(RegisterModel.$isSubmitEnabled)
+  const error = useStore(RegisterModel.$error)
 
   return (
     <Dialog
@@ -41,7 +44,12 @@ export const RegisterForm = () => {
       sx={{}}
       PaperProps={{sx: {justifyContent: fullscreen ? 'center' : 'flex-start'}}}
     >
-      <DialogTitle>Регистрация в системе</DialogTitle>
+      <DialogTitle sx={{display: 'flex', alignItems: 'center'}}>
+        <div css={{flex: 1}}>Регистрация в системе</div>
+        <IconButton tabIndex={-1} onClick={() => DialogModel.dialogClosed()}>
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
       <DialogContent sx={{flex: 'none'}} dividers>
         <Stack direction="column" spacing={2} sx={{pt: 1}}>
           <TextField
@@ -77,6 +85,12 @@ export const RegisterForm = () => {
           />
           <GroupSelect></GroupSelect>
           <StudentCodeCheck />
+
+          {error && (
+            <Typography variant="overline" sx={{color: 'error.main'}}>
+              {error.error}
+            </Typography>
+          )}
         </Stack>
       </DialogContent>
       <DialogActions sx={{flexDirection: 'row-reverse', justifyContent: 'flex-start', mx: 2}}>
@@ -86,9 +100,6 @@ export const RegisterForm = () => {
           onClick={() => RegisterModel.register()}
         >
           Регистрация
-        </Button>
-        <Button sx={{mr: 2}} color="secondary" onClick={() => DialogModel.dialogClosed()}>
-          Закрыть
         </Button>
         <Box sx={{flex: 1}}>
           <Button onClick={() => DialogModel.dialogOpened('login')}>Войти</Button>
@@ -100,6 +111,8 @@ export const RegisterForm = () => {
 
 const GroupSelect = () => {
   const groupVal = useStore(RegisterModel.$group)
+  const groupList = useStore(RegisterModel.$studentGroups)
+
   return (
     <FormControl variant="outlined">
       <InputLabel id="stud-group-sel">Ваша группа</InputLabel>
@@ -110,10 +123,11 @@ const GroupSelect = () => {
         required
         onChange={RegisterModel.groupChanged}
       >
-        <MenuItem value={1}>1</MenuItem>
-        <MenuItem value={2}>2</MenuItem>
-        <MenuItem value={3}>3</MenuItem>
-        <MenuItem value={4}>4</MenuItem>
+        {groupList.map((group) => (
+          <MenuItem key={group.GroupValue} value={group.GroupValue}>
+            {group.GroupNumber}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   )

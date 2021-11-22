@@ -2,14 +2,10 @@ import {createStore, createEvent, guard, createEffect, combine} from 'effector'
 import type {ChangeEvent} from 'react'
 import type {SelectChangeEvent} from '@mui/material'
 import {reset} from 'src/lib/reset'
-import {getRegistrationRules} from 'src/api'
-
-type RegisterDTO = {
-  FIO: string
-  Login: string
-  Password: string
-  Group: string
-}
+import {getGroupList, getRegistrationRules, authRegister} from 'src/api'
+import {ResponseError} from 'src/api/error'
+import {StudentGroup, RegisterDTO, User} from 'src/types'
+import {dialogOpened} from './dialog'
 
 // fields
 export const $fio = createStore('')
@@ -40,6 +36,7 @@ const $form = combine([$fio, $login, $pwd, $group, $studCode], ([a, b, c, d, e])
     FIO: a,
     Login: b,
     Password: c,
+    RepeatPassword: c,
     Group: d,
   } as RegisterDTO
 })
@@ -55,11 +52,20 @@ export const $isSubmitEnabled = combine(
   (shape) => shape.every(Boolean)
 )
 
-const registerFx = createEffect<RegisterDTO, void>((params) => {
-  console.log(params)
-})
+export const $error = createStore<{error: string} | null>(null)
+
+export const registerFx = createEffect<RegisterDTO, User, ResponseError<{ErrorMessage: string}>>(
+  async (params) => {
+    console.log(params)
+    const res = await (await authRegister(params)).json()
+    console.log(res)
+    return res
+  }
+)
 
 export const $isPending = registerFx.pending
+
+$error.on(registerFx.failData, (s, payload) => ({error: payload.json.ErrorMessage}))
 
 guard({
   clock: register,
@@ -74,10 +80,25 @@ reset({
 })
 
 export const $regRules = createStore('')
-
 export const fetchRegRules = createEffect<void, string>(async () => {
   const res = await (await getRegistrationRules()).json()
   return res
 })
 
 $regRules.on(fetchRegRules.doneData, (_, data) => data)
+
+export const $studentGroups = createStore<StudentGroup[]>([])
+const $noStudentGroups = $studentGroups.map((v) => !v.length)
+export const fetchStudentGroups = createEffect<void, StudentGroup[]>(async () => {
+  const res = await (await getGroupList()).json()
+  return res
+})
+
+$studentGroups.on(fetchStudentGroups.doneData, (_, data) => data)
+$studentGroups.watch(console.log)
+
+guard({
+  clock: dialogOpened,
+  filter: $noStudentGroups,
+  target: fetchStudentGroups,
+})
