@@ -5,7 +5,6 @@ import {useStore} from 'effector-react'
 import {createAppTheme, $themeMode} from './theme'
 import {MainLayout} from './components/MainLayout'
 import {routes} from './router'
-import {AppGate} from './lib/AppGate'
 
 const App: React.FC = () => {
   const pages = useRoutes(routes)
@@ -15,7 +14,6 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline></CssBaseline>
-      <AppGate></AppGate>
       <MainLayout>{pages}</MainLayout>
     </ThemeProvider>
   )

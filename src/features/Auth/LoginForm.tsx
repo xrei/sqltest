@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react'
+import React, {KeyboardEvent} from 'react'
 import {
   Button,
   TextField,
@@ -31,6 +31,12 @@ export const LoginForm = () => {
   const isPending = useStore(LoginModel.$isPending)
   const error = useStore(LoginModel.$error)
 
+  const onEnterClick = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter') {
+      LoginModel.login()
+    }
+  }
+
   return (
     <Dialog
       open={open}
@@ -60,6 +66,7 @@ export const LoginForm = () => {
             required
             disabled={isPending}
             onChange={LoginModel.loginChanged}
+            onKeyPress={onEnterClick}
           />
           <TextField
             value={pwd}
@@ -71,6 +78,7 @@ export const LoginForm = () => {
             required
             disabled={isPending}
             onChange={LoginModel.pwdChanged}
+            onKeyPress={onEnterClick}
           />
           <FormControlLabel
             label="Запомнить меня"

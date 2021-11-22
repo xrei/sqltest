@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import {useStore} from 'effector-react'
+import {Link} from 'react-router-dom'
 import {AccountCircle, Logout as LogoutIcn} from '@mui/icons-material'
 import {
   Button,
@@ -11,6 +13,8 @@ import {
   Divider,
 } from '@mui/material'
 import {authLogOff} from 'src/api'
+import {routesPaths} from 'src/router'
+import {$user} from 'src/features/User/model'
 
 export const UserBlock: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -21,6 +25,8 @@ export const UserBlock: React.FC = () => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  const user = useStore($user)
 
   return (
     <React.Fragment>
@@ -33,7 +39,7 @@ export const UserBlock: React.FC = () => {
           startIcon={<AccountCircle />}
           onClick={handleClick}
         >
-          <Typography>user name</Typography>
+          <Typography>{user?.Name ?? 'Username'}</Typography>
         </Button>
       </Tooltip>
 
@@ -46,15 +52,18 @@ export const UserBlock: React.FC = () => {
         transformOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
       >
-        <MenuItem>
+        <MenuItem component={Link} to={routesPaths.profile}>
           <Avatar sx={{mr: 2, width: 32, height: 32}} /> Профиль
         </MenuItem>
         <Divider />
-        <MenuItem>Пройти тест</MenuItem>
+        <MenuItem component={Link} to={routesPaths.tasks}>
+          Пройти тест
+        </MenuItem>
         <MenuItem>Последние попытки</MenuItem>
         <MenuItem>Рейтинг студентов</MenuItem>
-        <MenuItem>Скрипты для создания БД</MenuItem>
-        <MenuItem>Описание баз данных</MenuItem>
+        <MenuItem component={Link} to={routesPaths.dbinfos}>
+          Описание баз данных
+        </MenuItem>
         <Divider />
         <MenuItem onClick={() => authLogOff()}>
           <ListItemIcon>

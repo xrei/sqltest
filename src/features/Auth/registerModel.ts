@@ -43,8 +43,6 @@ const $form = combine([$fio, $login, $pwd, $group, $studCode], ([a, b, c, d, e])
   } as RegisterDTO
 })
 
-$form.watch(console.log)
-
 const $isFioValid = $fio.map((v) => Boolean(v.length))
 const $isLoginValid = $login.map((v) => Boolean(v.length))
 const $isPwdValid = $pwd.map((v) => Boolean(v.length))

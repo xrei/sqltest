@@ -4,6 +4,7 @@ import * as Pages from 'src/pages'
 import {AuthOnly} from './AuthOnly'
 
 const TasksPage = React.lazy(() => import('src/pages/tasks'))
+const DBInfosPage = React.lazy(() => import('src/pages/dbinfos'))
 
 export const routesPaths = {
   index: '/',
@@ -12,6 +13,16 @@ export const routesPaths = {
   news: '/news',
   authors: '/authors',
   tasks: '/tasks',
+  dbinfos: '/dbinfos',
+  profile: '/profile',
+}
+
+const WithAuth = (children: JSX.Element) => {
+  return (
+    <React.Suspense fallback={<></>}>
+      <AuthOnly>{children}</AuthOnly>
+    </React.Suspense>
+  )
 }
 
 export const routes: RouteObject[] = [
@@ -23,16 +34,8 @@ export const routes: RouteObject[] = [
       {path: routesPaths.materials, element: <Pages.MaterialsPage />},
       {path: routesPaths.news, element: <Pages.NewsPage />},
       {path: routesPaths.authors, element: <Pages.AuthorsPage />},
-      {
-        path: routesPaths.tasks,
-        element: (
-          <React.Suspense fallback={<></>}>
-            <AuthOnly>
-              <TasksPage />
-            </AuthOnly>
-          </React.Suspense>
-        ),
-      },
+      {path: routesPaths.tasks, element: WithAuth(<TasksPage />)},
+      {path: routesPaths.dbinfos, element: WithAuth(<DBInfosPage />)},
     ],
   },
 ]

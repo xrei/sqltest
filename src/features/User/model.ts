@@ -22,4 +22,6 @@ forward({from: fetchUser.doneData, to: setUser})
 forward({from: loginFx.doneData, to: setUser})
 forward({from: authLogOff.doneData, to: clearUser})
 
-$user.watch(console.log)
+$user.watch((u) => {
+  console.log('USER: ', u)
+})
