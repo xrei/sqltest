@@ -2,6 +2,7 @@ import {createStore, createEvent, guard, createEffect, combine} from 'effector'
 import type {ChangeEvent} from 'react'
 import type {SelectChangeEvent} from '@mui/material'
 import {reset} from 'src/lib/reset'
+import {getRegistrationRules} from 'src/api'
 
 type RegisterDTO = {
   FIO: string
@@ -71,3 +72,12 @@ reset({
   stores: [$fio, $login, $pwd, $studCode, $group],
   trigger: registerFx.done,
 })
+
+export const $regRules = createStore('')
+
+export const fetchRegRules = createEffect<void, string>(async () => {
+  const res = await (await getRegistrationRules()).json()
+  return res
+})
+
+$regRules.on(fetchRegRules.doneData, (_, data) => data)
