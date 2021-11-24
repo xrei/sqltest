@@ -2,6 +2,7 @@ import {useStore} from 'effector-react'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
+import {Zoom, CircularProgress, Box} from '@mui/material'
 import App from './App'
 import {AppGate, $appLoading} from './lib/AppGate'
 
@@ -13,7 +14,11 @@ const Main = () => {
       <AppGate></AppGate>
 
       {appLoading ? (
-        <div></div>
+        <Zoom in={appLoading}>
+          <Box sx={{display: 'grid', placeItems: 'center', minHeight: '100vh'}}>
+            <CircularProgress size="60" />
+          </Box>
+        </Zoom>
       ) : (
         <BrowserRouter>
           <App />
