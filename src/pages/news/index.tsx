@@ -1,7 +1,7 @@
 import React from 'react'
 import {useStore} from 'effector-react'
 import {Card, Typography, CircularProgress, Stack, Box} from '@mui/material'
-import {RenderHtml} from 'src/components/RenderHtml'
+import {RenderHtml} from 'src/ui/RenderHtml'
 import {NewsPageGate, $posts, $isLoading} from './model'
 
 export const NewsPage: React.FC = () => {

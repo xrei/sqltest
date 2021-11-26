@@ -3,7 +3,7 @@ import {useRoutes} from 'react-router'
 import {ThemeProvider, CssBaseline} from '@mui/material'
 import {useStore} from 'effector-react'
 import {createAppTheme, $themeMode} from './theme'
-import {MainLayout} from './components/MainLayout'
+import {MainLayout} from './ui/MainLayout'
 import {routes} from './router'
 
 const App: React.FC = () => {

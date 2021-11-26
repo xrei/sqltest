@@ -2,7 +2,7 @@ import React from 'react'
 import {useStore} from 'effector-react'
 import {Card, CardContent, Typography, CircularProgress, Stack, Box} from '@mui/material'
 import {AuthorsPageGate, $authors, $isLoading} from './model'
-import {RenderHtml} from 'src/components/RenderHtml'
+import {RenderHtml} from 'src/ui/RenderHtml'
 
 export const AuthorsPage: React.FC = () => {
   const isLoading = useStore($isLoading)
