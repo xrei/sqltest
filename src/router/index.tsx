@@ -36,6 +36,7 @@ export const routes: RouteObject[] = [
       {path: routesPaths.authors, element: <Pages.AuthorsPage />},
       {path: routesPaths.tasks, element: WithAuth(<TasksPage />)},
       {path: routesPaths.dbinfos, element: WithAuth(<DBInfosPage />)},
+      {path: routesPaths.profile, element: WithAuth(<Pages.ProfilePage />)},
     ],
   },
 ]

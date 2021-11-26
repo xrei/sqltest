@@ -4,5 +4,6 @@ import {HomePage} from './home'
 import {MaterialsPage} from './materials'
 import {NewsPage} from './news'
 import {TasksPage} from './tasks'
+import {ProfilePage} from './profile'
 
-export {AuthorsPage, AboutPage, HomePage, NewsPage, TasksPage, MaterialsPage}
+export {AuthorsPage, AboutPage, HomePage, NewsPage, TasksPage, MaterialsPage, ProfilePage}
