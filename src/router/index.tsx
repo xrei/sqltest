@@ -15,6 +15,9 @@ export const routesPaths = {
   tasks: '/tasks',
   dbinfos: '/dbinfos',
   profile: '/profile',
+  profileInfo: '/profile/info',
+  profileMyResults: '/profile/my-results',
+  profileStudentsRating: '/profile/students-rating',
 }
 
 const WithAuth = (children: JSX.Element) => {
@@ -36,7 +39,15 @@ export const routes: RouteObject[] = [
       {path: routesPaths.authors, element: <Pages.AuthorsPage />},
       {path: routesPaths.tasks, element: WithAuth(<TasksPage />)},
       {path: routesPaths.dbinfos, element: WithAuth(<DBInfosPage />)},
-      {path: routesPaths.profile, element: WithAuth(<Pages.ProfilePage />)},
+      {
+        path: routesPaths.profile,
+        element: WithAuth(<Pages.ProfilePage />),
+        children: [
+          {path: routesPaths.profileInfo, element: <Pages.ProfileInfoPage />},
+          {path: routesPaths.profileMyResults, element: <Pages.MyResultsPage />},
+          {path: routesPaths.profileStudentsRating, element: <Pages.StudentsRatingPage />},
+        ],
+      },
     ],
   },
 ]
