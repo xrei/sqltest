@@ -14,7 +14,7 @@ export const getAuthors = createRequestFx<void>('Admin/GetAuthors')
 export const getDBCreationScripts = createRequestFx<void>('Admin/GetDBCreationScripts')
 export const getRegistrationRules = createRequestFx<void, string>('Admin/GetRegistrationRules')
 export const getDBInfos = createRequestFx<void, DBInfo[]>('Admin/GetDBInfos')
-export const getAdminGroups = createRequestFx<void, void>('Admin/GetAdminGroups')
+export const getAdminGroups = createRequestFx<void, StudentGroup[]>('Admin/GetAdminGroups')
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

@@ -4,8 +4,15 @@ import {getUser, authLogOff} from 'src/api'
 import {loginFx} from '../Auth/loginModel'
 import {registerFx} from '../Auth/registerModel'
 
+export const roles: {[key: number]: string} = {
+  0: 'Студент',
+  1: 'Преподаватель',
+  2: 'Админ',
+}
+
 export const $user = createStore<User | null>(null)
 export const $hasUser = $user.map((v) => Boolean(v))
+export const $userRole = $user.map((v) => (v ? roles[v.Role] : ''))
 
 export const setUser = createEvent<User>()
 export const clearUser = createEvent<void>()
