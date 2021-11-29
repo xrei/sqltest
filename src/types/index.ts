@@ -34,3 +34,8 @@ export interface StudentGroup {
   GroupValue: number
   register: boolean
 }
+
+export interface Subject {
+  SubjectId: number
+  SubjectName: string
+}

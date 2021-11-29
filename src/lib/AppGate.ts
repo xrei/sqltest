@@ -1,6 +1,7 @@
 import {createEffect, createStore, forward} from 'effector'
 import {createGate} from 'effector-react'
 import {fetchRegRules} from 'src/features/Auth/registerModel'
+import {fetchSubjectsFx} from 'src/features/Subjects/model'
 import {fetchUser} from 'src/features/User/model'
 
 export const AppGate = createGate()
@@ -15,6 +16,7 @@ export const initAppFx = createEffect<void, void>(async () => {
 
   // rest run in parallel
   fetchRegRules()
+  fetchSubjectsFx()
 })
 
 forward({

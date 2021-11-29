@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link, Outlet, Navigate, useLocation} from 'react-router-dom'
 import {Box, Tab, Tabs, useTheme} from '@mui/material'
 import {routesPaths} from 'src/router'
@@ -12,6 +12,15 @@ export const ProfilePage: React.FC = () => {
   if (location.pathname === routesPaths.profile) {
     return <Navigate to={routesPaths.profileInfo} />
   }
+
+  useEffect(() => {
+    if (location.pathname === routesPaths.profileMyResults) {
+      setTab(1)
+    }
+    if (location.pathname === routesPaths.profileStudentsRating) {
+      setTab(2)
+    }
+  }, [location])
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', height: '100%', mt: 2}}>

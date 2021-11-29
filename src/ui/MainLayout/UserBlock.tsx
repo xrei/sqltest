@@ -59,8 +59,12 @@ export const UserBlock: React.FC = () => {
         <MenuItem component={Link} to={routesPaths.tasks}>
           Пройти тест
         </MenuItem>
-        <MenuItem>Последние попытки</MenuItem>
-        <MenuItem>Рейтинг студентов</MenuItem>
+        <MenuItem component={Link} to={routesPaths.profileMyResults}>
+          Последние попытки
+        </MenuItem>
+        <MenuItem component={Link} to={routesPaths.profileStudentsRating}>
+          Рейтинг студентов
+        </MenuItem>
         <MenuItem component={Link} to={routesPaths.dbinfos}>
           Описание баз данных
         </MenuItem>

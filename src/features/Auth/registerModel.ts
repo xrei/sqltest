@@ -1,11 +1,11 @@
-import {createStore, createEvent, guard, createEffect, combine} from 'effector'
+import {createStore, createEvent, guard, createEffect, combine, forward} from 'effector'
 import type {ChangeEvent} from 'react'
 import type {SelectChangeEvent} from '@mui/material'
 import {reset} from 'src/lib/reset'
 import {getGroupList, getRegistrationRules, authRegister} from 'src/api'
 import {ResponseError} from 'src/api/error'
 import {StudentGroup, RegisterDTO, User} from 'src/types'
-import {dialogOpened} from './dialog'
+import {dialogOpened, dialogClosed} from './dialog'
 
 // fields
 export const $fio = createStore('')
@@ -79,6 +79,11 @@ reset({
   trigger: registerFx.done,
 })
 
+forward({
+  from: registerFx.doneData,
+  to: dialogClosed,
+})
+
 export const $regRules = createStore('')
 export const fetchRegRules = createEffect<void, string>(async () => {
   const res = await (await getRegistrationRules()).json()
@@ -86,19 +91,3 @@ export const fetchRegRules = createEffect<void, string>(async () => {
 })
 
 $regRules.on(fetchRegRules.doneData, (_, data) => data)
-
-export const $studentGroups = createStore<StudentGroup[]>([])
-const $noStudentGroups = $studentGroups.map((v) => !v.length)
-export const fetchStudentGroups = createEffect<void, StudentGroup[]>(async () => {
-  const res = await (await getGroupList()).json()
-  return res
-})
-
-$studentGroups.on(fetchStudentGroups.doneData, (_, data) => data)
-$studentGroups.watch(console.log)
-
-guard({
-  clock: dialogOpened,
-  filter: $noStudentGroups,
-  target: fetchStudentGroups,
-})

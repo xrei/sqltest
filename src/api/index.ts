@@ -1,12 +1,16 @@
 import {createRequestFx} from './request'
-import type {DBInfo, LoginDTO, User, StudentGroup, RegisterDTO} from 'src/types'
+import type {DBInfo, LoginDTO, User, StudentGroup, RegisterDTO, Subject} from 'src/types'
 
 // home
 export const getSomeNews = createRequestFx<void>('Home/GetSomeNews')
 export const getAbout = createRequestFx<void>('Home/GetAbout')
 export const getGroupList = createRequestFx<void, StudentGroup[]>('Home/GetGroupList')
 export const getMaterials = createRequestFx<void>('Home/GetMaterials')
-export const getAvailableSubjects = createRequestFx<{Id: number}>('Home/GetAvailableSubjects')
+export const getAvailableSubjects = createRequestFx<{Id: number}, Subject[]>(
+  'Home/GetAvailibleSubjects/',
+  'GET',
+  true
+)
 export const getStudentSuggestions = createRequestFx<{Login: number}>('Home/GetStudentSuggestions')
 
 // admin
