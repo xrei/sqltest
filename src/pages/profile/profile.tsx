@@ -27,6 +27,7 @@ export const ProfilePage: React.FC = () => {
       <Tabs
         sx={{borderBottom: 1, borderBottomColor: theme.palette.grey[200]}}
         value={tab}
+        variant="scrollable"
         onChange={(e, v) => setTab(v)}
       >
         <Tab component={Link} to={routesPaths.profileInfo} label="Информация"></Tab>
