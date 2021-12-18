@@ -9,10 +9,6 @@ export const ProfilePage: React.FC = () => {
   const [tab, setTab] = useState(0)
   const location = useLocation()
 
-  if (location.pathname === routesPaths.profile) {
-    return <Navigate to={routesPaths.profileInfo} />
-  }
-
   useEffect(() => {
     if (location.pathname === routesPaths.profileMyResults) {
       setTab(1)
@@ -21,6 +17,10 @@ export const ProfilePage: React.FC = () => {
       setTab(2)
     }
   }, [location])
+
+  if (location.pathname === routesPaths.profile) {
+    return <Navigate to={routesPaths.profileInfo} />
+  }
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', height: '100%', mt: 2}}>

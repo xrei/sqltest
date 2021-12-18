@@ -19,6 +19,12 @@ import * as DbInfoModel from './model'
 export const DBInfosPage = () => {
   const list = useStore(DbInfoModel.$dbInfosList)
   const [openedDialog, setDialog] = useState(0)
+  const [expanded, setExpanded] = useState<number | false>(false)
+
+  const handleExpand = (v: number) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+    setExpanded(isExpanded ? v : false)
+  }
+
   const onClose = () => {
     setDialog(0)
   }
@@ -28,14 +34,20 @@ export const DBInfosPage = () => {
       <DbInfoModel.DbInfoPage />
       <Box sx={{flexFlow: 'column', mt: 2}}>
         <Typography variant="h1" gutterBottom>
-          Описание баз данных:
+          Описание баз данных
         </Typography>
         <Typography gutterBottom>
           Ниже представлено описание учебных БД, а так же скрипты для их создания
         </Typography>
         {list.map((val) => {
           return (
-            <Accordion elevation={3} key={val.id} TransitionProps={{unmountOnExit: true}}>
+            <Accordion
+              expanded={expanded === val.id}
+              elevation={3}
+              key={val.id}
+              TransitionProps={{unmountOnExit: true}}
+              onChange={handleExpand(val.id)}
+            >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls={`db-${val.id}`}
@@ -47,7 +59,11 @@ export const DBInfosPage = () => {
                 <Button variant="contained" size="large" onClick={() => setDialog(val.id)}>
                   Скрипт для создания базы данных
                 </Button>
-                <div dangerouslySetInnerHTML={{__html: val.description}}></div>
+                {expanded === val.id ? (
+                  <div dangerouslySetInnerHTML={{__html: val.description}} />
+                ) : (
+                  <div />
+                )}
               </AccordionDetails>
 
               <DBScriptDialog
