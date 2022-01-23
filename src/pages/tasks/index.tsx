@@ -5,19 +5,29 @@ import {
   Grid,
   InputLabel,
   MenuItem,
-  Button,
   Select,
   FormControl,
   Stack,
 } from '@mui/material'
-import {useGate, useStore} from 'effector-react'
-import {TasksGate} from './model'
-import {SubjectsModel, ThemesModel} from 'src/features/Test'
+import LoadingButton from '@mui/lab/LoadingButton'
+import {useNavigate} from 'react-router'
 import {length} from 'ramda'
+import {useGate, useStore} from 'effector-react'
+import {TasksGate, startTestFx} from './model'
+import {SubjectsModel, ThemesModel} from 'src/features/Test'
 
 export const TasksPage = () => {
+  const navigate = useNavigate()
   useGate(TasksGate)
   const selectedTheme = useStore(ThemesModel.$selectedTheme)
+  const isLoading = useStore(startTestFx.pending)
+
+  const startTest = async () => {
+    const res = await startTestFx()
+    if (res) {
+      navigate(`/tasks/${res.ThemeId}`)
+    }
+  }
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
@@ -40,9 +50,15 @@ export const TasksPage = () => {
               </Typography>
               <ThemeSelect />
               {selectedTheme && (
-                <Button variant="contained" fullWidth sx={{mt: 2}}>
+                <LoadingButton
+                  loading={isLoading}
+                  variant="contained"
+                  fullWidth
+                  sx={{mt: 2}}
+                  onClick={startTest}
+                >
                   Начать тест
-                </Button>
+                </LoadingButton>
               )}
             </Box>
           </Stack>

@@ -1,5 +1,14 @@
 import {createRequestFx} from './request'
-import type {DBInfo, LoginDTO, User, StudentGroup, RegisterDTO, Subject, Theme} from 'src/types'
+import type {
+  DBInfo,
+  LoginDTO,
+  User,
+  StudentGroup,
+  RegisterDTO,
+  Subject,
+  Theme,
+  Test,
+} from 'src/types'
 
 // home
 export const getSomeNews = createRequestFx<void>('Home/GetSomeNews')
@@ -17,6 +26,7 @@ export const getThemeList = createRequestFx<{SubjectId: number; UserId: number},
   'GET',
   true
 )
+export const getTestContent = createRequestFx<Theme, Test>('Home/GetTestContent', 'POST')
 
 // admin
 export const getAuthors = createRequestFx<void>('Admin/GetAuthors')

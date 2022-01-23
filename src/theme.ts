@@ -31,14 +31,15 @@ const getPalette = (mode: PaletteMode) => ({
   ...(mode === 'dark'
     ? {
         background: {
-          default: '#121212',
-          paper: grey[800],
+          default: grey[900],
+          paper: grey[700],
         },
       }
     : {
         white: common.white,
         primary: {
           main: indigo[400],
+          light: indigo.A100,
           lightGrey: grey[200],
         },
         secondary: {
