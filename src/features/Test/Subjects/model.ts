@@ -28,5 +28,7 @@ forward({from: registerFx.done, to: fetchSubjectsFx})
 export const $selectedSubjectId = createStore<string>('')
 
 export const selectSubject = createEvent<SelectChangeEvent<string>>()
+export const resetSelectedSubject = createEvent()
 
 $selectedSubjectId.on(selectSubject, (_, s) => String(s.target.value))
+$selectedSubjectId.reset(resetSelectedSubject)
