@@ -85,15 +85,18 @@ export interface Question {
 export interface Test {
   AdditionToAdd: unknown
   Additions: unknown[]
+  /** Заданий в тесте */
   QsnCount: number
   Questions: Question[]
   StartTime: string
+  /** Всего попыток тестирования */
   TestCount: number
   TestDescription: string
   TestHelp: string | null
   TestId: number
   TestName: string
   TestTime: TestTime
+  /** Время тестирования */
   TestTimeFromDB: number
   TestType: number
   ViewCorrect: boolean

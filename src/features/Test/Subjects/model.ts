@@ -4,6 +4,7 @@ import {Subject} from 'src/types'
 import {$user} from 'src/features/User/model'
 import {loginFx} from 'src/features/Auth/loginModel'
 import {registerFx} from 'src/features/Auth/registerModel'
+import type {SelectChangeEvent} from '@mui/material'
 
 export const $availableSubjects = createStore<Subject[]>([])
 
@@ -24,8 +25,8 @@ forward({from: loginFx.done, to: fetchSubjectsFx})
 // load subjects after register
 forward({from: registerFx.done, to: fetchSubjectsFx})
 
-export const $selectedSubject = createStore<Subject | null>(null)
+export const $selectedSubjectId = createStore<string>('')
 
-export const selectSubject = createEvent<Subject>()
+export const selectSubject = createEvent<SelectChangeEvent<string>>()
 
-$selectedSubject.on(selectSubject, (_, s) => s)
+$selectedSubjectId.on(selectSubject, (_, s) => String(s.target.value))

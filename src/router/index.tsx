@@ -4,6 +4,7 @@ import * as Pages from 'src/pages'
 import {AuthOnly} from './AuthOnly'
 
 const TasksPage = React.lazy(() => import('src/pages/tasks'))
+const ThemeIdPage = React.lazy(() => import('src/pages/tasks/_themeId'))
 const DBInfosPage = React.lazy(() => import('src/pages/dbinfos'))
 
 export const routesPaths = {
@@ -12,8 +13,9 @@ export const routesPaths = {
   materials: '/materials',
   news: '/news',
   authors: '/authors',
-  tasks: '/tasks',
   dbinfos: '/dbinfos',
+  tasks: '/tasks',
+  themeId: '/tasks/:themeId',
   profile: '/profile',
   profileInfo: '/profile/info',
   profileMyResults: '/profile/my-results',
@@ -37,8 +39,9 @@ export const routes: RouteObject[] = [
       {path: routesPaths.materials, element: <Pages.MaterialsPage />},
       {path: routesPaths.news, element: <Pages.NewsPage />},
       {path: routesPaths.authors, element: <Pages.AuthorsPage />},
-      {path: routesPaths.tasks, element: WithAuth(<TasksPage />)},
       {path: routesPaths.dbinfos, element: WithAuth(<DBInfosPage />)},
+      {path: routesPaths.tasks, element: WithAuth(<TasksPage />)},
+      {path: routesPaths.themeId, element: WithAuth(<ThemeIdPage />)},
       {
         path: routesPaths.profile,
         element: WithAuth(<Pages.ProfilePage />),
