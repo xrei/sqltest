@@ -1,4 +1,4 @@
-import {createStore, createEffect, attach, guard, forward} from 'effector'
+import {createStore, createEvent, attach, guard, forward} from 'effector'
 import {getAvailableSubjects} from 'src/api'
 import {Subject} from 'src/types'
 import {$user} from 'src/features/User/model'
@@ -23,3 +23,9 @@ $availableSubjects.on(fetchSubjectsFx.doneData, (_, data) => data)
 forward({from: loginFx.done, to: fetchSubjectsFx})
 // load subjects after register
 forward({from: registerFx.done, to: fetchSubjectsFx})
+
+export const $selectedSubject = createStore<Subject | null>(null)
+
+export const selectSubject = createEvent<Subject>()
+
+$selectedSubject.on(selectSubject, (_, s) => s)

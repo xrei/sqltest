@@ -2,10 +2,10 @@ import {createStore, createEvent, guard, createEffect, combine, forward} from 'e
 import type {ChangeEvent} from 'react'
 import type {SelectChangeEvent} from '@mui/material'
 import {reset} from 'src/lib/reset'
-import {getGroupList, getRegistrationRules, authRegister} from 'src/api'
+import {getRegistrationRules, authRegister} from 'src/api'
 import {ResponseError} from 'src/api/error'
-import {StudentGroup, RegisterDTO, User} from 'src/types'
-import {dialogOpened, dialogClosed} from './dialog'
+import {RegisterDTO, User} from 'src/types'
+import {dialogClosed} from './dialog'
 
 // fields
 export const $fio = createStore('')

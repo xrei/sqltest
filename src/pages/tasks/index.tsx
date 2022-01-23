@@ -1,10 +1,12 @@
 import React from 'react'
-import {Box, Typography, Grid} from '@mui/material'
+import {Box, Typography, Grid, Select} from '@mui/material'
 
 export const TasksPage = () => {
   return (
-    <Box sx={{display: 'flex', flexFlow: 'column', height: '100%', mt: 2}}>
-      <h1>TASKS SQL</h1>
+    <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
+      <Typography variant="h1" sx={{mb: 4}}>
+        Параметры тестирования:
+      </Typography>
     </Box>
   )
 }

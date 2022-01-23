@@ -39,3 +39,85 @@ export interface Subject {
   SubjectId: number
   SubjectName: string
 }
+
+export interface TestTime {
+  Days: number
+  Hours: number
+  Milliseconds: number
+  Minutes: number
+  Seconds: number
+  Ticks: number
+  TotalDays: number
+  TotalHours: number
+  TotalMilliseconds: number
+  TotalMinutes: number
+  TotalSeconds: number
+}
+export interface Answer {
+  Content: string
+  Correct: boolean
+  Id: number
+}
+export interface Question {
+  Answers: Answer[]
+  Category: number
+  Content: string
+  DatabaseId: number
+  /** 0 - easy | 1 - middle | 2 - hard */
+  Difficulty: number
+  Id: number
+  NumInTest: number
+  ThemeName: string
+  /** Type of task
+   * 0 - Множественный выбор
+   * 1 - Одиночный выбор
+   * 2 - Да \ нет
+   * 3 - Точный ответ
+   * 4 - SQL-Запрос (чтение)
+   * 5 - SQL-Запрос (определение данных)
+   * 6 - SQL-Запрос (модификация данных)
+   * 7 - MongoDB (чтение)
+   * 8 - Neo4j (чтение)
+   */
+  Type: number
+  UserAnswer: string
+}
+export interface Test {
+  AdditionToAdd: unknown
+  Additions: unknown[]
+  QsnCount: number
+  Questions: Question[]
+  StartTime: string
+  TestCount: number
+  TestDescription: string
+  TestHelp: string | null
+  TestId: number
+  TestName: string
+  TestTime: TestTime
+  TestTimeFromDB: number
+  TestType: number
+  ViewCorrect: boolean
+  ViewRight: boolean
+  addingNewTestCountComplex: number
+  addingNewTestCountEasy: number
+  addingNewTestCountMiddle: number
+  appointmentsForCurrentTest: unknown[]
+  perc2: number
+  perc3: number
+  perc4: number
+  perc5: number
+  subjId: number
+  themeId: number
+  themeName: string
+  themesList: unknown[]
+  valueComplex: number
+  valueEasy: number
+  valueMiddle: number
+  viewCorrectAndRight: number
+}
+
+export interface Theme {
+  Test: Test
+  ThemeId: number
+  ThemeName: string
+}

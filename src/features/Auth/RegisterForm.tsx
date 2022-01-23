@@ -22,7 +22,7 @@ import {CheckBoxOutlineBlank, CheckBox, Close as CloseIcon} from '@mui/icons-mat
 import {useStore} from 'effector-react'
 import * as DialogModel from './dialog'
 import * as RegisterModel from './registerModel'
-import {$studGroups} from 'src/features/User/Student/model'
+import {StudentModel} from 'src/features/User/'
 
 export const RegisterForm = () => {
   const theme = useTheme()
@@ -112,7 +112,7 @@ export const RegisterForm = () => {
 
 const GroupSelect = () => {
   const groupVal = useStore(RegisterModel.$group)
-  const groupList = useStore($studGroups)
+  const groupList = useStore(StudentModel.$studGroups)
 
   return (
     <FormControl variant="outlined">
