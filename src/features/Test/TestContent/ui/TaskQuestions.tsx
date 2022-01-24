@@ -12,7 +12,7 @@ export const TaskQuestions = () => {
 
   const qsns = test.Questions
   return (
-    <Box>
+    <Box display="flex" flexWrap="wrap" gap={1}>
       {qsns.map((q, idx) => {
         return (
           <QuestionBtn
@@ -28,6 +28,10 @@ export const TaskQuestions = () => {
           </QuestionBtn>
         )
       })}
+
+      <Button sx={{ml: 4}} variant="contained" color="error">
+        Закончить тест
+      </Button>
     </Box>
   )
 }
