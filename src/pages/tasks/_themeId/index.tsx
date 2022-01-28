@@ -18,16 +18,25 @@ export const ThemeIdPage = () => {
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
-      <Typography gutterBottom variant="h2">
-        {currentTheme?.ThemeName}
-      </Typography>
-      <Typography variant="subtitle1">{test?.TestName}</Typography>
+      <Box sx={{pb: 2, borderBottom: 1, borderColor: 'primary.lightGrey'}}>
+        <Typography gutterBottom variant="h2">
+          {currentTheme?.ThemeName}
+        </Typography>
+        <Typography gutterBottom variant="subtitle1">
+          {test?.TestName}
+        </Typography>
+      </Box>
 
-      <Typography variant="h2" sx={{mt: 4, mb: 1}}>
+      <Typography variant="h2" sx={{mt: 2, mb: 1}}>
         Задания
       </Typography>
       <TaskQuestions></TaskQuestions>
-      <Paper sx={{mt: 4, px: 2}} dangerouslySetInnerHTML={{__html: currQsn.Content}}></Paper>
+      <Paper sx={{mt: 4, p: 2}}>
+        <Typography gutterBottom variant="h6">
+          Текущее задание
+        </Typography>
+        <div dangerouslySetInnerHTML={{__html: currQsn.Content}} />
+      </Paper>
     </Box>
   )
 }
