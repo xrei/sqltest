@@ -1,8 +1,8 @@
 import {useStore} from 'effector-react'
 import React from 'react'
-import {Box, Typography, Button, useTheme} from '@mui/material'
+import {Box, Button, useTheme} from '@mui/material'
 import {TestContentModel} from 'src/features/Test/'
-import {grey, orange, green, lightBlue, blue, common} from '@mui/material/colors'
+import {grey, orange, blue, common} from '@mui/material/colors'
 
 export const TaskQuestions = () => {
   const test = useStore(TestContentModel.$test)
@@ -59,19 +59,13 @@ const QuestionBtn: React.FC<QsnBtnProps> = (props) => {
 
   const btnBgColor = currAnswBg || hasAnswColorBg || diffColors[props.qsnDifficulty].bg
   const btnTextColor = currAnswTextColor || hasAnswTextColor || diffColors[props.qsnDifficulty].text
-  const hideBorder = props.index > 0 && props.index < props.lastIdx
-  const hideRightBorder = props.index === 0
-  const hideLeftBorder = props.lastIdx === props.index
 
   return (
     <Button
       variant="contained"
       sx={{
-        borderBottomRightRadius: hideRightBorder ? 0 : 3,
-        borderBottomLeftRadius: hideLeftBorder ? 0 : 3,
-        borderTopRightRadius: hideRightBorder ? 0 : 3,
-        borderTopLeftRadius: hideLeftBorder ? 0 : 3,
-        ...(hideBorder ? {borderRadius: 0} : {}),
+        border: 0,
+        borderRadius: 0,
         minWidth: 'auto',
         p: 0,
         fontSize: theme.typography.pxToRem(16),

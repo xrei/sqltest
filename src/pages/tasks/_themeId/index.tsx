@@ -1,7 +1,7 @@
 import React from 'react'
 import {Navigate} from 'react-router-dom'
 import {useGate, useStore} from 'effector-react'
-import {Box, Typography} from '@mui/material'
+import {Box, Typography, Paper} from '@mui/material'
 import {ThemeTestGate} from './model'
 import {routesPaths} from 'src/router'
 import {TestContentModel} from 'src/features/Test'
@@ -12,8 +12,9 @@ export const ThemeIdPage = () => {
   const hasData = useStore(TestContentModel.$hasTestAndTheme)
   const currentTheme = useStore(TestContentModel.$currentTheme)
   const test = useStore(TestContentModel.$test)
+  const currQsn = useStore(TestContentModel.$currQuestion)
 
-  if (!hasData) return <Navigate to={routesPaths.tasks} />
+  if (!hasData || !test) return <Navigate to={routesPaths.tasks} />
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
@@ -26,6 +27,7 @@ export const ThemeIdPage = () => {
         Задания
       </Typography>
       <TaskQuestions></TaskQuestions>
+      <Paper sx={{mt: 4, px: 2}} dangerouslySetInnerHTML={{__html: currQsn.Content}}></Paper>
     </Box>
   )
 }

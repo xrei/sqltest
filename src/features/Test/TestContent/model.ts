@@ -10,6 +10,11 @@ export const $hasTestAndTheme = combine(
 )
 
 export const $currentQestionId = createStore<number>(0)
+export const $currQuestion = combine(
+  $test,
+  $currentQestionId,
+  (test, qsnId) => test?.Questions.find((t) => t.Id === qsnId) || {Content: ''}
+)
 
 export const setCurrentTheme = createEvent<Theme>()
 export const changeCurrentQuestionId = createEvent<number>()
