@@ -25,7 +25,7 @@ const defaultQsn: Question = {
 export const $currQuestion = combine(
   $test,
   $currentQestionId,
-  (test, qsnId) => test?.Questions.find((t) => t.Id === qsnId) || {Content: '', Type: 0}
+  (test, qsnId) => test?.Questions.find((t) => t.Id === qsnId) || defaultQsn
 )
 
 export const setCurrentTheme = createEvent<Theme>()

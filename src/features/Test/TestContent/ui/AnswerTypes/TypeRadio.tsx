@@ -1,5 +1,5 @@
 import React from 'react'
-import type {AnswerProps} from './types'
-export const TypeRadio: React.FC<AnswerProps> = () => {
+
+export const TypeRadio: React.FC = () => {
   return <div></div>
 }
