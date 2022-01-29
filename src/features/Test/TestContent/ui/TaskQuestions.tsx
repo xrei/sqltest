@@ -28,10 +28,6 @@ export const TaskQuestions = () => {
           </QuestionBtn>
         )
       })}
-
-      {/* <Button sx={{ml: 4}} variant="contained" color="error">
-        Закончить тест
-      </Button> */}
     </Box>
   )
 }
