@@ -67,20 +67,29 @@ export interface Question {
   Difficulty: number
   Id: number
   NumInTest: number
-  ThemeName: string
+  ThemeName: string | null
   /** Type of task
+   *
    * 0 - Множественный выбор
+   *
    * 1 - Одиночный выбор
+   *
    * 2 - Да \ нет
+   *
    * 3 - Точный ответ
+   *
    * 4 - SQL-Запрос (чтение)
+   *
    * 5 - SQL-Запрос (определение данных)
+   *
    * 6 - SQL-Запрос (модификация данных)
+   *
    * 7 - MongoDB (чтение)
+   *
    * 8 - Neo4j (чтение)
    */
   Type: number
-  UserAnswer: string
+  UserAnswer: string | null
 }
 export interface Test {
   AdditionToAdd: unknown

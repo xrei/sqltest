@@ -10,6 +10,18 @@ export const $hasTestAndTheme = combine(
 )
 
 export const $currentQestionId = createStore<number>(0)
+const defaultQsn: Question = {
+  Answers: [],
+  Category: 0,
+  Content: '',
+  DatabaseId: 0,
+  Difficulty: 0,
+  Id: 0,
+  NumInTest: 0,
+  Type: 0,
+  UserAnswer: null,
+  ThemeName: null,
+}
 export const $currQuestion = combine(
   $test,
   $currentQestionId,

@@ -23,7 +23,7 @@ export const ThemeIdPage = () => {
           {currentTheme?.ThemeName}
         </Typography>
         <Typography gutterBottom variant="subtitle1">
-          {test?.TestName}
+          {test.TestName}
         </Typography>
       </Box>
 
