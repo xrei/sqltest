@@ -29,9 +29,9 @@ export const TaskQuestions = () => {
         )
       })}
 
-      <Button sx={{ml: 4}} variant="contained" color="error">
+      {/* <Button sx={{ml: 4}} variant="contained" color="error">
         Закончить тест
-      </Button>
+      </Button> */}
     </Box>
   )
 }
@@ -69,8 +69,8 @@ const QuestionBtn: React.FC<QsnBtnProps> = (props) => {
         minWidth: 'auto',
         p: 0,
         fontSize: theme.typography.pxToRem(16),
-        width: '48px',
-        height: '48px',
+        width: '40px',
+        height: '40px',
         backgroundColor: btnBgColor,
         color: btnTextColor,
         '&:hover': {

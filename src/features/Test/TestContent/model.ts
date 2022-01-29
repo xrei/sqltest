@@ -13,7 +13,7 @@ export const $currentQestionId = createStore<number>(0)
 export const $currQuestion = combine(
   $test,
   $currentQestionId,
-  (test, qsnId) => test?.Questions.find((t) => t.Id === qsnId) || {Content: ''}
+  (test, qsnId) => test?.Questions.find((t) => t.Id === qsnId) || {Content: '', Type: 0}
 )
 
 export const setCurrentTheme = createEvent<Theme>()
@@ -35,4 +35,7 @@ $test.on(fetchTestContentFx.doneData, (_, test) => test)
 
 $test.watch((t) => {
   console.log(t)
+})
+$currQuestion.watch((qsn) => {
+  console.log(qsn)
 })
