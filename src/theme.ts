@@ -43,7 +43,7 @@ const getPalette = (mode: PaletteMode) => ({
           lightGrey: grey[200],
         },
         secondary: {
-          main: pink[300],
+          main: pink.A400,
         },
         error: {
           main: red[400],
