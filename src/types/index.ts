@@ -89,7 +89,7 @@ export interface Question {
    * 8 - Neo4j (чтение)
    */
   Type: number
-  UserAnswer: string | null
+  UserAnswer: boolean | string | null
 }
 export interface Test {
   AdditionToAdd: unknown

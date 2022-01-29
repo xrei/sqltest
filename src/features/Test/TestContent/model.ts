@@ -51,3 +51,44 @@ $test.watch((t) => {
 $currQuestion.watch((qsn) => {
   console.log(qsn)
 })
+
+type ChangeAnswerGenericPayload = {
+  qId: number
+  value: string
+}
+export const changeTypeGenericAnswer = createEvent<ChangeAnswerGenericPayload>()
+$test.on(changeTypeGenericAnswer, (test, payload) => {
+  if (!test) return null
+  return {
+    ...test,
+    Questions: test.Questions.map((q) =>
+      q.Id === payload.qId ? {...q, UserAnswer: payload.value} : q
+    ),
+  }
+})
+
+type ChangeAnswerCheckboxPayload = {
+  qId: number
+  value: boolean
+  answId: number
+}
+export const changeTypeCheckboxAnswer = createEvent<ChangeAnswerCheckboxPayload>()
+$test.on(changeTypeCheckboxAnswer, (test, payload) => {
+  if (!test) return null
+
+  return {
+    ...test,
+    Questions: test.Questions.map((q) => {
+      if (q.Id === payload.qId) {
+        const answs = q.Answers.map((a) =>
+          a.Id === payload.answId ? {...a, Correct: payload.value} : a
+        )
+        return {
+          ...q,
+          Answers: answs,
+          UserAnswer: true,
+        }
+      } else return q
+    }),
+  }
+})
