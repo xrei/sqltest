@@ -65,8 +65,8 @@ const QuestionBtn: React.FC<QsnBtnProps> = (props) => {
         minWidth: 'auto',
         p: 0,
         fontSize: theme.typography.pxToRem(16),
-        width: '40px',
-        height: '40px',
+        width: '44px',
+        height: '44px',
         backgroundColor: btnBgColor,
         color: btnTextColor,
         '&:hover': {
