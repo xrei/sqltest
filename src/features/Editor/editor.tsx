@@ -1,12 +1,15 @@
 import React from 'react'
 import {basicSetup, EditorView} from '@codemirror/basic-setup'
 import {EditorState, Compartment} from '@codemirror/state'
+import {keymap} from '@codemirror/view'
+import {indentWithTab} from '@codemirror/commands'
 import {sql} from '@codemirror/lang-sql'
 import {createEffect, attach, forward, createStore, createEvent} from 'effector'
 import {createGate, useGate} from 'effector-react'
+import {oneDark} from './theme'
 
 export const $doc = createStore('')
-export const onDocChange = createEvent<string>()
+const onDocChange = createEvent<string>()
 
 $doc.on(onDocChange, (_, str) => str)
 
@@ -19,6 +22,7 @@ const langConf = new Compartment()
 const cmState = EditorState.create({
   extensions: [
     basicSetup,
+    oneDark,
     langConf.of(sql()),
     EditorView.updateListener.of((v) => {
       if (v.docChanged) {
@@ -26,6 +30,7 @@ const cmState = EditorState.create({
         onDocChange(val)
       }
     }),
+    keymap.of([indentWithTab]),
   ],
 })
 
@@ -33,7 +38,7 @@ let cmView: EditorView
 
 const CodeMirrorGate = createGate()
 
-export const initCodeMirrorFx = createEffect(() => {
+const initCodeMirrorFx = createEffect(() => {
   cmView = new EditorView({
     state: cmState,
     parent: document.querySelector('.editor')!,
