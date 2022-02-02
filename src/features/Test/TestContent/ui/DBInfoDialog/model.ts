@@ -13,7 +13,6 @@ $isOpen.on(toggle, (s) => !s)
 const fetchDBContent = createEffect<number, DBTableContent[]>(async (id) => {
   const res = await (await getDBContent({Id: id})).json()
 
-  console.log(res)
   return res
 })
 
