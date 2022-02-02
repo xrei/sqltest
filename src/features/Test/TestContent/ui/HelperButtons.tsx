@@ -3,8 +3,10 @@ import {Box, Button} from '@mui/material'
 import {fetchDBContentFx} from './DBContentDialog/model'
 import {LoadingButton} from '@mui/lab'
 import {useStore} from 'effector-react'
+import {TestContentModel} from '../..'
 
 export const HelperButtons = () => {
+  const test = useStore(TestContentModel.$test)
   const loading = useStore(fetchDBContentFx.pending)
 
   return (
@@ -13,7 +15,7 @@ export const HelperButtons = () => {
         Содержимое РБД
       </LoadingButton>
       <Button variant="outlined">Описание баз данных</Button>
-      <Button variant="outlined">Правильный ответ</Button>
+      {test?.ViewRight ? <Button variant="outlined">Правильный ответ</Button> : <></>}
       <Button variant="outlined" color="warning">
         Сообщить о некорректности задания
       </Button>
