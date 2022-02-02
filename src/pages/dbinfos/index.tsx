@@ -9,14 +9,14 @@ import {
   Button,
   Dialog,
   DialogActions,
-  DialogContentText,
   DialogContent,
 } from '@mui/material'
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
-import {useStore} from 'effector-react'
+import {useStore, useGate} from 'effector-react'
 import * as DbInfoModel from './model'
 
 export const DBInfosPage = () => {
+  useGate(DbInfoModel.DbInfoPage)
   const list = useStore(DbInfoModel.$dbInfosList)
   const [openedDialog, setDialog] = useState(0)
   const [expanded, setExpanded] = useState<number | false>(false)
@@ -31,7 +31,6 @@ export const DBInfosPage = () => {
 
   return (
     <>
-      <DbInfoModel.DbInfoPage />
       <Box sx={{flexFlow: 'column', mt: 2}}>
         <Typography variant="h1" gutterBottom>
           Описание баз данных
