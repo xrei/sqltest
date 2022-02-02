@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Button,
   Dialog,
-  DialogActions,
   DialogContent,
   DialogTitle,
   Box,
