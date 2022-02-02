@@ -13,11 +13,12 @@ import {
 } from '@mui/material'
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
 import {useStore, useGate} from 'effector-react'
-import * as DbInfoModel from './model'
+import {DBInfoModel} from 'src/features/DBInfo'
+import {DbInfoPage} from './model'
 
 export const DBInfosPage = () => {
-  useGate(DbInfoModel.DbInfoPage)
-  const list = useStore(DbInfoModel.$dbInfosList)
+  useGate(DbInfoPage)
+  const list = useStore(DBInfoModel.$dbInfosList)
   const [openedDialog, setDialog] = useState(0)
   const [expanded, setExpanded] = useState<number | false>(false)
 

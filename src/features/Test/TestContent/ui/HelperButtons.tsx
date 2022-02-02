@@ -4,6 +4,7 @@ import {fetchDBContentFx} from './DBContentDialog/model'
 import {LoadingButton} from '@mui/lab'
 import {useStore} from 'effector-react'
 import {TestContentModel} from '../..'
+import {DBInfoModel} from 'src/features/DBInfo'
 
 export const HelperButtons = () => {
   const test = useStore(TestContentModel.$test)
@@ -14,7 +15,9 @@ export const HelperButtons = () => {
       <LoadingButton loading={loading} variant="outlined" onClick={() => fetchDBContentFx()}>
         Содержимое РБД
       </LoadingButton>
-      <Button variant="outlined">Описание баз данных</Button>
+      <Button variant="outlined" onClick={() => DBInfoModel.toggleDialog()}>
+        Описание баз данных
+      </Button>
       {test?.ViewRight ? <Button variant="outlined">Правильный ответ</Button> : <></>}
       <Button variant="outlined" color="warning">
         Сообщить о некорректности задания

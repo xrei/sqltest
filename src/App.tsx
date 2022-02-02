@@ -6,6 +6,7 @@ import {useStore} from 'effector-react'
 import {createAppTheme, $themeMode} from './theme'
 import {MainLayout} from './ui/MainLayout'
 import {routes} from './router'
+import {DBInfoDialog} from 'src/features/DBInfo'
 
 const App: React.FC = () => {
   const pages = useRoutes(routes)
@@ -16,6 +17,8 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline></CssBaseline>
       <MainLayout>{pages}</MainLayout>
+
+      <DBInfoDialog />
     </ThemeProvider>
   )
 }
