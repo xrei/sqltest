@@ -8,6 +8,7 @@ import type {
   Subject,
   Theme,
   Test,
+  DBTableContent,
 } from 'src/types'
 
 // home
@@ -27,6 +28,11 @@ export const getThemeList = createRequestFx<{SubjectId: number; UserId: number},
   true
 )
 export const getTestContent = createRequestFx<Theme, Test>('Home/GetTestContent', 'POST')
+export const getDBContent = createRequestFx<{Id: number}, DBTableContent[]>(
+  'Home/GetDBContent',
+  'GET',
+  true
+)
 
 // admin
 export const getAuthors = createRequestFx<void>('Admin/GetAuthors')

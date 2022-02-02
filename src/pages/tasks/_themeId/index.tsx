@@ -5,7 +5,12 @@ import {Box, Typography, Paper, Button, useTheme, useMediaQuery} from '@mui/mate
 import {ThemeTestGate} from './model'
 import {routesPaths} from 'src/router'
 import {TestContentModel} from 'src/features/Test'
-import {TaskQuestions, AnswerByType} from 'src/features/Test/TestContent'
+import {
+  TaskQuestions,
+  AnswerByType,
+  HelperButtons,
+  DBInfoDialog,
+} from 'src/features/Test/TestContent'
 
 export const ThemeIdPage = () => {
   useGate(ThemeTestGate)
@@ -17,7 +22,7 @@ export const ThemeIdPage = () => {
   if (!hasData || !test) return <Navigate to={routesPaths.tasks} />
 
   return (
-    <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
+    <Box sx={{display: 'flex', flexFlow: 'column', mt: 2, mb: 4}}>
       <Box sx={{pb: 2, borderBottom: 1, borderColor: 'primary.lightGrey'}}>
         <Typography gutterBottom variant="h2">
           {currentTheme?.ThemeName}
@@ -45,11 +50,15 @@ export const ThemeIdPage = () => {
       </Box>
       <TaskQuestions></TaskQuestions>
 
-      <Paper sx={{mt: 4, p: 2}}>
+      <Paper sx={{my: 4, p: 2}}>
         <CurrentQuestion />
 
         <AnswerByType></AnswerByType>
       </Paper>
+
+      <HelperButtons />
+
+      <DBInfoDialog />
     </Box>
   )
 }

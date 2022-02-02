@@ -133,3 +133,11 @@ export interface Theme {
   ThemeId: number
   ThemeName: string
 }
+
+export interface DBTableContent {
+  Content: Array<string[]>
+  Header: string[]
+  HeaderCount: number
+  Name: string
+  TotalRowsCount: number
+}
