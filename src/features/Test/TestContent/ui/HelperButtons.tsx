@@ -1,6 +1,6 @@
 import React from 'react'
 import {Box, Button} from '@mui/material'
-import {fetchDBContentFx} from './DBInfoDialog/model'
+import {fetchDBContentFx} from './DBContentDialog/model'
 import {LoadingButton} from '@mui/lab'
 import {useStore} from 'effector-react'
 

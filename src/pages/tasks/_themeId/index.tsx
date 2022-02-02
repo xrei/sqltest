@@ -9,7 +9,7 @@ import {
   TaskQuestions,
   AnswerByType,
   HelperButtons,
-  DBInfoDialog,
+  DBContentDialog,
 } from 'src/features/Test/TestContent'
 
 export const ThemeIdPage = () => {
@@ -58,7 +58,7 @@ export const ThemeIdPage = () => {
 
       <HelperButtons />
 
-      <DBInfoDialog />
+      <DBContentDialog />
     </Box>
   )
 }

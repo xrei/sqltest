@@ -19,7 +19,7 @@ import * as model from './model'
 import {useStore} from 'effector-react'
 import funcModelImg from '../../assets/FuncModel3.jpg'
 
-export const DBInfoDialog = () => {
+export const DBContentDialog = () => {
   const open = useStore(model.$isOpen)
 
   return (

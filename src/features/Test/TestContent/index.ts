@@ -1,6 +1,6 @@
 import {TaskQuestions} from './ui/TaskQuestions'
 import {AnswerByType} from './ui/AnswerByType'
 import {HelperButtons} from './ui/HelperButtons'
-import {DBInfoDialog} from './ui/DBInfoDialog'
+import {DBContentDialog} from './ui/DBContentDialog'
 
-export {TaskQuestions, AnswerByType, HelperButtons, DBInfoDialog}
+export {TaskQuestions, AnswerByType, HelperButtons, DBContentDialog}
