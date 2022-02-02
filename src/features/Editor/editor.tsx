@@ -1,61 +1,113 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {basicSetup, EditorView} from '@codemirror/basic-setup'
 import {EditorState, Compartment} from '@codemirror/state'
 import {keymap} from '@codemirror/view'
 import {indentWithTab} from '@codemirror/commands'
 import {sql} from '@codemirror/lang-sql'
-import {createEffect, attach, forward, createStore, createEvent} from 'effector'
-import {createGate, useGate} from 'effector-react'
+import {
+  createEffect,
+  attach,
+  forward,
+  createStore,
+  createEvent,
+  Store,
+  Event,
+  Effect,
+} from 'effector'
+import {createGate, Gate, useGate} from 'effector-react'
 import {oneDark} from './theme'
 
-export const $doc = createStore('')
-const onDocChange = createEvent<string>()
+type CreateCodeEditorParams = {
+  lang: string
+}
+export type CodeEditorModel = {
+  editorId: string
+  $doc: Store<string>
+  change: Event<string>
+  insertDoc: Effect<string, void>
+  gate: Gate<unknown>
+  CodeEditor: React.FC
+}
 
-$doc.on(onDocChange, (_, str) => str)
+const defaultConfig: CreateCodeEditorParams = {
+  lang: '',
+}
+export function createCodeEditor(config = defaultConfig): CodeEditorModel {
+  const editorId = genUid()
 
-$doc.watch((v) => {
-  console.log(v)
-})
+  const gate = createGate<unknown>()
 
-const langConf = new Compartment()
+  const change = createEvent<string>()
+  const $doc = createStore('')
+  $doc.on(change, (_, s) => s)
 
-const cmState = EditorState.create({
-  extensions: [
-    basicSetup,
-    oneDark,
-    langConf.of(sql()),
-    EditorView.updateListener.of((v) => {
-      if (v.docChanged) {
-        const val = v.state.doc.toString()
-        onDocChange(val)
-      }
-    }),
-    keymap.of([indentWithTab]),
-  ],
-})
+  let state: EditorState
+  let view: EditorView
+  // const langConf = new Compartment()
 
-let cmView: EditorView
-
-const CodeMirrorGate = createGate()
-
-const initCodeMirrorFx = createEffect(() => {
-  cmView = new EditorView({
-    state: cmState,
-    parent: document.querySelector('.editor')!,
+  const initCodeMirrorFx = createEffect((doc: string) => {
+    state = EditorState.create({
+      doc: doc,
+      extensions: [
+        basicSetup,
+        oneDark,
+        EditorView.updateListener.of((v) => {
+          if (v.docChanged) {
+            const val = v.state.doc.toString()
+            change(val)
+          }
+        }),
+        keymap.of([indentWithTab]),
+        defineLang(config.lang),
+      ],
+    })
+    view = new EditorView({
+      state: state,
+      parent: document.querySelector(`.${editorId}`)!,
+    })
   })
-})
 
-forward({
-  from: CodeMirrorGate.open,
-  to: initCodeMirrorFx,
-})
+  forward({
+    from: gate.open,
+    to: attach({
+      source: $doc,
+      effect: initCodeMirrorFx,
+    }),
+  })
 
-CodeMirrorGate.close.watch(() => {
-  cmView.destroy()
-})
+  gate.close.watch(() => {
+    view.destroy()
+  })
 
-export const CodeEditor = () => {
-  useGate(CodeMirrorGate)
+  const insertDoc = createEffect((str: string) => {
+    if (!view) return
+    console.log('insertDoc str: ', str)
+    view.dispatch({
+      changes: {from: 0, to: state.doc.length, insert: str},
+    })
+  })
 
-  return <div className="editor"></div>
+  const CodeEditor: React.FC = () => {
+    useGate(gate)
+
+    return <div className={editorId}></div>
+  }
+
+  return {
+    editorId,
+    $doc,
+    change,
+    insertDoc,
+    gate,
+    CodeEditor,
+  }
+}
+
+function defineLang(lang: string) {
+  if (lang === 'sql') return [sql()]
+  return []
+}
+
+function genUid() {
+  return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }

@@ -1,4 +1,4 @@
-import {combine, createEffect, createEvent, createStore} from 'effector'
+import {attach, combine, createEffect, createEvent, createStore} from 'effector'
 import {getTestContent} from 'src/api'
 import {Test, Theme, Question} from 'src/types'
 
@@ -90,5 +90,23 @@ $test.on(changeTypeCheckboxAnswer, (test, payload) => {
         }
       } else return q
     }),
+  }
+})
+
+export const changeTypeEditorAnswer = attach({
+  source: $currentQestionId,
+  effect(qsnId, value: string) {
+    console.log(qsnId)
+    console.log(value)
+    return {qId: qsnId, value}
+  },
+})
+$test.on(changeTypeEditorAnswer.doneData, (test, payload) => {
+  if (!test) return null
+  return {
+    ...test,
+    Questions: test.Questions.map((q) =>
+      q.Id === payload.qId ? {...q, UserAnswer: payload.value} : q
+    ),
   }
 })
