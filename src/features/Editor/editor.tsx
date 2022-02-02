@@ -81,7 +81,7 @@ export function createCodeEditor(config = defaultConfig): CodeEditorModel {
 
   const insertDoc = createEffect((str: string) => {
     if (!view) return
-    console.log('insertDoc str: ', str)
+    // console.log('insertDoc str: ', str)
     view.dispatch({
       changes: {from: 0, to: state.doc.length, insert: str},
     })

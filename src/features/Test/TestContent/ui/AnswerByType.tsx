@@ -21,7 +21,6 @@ export const AnswerByType = () => {
   }
   const CurrAnsComponent = Components[ansType] || Unimplemented
 
-  // console.log(currQsn)
   return (
     <Box display="flex" flexDirection="column">
       <CurrAnsComponent key={currQsn.Id}></CurrAnsComponent>
