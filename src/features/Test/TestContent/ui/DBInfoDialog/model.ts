@@ -17,6 +17,7 @@ const fetchDBContent = createEffect<number, DBTableContent[]>(async (id) => {
   return res
 })
 
+// get db content with current question
 export const fetchDBContentFx = attach({
   source: TestContentModel.$currentQestionId,
   effect: fetchDBContent,
@@ -24,6 +25,7 @@ export const fetchDBContentFx = attach({
 
 $dbContent.on(fetchDBContentFx.doneData, (_, p) => p)
 
+// open dialog after data is successfully loaded
 forward({
   from: fetchDBContentFx.doneData,
   to: toggle,
