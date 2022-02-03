@@ -48,7 +48,7 @@ const DBTables = () => {
       {dbContent.map((table, idx) => (
         <Stack key={idx} mb={4}>
           <Typography gutterBottom>{table.Name}</Typography>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} sx={{backgroundColor: 'background.default'}}>
             <Table size="small">
               <TableHead>
                 <TableRow>

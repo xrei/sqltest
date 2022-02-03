@@ -7,6 +7,7 @@ import {createAppTheme, $themeMode} from './theme'
 import {MainLayout} from './ui/MainLayout'
 import {routes} from './router'
 import {DBInfoDialog} from 'src/features/DBInfo'
+import {AuthDialogs} from 'src/features/Auth'
 
 const App: React.FC = () => {
   const pages = useRoutes(routes)
@@ -19,6 +20,7 @@ const App: React.FC = () => {
       <MainLayout>{pages}</MainLayout>
 
       <DBInfoDialog />
+      <AuthDialogs />
     </ThemeProvider>
   )
 }
