@@ -1,9 +1,7 @@
-import {createStore, createEffect, attach} from 'effector'
+import {createEffect} from 'effector'
 import {Options} from 'ky'
 import {ResponseError} from './error'
 import {api} from './instance'
-
-const $authToken = createStore('')
 
 type Methods = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
@@ -17,7 +15,6 @@ export const createRequestFx = <T = unknown, R = unknown>(
   url?: boolean
 ) => {
   return createEffect<T, ResponseType<R>>(async (params) => {
-    // const token = $authToken.getState()
     const config: Options = {
       method,
     }

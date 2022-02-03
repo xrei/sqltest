@@ -13,10 +13,6 @@ forward({
   to: SubjectsModel.resetSelectedSubject,
 })
 
-TasksGate.close.watch(() => {
-  console.log('tasks page unmount')
-})
-
 export const startTestFx = attach({
   source: [ThemesModel.$selectedTheme],
   async effect([theme]) {

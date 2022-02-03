@@ -1,38 +1,22 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {basicSetup, EditorView} from '@codemirror/basic-setup'
 import {EditorState, Compartment} from '@codemirror/state'
 import {keymap} from '@codemirror/view'
 import {indentWithTab} from '@codemirror/commands'
 import {sql} from '@codemirror/lang-sql'
-import {
-  createEffect,
-  attach,
-  forward,
-  createStore,
-  createEvent,
-  Store,
-  Event,
-  Effect,
-} from 'effector'
-import {createGate, Gate, useGate} from 'effector-react'
+import {createEffect, attach, forward, createStore, createEvent} from 'effector'
+import {createGate, useGate} from 'effector-react'
 import {oneDark} from './theme'
+
+export type CodeEditorModel = ReturnType<typeof createCodeEditor>
 
 type CreateCodeEditorParams = {
   lang: string
 }
-export type CodeEditorModel = {
-  editorId: string
-  $doc: Store<string>
-  change: Event<string>
-  insertDoc: Effect<string, void>
-  gate: Gate<unknown>
-  CodeEditor: React.FC
-}
-
 const defaultConfig: CreateCodeEditorParams = {
   lang: '',
 }
-export function createCodeEditor(config = defaultConfig): CodeEditorModel {
+export function createCodeEditor(config = defaultConfig) {
   const editorId = genUid()
 
   const gate = createGate<unknown>()

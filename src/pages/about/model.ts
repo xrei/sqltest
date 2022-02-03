@@ -8,7 +8,7 @@ export const $about = createStore('')
 
 const fetchAboutData = createEffect<void, string>(async () => {
   const resp = await getAbout()
-  const html = (await resp.json()) as string
+  const html = await resp.json()
   return html.replaceAll('color: #333333; ', '')
 })
 

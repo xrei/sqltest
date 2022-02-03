@@ -1,10 +1,10 @@
-export interface LoginDTO {
+export type LoginDTO = {
   Login: string
   Password: string
   RememberMe?: boolean
 }
 
-export interface RegisterDTO {
+export type RegisterDTO = {
   FIO: string
   Login: string
   Password: string
@@ -12,7 +12,7 @@ export interface RegisterDTO {
   Group: string
 }
 
-export interface User {
+export type User = {
   Group: number
   Id: number
   Login: string
@@ -21,7 +21,7 @@ export interface User {
   Role: number
 }
 
-export interface DBInfo {
+export type DBInfo = {
   connection_string: string
   creation_script: string
   description: string
@@ -29,18 +29,18 @@ export interface DBInfo {
   id: number
 }
 
-export interface StudentGroup {
+export type StudentGroup = {
   GroupNumber: string
   GroupValue: number
   register: boolean
 }
 
-export interface Subject {
+export type Subject = {
   SubjectId: number
   SubjectName: string
 }
 
-export interface TestTime {
+export type TestTime = {
   Days: number
   Hours: number
   Milliseconds: number
@@ -53,12 +53,12 @@ export interface TestTime {
   TotalMinutes: number
   TotalSeconds: number
 }
-export interface Answer {
+export type Answer = {
   Content: string
   Correct: boolean
   Id: number
 }
-export interface Question {
+export type Question = {
   Answers: Answer[]
   Category: number
   Content: string
@@ -91,7 +91,7 @@ export interface Question {
   Type: number
   UserAnswer: boolean | string | null
 }
-export interface Test {
+export type Test = {
   AdditionToAdd: unknown
   Additions: unknown[]
   /** Заданий в тесте */
@@ -128,16 +128,29 @@ export interface Test {
   viewCorrectAndRight: number
 }
 
-export interface Theme {
+export type Theme = {
   Test: Test
   ThemeId: number
   ThemeName: string
 }
 
-export interface DBTableContent {
+export type DBTableContent = {
   Content: Array<string[]>
   Header: string[]
   HeaderCount: number
   Name: string
   TotalRowsCount: number
+}
+
+export type Author = {
+  AuthorDescription: string
+  AuthorId: number
+  AuthorImage: string
+  AuthorName: string
+}
+
+export type NewsPost = {
+  Id: number
+  Content: string
+  NewsDate: string
 }

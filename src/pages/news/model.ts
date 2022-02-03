@@ -2,19 +2,15 @@ import {createEffect, createStore, forward} from 'effector'
 import {createGate} from 'effector-react'
 import {reverse} from 'ramda'
 import {getSomeNews} from 'src/api'
+import type {NewsPost} from 'src/types'
 
 export const NewsPageGate = createGate('AuthorsPage')
 
-type Post = {
-  Id: number
-  Content: string
-  NewsDate: string
-}
-export const $posts = createStore<Post[]>([])
+export const $posts = createStore<NewsPost[]>([])
 
-const fetchPostsData = createEffect<void, Post[]>(async () => {
+const fetchPostsData = createEffect<void, NewsPost[]>(async () => {
   const resp = await getSomeNews()
-  const list = (await resp.json()) as Post[]
+  const list = await resp.json()
   return reverse(list)
 })
 

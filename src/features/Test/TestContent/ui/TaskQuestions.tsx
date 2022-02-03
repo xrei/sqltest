@@ -32,7 +32,7 @@ export const TaskQuestions = () => {
   )
 }
 
-interface QsnBtnProps {
+type QsnBtnProps = {
   index: number
   lastIdx: number
   qsnDifficulty: number
