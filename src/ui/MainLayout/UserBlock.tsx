@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import {authLogOff} from 'src/api'
 import {routesPaths} from 'src/router'
-import {$user} from 'src/features/User/model'
+import {$user, $userNameLetters} from 'src/features/User/model'
 
 export const UserBlock: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -27,6 +27,7 @@ export const UserBlock: React.FC = () => {
   }
 
   const user = useStore($user)
+  const userLetters = useStore($userNameLetters)
 
   return (
     <React.Fragment>
@@ -53,7 +54,21 @@ export const UserBlock: React.FC = () => {
         anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
       >
         <MenuItem component={Link} to={routesPaths.profile}>
-          <Avatar sx={{mr: 2, width: 32, height: 32}} /> Профиль
+          <Avatar
+            sx={{
+              mr: 2,
+              width: 32,
+              height: 32,
+              fontSize: '12px',
+              color: 'inherit',
+              backgroundColor: 'transparent',
+              border: '1px solid',
+              borderColor: 'primary.light',
+            }}
+          >
+            {userLetters}
+          </Avatar>{' '}
+          Профиль
         </MenuItem>
         <Divider />
         <MenuItem component={Link} to={routesPaths.tasks}>

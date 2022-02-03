@@ -31,8 +31,8 @@ const getPalette = (mode: PaletteMode) => ({
   ...(mode === 'dark'
     ? {
         background: {
-          default: grey[900],
-          paper: grey[700],
+          default: '#111',
+          paper: grey[900],
         },
       }
     : {

@@ -1,3 +1,4 @@
+import {head, split, map, join, take} from 'ramda'
 import {createEffect, createEvent, createStore, forward} from 'effector'
 import type {User} from 'src/types'
 import {getUser, authLogOff} from 'src/api'
@@ -13,6 +14,11 @@ export const roles: {[key: number]: string} = {
 export const $user = createStore<User | null>(null)
 export const $hasUser = $user.map((v) => Boolean(v))
 export const $userRole = $user.map((v) => (v ? roles[v.Role] : ''))
+export const $userNameLetters = $user.map((u) => {
+  if (!u) return ''
+  // @ts-expect-error: untypable
+  return join('', map(head, take(2, split(' ', u.Name))))
+})
 
 export const setUser = createEvent<User>()
 export const clearUser = createEvent<void>()
