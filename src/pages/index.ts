@@ -1,4 +1,3 @@
-import {AboutPage} from './about'
 import {AuthorsPage} from './authors'
 import {HomePage} from './home'
 import {MaterialsPage} from './materials'
@@ -8,7 +7,6 @@ import {ProfilePage, MyResultsPage, StudentsRatingPage, ProfileInfoPage} from '.
 
 export {
   AuthorsPage,
-  AboutPage,
   HomePage,
   NewsPage,
   TasksPage,

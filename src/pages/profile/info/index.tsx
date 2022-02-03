@@ -10,7 +10,7 @@ export const ProfileInfoPage = () => {
   const currStudGroup = useStore($currentGroup)
 
   return (
-    <Box sx={{display: 'flex', flexFlow: 'column', flex: 1, mt: 2}}>
+    <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
       <Typography variant="h1" sx={{mb: 4}}>
         Информация о пользователе
       </Typography>

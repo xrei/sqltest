@@ -40,20 +40,9 @@ export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
           color="inherit"
           component={Link}
           to={routesPaths.index}
-          startIcon={<Home />}
-        >
-          <Typography sx={linkSx}>Главная</Typography>
-        </Button>
-        <Button
-          css={buttonCss(drawer)}
-          size={large}
-          variant="text"
-          color="inherit"
-          component={Link}
-          to={routesPaths.about}
           startIcon={<DesktopMac />}
         >
-          <Typography sx={linkSx}>О системе</Typography>
+          <Typography sx={linkSx}>Главная</Typography>
         </Button>
         <Button
           css={buttonCss(drawer)}

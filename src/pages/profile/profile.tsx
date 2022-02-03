@@ -23,7 +23,7 @@ export const ProfilePage: React.FC = () => {
   }
 
   return (
-    <Box sx={{display: 'flex', flexFlow: 'column', height: '100%', mt: 2}}>
+    <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
       <Tabs
         sx={{borderBottom: 1, borderBottomColor: theme.palette.grey[200]}}
         value={tab}

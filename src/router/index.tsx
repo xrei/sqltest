@@ -9,7 +9,6 @@ const DBInfosPage = React.lazy(() => import('src/pages/dbinfos'))
 
 export const routesPaths = {
   index: '/',
-  about: '/about',
   materials: '/materials',
   news: '/news',
   authors: '/authors',
@@ -35,7 +34,6 @@ export const routes: RouteObject[] = [
     path: '/',
     children: [
       {path: routesPaths.index, index: true, element: <Pages.HomePage />},
-      {path: routesPaths.about, element: <Pages.AboutPage />},
       {path: routesPaths.materials, element: <Pages.MaterialsPage />},
       {path: routesPaths.news, element: <Pages.NewsPage />},
       {path: routesPaths.authors, element: <Pages.AuthorsPage />},

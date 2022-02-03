@@ -1,10 +1,20 @@
 import React, {useEffect} from 'react'
-import {createCodeEditor} from 'src/features/Editor/editor'
+import {Typography, Box} from '@mui/material'
+import {useStore, useGate} from 'effector-react'
+import {RenderHtml} from 'src/ui/RenderHtml'
+import {MainPageGate, $about} from './model'
 
 export const HomePage: React.FC = () => {
+  useGate(MainPageGate)
+  const about = useStore($about)
+
   return (
-    <div>
-      <h1>home</h1>
-    </div>
+    <Box display="flex" flexDirection="column" mt={4}>
+      <Typography variant="h1" gutterBottom>
+        Дистанционное обучение
+      </Typography>
+      <Typography variant="h3">SQL & NoSQL тренажер</Typography>
+      <RenderHtml htmlStr={about}></RenderHtml>
+    </Box>
   )
 }
