@@ -10,6 +10,7 @@ import {
   AnswerByType,
   HelperButtons,
   DBContentDialog,
+  IncorrectQsnDialog,
 } from 'src/features/Test/TestContent'
 
 export const ThemeIdPage = () => {
@@ -59,6 +60,7 @@ export const ThemeIdPage = () => {
       <HelperButtons />
 
       <DBContentDialog />
+      <IncorrectQsnDialog />
     </Box>
   )
 }

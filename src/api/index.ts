@@ -48,3 +48,15 @@ export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')
 export const authLogOff = createRequestFx<void, void>('Auth/LogOff', 'POST')
 export const authRegister = createRequestFx<RegisterDTO, User>('Auth/Register', 'POST')
+
+type sendErrorMessageWithInfoPayload = {
+  ErrorMessage: string
+  QuestionId: number
+  StuId: number
+  TestId: number
+}
+export const sendErrorMessageWithInfo = createRequestFx<sendErrorMessageWithInfoPayload, string>(
+  'Home/SendErrorMessageWithInfo',
+  'GET',
+  true
+)

@@ -5,6 +5,7 @@ import {LoadingButton} from '@mui/lab'
 import {useStore} from 'effector-react'
 import {TestContentModel} from '../..'
 import {DBInfoModel} from 'src/features/DBInfo'
+import {toggleIncorrectQsnDialog} from './IncorrectQsnDialog/model'
 
 export const HelperButtons = () => {
   const test = useStore(TestContentModel.$test)
@@ -19,7 +20,7 @@ export const HelperButtons = () => {
         Описание баз данных
       </Button>
       {test?.ViewRight ? <Button variant="outlined">Правильный ответ</Button> : <></>}
-      <Button variant="outlined" color="warning">
+      <Button variant="outlined" color="warning" onClick={() => toggleIncorrectQsnDialog()}>
         Сообщить о некорректности задания
       </Button>
     </Box>
