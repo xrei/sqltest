@@ -12,7 +12,7 @@ export const HelperButtons = () => {
   const loading = useStore(fetchDBContentFx.pending)
 
   return (
-    <Box display="flex" gap={2}>
+    <Box display="flex" gap={2} flexWrap="wrap">
       <LoadingButton loading={loading} variant="outlined" onClick={() => fetchDBContentFx()}>
         Содержимое РБД
       </LoadingButton>
