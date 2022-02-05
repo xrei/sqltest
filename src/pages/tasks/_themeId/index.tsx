@@ -25,6 +25,9 @@ export const ThemeIdPage = () => {
 
   if (!hasData || !test) return <Navigate to={routesPaths.tasks} />
 
+  const showTestHelp = Boolean(test.TestHelp)
+  const showTestAdditions = Array.isArray(test.Additions) && test.Additions.length
+
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2, mb: 4}}>
       <Box sx={{pb: 2, borderBottom: 1, borderColor: 'primary.lightGrey'}}>
@@ -63,7 +66,8 @@ export const ThemeIdPage = () => {
       </Paper>
 
       <HelperButtons />
-      <TestHelp />
+      {showTestHelp && <TestHelp />}
+      {showTestAdditions && <TestAdditions />}
 
       <DBContentDialog />
       <IncorrectQsnDialog />
@@ -94,6 +98,22 @@ const TestHelp = () => {
       <Divider sx={{mt: 4}} />
       <Box>
         <div dangerouslySetInnerHTML={{__html: test.TestHelp}}></div>
+      </Box>
+    </>
+  )
+}
+
+const TestAdditions = () => {
+  const test = useStore(TestContentModel.$test)
+  if (!test) return <></>
+
+  return (
+    <>
+      <Divider sx={{mt: 4}} />
+      <Box>
+        {test.Additions.map((add, idx) => (
+          <div key={idx} dangerouslySetInnerHTML={{__html: add.Content}}></div>
+        ))}
       </Box>
     </>
   )

@@ -91,9 +91,13 @@ export type Question = {
   Type: number
   UserAnswer: boolean | string | null
 }
+export type Addition = {
+  Id: number
+  Content: string
+}
 export type Test = {
   AdditionToAdd: unknown
-  Additions: unknown[]
+  Additions: Addition[]
   /** Заданий в тесте */
   QsnCount: number
   Questions: Question[]
