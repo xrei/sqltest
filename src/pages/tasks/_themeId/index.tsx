@@ -30,13 +30,14 @@ export const ThemeIdPage = () => {
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2, mb: 4}}>
-      <Box sx={{pb: 2, borderBottom: 1, borderColor: 'primary.lightGrey'}}>
+      <Box>
         <Typography gutterBottom variant="h2">
           {currentTheme?.ThemeName}
         </Typography>
         <Typography gutterBottom variant="subtitle1">
           {test.TestName}
         </Typography>
+        <Divider sx={{mt: 2}} />
       </Box>
 
       <Box

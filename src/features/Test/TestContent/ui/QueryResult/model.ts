@@ -1,4 +1,5 @@
 import {attach, combine, createEffect, createEvent, createStore, forward, split} from 'effector'
+import {isNil} from 'ramda'
 import {getCompleteBasicQuery, getCompleteUserQuery} from 'src/api'
 import {TestContentModel} from 'src/features/Test'
 import {DBTableContent} from 'src/types'
@@ -22,7 +23,7 @@ export const fetchUserQueryFx = attach({
   source: TestContentModel.$currQuestion,
   async effect(source) {
     const Id = source.Id
-    const UserAnswer = source.UserAnswer as string
+    const UserAnswer = isNil(source.UserAnswer) ? '' : (source.UserAnswer as string)
 
     const result = await (await getCompleteUserQuery({Id, UserAnswer})).json()
     return result
