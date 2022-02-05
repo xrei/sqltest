@@ -26,7 +26,7 @@ export const ThemeIdPage = () => {
   if (!hasData || !test) return <Navigate to={routesPaths.tasks} />
 
   const showTestHelp = Boolean(test.TestHelp)
-  const showTestAdditions = Array.isArray(test.Additions) && test.Additions.length
+  const showTestAdditions = Array.isArray(test.Additions) && Boolean(test.Additions.length)
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2, mb: 4}}>
