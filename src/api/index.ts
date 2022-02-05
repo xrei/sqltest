@@ -35,6 +35,15 @@ export const getDBContent = createRequestFx<{Id: number}, DBTableContent[]>(
   'GET',
   true
 )
+export const getCompleteBasicQuery = createRequestFx<{Id: number}, DBTableContent[]>(
+  'Home/CompleteBasicQuery',
+  'GET',
+  true
+)
+export const getCompleteUserQuery = createRequestFx<
+  {Id: number; UserAnswer: string},
+  DBTableContent[]
+>('Home/CompleteUserQuery', 'GET', true)
 
 // admin
 export const getAuthors = createRequestFx<void, Author[]>('Admin/GetAuthors')

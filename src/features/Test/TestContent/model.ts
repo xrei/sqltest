@@ -27,6 +27,9 @@ export const $currQuestion = combine(
   $currentQestionId,
   (test, qsnId) => test?.Questions.find((t) => t.Id === qsnId) || defaultQsn
 )
+export const $isQuestionForEditor = $currQuestion.map((q) =>
+  [4, 5, 6, 7, 8].some((v) => v === q.Type)
+)
 
 export const setCurrentTheme = createEvent<Theme>()
 export const changeCurrentQuestionId = createEvent<number>()

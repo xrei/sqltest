@@ -1,7 +1,7 @@
 import React from 'react'
 import {Navigate} from 'react-router-dom'
 import {useGate, useStore} from 'effector-react'
-import {Box, Typography, Paper, Button, useTheme, useMediaQuery} from '@mui/material'
+import {Box, Typography, Paper, Button, useTheme, useMediaQuery, Divider} from '@mui/material'
 import {ThemeTestGate} from './model'
 import {routesPaths} from 'src/router'
 import {TestContentModel} from 'src/features/Test'
@@ -11,6 +11,8 @@ import {
   HelperButtons,
   DBContentDialog,
   IncorrectQsnDialog,
+  QueryResultButtons,
+  QueryResultDialog,
 } from 'src/features/Test/TestContent'
 
 export const ThemeIdPage = () => {
@@ -19,6 +21,7 @@ export const ThemeIdPage = () => {
   const hasData = useStore(TestContentModel.$hasTestAndTheme)
   const currentTheme = useStore(TestContentModel.$currentTheme)
   const test = useStore(TestContentModel.$test)
+  const showQueryResultButtons = useStore(TestContentModel.$isQuestionForEditor)
 
   if (!hasData || !test) return <Navigate to={routesPaths.tasks} />
 
@@ -51,16 +54,20 @@ export const ThemeIdPage = () => {
       </Box>
       <TaskQuestions></TaskQuestions>
 
-      <Paper sx={{my: 4, p: 2}}>
+      <Paper sx={{my: 4, p: 2, userSelect: 'none'}}>
         <CurrentQuestion />
 
         <AnswerByType></AnswerByType>
+
+        {showQueryResultButtons && <QueryResultButtons />}
       </Paper>
 
       <HelperButtons />
+      <TestHelp />
 
       <DBContentDialog />
       <IncorrectQsnDialog />
+      <QueryResultDialog />
     </Box>
   )
 }
@@ -73,7 +80,21 @@ const CurrentQuestion = () => {
       <Typography gutterBottom variant="h6">
         Текущее задание
       </Typography>
-      <div dangerouslySetInnerHTML={{__html: currQsn.Content}} />
+      <div style={{userSelect: 'none'}} dangerouslySetInnerHTML={{__html: currQsn.Content}} />
+    </>
+  )
+}
+
+const TestHelp = () => {
+  const test = useStore(TestContentModel.$test)
+  if (!test || !test.TestHelp) return <></>
+
+  return (
+    <>
+      <Divider sx={{mt: 4}} />
+      <Box>
+        <div dangerouslySetInnerHTML={{__html: test.TestHelp}}></div>
+      </Box>
     </>
   )
 }

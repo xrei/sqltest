@@ -1,26 +1,13 @@
 import React from 'react'
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  Box,
-  Table,
-  TableContainer,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Paper,
-  Typography,
-  Stack,
-} from '@mui/material'
+import {Button, Dialog, DialogContent, DialogTitle, Box} from '@mui/material'
 import * as model from './model'
 import {useStore} from 'effector-react'
 import funcModelImg from '../../assets/FuncModel3.jpg'
+import {DBContentTables} from 'src/features/DBContentTables'
 
 export const DBContentDialog = () => {
   const open = useStore(model.$isOpen)
+  const dbContent = useStore(model.$dbContent)
 
   return (
     <Dialog open={open} scroll="paper" fullWidth maxWidth="lg" onClose={() => model.toggle()}>
@@ -34,44 +21,8 @@ export const DBContentDialog = () => {
         <Box display="flex" alignItems="center" justifyContent="center" mb={4}>
           <img src={funcModelImg} alt="functional model" />
         </Box>
-        <DBTables />
+        <DBContentTables tables={dbContent} />
       </DialogContent>
     </Dialog>
-  )
-}
-
-const DBTables = () => {
-  const dbContent = useStore(model.$dbContent)
-
-  return (
-    <>
-      {dbContent.map((table, idx) => (
-        <Stack key={idx} mb={4}>
-          <Typography gutterBottom>{table.Name}</Typography>
-          <TableContainer component={Paper} sx={{backgroundColor: 'background.default'}}>
-            <Table size="small">
-              <TableHead>
-                <TableRow>
-                  {table.Header.map((th, idx) => (
-                    <TableCell key={idx} sx={{fontWeight: 'bold'}}>
-                      {th}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {table.Content.map((tr, idx) => (
-                  <TableRow key={idx}>
-                    {tr.map((trc, idx2) => (
-                      <TableCell key={idx2}>{trc}</TableCell>
-                    ))}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Stack>
-      ))}
-    </>
   )
 }
