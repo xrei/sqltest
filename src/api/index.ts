@@ -11,19 +11,20 @@ import type {
   Author,
   DBTableContent,
   NewsPost,
+  TestResult,
 } from 'src/types'
 
 // home
 export const getSomeNews = createRequestFx<void, NewsPost[]>('Home/GetSomeNews')
 export const getAbout = createRequestFx<void, string>('Home/GetAbout')
 export const getGroupList = createRequestFx<void, StudentGroup[]>('Home/GetGroupList')
+export const getStudentSuggestions = createRequestFx<{Login: number}>('Home/GetStudentSuggestions')
 export const getMaterials = createRequestFx<void>('Home/GetMaterials')
 export const getAvailableSubjects = createRequestFx<{Id: number}, Subject[]>(
   'Home/GetAvailibleSubjects/',
   'GET',
   true
 )
-export const getStudentSuggestions = createRequestFx<{Login: number}>('Home/GetStudentSuggestions')
 export const getThemeList = createRequestFx<{SubjectId: number; UserId: number}, Theme[]>(
   'Home/GetThemeList',
   'GET',
@@ -44,6 +45,7 @@ export const getCompleteUserQuery = createRequestFx<
   {Id: number; UserAnswer: string},
   DBTableContent[]
 >('Home/CompleteUserQuery', 'GET', true)
+export const saveTestResult = createRequestFx<Test, TestResult>('Home/SaveTestResult', 'POST')
 
 // admin
 export const getAuthors = createRequestFx<void, Author[]>('Admin/GetAuthors')

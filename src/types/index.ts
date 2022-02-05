@@ -132,6 +132,20 @@ export type Test = {
   viewCorrectAndRight: number
 }
 
+export type TestResult = {
+  AnswerCount: number
+  CountRightAnswers: number
+  Mark: number
+  RatingId: number
+  TimeEnd: number | null
+  TimeStart: number | null
+  countComplex: number
+  countEasy: number
+  countMiddle: number
+  countUser: number
+  percent: number
+}
+
 export type Theme = {
   Test: Test
   ThemeId: number

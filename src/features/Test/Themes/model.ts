@@ -16,8 +16,6 @@ export const $selectedTheme = combine([$themeList, $selectedThemeId], ([xs, id])
   }
 })
 
-$selectedTheme.watch(console.log)
-
 export const selectTheme = createEvent<SelectChangeEvent<string>>()
 export const clearThemes = createEvent<void>()
 

@@ -1,7 +1,15 @@
-import {attach, combine, createEffect, createEvent, createStore} from 'effector'
-import {getTestContent} from 'src/api'
+import {attach, combine, createEffect, createEvent, createStore, forward} from 'effector'
+import {getTestContent, saveTestResult} from 'src/api'
+import {reset} from 'src/lib/reset'
 import {Test, Theme, Question} from 'src/types'
+import {routesPaths, history} from 'src/router'
+import type {
+  TestResultStore,
+  ChangeAnswerGenericPayload,
+  ChangeAnswerCheckboxPayload,
+} from './types'
 
+export const $testResults = createStore<TestResultStore | null>(null)
 export const $currentTheme = createStore<Theme | null>(null)
 export const $test = createStore<Test | null>(null)
 export const $hasTestAndTheme = combine(
@@ -28,18 +36,21 @@ export const $currQuestion = combine(
   (test, qsnId) => test?.Questions.find((t) => t.Id === qsnId) || defaultQsn
 )
 export const $isQuestionForEditor = $currQuestion.map((q) =>
+  // these nums is Question types for editor
+  // check Question type for reference
   [4, 5, 6, 7, 8].some((v) => v === q.Type)
 )
 
 export const setCurrentTheme = createEvent<Theme>()
 export const changeCurrentQuestionId = createEvent<number>()
+export const setTestResults = createEvent<TestResultStore>()
 
 $currentTheme.on(setCurrentTheme, (_, theme) => theme)
 $currentQestionId.on(changeCurrentQuestionId, (_, qsnId) => qsnId)
+$testResults.on(setTestResults, (_, p) => p)
 
 export const fetchTestContentFx = createEffect<Theme, Test>(async (theme) => {
   const res = await (await getTestContent(theme)).json()
-  console.log(res)
 
   // initially set first question in test
   changeCurrentQuestionId(res.Questions[0].Id)
@@ -48,17 +59,8 @@ export const fetchTestContentFx = createEffect<Theme, Test>(async (theme) => {
 
 $test.on(fetchTestContentFx.doneData, (_, test) => test)
 
-$test.watch((t) => {
-  console.log(t)
-})
-$currQuestion.watch((qsn) => {
-  console.log(qsn)
-})
+$testResults.reset(fetchTestContentFx.doneData)
 
-type ChangeAnswerGenericPayload = {
-  qId: number
-  value: string
-}
 export const changeTypeGenericAnswer = createEvent<ChangeAnswerGenericPayload>()
 $test.on(changeTypeGenericAnswer, (test, payload) => {
   if (!test) return null
@@ -70,28 +72,23 @@ $test.on(changeTypeGenericAnswer, (test, payload) => {
   }
 })
 
-type ChangeAnswerCheckboxPayload = {
-  qId: number
-  value: boolean
-  answId: number
-}
 export const changeTypeCheckboxAnswer = createEvent<ChangeAnswerCheckboxPayload>()
 $test.on(changeTypeCheckboxAnswer, (test, payload) => {
   if (!test) return null
 
   return {
     ...test,
-    Questions: test.Questions.map((q) => {
-      if (q.Id === payload.qId) {
-        const answs = q.Answers.map((a) =>
-          a.Id === payload.answId ? {...a, Correct: payload.value} : a
+    Questions: test.Questions.map((qsn) => {
+      if (qsn.Id === payload.qId) {
+        const answs = qsn.Answers.map((answ) =>
+          answ.Id === payload.answId ? {...answ, Correct: payload.value} : answ
         )
         return {
-          ...q,
+          ...qsn,
           Answers: answs,
           UserAnswer: true,
         }
-      } else return q
+      } else return qsn
     }),
   }
 })
@@ -99,8 +96,6 @@ $test.on(changeTypeCheckboxAnswer, (test, payload) => {
 export const changeTypeEditorAnswer = attach({
   source: $currentQestionId,
   effect(qsnId, value: string) {
-    console.log(qsnId)
-    console.log(value)
     return {qId: qsnId, value}
   },
 })
@@ -112,4 +107,63 @@ $test.on(changeTypeEditorAnswer.doneData, (test, payload) => {
       q.Id === payload.qId ? {...q, UserAnswer: payload.value} : q
     ),
   }
+})
+
+export const finishTestFx = attach({
+  source: [$test, $currentTheme],
+  async effect([test, theme]) {
+    if (!test || !theme) {
+      throw Error('test is null')
+    }
+
+    const res = await (await saveTestResult(test)).json()
+    console.log('test result: ', res)
+
+    history.push(routesPaths.tasksResult)
+
+    return {
+      testResult: res,
+      completedTest: test,
+      completedTheme: theme,
+    }
+  },
+})
+
+export const startTestAgainFx = attach({
+  source: $testResults,
+  async effect(tr) {
+    const theme = tr?.completedTheme
+    if (!theme) return false
+
+    setCurrentTheme(theme)
+    await fetchTestContentFx(theme)
+
+    return theme
+  },
+})
+
+export const resetCurrentTest = createEvent()
+
+reset({
+  stores: [$test, $currentTheme, $currentQestionId],
+  trigger: resetCurrentTest,
+})
+
+forward({
+  from: finishTestFx.doneData,
+  to: setTestResults,
+})
+forward({
+  from: finishTestFx.doneData,
+  to: resetCurrentTest,
+})
+
+$test.watch((t) => {
+  console.log('test:', t)
+})
+$currQuestion.watch((qsn) => {
+  console.log('curr qsn:', qsn)
+})
+setTestResults.watch((v) => {
+  console.log(v)
 })

@@ -4,6 +4,7 @@ import {MaterialsPage} from './materials'
 import {NewsPage} from './news'
 import {TasksPage} from './tasks'
 import {ProfilePage, MyResultsPage, StudentsRatingPage, ProfileInfoPage} from './profile'
+import {TaskResultPage} from './tasks/result'
 
 export {
   AuthorsPage,
@@ -15,4 +16,5 @@ export {
   ProfileInfoPage,
   MyResultsPage,
   StudentsRatingPage,
+  TaskResultPage,
 }

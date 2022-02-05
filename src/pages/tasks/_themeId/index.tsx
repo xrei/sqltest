@@ -1,7 +1,8 @@
 import React from 'react'
-import {Navigate} from 'react-router-dom'
+import {Navigate, useNavigate} from 'react-router-dom'
 import {useGate, useStore} from 'effector-react'
-import {Box, Typography, Paper, Button, useTheme, useMediaQuery, Divider} from '@mui/material'
+import {Box, Typography, Paper, useTheme, useMediaQuery, Divider} from '@mui/material'
+import {LoadingButton} from '@mui/lab'
 import {ThemeTestGate} from './model'
 import {routesPaths} from 'src/router'
 import {TestContentModel} from 'src/features/Test'
@@ -17,11 +18,17 @@ import {
 
 export const ThemeIdPage = () => {
   useGate(ThemeTestGate)
+  // const navigate = useNavigate()
   const theme = useTheme()
   const hasData = useStore(TestContentModel.$hasTestAndTheme)
   const currentTheme = useStore(TestContentModel.$currentTheme)
   const test = useStore(TestContentModel.$test)
   const showQueryResultButtons = useStore(TestContentModel.$isQuestionForEditor)
+  const isFinishLoading = useStore(TestContentModel.finishTestFx.pending)
+
+  const onFinishTestClick = () => {
+    TestContentModel.finishTestFx()
+  }
 
   if (!hasData || !test) return <Navigate to={routesPaths.tasks} />
 
@@ -52,9 +59,17 @@ export const ThemeIdPage = () => {
         }}
       >
         <Typography variant="h2">Задания</Typography>
-        <Button size="medium" sx={{}} variant="contained" color="error" tabIndex={-1}>
+        <LoadingButton
+          loading={isFinishLoading}
+          size="medium"
+          sx={{}}
+          variant="contained"
+          color="error"
+          tabIndex={-1}
+          onClick={onFinishTestClick}
+        >
           Закончить тест
-        </Button>
+        </LoadingButton>
       </Box>
       <TaskQuestions></TaskQuestions>
 

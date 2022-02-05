@@ -1,10 +1,11 @@
 import {useStore} from 'effector-react'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {BrowserRouter} from 'react-router-dom'
 import {Zoom, CircularProgress, Box} from '@mui/material'
 import App from './App'
 import {AppGate, $appLoading} from './lib/AppGate'
+import {HistoryRouter} from './router/HistoryRouter'
+import {history} from './router'
 
 const Main = () => {
   const appLoading = useStore($appLoading)
@@ -20,9 +21,9 @@ const Main = () => {
           </Box>
         </Zoom>
       ) : (
-        <BrowserRouter>
+        <HistoryRouter history={history}>
           <App />
-        </BrowserRouter>
+        </HistoryRouter>
       )}
     </React.StrictMode>
   )

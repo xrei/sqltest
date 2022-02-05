@@ -2,6 +2,9 @@ import React from 'react'
 import type {RouteObject} from 'react-router'
 import * as Pages from 'src/pages'
 import {AuthOnly} from './AuthOnly'
+import {createBrowserHistory} from 'history'
+
+export const history = createBrowserHistory()
 
 const TasksPage = React.lazy(() => import('src/pages/tasks'))
 const ThemeIdPage = React.lazy(() => import('src/pages/tasks/_themeId'))
@@ -15,6 +18,7 @@ export const routesPaths = {
   dbinfos: '/dbinfos',
   tasks: '/tasks',
   themeId: '/tasks/:themeId',
+  tasksResult: '/tasks/result',
   profile: '/profile',
   profileInfo: '/profile/info',
   profileMyResults: '/profile/my-results',
@@ -40,6 +44,7 @@ export const routes: RouteObject[] = [
       {path: routesPaths.dbinfos, element: WithAuth(<DBInfosPage />)},
       {path: routesPaths.tasks, element: WithAuth(<TasksPage />)},
       {path: routesPaths.themeId, element: WithAuth(<ThemeIdPage />)},
+      {path: routesPaths.tasksResult, element: WithAuth(<Pages.TaskResultPage />)},
       {
         path: routesPaths.profile,
         element: WithAuth(<Pages.ProfilePage />),

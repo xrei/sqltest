@@ -54,7 +54,7 @@ const getPalette = (mode: PaletteMode) => ({
 export const createAppTheme = (mode: PaletteMode) =>
   createTheme({
     typography: {
-      fontSize: 14,
+      fontSize: 16,
       h1: {
         fontSize: 32,
       },
