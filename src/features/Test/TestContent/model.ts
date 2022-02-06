@@ -35,7 +35,7 @@ export const $currQuestion = combine(
   $currentQestionId,
   (test, qsnId) => test?.Questions.find((t) => t.Id === qsnId) || defaultQsn
 )
-export const $isQuestionForEditor = $currQuestion.map((q) =>
+export const $isQuestionForEditor = $currQuestion.map((q: Question) =>
   // these nums is Question types for editor
   // check Question type for reference
   [4, 5, 6, 7, 8].some((v) => v === q.Type)
