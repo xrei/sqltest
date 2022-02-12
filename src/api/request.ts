@@ -26,8 +26,12 @@ export const createRequestFx = <T = unknown, R = unknown>(
     }
 
     return api(resource, config).catch(async (err) => {
-      const errBody = await err.response.json()
-      throw new ResponseError(err, errBody)
+      if (err.response) {
+        const errBody = await err.response.json()
+        throw new ResponseError(err, errBody)
+      }
+      console.error(err)
+      throw err
     })
   })
 }

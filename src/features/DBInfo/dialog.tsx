@@ -9,9 +9,9 @@ import {
   DialogTitle,
   DialogContent,
 } from '@mui/material'
-import {DBInfoModel} from '.'
 import {useStore} from 'effector-react'
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
+import * as DBInfoModel from './model'
 
 export const DBInfoDialog = () => {
   const open = useStore(DBInfoModel.$isOpen)

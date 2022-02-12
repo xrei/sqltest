@@ -1,7 +1,7 @@
 import React from 'react'
 import {RadioGroup, FormControlLabel, Radio} from '@mui/material'
 import {useStore} from 'effector-react'
-import {TestContentModel} from 'src/features/Test'
+import * as TestContentModel from '../../model'
 
 export const TypeRadio: React.FC = () => {
   const currQsn = useStore(TestContentModel.$currQuestion)

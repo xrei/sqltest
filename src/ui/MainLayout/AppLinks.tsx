@@ -4,8 +4,8 @@ import React from 'react'
 import {Box, Typography, Stack, Button} from '@mui/material'
 import {DesktopMac, Book, Event, Star} from '@mui/icons-material'
 import {Link} from 'react-router-dom'
-import {routesPaths} from 'src/router'
 import {TestButton} from 'src/features/Test/TestContent'
+import {routesPaths} from 'src/router/paths'
 
 const buttonCss = (drawer?: boolean) => (theme: any) =>
   css`

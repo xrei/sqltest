@@ -1,6 +1,6 @@
 import React from 'react'
 import {Box, Button} from '@mui/material'
-import {QueryResultModel} from '.'
+import * as QueryResultModel from './model'
 
 export const QueryResultButtons = () => {
   return (

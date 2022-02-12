@@ -3,7 +3,7 @@ import {Box, Button} from '@mui/material'
 import {fetchDBContentFx} from './DBContentDialog/model'
 import {LoadingButton} from '@mui/lab'
 import {useStore} from 'effector-react'
-import {TestContentModel} from '../..'
+import * as TestContentModel from '../model'
 import {DBInfoModel} from 'src/features/DBInfo'
 import {toggleIncorrectQsnDialog} from './IncorrectQsnDialog/model'
 

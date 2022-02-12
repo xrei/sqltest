@@ -8,8 +8,8 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import * as model from './model'
 import {useStore} from 'effector-react'
+import * as model from './model'
 
 export const IncorrectQsnDialog = () => {
   const [isSent, setIsSent] = useState(false)

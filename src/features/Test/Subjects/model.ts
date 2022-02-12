@@ -1,4 +1,4 @@
-import {createStore, createEvent, attach, guard, forward} from 'effector'
+import {createStore, createEvent, attach, forward} from 'effector'
 import {getAvailableSubjects} from 'src/api'
 import {Subject} from 'src/types'
 import {$user} from 'src/features/User/model'

@@ -1,7 +1,7 @@
 import {Box} from '@mui/material'
 import {useStore} from 'effector-react'
 import React from 'react'
-import {TestContentModel} from '../..'
+import * as TestContentModel from '../model'
 import {TypeText, TypeCheckbox, TypeRadio, TypeEditor} from './AnswerTypes'
 
 export const AnswerByType = () => {

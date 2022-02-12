@@ -1,14 +1,7 @@
 import React from 'react'
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from '@mui/material'
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from '@mui/material'
 import {useStore} from 'effector-react'
-import {DialogModel} from '.'
+import * as DialogModel from './dialog'
 import {$regRules, acceptStudCode, rejectStudCode} from './registerModel'
 
 export const StudentCodeDialog = () => {

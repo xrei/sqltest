@@ -1,7 +1,7 @@
 import React from 'react'
 import {Checkbox, FormControlLabel} from '@mui/material'
 import {useStore} from 'effector-react'
-import {TestContentModel} from 'src/features/Test'
+import * as TestContentModel from '../../model'
 
 export const TypeCheckbox: React.FC = () => {
   const currQsn = useStore(TestContentModel.$currQuestion)

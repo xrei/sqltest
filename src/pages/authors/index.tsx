@@ -1,8 +1,9 @@
 import React from 'react'
 import {useStore} from 'effector-react'
-import {Card, CardContent, Typography, CircularProgress, Stack, Box} from '@mui/material'
+import {Card, CardContent, Typography, Stack, Box} from '@mui/material'
 import {AuthorsPageGate, $authors, $isLoading} from './model'
 import {RenderHtml} from 'src/ui/RenderHtml'
+import {CenteredLoader} from 'src/ui/CenteredLoader'
 
 export const AuthorsPage: React.FC = () => {
   const isLoading = useStore($isLoading)
@@ -10,12 +11,12 @@ export const AuthorsPage: React.FC = () => {
   return (
     <>
       <AuthorsPageGate></AuthorsPageGate>
-      <Box sx={{display: 'flex', flexFlow: 'column', mt: 2, height: '100%'}}>
+      <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
         <Typography variant="h1" gutterBottom>
           Авторы
         </Typography>
 
-        {isLoading ? <CircularProgress /> : <AuthorList />}
+        {isLoading ? <CenteredLoader /> : <AuthorList />}
       </Box>
     </>
   )

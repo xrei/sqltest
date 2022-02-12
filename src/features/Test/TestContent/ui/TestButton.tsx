@@ -2,11 +2,11 @@
 import {css} from '@emotion/react'
 import React from 'react'
 import {Button} from '@mui/material'
-import {TestContentModel} from '../..'
 import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
-import {routesPaths} from 'src/router'
+import {routesPaths} from 'src/router/paths'
 import {UserModel} from 'src/features/User'
+import * as TestContentModel from '../model'
 
 type TestButtonProps = {
   drawer?: boolean

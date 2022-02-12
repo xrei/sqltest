@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react'
 import {Link, Outlet, Navigate, useLocation} from 'react-router-dom'
 import {Box, Tab, Tabs, useTheme} from '@mui/material'
-import {routesPaths} from 'src/router'
+import {routesPaths} from 'src/router/paths'
 
 export const ProfilePage: React.FC = () => {
   const theme = useTheme()

@@ -5,7 +5,7 @@ import {Zoom, CircularProgress, Box} from '@mui/material'
 import App from './App'
 import {AppGate, $appLoading} from './lib/AppGate'
 import {HistoryRouter} from './router/HistoryRouter'
-import {history} from './router'
+import {history} from 'src/router/history'
 
 const Main = () => {
   const appLoading = useStore($appLoading)
@@ -15,11 +15,11 @@ const Main = () => {
       <AppGate></AppGate>
 
       {appLoading ? (
-        <Zoom in={appLoading}>
-          <Box sx={{display: 'grid', placeItems: 'center', minHeight: '100vh'}}>
-            <CircularProgress size="60" />
-          </Box>
-        </Zoom>
+        <Box sx={{display: 'grid', placeItems: 'center', minHeight: '100vh', height: '100vh'}}>
+          <Zoom in={appLoading}>
+            <CircularProgress size={60} />
+          </Zoom>
+        </Box>
       ) : (
         <HistoryRouter history={history}>
           <App />

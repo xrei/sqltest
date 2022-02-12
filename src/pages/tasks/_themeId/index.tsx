@@ -1,11 +1,10 @@
 import React from 'react'
-import {Navigate, useNavigate} from 'react-router-dom'
+import {Navigate} from 'react-router-dom'
 import {useGate, useStore} from 'effector-react'
 import {Box, Typography, Paper, useTheme, useMediaQuery, Divider} from '@mui/material'
 import {LoadingButton} from '@mui/lab'
+import {routesPaths} from 'src/router/paths'
 import {ThemeTestGate} from './model'
-import {routesPaths} from 'src/router'
-import {TestContentModel} from 'src/features/Test'
 import {
   TaskQuestions,
   AnswerByType,
@@ -15,10 +14,11 @@ import {
   QueryResultButtons,
   QueryResultDialog,
 } from 'src/features/Test/TestContent'
+import {TestContentModel} from 'src/features/Test'
 
-export const ThemeIdPage = () => {
+const ThemeIdPage = () => {
   useGate(ThemeTestGate)
-  // const navigate = useNavigate()
+
   const theme = useTheme()
   const hasData = useStore(TestContentModel.$hasTestAndTheme)
   const currentTheme = useStore(TestContentModel.$currentTheme)

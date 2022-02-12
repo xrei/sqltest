@@ -1,8 +1,9 @@
 import React from 'react'
 import {useStore} from 'effector-react'
-import {Card, Typography, CircularProgress, Stack, Box} from '@mui/material'
+import {Card, Typography, Stack, Box} from '@mui/material'
 import {RenderHtml} from 'src/ui/RenderHtml'
 import {NewsPageGate, $posts, $isLoading} from './model'
+import {CenteredLoader} from 'src/ui/CenteredLoader'
 
 export const NewsPage: React.FC = () => {
   const isLoading = useStore($isLoading)
@@ -15,7 +16,7 @@ export const NewsPage: React.FC = () => {
           Последние публикации:
         </Typography>
 
-        {isLoading ? <CircularProgress /> : <NewsList />}
+        {isLoading ? <CenteredLoader fullHeight /> : <NewsList />}
       </Box>
     </>
   )

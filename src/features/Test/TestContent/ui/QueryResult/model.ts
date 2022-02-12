@@ -1,7 +1,7 @@
-import {attach, combine, createEffect, createEvent, createStore, forward, split} from 'effector'
+import {attach, combine, createEvent, createStore, forward, split} from 'effector'
 import {isNil} from 'ramda'
 import {getCompleteBasicQuery, getCompleteUserQuery} from 'src/api'
-import {TestContentModel} from 'src/features/Test'
+import * as TestContentModel from '../../model'
 import {DBTableContent} from 'src/types'
 
 export type QueryType = 'user' | 'reference'

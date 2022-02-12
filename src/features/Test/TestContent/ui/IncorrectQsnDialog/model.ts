@@ -1,8 +1,8 @@
-import {attach, createEffect, createEvent, createStore} from 'effector'
+import {attach, createEvent, createStore} from 'effector'
 import {ChangeEvent} from 'react'
 import {sendErrorMessageWithInfo} from 'src/api'
-import {TestContentModel} from 'src/features/Test'
 import {$user} from 'src/features/User/model'
+import * as TestContentModel from '../../model'
 
 export const $isOpen = createStore(false)
 export const toggleIncorrectQsnDialog = createEvent()

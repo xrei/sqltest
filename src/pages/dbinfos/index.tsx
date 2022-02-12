@@ -16,7 +16,7 @@ import {useStore, useGate} from 'effector-react'
 import {DBInfoModel} from 'src/features/DBInfo'
 import {DbInfoPage} from './model'
 
-export const DBInfosPage = () => {
+const DBInfosPage = () => {
   useGate(DbInfoPage)
   const list = useStore(DBInfoModel.$dbInfosList)
   const [openedDialog, setDialog] = useState(0)

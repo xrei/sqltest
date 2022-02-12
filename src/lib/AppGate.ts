@@ -25,3 +25,8 @@ forward({
 })
 
 $appLoading.on(initAppFx.doneData, () => false)
+$appLoading.on(initAppFx.fail, () => false)
+
+initAppFx.fail.watch(({error}) => {
+  console.error('initAppFx  fail, ', error)
+})

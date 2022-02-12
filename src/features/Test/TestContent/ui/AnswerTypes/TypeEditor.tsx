@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {useStore} from 'effector-react'
-import {TestContentModel} from 'src/features/Test'
 import {createCodeEditor, CodeEditorModel} from 'src/features/Editor'
 import debounce from 'lodash.debounce'
+import * as TestContentModel from '../../model'
 
 const setValDebounced = debounce(TestContentModel.changeTypeEditorAnswer, 500)
 

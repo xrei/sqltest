@@ -1,7 +1,7 @@
 import React from 'react'
 import {TextField} from '@mui/material'
-import {TestContentModel} from 'src/features/Test'
 import {useStore} from 'effector-react'
+import * as TestContentModel from '../../model'
 
 export const TypeText: React.FC = () => {
   const currQsn = useStore(TestContentModel.$currQuestion)

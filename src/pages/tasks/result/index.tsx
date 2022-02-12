@@ -3,9 +3,9 @@ import {Stack, Typography, Link, Box} from '@mui/material'
 import {LoadingButton} from '@mui/lab'
 import {useNavigate} from 'react-router'
 import {useGate, useStore} from 'effector-react'
-import * as TestContentModel from 'src/features/Test/TestContent/model'
-import {UserModel} from 'src/features/User'
 import {TestResultsGate} from './model'
+import {UserModel} from 'src/features/User'
+import {TestContentModel} from 'src/features/Test'
 
 export const TaskResultPage = () => {
   useGate(TestResultsGate)
@@ -53,5 +53,3 @@ export const TaskResultPage = () => {
     </Stack>
   )
 }
-
-export default TaskResultPage

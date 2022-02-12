@@ -1,7 +1,7 @@
 import {useStore} from 'effector-react'
 import React from 'react'
 import {Box, Button, useTheme} from '@mui/material'
-import {TestContentModel} from 'src/features/Test/'
+import * as TestContentModel from '../model'
 import {grey, orange, blue, common} from '@mui/material/colors'
 
 export const TaskQuestions = () => {

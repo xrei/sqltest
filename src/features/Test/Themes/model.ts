@@ -4,7 +4,7 @@ import {getThemeList} from 'src/api'
 import {Theme} from 'src/types'
 import {$user} from 'src/features/User/model'
 import {reset} from 'src/lib/reset'
-import {SubjectsModel} from '..'
+import * as SubjectsModel from '../Subjects/model'
 
 export const $themeList = createStore<Theme[]>([])
 export const $selectedThemeId = createStore<string>('')

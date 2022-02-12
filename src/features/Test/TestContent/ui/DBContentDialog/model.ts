@@ -1,7 +1,7 @@
 import {attach, createEffect, createEvent, createStore, forward} from 'effector'
 import {getDBContent} from 'src/api'
-import {TestContentModel} from 'src/features/Test'
 import {DBTableContent} from 'src/types'
+import * as TestContentModel from '../../model'
 
 export const $dbContent = createStore<DBTableContent[]>([])
 export const $isOpen = createStore(false)

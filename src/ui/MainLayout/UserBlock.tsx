@@ -13,7 +13,7 @@ import {
   Divider,
 } from '@mui/material'
 import {authLogOff} from 'src/api'
-import {routesPaths} from 'src/router'
+import {routesPaths} from 'src/router/paths'
 import {$user, $userNameLetters} from 'src/features/User/model'
 
 export const UserBlock: React.FC = () => {

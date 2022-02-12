@@ -16,7 +16,7 @@ import {useGate, useStore} from 'effector-react'
 import {TasksGate, startTestFx} from './model'
 import {SubjectsModel, ThemesModel} from 'src/features/Test'
 
-export const TasksPage = () => {
+const TasksPage = () => {
   const navigate = useNavigate()
   useGate(TasksGate)
   const selectedTheme = useStore(ThemesModel.$selectedTheme)
