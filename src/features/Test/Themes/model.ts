@@ -7,6 +7,7 @@ import {reset} from 'src/lib/reset'
 import * as SubjectsModel from '../Subjects/model'
 
 export const $themeList = createStore<Theme[]>([])
+// id Дисциплины
 export const $selectedThemeId = createStore<string>('')
 export const $selectedTheme = combine([$themeList, $selectedThemeId], ([xs, id]) => {
   if (xs.length) {
@@ -42,4 +43,8 @@ forward({
 reset({
   stores: [$themeList, $selectedThemeId],
   trigger: clearThemes,
+})
+
+$selectedThemeId.watch((v) => {
+  console.log(v)
 })

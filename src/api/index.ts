@@ -46,7 +46,7 @@ export const getCompleteUserQuery = createRequestFx<
   DBTableContent[]
 >('Home/CompleteUserQuery', 'GET', true)
 export const saveTestResult = createRequestFx<Test, TestResult>('Home/SaveTestResult', 'POST')
-export const getUserRatings = createRequestFx<{StuId: number; TestId: number}, TestResult[]>(
+export const getUserRatings = createRequestFx<{StuId: number; TestId: string}, TestResult[]>(
   'Home/GetUserRatings',
   'GET',
   true
