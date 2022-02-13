@@ -44,7 +44,3 @@ reset({
   stores: [$themeList, $selectedThemeId],
   trigger: clearThemes,
 })
-
-$selectedThemeId.watch((v) => {
-  console.log(v)
-})

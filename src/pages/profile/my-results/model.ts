@@ -15,7 +15,9 @@ export const getResults = createEvent()
 export const fetchUserRatingsFx = attach({
   source: [ThemesModel.$selectedThemeId, UserModel.$user],
   async effect([themeId, user]) {
-    if (!user) return []
+    if (!user) {
+      throw Error('cannot fetch user ratings, user is null')
+    }
 
     const res = await (await getUserRatings({StuId: user.Id, TestId: themeId})).json()
     console.log(res)

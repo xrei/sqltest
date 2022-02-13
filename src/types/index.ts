@@ -172,3 +172,9 @@ export type NewsPost = {
   Content: string
   NewsDate: string
 }
+
+export type StudRating = {
+  avgMark: number
+  stuFIO: string
+  testCount: number
+}

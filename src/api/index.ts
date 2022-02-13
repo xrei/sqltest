@@ -12,6 +12,7 @@ import type {
   DBTableContent,
   NewsPost,
   TestResult,
+  StudRating,
 } from 'src/types'
 
 // home
@@ -51,11 +52,10 @@ export const getUserRatings = createRequestFx<{StuId: number; TestId: string}, T
   'GET',
   true
 )
-export const getStudentsGroupsRatings = createRequestFx<{userId: number; subjId: number}>(
-  'Prep/GetStudentsGroupsRatings',
-  'GET',
-  true
-)
+export const getStudentsGroupsRatings = createRequestFx<
+  {userId: number; subjId: string},
+  StudRating[]
+>('Prep/GetStudentsGroupsRatings', 'GET', true)
 
 // admin
 export const getAuthors = createRequestFx<void, Author[]>('Admin/GetAuthors')
