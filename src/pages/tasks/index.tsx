@@ -1,20 +1,10 @@
 import React from 'react'
-import {
-  Box,
-  Typography,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  FormControl,
-  Stack,
-} from '@mui/material'
+import {Box, Typography, Grid, Stack} from '@mui/material'
 import LoadingButton from '@mui/lab/LoadingButton'
 import {useNavigate} from 'react-router'
-import {length} from 'ramda'
 import {useGate, useStore} from 'effector-react'
 import {TasksGate, startTestFx} from './model'
-import {SubjectsModel, ThemesModel} from 'src/features/Test'
+import {ThemesModel, SubjectSelect, ThemeSelect} from 'src/features/Test'
 
 const TasksPage = () => {
   const navigate = useNavigate()
@@ -78,56 +68,6 @@ const TasksPage = () => {
 }
 
 export default TasksPage
-
-const SubjectSelect = () => {
-  const subjVal = useStore(SubjectsModel.$selectedSubjectId)
-  const subjList = useStore(SubjectsModel.$availableSubjects)
-
-  return (
-    <FormControl variant="outlined" sx={{width: '100%'}}>
-      <InputLabel id="stud-subj-sel">Дисциплина</InputLabel>
-      <Select
-        value={subjVal}
-        labelId="stud-subj-sel"
-        label="Дисциплина"
-        required
-        onChange={SubjectsModel.selectSubject}
-      >
-        {subjList.map((s) => (
-          <MenuItem key={s.SubjectId} value={s.SubjectId}>
-            {s.SubjectName}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  )
-}
-
-const ThemeSelect = () => {
-  const themeVal = useStore(ThemesModel.$selectedThemeId)
-  const themeList = useStore(ThemesModel.$themeList)
-  const listEmpty = !length(themeList)
-
-  return (
-    <FormControl variant="outlined" sx={{width: '100%'}}>
-      <InputLabel id="stud-theme-sel">Тема</InputLabel>
-      <Select
-        disabled={listEmpty}
-        value={themeVal}
-        labelId="stud-theme-sel"
-        label="Тема"
-        required
-        onChange={ThemesModel.selectTheme}
-      >
-        {themeList.map((theme) => (
-          <MenuItem key={theme.ThemeId} value={theme.ThemeId}>
-            {theme.ThemeName}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  )
-}
 
 const TestMeta = () => {
   const selectedTheme = useStore(ThemesModel.$selectedTheme)
