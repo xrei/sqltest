@@ -41,3 +41,7 @@ forward({
 })
 
 $results.reset(ResultsPageGate.close)
+forward({
+  from: ResultsPageGate.close,
+  to: ThemesModel.clearThemes,
+})
