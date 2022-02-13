@@ -39,3 +39,5 @@ forward({
   from: ThemesModel.$selectedThemeId,
   to: getResults,
 })
+
+$results.reset(ResultsPageGate.close)
