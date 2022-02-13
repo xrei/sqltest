@@ -28,7 +28,7 @@ $results.on(fetchStudRatingsFx.doneData, (_, p) => p)
 $onStudRatingPage.on(StudRatingPageGate.open, () => true)
 $onStudRatingPage.on(StudRatingPageGate.close, () => false)
 
-// fetch user ratings only when theme id is correct and only on correct page
+// fetch students ratings only when theme id is correct and only on correct page
 sample({
   clock: getResults,
   source: [SubjectsModel.$selectedSubjectId, $onStudRatingPage],
