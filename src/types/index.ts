@@ -178,3 +178,19 @@ export type StudRating = {
   stuFIO: string
   testCount: number
 }
+
+export type MaterialArticle = {
+  Id: number
+  Content?: string
+  Directory?: string
+  Description: string
+  Name: string
+  SubjectId?: number
+}
+export type Material = {
+  SubjId: number
+  Description: string
+  ListOfArticles: MaterialArticle[]
+  ListOfLinks: {Id: number; Name: string; Description: string; SubjectId: number}[]
+  SubjName: string
+}

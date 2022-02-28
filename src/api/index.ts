@@ -13,6 +13,8 @@ import type {
   NewsPost,
   TestResult,
   StudRating,
+  Material,
+  MaterialArticle,
 } from 'src/types'
 
 // home
@@ -20,7 +22,7 @@ export const getSomeNews = createRequestFx<void, NewsPost[]>('Home/GetSomeNews')
 export const getAbout = createRequestFx<void, string>('Home/GetAbout')
 export const getGroupList = createRequestFx<void, StudentGroup[]>('Home/GetGroupList')
 export const getStudentSuggestions = createRequestFx<{Login: number}>('Home/GetStudentSuggestions')
-export const getMaterials = createRequestFx<void>('Home/GetMaterials')
+export const getMaterials = createRequestFx<void, Material[]>('Home/GetMaterials')
 export const getAvailableSubjects = createRequestFx<{Id: number}, Subject[]>(
   'Home/GetAvailibleSubjects/',
   'GET',
@@ -56,6 +58,12 @@ export const getStudentsGroupsRatings = createRequestFx<
   {userId: number; subjId: string},
   StudRating[]
 >('Prep/GetStudentsGroupsRatings', 'GET', true)
+
+export const getArticle = createRequestFx<{Id: number}, MaterialArticle>(
+  'Admin/GetArticle',
+  'GET',
+  true
+)
 
 // admin
 export const getAuthors = createRequestFx<void, Author[]>('Admin/GetAuthors')

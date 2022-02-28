@@ -1,6 +1,7 @@
 export const routesPaths = {
   index: '/',
   materials: '/materials',
+  materialId: '/materials/:id',
   news: '/news',
   authors: '/authors',
   dbinfos: '/dbinfos',

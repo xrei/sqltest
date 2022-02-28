@@ -15,6 +15,7 @@ const WithAuth = (children: JSX.Element) => {
 export const createRoutes = (): RouteObject[] => [
   {path: routesPaths.index, index: true, element: <Pages.HomePage />},
   {path: routesPaths.materials, element: <Pages.MaterialsPage />},
+  {path: routesPaths.materialId, element: <Pages.MaterialArticlePage />},
   {path: routesPaths.news, element: <Pages.NewsPage />},
   {path: routesPaths.authors, element: <Pages.AuthorsPage />},
   {path: routesPaths.dbinfos, element: WithAuth(<Pages.DBInfosPage />)},

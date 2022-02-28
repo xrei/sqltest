@@ -2,6 +2,7 @@ import React from 'react'
 import {AuthorsPage} from './authors'
 import {HomePage} from './home'
 import {MaterialsPage} from './materials'
+import {MaterialArticlePage} from './materials/_id'
 import {NewsPage} from './news'
 import {ProfilePage, MyResultsPage, StudentsRatingPage, ProfileInfoPage} from './profile'
 import {TaskResultPage} from './tasks/result'
@@ -18,6 +19,7 @@ export {
   HomePage,
   NewsPage,
   MaterialsPage,
+  MaterialArticlePage,
   ProfilePage,
   ProfileInfoPage,
   MyResultsPage,
