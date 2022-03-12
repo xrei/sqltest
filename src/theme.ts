@@ -1,4 +1,4 @@
-import {createTheme} from '@mui/material/styles'
+import {createTheme, responsiveFontSizes} from '@mui/material/styles'
 import {red, indigo, pink, grey, common} from '@mui/material/colors'
 import {PaletteMode} from '@mui/material'
 import {createEffect, createEvent, createStore, forward, sample} from 'effector'
@@ -51,8 +51,8 @@ const getPalette = (mode: PaletteMode) => ({
       }),
 })
 
-export const createAppTheme = (mode: PaletteMode) =>
-  createTheme({
+export const createAppTheme = (mode: PaletteMode) => {
+  const theme = createTheme({
     typography: {
       fontSize: 16,
       h1: {
@@ -73,3 +73,5 @@ export const createAppTheme = (mode: PaletteMode) =>
     },
     palette: getPalette(mode),
   })
+  return responsiveFontSizes(theme)
+}

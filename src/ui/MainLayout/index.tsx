@@ -1,19 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
-import {styled, useTheme} from '@mui/material/styles'
+import {styled} from '@mui/material/styles'
 import {
   Container,
   SwipeableDrawer,
   Drawer,
   Hidden,
-  AppBarProps as MuiAppBarProps,
   Box,
-  useMediaQuery,
+  AppBarProps as MuiAppBarProps,
   AppBar as MuiAppBar,
 } from '@mui/material'
-import {css} from '@emotion/react'
 import {useStore} from 'effector-react'
-
 import {AppLinks} from './AppLinks'
 import * as drawerModel from './drawerModel'
 import {$userIsStudent} from 'src/features/User/model'
@@ -70,7 +67,7 @@ export const MainLayout: React.FC = ({children}) => {
   const isAdminDrawerMobOpen = useStore(drawerModel.$adminMobDrawer)
 
   return (
-    <div>
+    <div style={{display: 'flex', flexFlow: 'column'}}>
       <AppBar position="fixed" open={isAdminDrawerOpen}>
         <AppToolbar />
       </AppBar>
@@ -90,11 +87,7 @@ export const MainLayout: React.FC = ({children}) => {
         </Container>
       </Main>
       {isNotStudent ? (
-        <Box
-          component="nav"
-          sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}}
-          aria-label="mailbox folders"
-        >
+        <Box component="nav" sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}}>
           <Drawer
             sx={{
               display: {xs: 'none', md: 'block'},

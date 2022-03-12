@@ -97,7 +97,7 @@ export const RegisterForm = () => {
       <DialogActions sx={{flexDirection: 'row-reverse', justifyContent: 'flex-start', mx: 2}}>
         <Button
           disabled={!isSubmitEnabled}
-          variant="outlined"
+          variant="contained"
           onClick={() => RegisterModel.register()}
         >
           Регистрация

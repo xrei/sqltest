@@ -93,7 +93,7 @@ export const LoginForm = () => {
         </Stack>
       </DialogContent>
       <DialogActions sx={{flexDirection: 'row-reverse', justifyContent: 'flex-start', mx: 2}}>
-        <Button disabled={isPending} variant="outlined" onClick={() => LoginModel.login()}>
+        <Button disabled={isPending} variant="contained" onClick={() => LoginModel.login()}>
           Вход
         </Button>
         <Box sx={{flex: 1}}>
