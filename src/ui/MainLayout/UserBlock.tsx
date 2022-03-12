@@ -3,6 +3,8 @@ import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
 import {AccountCircle, Logout as LogoutIcn, DarkMode, LightMode} from '@mui/icons-material'
 import {
+  useTheme,
+  useMediaQuery,
   Button,
   Typography,
   Tooltip,
@@ -14,21 +16,33 @@ import {
 } from '@mui/material'
 import {authLogOff} from 'src/api'
 import {routesPaths} from 'src/router/paths'
-import {$user, $userNameLetters} from 'src/features/User/model'
+import {$user, $userNameLetters, $userIsStudent} from 'src/features/User/model'
 import {$themeMode, changeThemeMode} from 'src/theme'
+import {adminDrawerToggled, adminDrawerMobToggled} from './drawerModel'
 
 export const UserBlock: React.FC = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const user = useStore($user)
+  const isUserStudent = useStore($userIsStudent)
+  const userLetters = useStore($userNameLetters)
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
+    if (isUserStudent) {
+      setAnchorEl(event.currentTarget)
+    } else {
+      if (isMobile) {
+        adminDrawerMobToggled()
+      } else {
+        adminDrawerToggled()
+      }
+    }
   }
   const handleClose = () => {
     setAnchorEl(null)
   }
-
-  const user = useStore($user)
-  const userLetters = useStore($userNameLetters)
 
   return (
     <React.Fragment>
