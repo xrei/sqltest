@@ -194,3 +194,9 @@ export type Material = {
   ListOfLinks: {Id: number; Name: string; Description: string; SubjectId: number}[]
   SubjName: string
 }
+
+export type QueryPreset = {
+  ID?: number
+  Name?: string
+  Query: string
+}

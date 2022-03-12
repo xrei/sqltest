@@ -9,7 +9,7 @@ export const HomePage: React.FC = () => {
   const about = useStore($about)
 
   return (
-    <Box display="flex" flexDirection="column" mt={4}>
+    <Box display="flex" flexDirection="column" mt={4} sx={{wordBreak: 'break-word'}}>
       <Typography variant="h1" gutterBottom>
         Дистанционное обучение
       </Typography>

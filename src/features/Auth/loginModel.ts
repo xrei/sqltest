@@ -20,13 +20,11 @@ export const pwdChanged = createEvent<ChangeEvent<HTMLInputElement>>()
 export const rememberMeChanged = createEvent<ChangeEvent<HTMLInputElement>>()
 export const login = createEvent()
 
-export const loginFx = createEffect<LoginDTO, User, ResponseError<{ErrorMessage: string}>>(
-  async (params) => {
-    const res = await authLogOn(params)
-    const u = await res.json()
-    return u
-  }
-)
+export const loginFx = createEffect<LoginDTO, User, ResponseError<{ErrorMessage: string}>>(async (params) => {
+  const res = await authLogOn(params)
+  const u = await res.json()
+  return u
+})
 
 $error.on(loginFx.failData, (s, payload) => ({error: payload.json.ErrorMessage}))
 $login.on(loginChanged, (_, e) => e.target.value)

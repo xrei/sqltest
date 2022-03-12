@@ -22,6 +22,7 @@ const drawerWidth = 280
 const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})<{
   open?: boolean
 }>(({theme, open}) => ({
+  minHeight: '100vh',
   flexGrow: 1,
   display: 'flex',
   transition: theme.transitions.create('margin', {
@@ -83,7 +84,7 @@ export const MainLayout: React.FC = ({children}) => {
         </SwipeableDrawer>
       </Hidden>
       <Main open={isAdminDrawerOpen}>
-        <Container maxWidth="xl" sx={{marginTop: '48px', wordBreak: 'break-word'}}>
+        <Container maxWidth="xl" sx={{marginTop: '48px'}}>
           {children}
         </Container>
       </Main>
