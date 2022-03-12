@@ -7,9 +7,12 @@ import {createAppTheme, $themeMode} from './theme'
 import {DBInfoDialog} from 'src/features/DBInfo'
 import {AuthDialogs} from 'src/features/Auth'
 import {createRoutes} from './router'
+import {$userIsAdmin} from './features/User/model'
 
 const App: React.FC = () => {
-  const pages = useRoutes(createRoutes())
+  const isUserAdmin = useStore($userIsAdmin)
+
+  const pages = useRoutes(createRoutes(isUserAdmin))
   const themeMode = useStore($themeMode)
   const theme = React.useMemo(() => createAppTheme(themeMode), [themeMode])
 

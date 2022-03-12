@@ -1,8 +1,9 @@
 import React from 'react'
 import type {RouteObject} from 'react-router'
 import * as Pages from 'src/pages'
+import {createLazyAdminPages} from 'src/pages/admin'
 import {AuthOnly} from './AuthOnly'
-import {routesPaths} from './paths'
+import {routesPaths, adminRoutes} from './paths'
 
 const WithAuth = (children: JSX.Element) => {
   return (
@@ -12,23 +13,39 @@ const WithAuth = (children: JSX.Element) => {
   )
 }
 
-export const createRoutes = (): RouteObject[] => [
-  {path: routesPaths.index, index: true, element: <Pages.HomePage />},
-  {path: routesPaths.materials, element: <Pages.MaterialsPage />},
-  {path: routesPaths.materialId, element: <Pages.MaterialArticlePage />},
-  {path: routesPaths.news, element: <Pages.NewsPage />},
-  {path: routesPaths.authors, element: <Pages.AuthorsPage />},
-  {path: routesPaths.dbinfos, element: WithAuth(<Pages.DBInfosPage />)},
-  {path: routesPaths.tasks, element: WithAuth(<Pages.TasksPage />)},
-  {path: routesPaths.themeId, element: WithAuth(<Pages.ThemeIdPage />)},
-  {path: routesPaths.tasksResult, element: WithAuth(<Pages.TaskResultPage />)},
-  {
-    path: routesPaths.profile,
-    element: WithAuth(<Pages.ProfilePage />),
-    children: [
-      {path: routesPaths.profileInfo, element: <Pages.ProfileInfoPage />},
-      {path: routesPaths.profileMyResults, element: <Pages.MyResultsPage />},
-      {path: routesPaths.profileStudentsRating, element: <Pages.StudentsRatingPage />},
-    ],
-  },
-]
+export const createRoutes = (createAdminRoutes: boolean): RouteObject[] => {
+  let adminRoutesArr: RouteObject[] = []
+  if (createAdminRoutes) {
+    const AdminPages = createLazyAdminPages()
+    adminRoutesArr = [
+      {path: adminRoutes.manageTests, element: WithAuth(<AdminPages.AdminManageTestsPage />)},
+      {path: adminRoutes.groups, element: WithAuth(<AdminPages.AdminManageGroupsPage />)},
+      {path: adminRoutes.journal, element: WithAuth(<AdminPages.AdminJournalPage />)},
+      {path: adminRoutes.systemDb, element: WithAuth(<AdminPages.AdminSystemDbPage />)},
+      {path: adminRoutes.systemQuery, element: WithAuth(<AdminPages.AdminSystemQueryPage />)},
+      {path: adminRoutes.systemUsers, element: WithAuth(<AdminPages.AdminSystemUsersPage />)},
+    ]
+  }
+
+  return [
+    {path: routesPaths.index, index: true, element: <Pages.HomePage />},
+    {path: routesPaths.materials, element: <Pages.MaterialsPage />},
+    {path: routesPaths.materialId, element: <Pages.MaterialArticlePage />},
+    {path: routesPaths.news, element: <Pages.NewsPage />},
+    {path: routesPaths.authors, element: <Pages.AuthorsPage />},
+    {path: routesPaths.dbinfos, element: WithAuth(<Pages.DBInfosPage />)},
+    {path: routesPaths.tasks, element: WithAuth(<Pages.TasksPage />)},
+    {path: routesPaths.themeId, element: WithAuth(<Pages.ThemeIdPage />)},
+    {path: routesPaths.tasksResult, element: WithAuth(<Pages.TaskResultPage />)},
+    {
+      path: routesPaths.profile,
+      element: WithAuth(<Pages.ProfilePage />),
+      children: [
+        {path: routesPaths.profileInfo, element: <Pages.ProfileInfoPage />},
+        {path: routesPaths.profileMyResults, element: <Pages.MyResultsPage />},
+        {path: routesPaths.profileStudentsRating, element: <Pages.StudentsRatingPage />},
+      ],
+    },
+    ...adminRoutesArr,
+  ]
+}

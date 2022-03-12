@@ -17,12 +17,7 @@ export function HistoryRouter({basename, children, history}: HistoryRouterProps)
   React.useLayoutEffect(() => history.listen(setState), [history])
 
   return (
-    <Router
-      basename={basename}
-      location={state.location}
-      navigationType={state.action}
-      navigator={history}
-    >
+    <Router basename={basename} location={state.location} navigationType={state.action} navigator={history}>
       {children}
     </Router>
   )

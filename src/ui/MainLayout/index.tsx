@@ -15,6 +15,7 @@ import {AppLinks} from './AppLinks'
 import * as drawerModel from './drawerModel'
 import {$userIsStudent} from 'src/features/User/model'
 import {AppToolbar} from './Toolbar'
+import {AdminDrawerLinks} from './AdminDrawerLinks'
 
 const drawerWidth = 280
 
@@ -100,7 +101,9 @@ export const MainLayout: React.FC = ({children}) => {
             variant="persistent"
             anchor="right"
             open={isAdminDrawerOpen}
-          ></Drawer>
+          >
+            <AdminDrawerLinks />
+          </Drawer>
 
           <Drawer
             anchor="right"
@@ -114,7 +117,9 @@ export const MainLayout: React.FC = ({children}) => {
               display: {xs: 'block', md: 'none'},
               '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawerWidth},
             }}
-          ></Drawer>
+          >
+            <AdminDrawerLinks />
+          </Drawer>
         </Box>
       ) : (
         <></>
