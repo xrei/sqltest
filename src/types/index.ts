@@ -35,6 +35,12 @@ export type StudentGroup = {
   register: boolean
 }
 
+export type NewGroupDto = {
+  GroupValue?: number
+  GroupNumber: string
+  register?: boolean
+}
+
 export type Subject = {
   SubjectId: number
   SubjectName: string

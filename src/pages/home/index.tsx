@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Typography, Box} from '@mui/material'
 import {useStore, useGate} from 'effector-react'
 import {RenderHtml} from 'src/ui/RenderHtml'

@@ -16,6 +16,7 @@ import type {
   Material,
   MaterialArticle,
   QueryPreset,
+  NewGroupDto,
 } from 'src/types'
 
 // home
@@ -66,6 +67,10 @@ export const getDBCreationScripts = createRequestFx<void>('Admin/GetDBCreationSc
 export const getRegistrationRules = createRequestFx<void, string>('Admin/GetRegistrationRules')
 export const getDBInfos = createRequestFx<void, DBInfo[]>('Admin/GetDBInfos')
 export const getAdminGroups = createRequestFx<void, StudentGroup[]>('Admin/GetAdminGroups')
+export const postAddGroup = createRequestFx<NewGroupDto, string>('Admin/AddGroup', 'POST')
+export const postDeleteGroup = createRequestFx<{GroupValue: number}, string>('Admin/DeleteGroup', 'POST')
+export const postEditGroup = createRequestFx<NonNullable<NewGroupDto>, string>('Admin/EditGroup', 'POST')
+
 export const getQueryPresets = createRequestFx<void, QueryPreset[]>('Admin/GetQueryPresets')
 export const postExecQueryPresets = createRequestFx<
   {ID?: number; Name?: string; Query: string},
