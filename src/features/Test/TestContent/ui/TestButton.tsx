@@ -16,9 +16,10 @@ type TestButtonProps = {
 export const TestButton = ({drawer}: TestButtonProps) => {
   const currTheme = useStore(TestContentModel.$currentTheme)
   const hasTest = useStore(TestContentModel.$hasTestAndTheme)
-  const hasUser = useStore(UserModel.$hasUser)
+  const user = useStore(UserModel.$user)
+  const isStudent = useStore(UserModel.$userIsStudent)
 
-  if (!hasUser && !currTheme) return <></>
+  if ((!user && !currTheme) || !isStudent) return <></>
 
   if (hasTest) {
     return (

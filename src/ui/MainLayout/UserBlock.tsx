@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
-import {AccountCircle, Logout as LogoutIcn} from '@mui/icons-material'
+import {AccountCircle, Logout as LogoutIcn, DarkMode, LightMode} from '@mui/icons-material'
 import {
   Button,
   Typography,
@@ -15,6 +15,7 @@ import {
 import {authLogOff} from 'src/api'
 import {routesPaths} from 'src/router/paths'
 import {$user, $userNameLetters} from 'src/features/User/model'
+import {$themeMode, changeThemeMode} from 'src/theme'
 
 export const UserBlock: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -45,7 +46,7 @@ export const UserBlock: React.FC = () => {
       </Tooltip>
 
       <Menu
-        MenuListProps={{dense: true}}
+        MenuListProps={{dense: false}}
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -67,7 +68,7 @@ export const UserBlock: React.FC = () => {
             }}
           >
             {userLetters}
-          </Avatar>{' '}
+          </Avatar>
           Профиль
         </MenuItem>
         <Divider />
@@ -84,6 +85,8 @@ export const UserBlock: React.FC = () => {
           Описание баз данных
         </MenuItem>
         <Divider />
+        <ModeButton></ModeButton>
+        <Divider />
         <MenuItem onClick={() => authLogOff()}>
           <ListItemIcon>
             <LogoutIcn></LogoutIcn>
@@ -92,5 +95,21 @@ export const UserBlock: React.FC = () => {
         </MenuItem>
       </Menu>
     </React.Fragment>
+  )
+}
+
+const ModeButton = () => {
+  const currMode = useStore($themeMode)
+  const title = currMode === 'light' ? 'Темная' : 'Светлая'
+
+  return (
+    <Tooltip title={title}>
+      <MenuItem onClick={() => changeThemeMode()}>
+        <ListItemIcon color="inherit">
+          {currMode === 'light' ? <DarkMode></DarkMode> : <LightMode></LightMode>}
+        </ListItemIcon>
+        {title}
+      </MenuItem>
+    </Tooltip>
   )
 }

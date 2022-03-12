@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
 import React from 'react'
-import {AppBar as MuiAppBar, Toolbar, Hidden, IconButton, Tooltip} from '@mui/material'
-import {DarkMode, LightMode, Menu} from '@mui/icons-material'
+import {AppBar as MuiAppBar, Toolbar, Hidden, IconButton} from '@mui/material'
+import {Menu} from '@mui/icons-material'
 import {AppLinks} from './AppLinks'
 import {useStore} from 'effector-react'
-import {$themeMode, changeThemeMode} from 'src/theme'
 import {UserModel} from 'src/features/User'
 import {onOpen} from './drawerModel'
 import {AuthBlock} from './AuthBlock'
@@ -39,20 +38,7 @@ export const AppBar: React.FC = () => {
         </div>
 
         {hasUser ? <UserBlock></UserBlock> : <AuthBlock></AuthBlock>}
-        <ModeButton></ModeButton>
       </Toolbar>
     </MuiAppBar>
-  )
-}
-
-const ModeButton = () => {
-  const currMode = useStore($themeMode)
-
-  return (
-    <Tooltip title={currMode === 'light' ? 'Темная' : 'Светлая'}>
-      <IconButton color="inherit" onClick={() => changeThemeMode()}>
-        {currMode === 'light' ? <DarkMode></DarkMode> : <LightMode></LightMode>}
-      </IconButton>
-    </Tooltip>
   )
 }

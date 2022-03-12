@@ -14,6 +14,7 @@ export const roles: {[key: number]: string} = {
 export const $user = createStore<User | null>(null)
 export const $hasUser = $user.map((v) => Boolean(v))
 export const $userRole = $user.map((v) => (v ? roles[v.Role] : ''))
+export const $userIsStudent = $user.map((v) => v?.Role === 0)
 export const $userNameLetters = $user.map((u) => {
   if (!u) return ''
   // @ts-expect-error: untypable
