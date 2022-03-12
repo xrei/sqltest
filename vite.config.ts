@@ -9,7 +9,7 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'http://192.168.1.59:9999/sqltest/',
+        target: 'http://10.10.1.10:9999/sqltest/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
