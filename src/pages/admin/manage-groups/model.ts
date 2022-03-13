@@ -1,12 +1,11 @@
 import {createEffect, createStore, createEvent, sample, forward} from 'effector'
 import type {ChangeEvent} from 'react'
 import {createGate} from 'effector-react'
-import {getAdminGroups, postAddGroup, postDeleteGroup, postEditGroup} from 'src/api'
+import {postAddGroup, postDeleteGroup, postEditGroup} from 'src/api'
 import {StudentGroup, NewGroupDto} from 'src/types'
+import {AdminGroupsModel} from 'src/features/User/Admin'
 
 export const AdminGroupsPageGate = createGate()
-
-export const $groups = createStore<StudentGroup[]>([])
 
 export const $groupDto = createStore<NewGroupDto>({GroupNumber: '', register: false})
 export const $isEdit = $groupDto.map((group) => Boolean(group.GroupValue))
@@ -22,17 +21,6 @@ export const resetNewGroup = createEvent()
 $groupDto.on(addGroupToEditClicked, (state, group) => group)
 $groupDto.on(nameChanged, (state, e) => ({...state, GroupNumber: e.target.value}))
 $groupDto.on(autoRegChanged, (state, e) => ({...state, register: e.target.checked}))
-
-$groupDto.watch((group) => {
-  console.log(group)
-})
-
-const fetchGroupsFx = createEffect(async () => {
-  const res = await (await getAdminGroups()).json()
-  return res
-})
-
-$groups.on(fetchGroupsFx.doneData, (_, p) => p)
 
 const saveGroupFx = createEffect<NewGroupDto, string>(async (params) => {
   const res = await (await postAddGroup(params)).json()
@@ -78,5 +66,5 @@ forward({
 
 forward({
   from: [saveGroupFx.doneData, AdminGroupsPageGate.open, deleteGroupFx.doneData, editGroupFx.doneData],
-  to: fetchGroupsFx,
+  to: AdminGroupsModel.fetchGroupsFx,
 })

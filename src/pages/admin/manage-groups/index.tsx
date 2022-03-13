@@ -19,10 +19,11 @@ import {
 import {useGate, useStore} from 'effector-react'
 import {Link as NavLink} from 'react-router-dom'
 import * as model from './model'
+import {AdminGroupsModel} from 'src/features/User/Admin'
 
 export const AdminManageGroupsPage = () => {
   useGate(model.AdminGroupsPageGate)
-  const groups = useStore(model.$groups)
+  const groups = useStore(AdminGroupsModel.$adminGroups)
 
   return (
     <Box display="flex" flexDirection="column" sx={{my: 2}}>
