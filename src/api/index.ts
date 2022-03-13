@@ -17,6 +17,8 @@ import type {
   MaterialArticle,
   QueryPreset,
   NewGroupDto,
+  Student,
+  StudentDto,
 } from 'src/types'
 
 // home
@@ -36,48 +38,83 @@ export const getThemeList = createRequestFx<{SubjectId: number; UserId: number},
   true
 )
 export const getTestContent = createRequestFx<Theme, Test>('Home/GetTestContent', 'POST')
-export const getDBContent = createRequestFx<{Id: number}, DBTableContent[]>('Home/GetDBContent', 'GET', true)
+export const getDBContent = createRequestFx<{Id: number}, DBTableContent[]>(
+  'Home/GetDBContent',
+  'GET',
+  true
+)
 export const getCompleteBasicQuery = createRequestFx<{Id: number}, DBTableContent[]>(
   'Home/CompleteBasicQuery',
   'GET',
   true
 )
-export const getCompleteUserQuery = createRequestFx<{Id: number; UserAnswer: string}, DBTableContent[]>(
-  'Home/CompleteUserQuery',
-  'GET',
-  true
-)
+export const getCompleteUserQuery = createRequestFx<
+  {Id: number; UserAnswer: string},
+  DBTableContent[]
+>('Home/CompleteUserQuery', 'GET', true)
 export const saveTestResult = createRequestFx<Test, TestResult>('Home/SaveTestResult', 'POST')
 export const getUserRatings = createRequestFx<{StuId: number; TestId: string}, TestResult[]>(
   'Home/GetUserRatings',
   'GET',
   true
 )
-export const getStudentsGroupsRatings = createRequestFx<{userId: number; subjId: string}, StudRating[]>(
-  'Prep/GetStudentsGroupsRatings',
+export const getStudentsGroupsRatings = createRequestFx<
+  {userId: number; subjId: string},
+  StudRating[]
+>('Prep/GetStudentsGroupsRatings', 'GET', true)
+
+export const getArticle = createRequestFx<{Id: number}, MaterialArticle>(
+  'Admin/GetArticle',
   'GET',
   true
 )
-
-export const getArticle = createRequestFx<{Id: number}, MaterialArticle>('Admin/GetArticle', 'GET', true)
 
 // admin
 export const getAuthors = createRequestFx<void, Author[]>('Admin/GetAuthors')
 export const getDBCreationScripts = createRequestFx<void>('Admin/GetDBCreationScripts')
 export const getRegistrationRules = createRequestFx<void, string>('Admin/GetRegistrationRules')
 export const getDBInfos = createRequestFx<void, DBInfo[]>('Admin/GetDBInfos')
-export const getAdminGroups = createRequestFx<void, StudentGroup[]>('Admin/GetAdminGroups')
 export const postAddGroup = createRequestFx<NewGroupDto, string>('Admin/AddGroup', 'POST')
-export const postDeleteGroup = createRequestFx<{GroupValue: number}, string>('Admin/DeleteGroup', 'POST')
-export const postEditGroup = createRequestFx<NonNullable<NewGroupDto>, string>('Admin/EditGroup', 'POST')
-
+export const postDeleteGroup = createRequestFx<{GroupValue: number}, string>(
+  'Admin/DeleteGroup',
+  'POST'
+)
+export const postEditGroup = createRequestFx<NonNullable<NewGroupDto>, string>(
+  'Admin/EditGroup',
+  'POST'
+)
 export const getQueryPresets = createRequestFx<void, QueryPreset[]>('Admin/GetQueryPresets')
 export const postExecQueryPresets = createRequestFx<
   {ID?: number; Name?: string; Query: string},
   DBTableContent[]
 >('Admin/ExecuteQueryPreset', 'POST')
-export const postAddQueryPreset = createRequestFx<QueryPreset, string>('Admin/AddQueryPreset', 'POST')
-export const postDeleteQueryPreset = createRequestFx<QueryPreset, string>('Admin/DeleteQueryPreset', 'POST')
+export const postAddQueryPreset = createRequestFx<QueryPreset, string>(
+  'Admin/AddQueryPreset',
+  'POST'
+)
+export const postDeleteQueryPreset = createRequestFx<QueryPreset, string>(
+  'Admin/DeleteQueryPreset',
+  'POST'
+)
+export const getStudentsForGroup = createRequestFx<{GroupValue: number}, Student[]>(
+  'Admin/GetStudentsForGroup',
+  'GET',
+  true
+)
+
+export const getAdminGroups = createRequestFx<void, StudentGroup[]>('Admin/GetAdminGroups')
+export const postDeleteStudent = createRequestFx<{id: number}, string>(
+  'Admin/DeleteStudent',
+  'POST'
+)
+export const postEditStudent = createRequestFx<NonNullable<StudentDto>, string>(
+  'Admin/EditStudent',
+  'POST'
+)
+export const postAddAdminStudent = createRequestFx<{FIO: string; groupId: number}, string>(
+  'Admin/AddAdminStudent',
+  'POST'
+)
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

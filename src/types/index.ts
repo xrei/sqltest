@@ -29,6 +29,24 @@ export type DBInfo = {
   id: number
 }
 
+export type Student = {
+  FIO: string
+  creationDate: string
+  creationDateTime: string
+  groupId: number
+  groupName: string
+  id: number
+  stu_activity: string
+  stu_test: string
+  suggest_questions: boolean
+}
+
+export type StudentDto = {
+  FIO: string
+  groupId: string
+  id?: number
+}
+
 export type StudentGroup = {
   GroupNumber: string
   GroupValue: number

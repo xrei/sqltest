@@ -1,6 +1,7 @@
 import {createEffect, createStore, sample, combine} from 'effector'
 import {getGroupList} from 'src/api'
 import {StudentGroup} from 'src/types'
+import {AdminGroupsModel} from '../Admin'
 import {$user, fetchUser} from '../model'
 
 export const $studGroups = createStore<StudentGroup[]>([])
@@ -20,4 +21,11 @@ sample({
   clock: fetchUser.done,
   filter: (user) => (user ? user.Role === 0 : false),
   target: fetchGroupsFx,
+})
+
+sample({
+  source: $user,
+  clock: fetchUser.done,
+  filter: (user) => (user ? user.Role !== 0 : false),
+  target: AdminGroupsModel.fetchGroupsFx,
 })

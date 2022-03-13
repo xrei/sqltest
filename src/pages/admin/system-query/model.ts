@@ -1,6 +1,11 @@
 import {createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
-import {getQueryPresets, postAddQueryPreset, postDeleteQueryPreset, postExecQueryPresets} from 'src/api'
+import {
+  getQueryPresets,
+  postAddQueryPreset,
+  postDeleteQueryPreset,
+  postExecQueryPresets,
+} from 'src/api'
 import {DBTableContent, QueryPreset} from 'src/types'
 import type {ChangeEvent} from 'react'
 

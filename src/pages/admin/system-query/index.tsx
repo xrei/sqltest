@@ -43,7 +43,10 @@ export const AdminSystemQueryPage = () => {
       <Divider sx={{mb: 4}} />
 
       <Box sx={{overflowY: 'scroll'}}>
-        <TableContainer component={Paper} sx={{backgroundColor: 'background.default', minWidth: '900px'}}>
+        <TableContainer
+          component={Paper}
+          sx={{backgroundColor: 'background.default', minWidth: '900px'}}
+        >
           <Table size="small">
             <TableHead>
               <TableRow>
@@ -103,7 +106,11 @@ const CreateQuery = () => {
         <Button variant="outlined" onClick={() => model.queryExecuted(query)}>
           Выполнить
         </Button>
-        <Button variant="contained" disabled={disabledSave} onClick={() => model.saveQueryPresetClicked()}>
+        <Button
+          variant="contained"
+          disabled={disabledSave}
+          onClick={() => model.saveQueryPresetClicked()}
+        >
           Сохранить
         </Button>
       </Box>
@@ -116,7 +123,13 @@ const ResultQueryDialog = () => {
   const tables = useStore(model.$executedQuery)
 
   return (
-    <Dialog maxWidth="lg" fullWidth open={open} onClose={() => model.dialogToggled()} scroll="paper">
+    <Dialog
+      maxWidth="lg"
+      fullWidth
+      open={open}
+      onClose={() => model.dialogToggled()}
+      scroll="paper"
+    >
       <DialogTitle>Результат выполнения запроса</DialogTitle>
       <DialogContent>
         <DBContentTables tables={tables} />
