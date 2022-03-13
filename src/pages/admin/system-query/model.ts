@@ -23,10 +23,6 @@ export const saveQueryPresetClicked = createEvent()
 export const editQueryPresetClicked = createEvent<QueryPreset>()
 export const deleteQueryPresetClicked = createEvent<QueryPreset>()
 
-$queryDto.watch((v) => {
-  console.log(v)
-})
-
 $queryDto.on(nameChanged, (state, e) => ({...state, Name: e.target.value}))
 $queryDto.on(QueryChanged, (state, e) => ({...state, Query: e.target.value}))
 $queryDto.on(editQueryPresetClicked, (state, qp) => qp)
