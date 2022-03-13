@@ -32,7 +32,10 @@ export const AdminManageGroupsPage = () => {
       <CreateGroup />
 
       <Box sx={{overflowY: 'scroll', mt: 4}}>
-        <TableContainer component={Paper} sx={{backgroundColor: 'background.default', minWidth: '900px'}}>
+        <TableContainer
+          component={Paper}
+          sx={{backgroundColor: 'background.default', minWidth: '900px'}}
+        >
           <Table size="small">
             <TableHead>
               <TableRow>

@@ -65,6 +65,11 @@ forward({
 })
 
 forward({
-  from: [saveGroupFx.doneData, AdminGroupsPageGate.open, deleteGroupFx.doneData, editGroupFx.doneData],
+  from: [
+    saveGroupFx.doneData,
+    AdminGroupsPageGate.open,
+    deleteGroupFx.doneData,
+    editGroupFx.doneData,
+  ],
   to: AdminGroupsModel.fetchGroupsFx,
 })
