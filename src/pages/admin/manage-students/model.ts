@@ -33,6 +33,7 @@ export const editStudentClicked = createEvent()
 export const addStudentClicked = createEvent()
 export const deleteStudentClicked = createEvent<Student>()
 export const changeStudentSuggestAbilityClicked = createEvent<Student>()
+const resetStudentDto = createEvent()
 
 $studentDto.on(fioChanged, (state, e) => ({...state, FIO: e.target.value}))
 $studentDto.on(studGroupChanged, (state, e) => ({...state, groupId: e.target.value}))
@@ -113,3 +114,8 @@ sample({
 })
 
 $studentDialog.reset([editStudentFx.doneData, addStudentFx.doneData])
+$studentDto.reset([resetStudentDto, editStudentFx.doneData, addStudentFx.doneData])
+
+$studentDialog.watch((v) => {
+  if (!v) resetStudentDto()
+})

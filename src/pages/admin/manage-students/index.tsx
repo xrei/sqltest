@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {
   useTheme,
   Box,
@@ -167,6 +167,10 @@ const CustomStudentsTable = () => {
   const rows = useStore(model.$students)
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(10)
+
+  useEffect(() => {
+    setPage(0)
+  }, [rows.length])
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
