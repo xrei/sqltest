@@ -2,6 +2,7 @@ import React from 'react'
 
 const createLazyAdminPages = () => {
   const pages = {
+    AdminManageStudentsPage: React.lazy(() => import('src/pages/admin/manage-students')),
     AdminJournalPage: React.lazy(() => import('src/pages/admin/journal')),
     AdminManageGroupsPage: React.lazy(() => import('src/pages/admin/manage-groups')),
     AdminManageTestsPage: React.lazy(() => import('src/pages/admin/manage-tests')),

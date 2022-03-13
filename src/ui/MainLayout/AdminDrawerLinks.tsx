@@ -8,7 +8,7 @@ import {
   ExpandMore,
   Logout as LogoutIcn,
 } from '@mui/icons-material'
-import {adminDrawerClosed, $adminMobDrawer} from './drawerModel'
+import {adminDrawerClosed, $adminMobDrawer, adminDrawersResetted, adminDrawerMobClosed} from './drawerModel'
 import {authLogOff} from 'src/api'
 import {adminRoutes} from 'src/router/paths'
 import {useStore} from 'effector-react'
@@ -56,6 +56,15 @@ export const AdminDrawerLinks = () => {
     setOpen(!open)
   }
 
+  const onLogout = () => {
+    adminDrawersResetted()
+    authLogOff()
+  }
+
+  const closeMobDrawerOnClick = () => {
+    adminDrawerMobClosed()
+  }
+
   return (
     <Box>
       <DrawerHeader>
@@ -69,7 +78,7 @@ export const AdminDrawerLinks = () => {
       <Divider />
       <List>
         {adminPages.map((page, index) => (
-          <ListItem component={Link} to={page.to} button dense key={index}>
+          <ListItem component={Link} to={page.to} button dense key={index} onClick={closeMobDrawerOnClick}>
             <ListItemText primary={page.text} />
           </ListItem>
         ))}
@@ -82,7 +91,15 @@ export const AdminDrawerLinks = () => {
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
           {adminEntitiesPages.map((page, index) => (
-            <ListItem sx={{ml: 2}} component={Link} to={page.to} button dense key={index}>
+            <ListItem
+              sx={{ml: 2}}
+              component={Link}
+              to={page.to}
+              button
+              dense
+              key={index}
+              onClick={closeMobDrawerOnClick}
+            >
               <ListItemText primary={page.text} />
             </ListItem>
           ))}
@@ -91,14 +108,14 @@ export const AdminDrawerLinks = () => {
       <Divider />
       <List>
         {adminStatsPages.map((page, index) => (
-          <ListItem component={Link} to={page.to} button dense key={index}>
+          <ListItem component={Link} to={page.to} button dense key={index} onClick={closeMobDrawerOnClick}>
             <ListItemText primary={page.text} />
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        <ListItem button onClick={() => authLogOff()}>
+        <ListItem button onClick={onLogout}>
           <IconButton>
             <LogoutIcn />
           </IconButton>
