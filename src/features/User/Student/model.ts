@@ -1,4 +1,4 @@
-import {createEffect, createStore, forward, combine} from 'effector'
+import {createEffect, createStore, sample, combine} from 'effector'
 import {getGroupList} from 'src/api'
 import {StudentGroup} from 'src/types'
 import {$user, fetchUser} from '../model'
@@ -15,7 +15,9 @@ export const fetchGroupsFx = createEffect<void, StudentGroup[]>(async () => {
 
 $studGroups.on(fetchGroupsFx.doneData, (_, p) => p)
 
-forward({
-  from: fetchUser.done,
-  to: fetchGroupsFx,
+sample({
+  source: $user,
+  clock: fetchUser.done,
+  filter: (user) => (user ? user.Role === 0 : false),
+  target: fetchGroupsFx,
 })

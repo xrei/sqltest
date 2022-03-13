@@ -12,10 +12,12 @@ export const $appLoading = createStore(true)
 
 export const initAppFx = createEffect<void, void>(async () => {
   // wait for user before render
-  await fetchUser()
+  const user = await fetchUser()
 
   // rest run in parallel
-  fetchRegRules()
+  if (!user) {
+    fetchRegRules()
+  }
   SubjectsModel.fetchSubjectsFx()
 })
 
