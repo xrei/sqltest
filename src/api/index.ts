@@ -1,5 +1,5 @@
 import {createRequestFx} from './request'
-import type {
+import {
   DBInfo,
   LoginDTO,
   User,
@@ -19,6 +19,8 @@ import type {
   NewGroupDto,
   Student,
   StudentDto,
+  EditDbDto,
+  AddDbDto,
 } from 'src/types'
 
 // home
@@ -73,7 +75,6 @@ export const getArticle = createRequestFx<{Id: number}, MaterialArticle>(
 export const getAuthors = createRequestFx<void, Author[]>('Admin/GetAuthors')
 export const getDBCreationScripts = createRequestFx<void>('Admin/GetDBCreationScripts')
 export const getRegistrationRules = createRequestFx<void, string>('Admin/GetRegistrationRules')
-export const getDBInfos = createRequestFx<void, DBInfo[]>('Admin/GetDBInfos')
 export const postAddGroup = createRequestFx<NewGroupDto, string>('Admin/AddGroup', 'POST')
 export const postDeleteGroup = createRequestFx<{GroupValue: number}, string>(
   'Admin/DeleteGroup',
@@ -117,6 +118,19 @@ export const postAddAdminStudent = createRequestFx<{FIO: string; groupId: number
 )
 export const postChangeSuggestAbility = createRequestFx<{id: number}, string>(
   'Admin/ChangeSuggestionAbility',
+  'POST'
+)
+
+export const getDBInfos = createRequestFx<void, DBInfo[]>('Admin/GetDBInfos')
+export const getAdminDBContent = createRequestFx<{id: number}, DBTableContent[]>(
+  'Admin/GetAdminDBContent',
+  'GET',
+  true
+)
+export const postAddDatabase = createRequestFx<AddDbDto, string>('Admin/AddDatabase', 'POST')
+export const postEditDatabase = createRequestFx<EditDbDto, string>('Admin/EditDatabase', 'POST')
+export const postDeleteDatabase = createRequestFx<{id: number}, string>(
+  'Admin/DeleteDatabase',
   'POST'
 )
 

@@ -23,6 +23,7 @@ export const createRoutes = (createAdminRoutes: boolean): RouteObject[] => {
       {path: adminRoutes.groups, element: WithAuth(<AdminPages.AdminManageGroupsPage />)},
       {path: adminRoutes.journal, element: WithAuth(<AdminPages.AdminJournalPage />)},
       {path: adminRoutes.systemDb, element: WithAuth(<AdminPages.AdminSystemDbPage />)},
+      {path: adminRoutes.systemDbAdd, element: WithAuth(<AdminPages.AdminSystemDbAddPage />)},
       {path: adminRoutes.systemQuery, element: WithAuth(<AdminPages.AdminSystemQueryPage />)},
       {path: adminRoutes.systemUsers, element: WithAuth(<AdminPages.AdminSystemUsersPage />)},
     ]

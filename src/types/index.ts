@@ -29,6 +29,15 @@ export type DBInfo = {
   id: number
 }
 
+export type AddDbDto = {
+  name: string
+  connection_string: string
+  creation_script?: string
+  description?: string
+}
+
+export type EditDbDto = AddDbDto | {id: number}
+
 export type Student = {
   FIO: string
   creationDate: string

@@ -47,10 +47,10 @@ const adminPages = [
 
 const adminEntitiesPages = [
   {to: adminRoutes.systemDb, text: 'Базы данных'},
-  {to: adminRoutes.addTheory, text: 'Добавить теорию'},
+  {to: adminRoutes.theory, text: 'Теория'},
   {to: adminRoutes.addNews, text: 'Добавить новость'},
   {to: adminRoutes.addAuthor, text: 'Добавить автора'},
-  {to: adminRoutes.addStudInfo, text: 'Информация для студента'},
+  {to: adminRoutes.systemInfo, text: 'Информация для режима студента'},
 ]
 
 const adminStatsPages = [
