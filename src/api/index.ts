@@ -115,6 +115,10 @@ export const postAddAdminStudent = createRequestFx<{FIO: string; groupId: number
   'Admin/AddAdminStudent',
   'POST'
 )
+export const postChangeSuggestAbility = createRequestFx<{id: number}, string>(
+  'Admin/ChangeSuggestionAbility',
+  'POST'
+)
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

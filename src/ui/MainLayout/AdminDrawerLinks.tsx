@@ -1,24 +1,39 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {styled} from '@mui/material/styles'
-import {Box, List, ListItem, ListItemText, IconButton, Divider, Collapse, Typography} from '@mui/material'
+import {useStore} from 'effector-react'
+import {
+  styled,
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  IconButton,
+  Divider,
+  Collapse,
+  Typography,
+} from '@mui/material'
 import {
   ChevronRight as ChevronRightIcon,
   ExpandLess,
   ExpandMore,
   Logout as LogoutIcn,
 } from '@mui/icons-material'
-import {adminDrawerClosed, $adminMobDrawer, adminDrawersResetted, adminDrawerMobClosed} from './drawerModel'
+import {
+  adminDrawerClosed,
+  $adminMobDrawer,
+  adminDrawersResetted,
+  adminDrawerMobClosed,
+} from './drawerModel'
 import {authLogOff} from 'src/api'
 import {adminRoutes} from 'src/router/paths'
-import {useStore} from 'effector-react'
 import {$userRole} from 'src/features/User/model'
+import {ModeButton} from './ThemeModeSwitch'
 
 const DrawerHeader = styled('div')(({theme}) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  justifyContent: 'flex-start',
+  justifyContent: 'space-between',
   minHeight: '48px',
 }))
 
@@ -73,12 +88,20 @@ export const AdminDrawerLinks = () => {
             <ChevronRightIcon />
           </IconButton>
         )}
-        <Typography sx={{ml: 1}}>{userRole}</Typography>
+        <Typography>{userRole}</Typography>
+        <ModeButton />
       </DrawerHeader>
       <Divider />
       <List>
         {adminPages.map((page, index) => (
-          <ListItem component={Link} to={page.to} button dense key={index} onClick={closeMobDrawerOnClick}>
+          <ListItem
+            component={Link}
+            to={page.to}
+            button
+            dense
+            key={index}
+            onClick={closeMobDrawerOnClick}
+          >
             <ListItemText primary={page.text} />
           </ListItem>
         ))}
@@ -108,7 +131,14 @@ export const AdminDrawerLinks = () => {
       <Divider />
       <List>
         {adminStatsPages.map((page, index) => (
-          <ListItem component={Link} to={page.to} button dense key={index} onClick={closeMobDrawerOnClick}>
+          <ListItem
+            component={Link}
+            to={page.to}
+            button
+            dense
+            key={index}
+            onClick={closeMobDrawerOnClick}
+          >
             <ListItemText primary={page.text} />
           </ListItem>
         ))}

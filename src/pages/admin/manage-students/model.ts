@@ -2,7 +2,13 @@ import {ChangeEvent} from 'react'
 import {SelectChangeEvent} from '@mui/material'
 import {createStore, createEvent, createEffect, sample} from 'effector'
 import {createGate} from 'effector-react'
-import {getStudentsForGroup, postAddAdminStudent, postDeleteStudent, postEditStudent} from 'src/api'
+import {
+  getStudentsForGroup,
+  postAddAdminStudent,
+  postChangeSuggestAbility,
+  postDeleteStudent,
+  postEditStudent,
+} from 'src/api'
 import type {Student, StudentDto} from 'src/types'
 
 export const AdminManageStudentsPageGate = createGate()
@@ -26,6 +32,7 @@ export const addToEditStudentClicked = createEvent<Student>()
 export const editStudentClicked = createEvent()
 export const addStudentClicked = createEvent()
 export const deleteStudentClicked = createEvent<Student>()
+export const changeStudentSuggestAbilityClicked = createEvent<Student>()
 
 $studentDto.on(fioChanged, (state, e) => ({...state, FIO: e.target.value}))
 $studentDto.on(studGroupChanged, (state, e) => ({...state, groupId: e.target.value}))
@@ -60,11 +67,21 @@ const deleteStudentFx = createEffect<Student, string>(async (params) => {
   const res = await (await postDeleteStudent({id: params.id})).json()
   return res
 })
+const changeStudentSuggestAbilityFx = createEffect<Student, string>(async (params) => {
+  const res = await (await postChangeSuggestAbility({id: params.id})).json()
+  return res
+})
 
 sample({
   clock: deleteStudentClicked,
   filter: (student) => Boolean(student.id),
   target: deleteStudentFx,
+})
+
+sample({
+  clock: changeStudentSuggestAbilityClicked,
+  filter: (student) => Boolean(student.id),
+  target: changeStudentSuggestAbilityFx,
 })
 
 sample({
@@ -83,7 +100,13 @@ sample({
 
 sample({
   source: $selectedGroup,
-  clock: [showStudentsClicked, editStudentFx.done, addStudentFx.done, deleteStudentFx.done],
+  clock: [
+    showStudentsClicked,
+    editStudentFx.done,
+    addStudentFx.done,
+    deleteStudentFx.done,
+    changeStudentSuggestAbilityFx.done,
+  ],
   filter: (id) => Boolean(id),
   fn: (id) => Number(id),
   target: fetchStudentsFx,

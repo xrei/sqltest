@@ -43,7 +43,10 @@ const AdminManageStudentsPage = () => {
 
   return (
     <Box display="flex" flexDirection="column" my={4}>
-      <Box display="flex" alignItems="center" gap={4}>
+      <Box
+        display="flex"
+        sx={{flexFlow: {xs: 'column', md: 'row'}, alignItems: {sm: 'center'}, gap: {xs: 1, md: 2}}}
+      >
         <Typography variant="h3">Список студентов</Typography>
         <Button variant="contained" onClick={() => model.dialogToggled()}>
           Добавить нового студента
@@ -85,7 +88,11 @@ const GroupSelect = () => {
   const groupList = useStore(AdminGroupsModel.$adminGroups)
 
   return (
-    <Box display="flex" width="100%">
+    <Box
+      display="flex"
+      width="100%"
+      sx={{flexFlow: {xs: 'column', md: 'row'}, gap: {xs: 1, md: 0}}}
+    >
       <GroupSelector
         list={groupList}
         value={groupVal}
@@ -205,6 +212,7 @@ const CustomStudentsTable = () => {
               <TableCell align="center">{row.stu_activity}</TableCell>
               <TableCell align="center">
                 <Link
+                  onClick={() => model.changeStudentSuggestAbilityClicked(row)}
                   sx={{
                     color: row.suggest_questions ? 'success.main' : 'error.main',
                     cursor: 'pointer',
