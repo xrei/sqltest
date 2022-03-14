@@ -21,6 +21,7 @@ import {
   Select,
   MenuItem,
   IconButton,
+  Tooltip,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -32,6 +33,8 @@ import {
   KeyboardArrowLeft,
   KeyboardArrowRight,
   LastPage as LastPageIcon,
+  Edit as EditIcon,
+  Delete as DeleteIcon,
 } from '@mui/icons-material'
 import * as model from './model'
 import {useGate, useStore} from 'effector-react'
@@ -188,7 +191,7 @@ const CustomStudentsTable = () => {
 
   return (
     <TableContainer component={Paper} sx={{my: 2}}>
-      <Table sx={{minWidth: 500}} aria-label="students table">
+      <Table size="small" sx={{minWidth: 500}} aria-label="students table">
         <TableHead>
           <TableRow>
             <TableCell align="center">ФИО</TableCell>
@@ -198,7 +201,6 @@ const CustomStudentsTable = () => {
             <TableCell align="center">Дата регистрации</TableCell>
             <TableCell align="center">Дата последнего решенного теста</TableCell>
             <TableCell></TableCell>
-            <TableCell>Управление</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -228,21 +230,23 @@ const CustomStudentsTable = () => {
                     : 'Не может предлагать задания'}
                 </Link>
               </TableCell>
-              <TableCell align="center">
-                <Link onClick={() => model.addToEditStudentClicked(row)} underline="hover">
-                  Редактировать
-                </Link>
-              </TableCell>
-              <TableCell align="center">
-                <Link onClick={() => model.deleteStudentClicked(row)} underline="hover">
-                  Удалить
-                </Link>
+              <TableCell align="center" sx={{width: 140}}>
+                <Tooltip title="Редактировать">
+                  <IconButton sx={{mr: 2}} onClick={() => model.addToEditStudentClicked(row)}>
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Удалить">
+                  <IconButton onClick={() => model.deleteStudentClicked(row)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
               </TableCell>
             </TableRow>
           ))}
           {emptyRows > 0 && (
             <TableRow style={{height: 53 * emptyRows}}>
-              <TableCell colSpan={7} />
+              <TableCell colSpan={6} />
             </TableRow>
           )}
         </TableBody>
@@ -251,7 +255,7 @@ const CustomStudentsTable = () => {
             <TablePagination
               align="left"
               rowsPerPageOptions={[10, 20, 50, {label: 'All', value: -1}]}
-              colSpan={7}
+              colSpan={6}
               count={rows.length}
               rowsPerPage={rowsPerPage}
               page={page}

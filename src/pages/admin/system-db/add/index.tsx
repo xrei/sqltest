@@ -9,6 +9,8 @@ import {
   Alert,
   Snackbar,
   IconButton,
+  Slide,
+  SlideProps,
 } from '@mui/material'
 import {ArrowBack as ArrowBackIcon} from '@mui/icons-material'
 import {useStore} from 'effector-react'
@@ -82,6 +84,7 @@ const AdminSystemDbAddPage = () => {
         autoHideDuration={3000}
         anchorOrigin={{vertical: 'top', horizontal: 'right'}}
         onClose={handleAlertClose}
+        TransitionComponent={SlideTransition}
       >
         <Alert variant="filled" severity="success">
           Новая база успешно добавлена!
@@ -89,6 +92,10 @@ const AdminSystemDbAddPage = () => {
       </Snackbar>
     </Box>
   )
+}
+
+function SlideTransition(props: SlideProps) {
+  return <Slide {...props} direction="right" />
 }
 
 export default AdminSystemDbAddPage
