@@ -25,7 +25,7 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material'
 import {useGate, useStore} from 'effector-react'
-import {Link as NavLink} from 'react-router-dom'
+import {Link as RouterLink} from 'react-router-dom'
 import {DBInfo} from 'src/types'
 import * as model from './model'
 import {adminRoutes} from 'src/router/paths'
@@ -45,7 +45,7 @@ export const AdminSystemDbPage = () => {
         <Typography variant="h3" sx={{flex: 1}}>
           Базы данных
         </Typography>
-        <Button component={NavLink} to={adminRoutes.systemDbAdd} variant="contained">
+        <Button component={RouterLink} to={adminRoutes.systemDbAdd} variant="contained">
           Новая база данных
         </Button>
       </Box>

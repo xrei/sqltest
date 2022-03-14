@@ -1,7 +1,7 @@
 import {createEffect, createEvent, createStore, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {getAdminDBContent, getDBInfos, postDeleteDatabase} from 'src/api'
-import {AddDbDto, DBInfo, DBTableContent} from 'src/types'
+import {DBInfo, DBTableContent} from 'src/types'
 
 export const SystemDbPageGate = createGate()
 
@@ -13,13 +13,6 @@ type DbContentState = {
 export const $dbs = createStore<DBInfo[]>([])
 export const $dbContent = createStore<DbContentState>({name: '', tables: []})
 export const $dbContentDialog = createStore(false)
-
-export const $dbDto = createStore<AddDbDto>({
-  connection_string: '',
-  name: '',
-  creation_script: '',
-  description: '',
-})
 
 export const addDbToEditClicked = createEvent<DBInfo>()
 export const deleteDbClicked = createEvent<DBInfo>()
@@ -53,9 +46,12 @@ sample({
   target: fetchDatabasesFx,
 })
 
+// prevent api call if clicked multiple times
 sample({
+  source: [fetchDatabasesFx.pending, deleteDatabaseFx.pending],
   clock: deleteDbClicked,
-  filter: (db) => Boolean(db.id),
+  filter: ([p1, p2], db) => !p1 && !p2 && Boolean(db.id),
+  fn: (pendings, db) => db,
   target: deleteDatabaseFx,
 })
 

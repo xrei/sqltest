@@ -17,7 +17,7 @@ import {
   Checkbox,
 } from '@mui/material'
 import {useGate, useStore} from 'effector-react'
-import {Link as NavLink} from 'react-router-dom'
+import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
 import {AdminGroupsModel} from 'src/features/User/Admin'
 
@@ -54,7 +54,11 @@ export const AdminManageGroupsPage = () => {
                     <Checkbox checked={tr.register} disabled />
                   </TableCell>
                   <TableCell>
-                    <Link component={NavLink} to="/admin/manage-students" sx={{cursor: 'pointer'}}>
+                    <Link
+                      component={RouterLink}
+                      to="/admin/manage-students"
+                      sx={{cursor: 'pointer'}}
+                    >
                       Студенты
                     </Link>
                   </TableCell>
