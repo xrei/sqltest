@@ -12,13 +12,13 @@ const AdminSystemDbEditPage = () => {
   const params = useParams()
   useGate(model.SysDbEditPageGate, {id: Number(params.id)})
 
-  const fullHeight = useStore(model.$isDbsLoading)
+  const isLoading = useStore(model.$isDbsLoading)
   const editDb = useStore(model.$editDbDto)
   const nameErr = useStore(model.$nameErr)
   const connStrErr = useStore(model.$connStrErr)
   const editDisabled = useStore(model.$editDisabled)
 
-  if (fullHeight) {
+  if (isLoading) {
     return <CenteredLoader fullHeight />
   }
 

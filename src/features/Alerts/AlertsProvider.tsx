@@ -17,7 +17,7 @@ export const AlertsProvider = () => {
   })
 
   return (
-    <Stack sx={{zIndex: 1400, position: 'absolute', right: 24, top: 24}} spacing={2}>
+    <Stack sx={{zIndex: 1400, position: 'fixed', right: 24, top: 24}} spacing={2}>
       {alerts}
     </Stack>
   )

@@ -4,6 +4,7 @@ import {createGate} from 'effector-react'
 import type {EditDbDto} from 'src/types'
 import {addDbToEditClicked, $dbs, fetchDatabasesFx} from '../../model'
 import {postEditDatabase} from 'src/api'
+import {enqueueAlert} from 'src/features/Alerts'
 
 export const SysDbEditPageGate = createGate<{id: number}>()
 
@@ -54,6 +55,10 @@ $editDbDto.on(creationScriptChanged, (state, e) => ({...state, creation_script: 
 
 const editDbFx = createEffect<EditDbDto, string>(async (db) => {
   const res = await (await postEditDatabase(db)).json()
+
+  enqueueAlert({
+    message: 'База данных успешно отредактирована',
+  })
   return res
 })
 
