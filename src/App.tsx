@@ -8,6 +8,7 @@ import {DBInfoDialog} from 'src/features/DBInfo'
 import {AuthDialogs} from 'src/features/Auth'
 import {createRoutes} from './router'
 import {$userIsAdmin} from './features/User/model'
+import {AlertsProvider} from './features/Alerts'
 
 const App: React.FC = () => {
   const isUserAdmin = useStore($userIsAdmin)
@@ -23,6 +24,7 @@ const App: React.FC = () => {
 
       <DBInfoDialog />
       <AuthDialogs />
+      <AlertsProvider />
     </ThemeProvider>
   )
 }

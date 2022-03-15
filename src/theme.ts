@@ -1,5 +1,5 @@
 import {createTheme, responsiveFontSizes} from '@mui/material/styles'
-import {red, indigo, pink, grey, common} from '@mui/material/colors'
+import {red, indigo, pink, grey, common, green} from '@mui/material/colors'
 import {PaletteMode} from '@mui/material'
 import {createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {AppGate} from './lib/AppGate'
@@ -39,8 +39,6 @@ const getPalette = (mode: PaletteMode) => ({
         white: common.white,
         primary: {
           main: indigo[400],
-          light: indigo.A100,
-          lightGrey: grey[200],
         },
         secondary: {
           main: pink.A400,
@@ -48,6 +46,10 @@ const getPalette = (mode: PaletteMode) => ({
         error: {
           main: red[400],
         },
+        success: {
+          main: green[600],
+        },
+        lightGrey: grey[200],
       }),
 })
 
