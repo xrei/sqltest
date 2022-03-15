@@ -36,7 +36,7 @@ export type AddDbDto = {
   description?: string
 }
 
-export type EditDbDto = AddDbDto | {id: number}
+export type EditDbDto = AddDbDto & {id: number}
 
 export type Student = {
   FIO: string

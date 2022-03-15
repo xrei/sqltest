@@ -104,7 +104,12 @@ const DbCard: React.FC<{db: DBInfo}> = ({db}) => {
           </IconButton>
         </Tooltip>
         <Tooltip title="Редактировать">
-          <IconButton aria-label="Редактировать">
+          <IconButton
+            component={RouterLink}
+            to={adminRoutes.systemDbEdit.replace(':id', String(db.id))}
+            aria-label="Редактировать"
+            onClick={() => model.addDbToEditClicked(db)}
+          >
             <EditIcon />
           </IconButton>
         </Tooltip>

@@ -19,7 +19,7 @@ export const deleteDbClicked = createEvent<DBInfo>()
 export const openDbContentClicked = createEvent<DBInfo>()
 export const dialogToggled = createEvent()
 
-const fetchDatabasesFx = createEffect(async () => {
+export const fetchDatabasesFx = createEffect(async () => {
   const res = await (await getDBInfos()).json()
   return res
 })
