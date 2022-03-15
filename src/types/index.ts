@@ -71,6 +71,7 @@ export type NewGroupDto = {
 export type Subject = {
   SubjectId: number
   SubjectName: string
+  UserId?: number
 }
 
 export type TestTime = {
@@ -232,4 +233,21 @@ export type QueryPreset = {
   ID?: number
   Name?: string
   Query: string
+}
+
+export type SystemUser = {
+  id: number
+  role: number
+  user_name: string
+  login?: string
+  password?: string
+  repeat_password?: string
+}
+
+export type SystemUsers = {
+  administrators: SystemUser[]
+  groups: StudentGroup[]
+  students: SystemUser[]
+  teachers: SystemUser[]
+  subjects: Subject[]
 }

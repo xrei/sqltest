@@ -21,6 +21,7 @@ import {
   StudentDto,
   EditDbDto,
   AddDbDto,
+  SystemUsers,
 } from 'src/types'
 
 // home
@@ -133,6 +134,8 @@ export const postDeleteDatabase = createRequestFx<{id: number}, string>(
   'Admin/DeleteDatabase',
   'POST'
 )
+
+export const getSystemUsers = createRequestFx<void, SystemUsers>('Admin/GetSystemUsers')
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
