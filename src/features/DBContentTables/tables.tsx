@@ -20,11 +20,11 @@ type Props = {
   tables: DBTableContent[]
 }
 export const DBContentTables = ({tables}: Props) => {
-  const [expandedId, setExpandedId] = React.useState('')
+  const [expandedId, setExpandedId] = React.useState(0)
 
-  const handleExpandClick = (table: DBTableContent) => {
-    if (table.Name === expandedId) return setExpandedId('')
-    setExpandedId(table.Name)
+  const handleExpandClick = (idx: number) => {
+    if (idx === expandedId) return setExpandedId(-1)
+    setExpandedId(idx)
   }
 
   return (
@@ -32,21 +32,18 @@ export const DBContentTables = ({tables}: Props) => {
       {tables.map((table, idx) => (
         <Stack key={idx} mb={2}>
           <Box sx={{display: 'flex', gap: 2, alignItems: 'center'}}>
-            <ExpandMoreButton
-              expand={expandedId === table.Name}
-              onClick={() => handleExpandClick(table)}
-            >
+            <ExpandMoreButton expand={expandedId === idx} onClick={() => handleExpandClick(idx)}>
               <ExpandMoreIcon />
             </ExpandMoreButton>
             <Typography
               sx={{cursor: 'pointer', ':hover': {color: 'primary.light'}}}
-              onClick={() => handleExpandClick(table)}
+              onClick={() => handleExpandClick(idx)}
               variant="h4"
             >
               {table.Name}
             </Typography>
           </Box>
-          <Collapse in={expandedId === table.Name}>
+          <Collapse in={expandedId === idx}>
             <TableContainer component={Paper} sx={{backgroundColor: 'background.default'}}>
               <Table size="small">
                 <TableHead>
