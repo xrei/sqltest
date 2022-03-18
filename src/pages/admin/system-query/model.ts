@@ -1,3 +1,4 @@
+import type {ChangeEvent} from 'react'
 import {createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {
@@ -7,7 +8,7 @@ import {
   postExecQueryPresets,
 } from 'src/api'
 import {DBTableContent, QueryPreset} from 'src/types'
-import type {ChangeEvent} from 'react'
+import {enqueueAlert, Alert} from 'src/features/Alerts'
 
 export const SystemQueryPageGate = createGate()
 
@@ -42,6 +43,7 @@ $systemQueries.on(fetchSystemQueriesFx.doneData, (_, p) => p)
 
 const executeQueryFx = createEffect<QueryPreset, DBTableContent[]>(async (params) => {
   const res = await (await postExecQueryPresets(params)).json()
+
   return res
 })
 
@@ -49,11 +51,15 @@ $executedQuery.on(executeQueryFx.doneData, (_, p) => p)
 
 const saveQueryPresetFx = createEffect<QueryPreset, string>(async (qp) => {
   const res = await (await postAddQueryPreset(qp)).json()
+
+  enqueueAlert({message: `Запрос ${qp.Name} успешно сохранен!`})
   return res
 })
 
 const deleteQueryPresetFx = createEffect<QueryPreset, string>(async (qp) => {
   const res = await (await postDeleteQueryPreset(qp)).json()
+
+  enqueueAlert({message: `Запрос ${qp.Name} успешно удален!`})
   return res
 })
 
@@ -100,3 +106,11 @@ $resultDialogOpen.watch((v) => {
 })
 
 $systemQueries.reset([SystemQueryPageGate.close])
+
+sample({
+  clock: executeQueryFx.failData,
+  fn: (err): Alert => {
+    return {message: 'Ошибка выполнения запроса', variant: 'error'}
+  },
+  target: enqueueAlert,
+})

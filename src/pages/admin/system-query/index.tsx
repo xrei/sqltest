@@ -85,13 +85,11 @@ const CreateQuery = () => {
 
   return (
     <Box display="flex" flexDirection="column" mb={4}>
-      <Typography variant="h4" gutterBottom>
-        Создать новый запрос:
-      </Typography>
+      <Typography variant="h4">Создать новый запрос:</Typography>
       <TextField
         value={query.Name}
         onChange={model.nameChanged}
-        sx={{mb: 4}}
+        sx={{mb: 4, mt: 2}}
         label="Название запроса"
       ></TextField>
       <TextField

@@ -2,7 +2,7 @@ import {AlertColor, SnackbarOrigin} from '@mui/material'
 import {createEffect, createEvent, createStore, sample} from 'effector'
 import type {NoUndefinedField} from 'src/types/helpers'
 
-type Alert = {
+export type Alert = {
   message: string
   open?: boolean
   id?: number | string
