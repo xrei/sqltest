@@ -22,6 +22,7 @@ import {
   EditDbDto,
   AddDbDto,
   SystemUsers,
+  NewSystemUserDto,
 } from 'src/types'
 
 // home
@@ -136,6 +137,18 @@ export const postDeleteDatabase = createRequestFx<{id: number}, string>(
 )
 
 export const getSystemUsers = createRequestFx<void, SystemUsers>('Admin/GetSystemUsers')
+export const postDeleteSystemUser = createRequestFx<{user: {id: number}}, string>(
+  'Admin/DeleteSystemUser',
+  'POST'
+)
+export const postAddSystemUser = createRequestFx<NonNullable<NewSystemUserDto>, string>(
+  'Admin/AddSystemUser',
+  'POST'
+)
+export const postEditSystemUser = createRequestFx<NonNullable<NewSystemUserDto>, string>(
+  'Admin/EditSystemUser',
+  'POST'
+)
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

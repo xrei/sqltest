@@ -1,4 +1,4 @@
-import type {Test, Theme, Question} from 'src/types'
+import type {Test} from 'src/types'
 import type {ChangeAnswerCheckboxPayload, ChangeAnswerGenericPayload} from './types'
 
 export const mapCheckboxAnswer = (test: Test, payload: ChangeAnswerCheckboxPayload) => {

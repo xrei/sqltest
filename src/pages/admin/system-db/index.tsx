@@ -42,7 +42,7 @@ export const AdminSystemDbPage = () => {
         display="flex"
         sx={{flexFlow: {xs: 'column', md: 'row'}, alignItems: {sm: 'center'}, gap: {xs: 1, md: 2}}}
       >
-        <Typography variant="h3" sx={{flex: 1}}>
+        <Typography variant="h1" sx={{flex: 1}}>
           Базы данных
         </Typography>
         <Button component={RouterLink} to={adminRoutes.systemDbAdd} variant="contained">

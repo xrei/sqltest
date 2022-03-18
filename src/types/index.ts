@@ -71,7 +71,7 @@ export type NewGroupDto = {
 export type Subject = {
   SubjectId: number
   SubjectName: string
-  UserId?: number
+  UserId?: number | boolean
 }
 
 export type TestTime = {
@@ -250,4 +250,12 @@ export type SystemUsers = {
   students: SystemUser[]
   teachers: SystemUser[]
   subjects: Subject[]
+}
+
+export type SystemUserDto = Partial<SystemUser>
+
+export type NewSystemUserDto = {
+  groups: {GroupValue: number; register: boolean}[]
+  subjects: {SubjectId: number; UserId: boolean}[]
+  user: SystemUserDto
 }
