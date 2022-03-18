@@ -19,3 +19,5 @@ sample({
   clock: ArticlePageGate.open,
   target: fetchArticleFx,
 })
+
+$article.reset(ArticlePageGate.close)

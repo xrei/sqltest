@@ -10,9 +10,7 @@ import {
   CardActions,
   CardContent,
   IconButton,
-  IconButtonProps,
   Tooltip,
-  styled,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -30,6 +28,7 @@ import {DBInfo} from 'src/types'
 import * as model from './model'
 import {adminRoutes} from 'src/router/paths'
 import {DBContentTables} from 'src/features/DBContentTables'
+import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
 
 export const AdminSystemDbPage = () => {
   useGate(model.SystemDbPageGate)
@@ -62,19 +61,6 @@ export const AdminSystemDbPage = () => {
   )
 }
 
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const {expand, ...other} = props
-  return <IconButton {...other} />
-})(({theme, expand}) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}))
 const DbCard: React.FC<{db: DBInfo}> = ({db}) => {
   const [expanded, setExpanded] = React.useState(false)
 
@@ -88,7 +74,7 @@ const DbCard: React.FC<{db: DBInfo}> = ({db}) => {
         <Typography>{db.name}</Typography>
       </CardContent>
       <CardActions sx={{p: 1, pt: 0}}>
-        <ExpandMore
+        <ExpandMoreButton
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
@@ -97,7 +83,7 @@ const DbCard: React.FC<{db: DBInfo}> = ({db}) => {
           <Tooltip title="Контент">
             <ExpandMoreIcon />
           </Tooltip>
-        </ExpandMore>
+        </ExpandMoreButton>
         <Tooltip title="Содержание">
           <IconButton aria-label="Содержание" onClick={() => model.openDbContentClicked(db)}>
             <SourceIcon />
@@ -122,7 +108,7 @@ const DbCard: React.FC<{db: DBInfo}> = ({db}) => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <div dangerouslySetInnerHTML={{__html: db.description}}></div>
-          <ExpandMore
+          <ExpandMoreButton
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
@@ -131,7 +117,7 @@ const DbCard: React.FC<{db: DBInfo}> = ({db}) => {
             <Tooltip title="Свернуть">
               <ExpandMoreIcon />
             </Tooltip>
-          </ExpandMore>
+          </ExpandMoreButton>
         </CardContent>
       </Collapse>
     </Card>

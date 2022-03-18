@@ -54,7 +54,7 @@ const MaterialsList = () => {
               Статьи:
             </Typography>
             {m.ListOfArticles.map((article) => (
-              <Link key={article.Id} onClick={() => goToArticle(article)}>
+              <Link sx={{cursor: 'pointer'}} key={article.Id} onClick={() => goToArticle(article)}>
                 {article.Name}
               </Link>
             ))}
