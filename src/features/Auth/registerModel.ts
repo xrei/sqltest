@@ -56,16 +56,20 @@ export const $error = createStore<{error: string} | null>(null)
 
 export const registerFx = createEffect<RegisterDTO, User, ResponseError<{ErrorMessage: string}>>(
   async (params) => {
-    console.log(params)
     const res = await (await authRegister(params)).json()
-    console.log(res)
+
     return res
   }
 )
 
 export const $isPending = registerFx.pending
 
-$error.on(registerFx.failData, (s, payload) => ({error: payload.json.ErrorMessage}))
+$error.on(registerFx.failData, (s, error) => {
+  if (error.json?.ErrorMessage) {
+    return {error: error.json.ErrorMessage}
+  }
+  return {error: error.message}
+})
 
 guard({
   clock: register,
