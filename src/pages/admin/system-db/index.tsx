@@ -29,10 +29,11 @@ import * as model from './model'
 import {adminRoutes} from 'src/router/paths'
 import {DBContentTables} from 'src/features/DBContentTables'
 import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
+import {CenteredLoader} from 'src/ui/CenteredLoader'
 
 export const AdminSystemDbPage = () => {
   useGate(model.SystemDbPageGate)
-
+  const isLoading = useStore(model.fetchDatabasesFx.pending)
   const dbs = useStore(model.$dbs)
 
   return (
@@ -50,11 +51,15 @@ export const AdminSystemDbPage = () => {
       </Box>
       <Divider sx={{my: 2}}></Divider>
 
-      <Stack gap={2}>
-        {dbs.map((db) => (
-          <DbCard db={db} key={db.id} />
-        ))}
-      </Stack>
+      {isLoading ? (
+        <CenteredLoader boxProps={{mt: 4}} />
+      ) : (
+        <Stack gap={2}>
+          {dbs.map((db) => (
+            <DbCard db={db} key={db.id} />
+          ))}
+        </Stack>
+      )}
 
       <DbContentDialog />
     </Box>

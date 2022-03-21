@@ -22,7 +22,7 @@ const enqueueAlertFx = createEffect<Alert, NoUndefinedField<Alert>>((x) => {
     message: x.message,
     id,
     open: true,
-    timeout: x.timeout || 3000,
+    timeout: x.timeout || 5000,
     variant: x.variant ? x.variant : 'success',
     anchorOrigin: x.anchorOrigin ?? {vertical: 'top', horizontal: 'right'},
   }

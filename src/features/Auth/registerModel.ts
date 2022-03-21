@@ -1,4 +1,4 @@
-import {createStore, createEvent, guard, createEffect, combine, forward} from 'effector'
+import {createStore, createEvent, guard, createEffect, combine, forward, sample} from 'effector'
 import type {ChangeEvent} from 'react'
 import type {SelectChangeEvent} from '@mui/material'
 import {reset} from 'src/lib/reset'
@@ -6,6 +6,7 @@ import {getRegistrationRules, authRegister} from 'src/api'
 import {ResponseError} from 'src/api/error'
 import {RegisterDTO, User} from 'src/types'
 import {dialogClosed} from './dialog'
+import {enqueueAlert, Alert} from 'src/features/Alerts'
 
 // fields
 export const $fio = createStore('')
@@ -86,6 +87,14 @@ reset({
 forward({
   from: registerFx.doneData,
   to: dialogClosed,
+})
+
+sample({
+  clock: registerFx.failData,
+  fn: (err): Alert => {
+    return {message: `Запрос выполнен с ошибкой: \n\r${err.message}`, variant: 'error'}
+  },
+  target: enqueueAlert,
 })
 
 export const $regRules = createStore('')

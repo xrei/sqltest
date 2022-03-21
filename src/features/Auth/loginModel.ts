@@ -1,10 +1,11 @@
-import {createStore, createEvent, createEffect, combine, guard, forward} from 'effector'
+import {createStore, createEvent, createEffect, combine, guard, forward, sample} from 'effector'
 import type {ChangeEvent} from 'react'
 import {reject, isNil} from 'ramda'
 import {authLogOn} from 'src/api'
 import type {LoginDTO, User} from 'src/types'
 import {ResponseError} from 'src/api/error'
 import {dialogClosed} from './dialog'
+import {enqueueAlert, Alert} from 'src/features/Alerts'
 
 const rejectIsNil = reject(isNil)
 
@@ -68,4 +69,12 @@ guard({
 forward({
   from: loginFx.doneData,
   to: dialogClosed,
+})
+
+sample({
+  clock: loginFx.failData,
+  fn: (err): Alert => {
+    return {message: `Запрос выполнен с ошибкой: \n\r${err.message}`, variant: 'error'}
+  },
+  target: enqueueAlert,
 })
