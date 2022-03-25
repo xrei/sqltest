@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
 import React from 'react'
-import {Button} from '@mui/material'
+import {Button, Typography, Box} from '@mui/material'
 import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
 import {routesPaths} from 'src/router/paths'
@@ -18,6 +18,7 @@ export const TestButton = ({drawer}: TestButtonProps) => {
   const hasTest = useStore(TestContentModel.$hasTestAndTheme)
   const user = useStore(UserModel.$user)
   const isStudent = useStore(UserModel.$userIsStudent)
+  const time = useStore(TestContentModel.$timeFormatted)
 
   if ((!user && !currTheme) || !isStudent) return <></>
 
@@ -28,9 +29,18 @@ export const TestButton = ({drawer}: TestButtonProps) => {
         to={routesPaths.tasks + `/${currTheme?.ThemeId}`}
         variant="contained"
         disableElevation
+        centerRipple
+        css={buttonCss(drawer)}
         color={drawer ? 'primary' : 'success'}
       >
-        Текущий тест
+        {drawer ? (
+          <Box display="flex" flexDirection="column" justifyContent="center">
+            <Typography sx={{textAlign: 'center', fontSize: 12}}>Текущий тест</Typography>
+            <span style={{textAlign: 'center'}}>{time}</span>
+          </Box>
+        ) : (
+          time
+        )}
       </Button>
     )
   } else {

@@ -2,13 +2,12 @@ import React from 'react'
 
 type LogoProps = {
   drawer?: boolean
+  width?: number
 }
 
 export const Logo = (props: LogoProps) => {
-  const w = props.drawer ? '128px' : '60px'
-
   return (
-    <svg fill="currentColor" viewBox="0 0 266.12 140.18" width={w}>
+    <svg fill="currentColor" viewBox="0 0 266.12 140.18" width={props.width || '60px'}>
       <path
         strokeWidth={6}
         fill="none"

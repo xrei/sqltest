@@ -84,7 +84,7 @@ export const MainLayout: React.FC = ({children}) => {
         </SwipeableDrawer>
       </Hidden>
       <Main open={isAdminDrawerOpen}>
-        <Container maxWidth="xl" sx={{marginTop: '48px'}}>
+        <Container maxWidth="xl" sx={{marginTop: '50px'}}>
           {children}
         </Container>
       </Main>

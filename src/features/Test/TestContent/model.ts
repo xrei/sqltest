@@ -1,4 +1,4 @@
-import {attach, combine, createEffect, createEvent, createStore, forward} from 'effector'
+import {attach, combine, createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {getTestContent, saveTestResult} from 'src/api'
 import {reset} from 'src/lib/reset'
 import {Test, Theme, Question} from 'src/types'
@@ -10,6 +10,11 @@ import type {
   ChangeAnswerCheckboxPayload,
 } from './types'
 import {mapCheckboxAnswer, mapAnswer} from './helpers'
+import {createCountdown} from './timer'
+
+const startTimer = createEvent<number>()
+const abortTimer = createEvent()
+const timer = createCountdown('TestTimer', {start: startTimer, abort: abortTimer, timeout: 1000})
 
 //#region Stores
 export const $testResults = createStore<TestResultStore | null>(null)
@@ -45,6 +50,28 @@ export const $isQuestionForEditor = $currQuestion.map((q: Question) =>
 )
 //#endregion
 
+export const $timeFormatted = createStore('')
+export const $ticks = createStore(0)
+$ticks.on(timer.tick, (_, tick) => tick)
+
+const timeTickFx = createEffect<number, string>((tick) => {
+  // if more than hour
+  if (tick >= 3600) {
+    return new Date(tick * 1000).toISOString().slice(11, 19)
+  } else {
+    return new Date(tick * 1000).toISOString().slice(14, 19)
+  }
+})
+
+$timeFormatted.on(timeTickFx.doneData, (_, time) => time)
+$timeFormatted.on(abortTimer, () => '')
+
+sample({
+  clock: timer.tick,
+  filter: (tick) => tick >= 0,
+  target: timeTickFx,
+})
+
 //#region Events
 export const setCurrentTheme = createEvent<Theme>()
 export const resetCurrentTest = createEvent()
@@ -59,6 +86,10 @@ export const fetchTestContentFx = createEffect<Theme, Test>(async (theme) => {
 
   // initially set first question in test
   changeCurrentQuestionId(res.Questions[0].Id)
+
+  const ticks = res.TestTimeFromDB * 60
+  startTimer(ticks)
+
   return res
 })
 
@@ -71,6 +102,8 @@ export const finishTestFx = attach({
 
     const res = await (await saveTestResult(test)).json()
     console.log('test result: ', res)
+    // stop timer
+    abortTimer()
 
     history.push(routesPaths.tasksResult)
 
@@ -123,6 +156,12 @@ export const startTestAgainFx = attach({
   },
 })
 
+// if time ran out, end test
+forward({
+  from: timer.finished,
+  to: finishTestFx,
+})
+
 forward({
   from: finishTestFx.doneData,
   to: setTestResults,
@@ -143,12 +182,12 @@ reset({
 
 //#endregion
 
-$test.watch((t) => {
-  console.log('test:', t)
-})
-$currQuestion.watch((qsn) => {
-  console.log('curr qsn:', qsn)
-})
-setTestResults.watch((v) => {
-  console.log(v)
-})
+// $test.watch((t) => {
+//   console.log('test:', t)
+// })
+// $currQuestion.watch((qsn) => {
+//   console.log('curr qsn:', qsn)
+// })
+// setTestResults.watch((v) => {
+//   console.log(v)
+// })

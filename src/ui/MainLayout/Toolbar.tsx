@@ -16,7 +16,7 @@ const barContainer = css`
 
 const StyledToolbar = styled(Toolbar)(({theme}) => ({
   '@media all': {
-    minHeight: 60,
+    minHeight: 50,
   },
 }))
 

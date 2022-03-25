@@ -52,7 +52,7 @@ export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
           component={Link}
           to={routesPaths.index}
         >
-          <Logo drawer={drawer} />
+          <Logo width={drawer ? 128 : 60} />
           {/* <Typography sx={{...linkSx(drawer), pl: 2}}>Главная</Typography> */}
         </Button>
         <Button
