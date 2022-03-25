@@ -6,6 +6,7 @@ import {DesktopMac, Book, Event, Star} from '@mui/icons-material'
 import {Link} from 'react-router-dom'
 import {TestButton} from 'src/features/Test/TestContent'
 import {routesPaths} from 'src/router/paths'
+import {Logo} from '../Logo'
 
 const buttonCss = (drawer?: boolean) => (theme: any) =>
   css`
@@ -39,16 +40,20 @@ export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
         alignItems: drawer ? 'baseline' : 'center',
       }}
     >
-      <Stack direction={drawer ? 'column' : 'row'} spacing={drawer ? 0 : 1}>
+      <Stack
+        sx={{fontSize: 16, height: 40}}
+        direction={drawer ? 'column' : 'row'}
+        spacing={drawer ? 0 : 1}
+      >
         <Button
-          css={buttonCss(drawer)}
+          sx={{color: drawer ? 'palette.primary.main' : 'inherit', p: drawer ? '16px 0' : 0}}
           size={large}
           variant="text"
           component={Link}
           to={routesPaths.index}
-          startIcon={<DesktopMac />}
         >
-          <Typography sx={linkSx(drawer)}>Главная</Typography>
+          <Logo drawer={drawer} />
+          {/* <Typography sx={{...linkSx(drawer), pl: 2}}>Главная</Typography> */}
         </Button>
         <Button
           css={buttonCss(drawer)}

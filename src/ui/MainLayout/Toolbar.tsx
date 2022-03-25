@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import {css} from '@emotion/react'
 import React from 'react'
-import {AppBar as MuiAppBar, Toolbar, Hidden, IconButton} from '@mui/material'
+import {AppBar as MuiAppBar, Toolbar, Hidden, IconButton, styled} from '@mui/material'
 import {Menu} from '@mui/icons-material'
 import {AppLinks} from './AppLinks'
 import {useStore} from 'effector-react'
@@ -14,11 +14,17 @@ const barContainer = css`
   flex: 1;
 `
 
+const StyledToolbar = styled(Toolbar)(({theme}) => ({
+  '@media all': {
+    minHeight: 60,
+  },
+}))
+
 export const AppToolbar: React.FC = () => {
   const hasUser = useStore(UserModel.$hasUser)
 
   return (
-    <Toolbar variant="dense">
+    <StyledToolbar>
       <div css={barContainer}>
         <Hidden mdUp>
           <IconButton
@@ -38,6 +44,6 @@ export const AppToolbar: React.FC = () => {
       </div>
 
       {hasUser ? <UserBlock></UserBlock> : <AuthBlock></AuthBlock>}
-    </Toolbar>
+    </StyledToolbar>
   )
 }
