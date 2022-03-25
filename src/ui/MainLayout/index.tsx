@@ -23,7 +23,7 @@ const drawerWidth = 280
 const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})<{
   open?: boolean
 }>(({theme, open}) => ({
-  minHeight: '100vh',
+  // minHeight: '100vh',
   flexGrow: 1,
   display: 'flex',
   transition: theme.transitions.create('margin', {
@@ -70,7 +70,7 @@ export const MainLayout: React.FC = ({children}) => {
   const isAdminDrawerMobOpen = useStore(drawerModel.$adminMobDrawer)
 
   return (
-    <div style={{display: 'flex', flexFlow: 'column'}}>
+    <div style={{display: 'flex', flexFlow: 'column', minHeight: '100vh'}}>
       <AppBar position="fixed" open={isAdminDrawerOpen}>
         <AppToolbar />
       </AppBar>
