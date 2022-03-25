@@ -1,7 +1,7 @@
 import {attach, createEvent, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
 import type {TestResult} from 'src/types'
-import {ThemesModel} from 'src/features/Test'
+import {ThemesModel, SubjectsModel} from 'src/features/Test'
 import {UserModel} from 'src/features/User'
 import {getUserRatings} from 'src/api'
 
@@ -43,7 +43,8 @@ forward({
 })
 
 $results.reset(ResultsPageGate.close)
+
 forward({
   from: ResultsPageGate.close,
-  to: ThemesModel.clearThemes,
+  to: [ThemesModel.clearThemes, SubjectsModel.resetSelectedSubject],
 })
