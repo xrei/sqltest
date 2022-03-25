@@ -34,6 +34,10 @@ const getPalette = (mode: PaletteMode) => ({
           default: '#111',
           paper: grey[900],
         },
+        lightGrey: {
+          main: grey[800],
+          dark: grey[400],
+        },
       }
     : {
         white: common.white,
@@ -49,7 +53,10 @@ const getPalette = (mode: PaletteMode) => ({
         success: {
           main: green[600],
         },
-        lightGrey: grey[200],
+        lightGrey: {
+          main: grey[200],
+          dark: grey[800],
+        },
       }),
 })
 

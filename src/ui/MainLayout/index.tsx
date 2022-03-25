@@ -16,6 +16,7 @@ import * as drawerModel from './drawerModel'
 import {$userIsStudent} from 'src/features/User/model'
 import {AppToolbar} from './Toolbar'
 import {AdminDrawerLinks} from './AdminDrawerLinks'
+import {Footer} from './Footer'
 
 const drawerWidth = 280
 
@@ -125,6 +126,8 @@ export const MainLayout: React.FC = ({children}) => {
       ) : (
         <></>
       )}
+
+      <Footer />
     </div>
   )
 }
