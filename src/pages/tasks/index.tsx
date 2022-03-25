@@ -83,9 +83,8 @@ const TestMeta = () => {
         <Typography fontWeight="bold">{selectedTheme.Test.TestCount || 'Не ограничено'}</Typography>
       </Box>
       <Box sx={{display: 'flex'}}>
-        <Typography sx={{mr: 2}}>Время тестирования: </Typography>
-        <Typography fontWeight="bold">
-          {selectedTheme.Test.TestTimeFromDB || 'Не ограничено'}
+        <Typography sx={{mr: 2}}>
+          Время тестирования: <b>{selectedTheme.Test.TestTimeFromDB || 'Не ограничено'}</b> минут
         </Typography>
       </Box>
       <Box sx={{display: 'flex'}}>
