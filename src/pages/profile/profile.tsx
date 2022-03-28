@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import React, {useEffect, useState} from 'react'
 import {Link, Outlet, Navigate, useLocation} from 'react-router-dom'
-import {Box, Tab, Tabs, useTheme} from '@mui/material'
+import {Box, Tab, Tabs} from '@mui/material'
 import {routesPaths} from 'src/router/paths'
 
 export const ProfilePage: React.FC = () => {
-  const theme = useTheme()
   const [tab, setTab] = useState(0)
   const location = useLocation()
 
@@ -25,7 +24,7 @@ export const ProfilePage: React.FC = () => {
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
       <Tabs
-        sx={{borderBottom: 1, borderBottomColor: theme.palette.grey[200]}}
+        sx={{borderBottom: 1, borderBottomColor: 'lightGrey.main'}}
         value={tab}
         variant="scrollable"
         onChange={(e, v) => setTab(v)}

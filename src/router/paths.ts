@@ -22,6 +22,7 @@ export const adminRoutes = {
 
 export const routesPaths = {
   index: '/',
+  about: '/about',
   materials: '/materials',
   materialId: '/materials/:id',
   news: '/news',

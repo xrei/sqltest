@@ -32,6 +32,7 @@ export const createRoutes = (createAdminRoutes: boolean): RouteObject[] => {
 
   return [
     {path: routesPaths.index, index: true, element: <Pages.HomePage />},
+    {path: routesPaths.about, element: <Pages.AboutPage />},
     {path: routesPaths.materials, element: <Pages.MaterialsPage />},
     {path: routesPaths.materialId, element: <Pages.MaterialArticlePage />},
     {path: routesPaths.news, element: <Pages.NewsPage />},

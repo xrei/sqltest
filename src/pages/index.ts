@@ -6,6 +6,7 @@ import {MaterialArticlePage} from './materials/_id'
 import {NewsPage} from './news'
 import {ProfilePage, MyResultsPage, StudentsRatingPage, ProfileInfoPage} from './profile'
 import {TaskResultPage} from './tasks/result'
+import {AboutPage} from './about'
 
 const TasksPage = React.lazy(() => import('src/pages/tasks'))
 const ThemeIdPage = React.lazy(() => import('src/pages/tasks/_themeId'))
@@ -17,6 +18,7 @@ export {
   DBInfosPage,
   AuthorsPage,
   HomePage,
+  AboutPage,
   NewsPage,
   MaterialsPage,
   MaterialArticlePage,

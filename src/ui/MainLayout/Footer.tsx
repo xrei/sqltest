@@ -17,17 +17,19 @@ export const Footer = () => {
     <Box
       sx={{
         display: 'flex',
+        flexFlow: {xs: 'column', sm: 'row'},
         justifyContent: 'center',
         mt: 4,
         gap: 1,
         pt: 4,
         pb: 2,
+        px: {xs: 2, sm: 0},
         borderTop: '1px solid',
         borderColor: 'lightGrey.main',
       }}
     >
       <Typography variant="body2" color="lightGrey.dark">
-        ©2002 — {year}
+        ©2006 — {year}
       </Typography>
 
       <Typography variant="body2" sx={{color: 'lightGrey.dark'}}>

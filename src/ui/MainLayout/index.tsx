@@ -17,13 +17,14 @@ import {$userIsStudent} from 'src/features/User/model'
 import {AppToolbar} from './Toolbar'
 import {AdminDrawerLinks} from './AdminDrawerLinks'
 import {Footer} from './Footer'
+import {useLocation} from 'react-router'
 
 const drawerWidth = 280
 
 const Main = styled('main', {shouldForwardProp: (prop) => prop !== 'open'})<{
   open?: boolean
 }>(({theme, open}) => ({
-  // minHeight: '100vh',
+  paddingTop: '52px',
   flexGrow: 1,
   display: 'flex',
   transition: theme.transitions.create('margin', {
@@ -63,6 +64,8 @@ const AppBar = styled(MuiAppBar, {
 }))
 
 export const MainLayout: React.FC = ({children}) => {
+  const location = useLocation()
+  const isMain = location.pathname === '/'
   const isNotStudent = !useStore($userIsStudent)
 
   const isDrawerOpen = useStore(drawerModel.$drawer)
@@ -85,9 +88,7 @@ export const MainLayout: React.FC = ({children}) => {
         </SwipeableDrawer>
       </Hidden>
       <Main open={isAdminDrawerOpen}>
-        <Container maxWidth="xl" sx={{marginTop: '50px'}}>
-          {children}
-        </Container>
+        {isMain ? children : <Container maxWidth="xl">{children}</Container>}
       </Main>
       {isNotStudent ? (
         <Box component="nav" sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}}>

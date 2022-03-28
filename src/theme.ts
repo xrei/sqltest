@@ -31,8 +31,11 @@ const getPalette = (mode: PaletteMode) => ({
   ...(mode === 'dark'
     ? {
         background: {
-          default: '#111',
-          paper: grey[900],
+          default: '#1a1a33',
+          paper: '#252643',
+        },
+        primary: {
+          main: indigo['400'],
         },
         lightGrey: {
           main: grey[800],
@@ -63,9 +66,10 @@ const getPalette = (mode: PaletteMode) => ({
 export const createAppTheme = (mode: PaletteMode) => {
   const theme = createTheme({
     typography: {
-      fontSize: 16,
+      fontSize: 15,
       h1: {
         fontSize: 32,
+        letterSpacing: 0.2,
       },
       h2: {
         fontSize: 28,
