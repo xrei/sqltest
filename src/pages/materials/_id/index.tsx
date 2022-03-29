@@ -1,7 +1,8 @@
-import {Box, Typography, Divider} from '@mui/material'
-import {useGate, useStore} from 'effector-react'
 import React from 'react'
-import {useParams} from 'react-router-dom'
+import {Box, Typography, Divider, IconButton} from '@mui/material'
+import {ArrowBack as ArrowBackIcon} from '@mui/icons-material'
+import {useGate, useStore} from 'effector-react'
+import {useParams, Link as RouterLink} from 'react-router-dom'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
 
 import * as model from './model'
@@ -18,7 +19,12 @@ export const MaterialArticlePage = () => {
 
   return (
     <Box display="flex" flexDirection="column" mt={2}>
-      <Typography variant="h3">{article.Name}</Typography>
+      <Typography variant="h3">
+        <IconButton component={RouterLink} to={{pathname: '/materials'}} sx={{mr: 2}}>
+          <ArrowBackIcon />
+        </IconButton>
+        {article.Name}
+      </Typography>
       <Divider sx={{my: 2}}></Divider>
       <Typography gutterBottom>{article.Description}</Typography>
 
