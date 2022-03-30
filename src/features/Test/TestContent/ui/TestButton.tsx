@@ -36,10 +36,12 @@ export const TestButton = ({drawer}: TestButtonProps) => {
         {drawer ? (
           <Box display="flex" flexDirection="column" justifyContent="center">
             <Typography sx={{textAlign: 'center', fontSize: 12}}>Текущий тест</Typography>
-            <span style={{textAlign: 'center'}}>{time}</span>
+            {time ? <span style={{textAlign: 'center'}}>{time}</span> : ''}
           </Box>
-        ) : (
+        ) : time ? (
           time
+        ) : (
+          'Текущий тест'
         )}
       </Button>
     )

@@ -21,10 +21,19 @@ type Props = {
 }
 export const DBContentTables = ({tables}: Props) => {
   const [expandedId, setExpandedId] = React.useState(0)
+  const hasData = tables.every((table) => table.TotalRowsCount > 0)
 
   const handleExpandClick = (idx: number) => {
     if (idx === expandedId) return setExpandedId(-1)
     setExpandedId(idx)
+  }
+
+  if (!hasData) {
+    return (
+      <Typography variant="h5">
+        В результате вернулась пустая таблица <br /> Возможно проблема в самом запросе
+      </Typography>
+    )
   }
 
   return (

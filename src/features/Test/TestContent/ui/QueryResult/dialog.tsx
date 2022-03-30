@@ -32,7 +32,7 @@ export const QueryResultDialog = () => {
     >
       <DialogTitle>{queryTypeStr[queryType]}</DialogTitle>
       <DialogContent>{isLoading ? <Loading /> : <DBContentTables tables={data} />}</DialogContent>
-      <DialogActions>
+      <DialogActions disableSpacing>
         <Button variant="contained" color="primary" onClick={() => QueryResultModel.toggleDialog()}>
           Закрыть
         </Button>
