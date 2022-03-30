@@ -44,7 +44,7 @@ export const HomePage: React.FC = () => {
           justifyContent: 'center',
           textAlign: 'center',
           backgroundColor: '#252643',
-          color: 'primary.contrastText',
+          color: 'common.white',
         }}
       >
         <Box mb={2}>

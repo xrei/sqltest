@@ -104,12 +104,8 @@ const DBScriptDialog: React.FC<DialogProps> = ({script, open, onClose}) => {
       <DialogContent>
         <div dangerouslySetInnerHTML={{__html: script}}></div>
       </DialogContent>
-      <DialogActions>
-        <Button
-          variant={copied ? 'contained' : 'outlined'}
-          color={copied ? 'success' : 'primary'}
-          onClick={copy}
-        >
+      <DialogActions sx={{mt: 2}}>
+        <Button variant="contained" color={copied ? 'success' : 'primary'} onClick={copy}>
           {copied ? 'Успешно скопировано' : 'Скопировать скрипт'}
         </Button>
       </DialogActions>

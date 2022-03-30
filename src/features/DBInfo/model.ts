@@ -7,7 +7,15 @@ export const $dbInfosList = createStore<DBInfo[]>([])
 export const fetchDbInfo = createEffect<void, DBInfo[]>(async () => {
   const res = await getDBInfos()
   const list = await res.json()
-  return list
+
+  const mapped = list.map((v) => {
+    return {
+      ...v,
+      creation_script: v.creation_script.replaceAll(/style="[^"]*"/g, ''),
+    }
+  })
+  console.log(mapped)
+  return mapped
 })
 
 $dbInfosList.on(fetchDbInfo.doneData, (_, list) => list)
