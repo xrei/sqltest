@@ -50,11 +50,9 @@ export const IncorrectQsnDialog = () => {
         <Button variant="contained" color="error" onClick={() => model.toggleIncorrectQsnDialog()}>
           Отмена
         </Button>
-        {isSent && (
-          <Button variant="contained" color="primary" onClick={sendProblem}>
-            Отправить
-          </Button>
-        )}
+        <Button variant="contained" color="primary" onClick={sendProblem}>
+          Отправить
+        </Button>
       </DialogActions>
     </Dialog>
   )
