@@ -4,6 +4,7 @@ import {HelperButtons} from './ui/HelperButtons'
 import {DBContentDialog} from './ui/DBContentDialog'
 import {TestButton} from './ui/TestButton'
 import {IncorrectQsnDialog} from './ui/IncorrectQsnDialog'
+import {RightAnswerDialog} from './ui/RightAnswerDialog'
 import {QueryResultButtons, QueryResultDialog} from './ui/QueryResult'
 
 export {
@@ -15,4 +16,5 @@ export {
   IncorrectQsnDialog,
   QueryResultButtons,
   QueryResultDialog,
+  RightAnswerDialog,
 }

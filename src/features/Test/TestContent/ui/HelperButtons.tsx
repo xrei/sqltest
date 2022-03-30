@@ -6,6 +6,7 @@ import {useStore} from 'effector-react'
 import * as TestContentModel from '../model'
 import {DBInfoModel} from 'src/features/DBInfo'
 import {toggleIncorrectQsnDialog} from './IncorrectQsnDialog/model'
+import {onRightAnswClicked} from './RightAnswerDialog/model'
 
 export const HelperButtons = () => {
   const test = useStore(TestContentModel.$test)
@@ -19,7 +20,13 @@ export const HelperButtons = () => {
       <Button variant="outlined" onClick={() => DBInfoModel.toggleDialog()}>
         Описание баз данных
       </Button>
-      {test?.ViewRight ? <Button variant="outlined">Правильный ответ</Button> : <></>}
+      {test?.ViewRight ? (
+        <Button variant="outlined" color="success" onClick={() => onRightAnswClicked()}>
+          Правильный ответ
+        </Button>
+      ) : (
+        <></>
+      )}
       <Button variant="outlined" color="warning" onClick={() => toggleIncorrectQsnDialog()}>
         Сообщить о некорректности задания
       </Button>

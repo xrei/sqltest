@@ -18,22 +18,22 @@ export const MyResultsPage = () => {
       <Typography gutterBottom variant="h3">
         Последние результаты тестирования
       </Typography>
-      <Stack maxWidth="sm">
-        <Box sx={{mb: 2}}>
+      <Box sx={{display: 'flex', flexDirection: {xs: 'column', md: 'row'}, gap: {xs: 2, md: 4}}}>
+        <Box sx={{mb: 2, width: '100%'}}>
           <Typography sx={{mb: 1}} variant="h5">
             Выберите дисциплину:
           </Typography>
           <SubjectSelect />
         </Box>
-        <Box>
+        <Box sx={{width: '100%'}}>
           <Typography sx={{mb: 1}} variant="h5">
             Выберите тему:
           </Typography>
           <ThemeSelect />
         </Box>
-      </Stack>
+      </Box>
 
-      <Box sx={{mt: 4, mb: 4, width: '100%', height: 480}}>
+      <Box sx={{mt: 4, mb: 4, width: '100%', height: 600}}>
         <ResultsTable />
       </Box>
     </Box>
@@ -60,6 +60,7 @@ const ResultsTable = () => {
         rows={results}
         columns={TableCols}
         pageSize={7}
+        density={'comfortable'}
         rowsPerPageOptions={[7]}
         disableColumnMenu
       />

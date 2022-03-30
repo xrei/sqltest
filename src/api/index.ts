@@ -62,16 +62,8 @@ export const getUserRatings = createRequestFx<{StuId: number; TestId: string}, T
   'GET',
   true
 )
-export const getStudentsGroupsRatings = createRequestFx<
-  {userId: number; subjId: string},
-  StudRating[]
->('Prep/GetStudentsGroupsRatings', 'GET', true)
 
-export const getArticle = createRequestFx<{Id: number}, MaterialArticle>(
-  'Admin/GetArticle',
-  'GET',
-  true
-)
+export const getRA = createRequestFx<{Id: number}, string[]>('Home/GetRightAnswer', 'GET', true)
 
 // admin
 export const getAuthors = createRequestFx<void, Author[]>('Admin/GetAuthors')
@@ -148,6 +140,17 @@ export const postAddSystemUser = createRequestFx<NonNullable<NewSystemUserDto>, 
 export const postEditSystemUser = createRequestFx<NonNullable<NewSystemUserDto>, string>(
   'Admin/EditSystemUser',
   'POST'
+)
+
+export const getStudentsGroupsRatings = createRequestFx<
+  {userId: number; subjId: string},
+  StudRating[]
+>('Prep/GetStudentsGroupsRatings', 'GET', true)
+
+export const getArticle = createRequestFx<{Id: number}, MaterialArticle>(
+  'Admin/GetArticle',
+  'GET',
+  true
 )
 
 // auth

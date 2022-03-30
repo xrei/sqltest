@@ -14,7 +14,7 @@ export const fetchDbInfo = createEffect<void, DBInfo[]>(async () => {
       creation_script: v.creation_script.replaceAll(/style="[^"]*"/g, ''),
     }
   })
-  console.log(mapped)
+
   return mapped
 })
 

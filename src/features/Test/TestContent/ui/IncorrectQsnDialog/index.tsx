@@ -47,7 +47,7 @@ export const IncorrectQsnDialog = () => {
         )}
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" color="error" onClick={() => model.toggleIncorrectQsnDialog()}>
+        <Button color="error" onClick={() => model.toggleIncorrectQsnDialog()}>
           Отмена
         </Button>
         <Button variant="contained" color="primary" onClick={sendProblem}>

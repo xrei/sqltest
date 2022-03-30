@@ -72,6 +72,14 @@ export default TasksPage
 const TestMeta = () => {
   const selectedTheme = useStore(ThemesModel.$selectedTheme)
   if (!selectedTheme) return <></>
+  const time = selectedTheme.Test.TestTimeFromDB
+  const timeText = time ? (
+    <>
+      <b>{time}</b> минут
+    </>
+  ) : (
+    <b>Не ограничено</b>
+  )
 
   return (
     <>
@@ -83,9 +91,7 @@ const TestMeta = () => {
         <Typography fontWeight="bold">{selectedTheme.Test.TestCount || 'Не ограничено'}</Typography>
       </Box>
       <Box sx={{display: 'flex'}}>
-        <Typography sx={{mr: 2}}>
-          Время тестирования: <b>{selectedTheme.Test.TestTimeFromDB || 'Не ограничено'}</b> минут
-        </Typography>
+        <Typography sx={{mr: 2}}>Время тестирования: {timeText}</Typography>
       </Box>
       <Box sx={{display: 'flex'}}>
         <Typography sx={{mr: 2}}>Заданий в тесте: </Typography>

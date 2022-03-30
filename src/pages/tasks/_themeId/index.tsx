@@ -13,6 +13,7 @@ import {
   IncorrectQsnDialog,
   QueryResultButtons,
   QueryResultDialog,
+  RightAnswerDialog,
 } from 'src/features/Test/TestContent'
 import {TestContentModel} from 'src/features/Test'
 
@@ -88,6 +89,7 @@ const ThemeIdPage = () => {
       <DBContentDialog />
       <IncorrectQsnDialog />
       <QueryResultDialog />
+      <RightAnswerDialog />
     </Box>
   )
 }

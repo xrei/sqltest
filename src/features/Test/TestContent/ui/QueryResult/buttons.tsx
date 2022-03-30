@@ -6,10 +6,10 @@ export const QueryResultButtons = () => {
   return (
     <Box display="flex" gap={2} sx={{mt: 2}}>
       <Button variant="contained" onClick={() => QueryResultModel.openDialogWithType('user')}>
-        Посмотреть ТРЗ
+        Проверить запрос
       </Button>
       <Button variant="contained" onClick={() => QueryResultModel.openDialogWithType('reference')}>
-        Правильная ТРЗ
+        Посмотреть верный результат
       </Button>
     </Box>
   )
