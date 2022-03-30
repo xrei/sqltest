@@ -87,8 +87,10 @@ export const fetchTestContentFx = createEffect<Theme, Test>(async (theme) => {
   // initially set first question in test
   changeCurrentQuestionId(res.Questions[0].Id)
 
-  const ticks = res.TestTimeFromDB * 60
-  startTimer(ticks)
+  if (res.TestTimeFromDB > 0) {
+    const ticks = res.TestTimeFromDB * 60
+    startTimer(ticks)
+  }
 
   return res
 })
