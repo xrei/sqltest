@@ -19,7 +19,6 @@ $studGroups.on(fetchGroupsFx.doneData, (_, p) => p)
 sample({
   source: $user,
   clock: fetchUser.done,
-  filter: (user) => (user ? user.Role === 0 : false),
   target: fetchGroupsFx,
 })
 
