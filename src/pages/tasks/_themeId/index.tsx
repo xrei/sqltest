@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Navigate} from 'react-router-dom'
 import {useGate, useStore} from 'effector-react'
 import {Box, Typography, Paper, useTheme, useMediaQuery, Divider} from '@mui/material'
@@ -17,8 +17,21 @@ import {
 } from 'src/features/Test/TestContent'
 import {TestContentModel} from 'src/features/Test'
 
+const beforeLeave = (e: Event) => {
+  e.preventDefault()
+  e.returnValue = false
+  return false
+}
+
 const ThemeIdPage = () => {
   useGate(ThemeTestGate)
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', beforeLeave)
+    return () => {
+      window.removeEventListener('beforeunload', beforeLeave)
+    }
+  })
 
   const theme = useTheme()
   const hasData = useStore(TestContentModel.$hasTestAndTheme)
