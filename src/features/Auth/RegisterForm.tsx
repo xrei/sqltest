@@ -46,7 +46,7 @@ export const RegisterForm = () => {
       PaperProps={{sx: {justifyContent: fullscreen ? 'center' : 'flex-start'}}}
     >
       <DialogTitle sx={{display: 'flex', alignItems: 'center'}}>
-        <div css={{flex: 1}}>Регистрация в системе</div>
+        <div css={{flex: 1}}>Регистрация</div>
         <IconButton tabIndex={-1} onClick={() => DialogModel.dialogClosed()}>
           <CloseIcon />
         </IconButton>

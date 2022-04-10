@@ -48,7 +48,7 @@ export const LoginForm = () => {
       PaperProps={{sx: {justifyContent: fullscreen ? 'center' : 'flex-start'}}}
     >
       <DialogTitle sx={{display: 'flex', alignItems: 'center'}}>
-        <div css={{flex: 1}}>Вход в систему</div>
+        <div css={{flex: 1}}>Вход</div>
         <IconButton tabIndex={-1} onClick={() => DialogModel.dialogClosed()}>
           <CloseIcon />
         </IconButton>
