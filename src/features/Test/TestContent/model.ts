@@ -18,6 +18,13 @@ const timer = createCountdown('TestTimer', {start: startTimer, abort: abortTimer
 
 //#region Stores
 export const $testResults = createStore<TestResultStore | null>(null)
+export const $resultTaskWithErrors = $testResults.map((test) => {
+  if (test && test.testResult) {
+    // [[id, question]]
+    return test.testResult.ErrorQsn.map((val) => val.split('-').map((v) => v.trim()))
+  }
+  return null
+})
 export const $currentTheme = createStore<Theme | null>(null)
 export const $test = createStore<Test | null>(null)
 export const $hasTestAndTheme = combine(

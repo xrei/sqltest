@@ -1,5 +1,18 @@
 import React from 'react'
-import {Stack, Typography, Link, Box} from '@mui/material'
+import {
+  Stack,
+  Typography,
+  Link,
+  Box,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material'
+import {ExpandMore as ExpandMoreIcon, ErrorOutline} from '@mui/icons-material'
 import {LoadingButton} from '@mui/lab'
 import {useNavigate} from 'react-router'
 import {useGate, useStore} from 'effector-react'
@@ -11,6 +24,7 @@ export const TaskResultPage = () => {
   useGate(TestResultsGate)
   const navigate = useNavigate()
   const results = useStore(TestContentModel.$testResults)
+  const qsnWithErrors = useStore(TestContentModel.$resultTaskWithErrors)
   const user = useStore(UserModel.$user)
   const loading = useStore(TestContentModel.startTestAgainFx.pending)
 
@@ -50,6 +64,28 @@ export const TaskResultPage = () => {
           Пройти этот тест еще раз
         </LoadingButton>
       </Box>
+      <Accordion
+        sx={{pt: 1, '&:before': {display: 'none'}}}
+        TransitionProps={{unmountOnExit: true}}
+      >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>Просмотр заданий, на которые был дан неверный ответ</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <List>
+            {qsnWithErrors?.map((val) => (
+              <ListItem key={val[0]}>
+                <ListItemIcon>
+                  <ErrorOutline color="error" />
+                </ListItemIcon>
+                <ListItemText>
+                  <span dangerouslySetInnerHTML={{__html: val[1]}}></span>
+                </ListItemText>
+              </ListItem>
+            ))}
+          </List>
+        </AccordionDetails>
+      </Accordion>
     </Stack>
   )
 }

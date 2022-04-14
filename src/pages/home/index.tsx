@@ -88,7 +88,7 @@ export const HomePage: React.FC = () => {
             Поддерживаемые СУБД
           </Typography>
           <Typography textAlign="center" variant="body1" sx={{mb: 4}}>
-            По которым вы можете пройти тесты
+            для прохождения тестов
           </Typography>
           <Box
             sx={{

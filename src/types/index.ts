@@ -167,6 +167,7 @@ export type Test = {
 }
 
 export type TestResult = {
+  ErrorQsn: string[]
   AnswerCount: number
   CountRightAnswers: number
   Mark: number
