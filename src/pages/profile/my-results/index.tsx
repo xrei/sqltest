@@ -19,13 +19,13 @@ export const MyResultsPage = () => {
         Последние результаты тестирования
       </Typography>
       <Box sx={{display: 'flex', flexDirection: {xs: 'column', md: 'row'}, gap: {xs: 2, md: 4}}}>
-        <Box sx={{mb: 2, width: '100%'}}>
+        <Box sx={{mb: 2, width: '50%'}}>
           <Typography sx={{mb: 1}} variant="h5">
             Выберите дисциплину:
           </Typography>
           <SubjectSelect />
         </Box>
-        <Box sx={{width: '100%'}}>
+        <Box sx={{width: '50%'}}>
           <Typography sx={{mb: 1}} variant="h5">
             Выберите тему:
           </Typography>
