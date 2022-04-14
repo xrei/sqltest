@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Typography, Stack} from '@mui/material'
+import {Box, Typography} from '@mui/material'
 import {useGate, useStore} from 'effector-react'
 import type {GridColDef} from '@mui/x-data-grid'
 import {ThemeSelect, SubjectSelect} from 'src/features/Test'
