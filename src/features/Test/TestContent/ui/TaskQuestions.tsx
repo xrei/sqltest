@@ -39,7 +39,9 @@ type QsnBtnProps = {
   current?: boolean
   hasAnswer?: boolean
   onClick?: React.MouseEventHandler<HTMLButtonElement>
+  children?: React.ReactNode
 }
+
 const QuestionBtn: React.FC<QsnBtnProps> = (props) => {
   const theme = useTheme()
 

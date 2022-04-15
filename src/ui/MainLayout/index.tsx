@@ -63,7 +63,11 @@ const AppBar = styled(MuiAppBar, {
   },
 }))
 
-export const MainLayout: React.FC = ({children}) => {
+type Props = {
+  children?: React.ReactNode
+}
+
+export const MainLayout: React.FC<Props> = ({children}) => {
   const location = useLocation()
   const isMain = location.pathname === '/'
   const isNotStudent = !useStore($userIsStudent)
