@@ -33,7 +33,10 @@ $results.on(fetchUserRatingsFx.doneData, (_, p) => p)
 sample({
   clock: getResults,
   source: [ThemesModel.$selectedThemeId, $onResultsPage],
-  filter: ([id, onResultsPage]) => (onResultsPage ? Number.isInteger(Number(id)) : false),
+  filter: ([id, onResultsPage]) => {
+    if (!id) return false
+    return onResultsPage ? Number.isInteger(Number(id)) : false
+  },
   target: fetchUserRatingsFx,
 })
 
