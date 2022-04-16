@@ -84,8 +84,8 @@ export const HomePage: React.FC = () => {
           />
         </Box>
         <Box sx={{display: 'flex', flexFlow: 'column', mt: 8}}>
-          <Typography textAlign="center" variant="h1" sx={{fontWeight: 'bold', mb: 1}}>
-            Поддерживаемые СУБД
+          <Typography textAlign="center" variant="h1" sx={{fontWeight: '500', mb: 1}}>
+            Системы управления БД
           </Typography>
           <Typography textAlign="center" variant="body1" sx={{mb: 4}}>
             для прохождения тестов
@@ -127,7 +127,6 @@ export const HomePage: React.FC = () => {
           </Button>
         </Box>
       </Container>
-      {/* <RenderHtml htmlStr={about}></RenderHtml> */}
     </Box>
   )
 }

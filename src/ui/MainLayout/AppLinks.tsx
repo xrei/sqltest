@@ -26,8 +26,8 @@ const buttonCss = (drawer?: boolean) => (theme: any) =>
 const linkSx = (drawer?: boolean) =>
   ({
     textTransform: 'none',
-    fontWeight: 'medium',
     color: drawer ? 'text.primary' : 'inherit',
+    fontWeight: 'normal',
   } as const)
 
 export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
