@@ -1,4 +1,4 @@
-import {defineConfig, loadEnv} from 'vite'
+import {defineConfig, loadEnv, splitVendorChunkPlugin} from 'vite'
 import react from '@vitejs/plugin-react'
 import {resolve} from 'path'
 
@@ -21,7 +21,7 @@ export default defineConfig(({mode}) => {
         },
       },
     },
-    plugins: [react()],
+    plugins: [react(), splitVendorChunkPlugin()],
     resolve: {
       alias: {
         src: resolve(__dirname, './src'),

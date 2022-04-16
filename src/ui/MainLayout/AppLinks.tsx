@@ -2,7 +2,7 @@
 import {css} from '@emotion/react'
 import React from 'react'
 import {Box, Typography, Stack, Button} from '@mui/material'
-import {DesktopMac, Book, Event, Star} from '@mui/icons-material'
+import {Book, Event, Star} from '@mui/icons-material'
 import {Link} from 'react-router-dom'
 import {TestButton} from 'src/features/Test/TestContent'
 import {routesPaths} from 'src/router/paths'
@@ -51,6 +51,7 @@ export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
           variant="text"
           component={Link}
           to={routesPaths.index}
+          aria-label="Главная"
         >
           <Logo width={drawer ? 128 : 60} />
           {/* <Typography sx={{...linkSx(drawer), pl: 2}}>Главная</Typography> */}
@@ -62,6 +63,7 @@ export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
           component={Link}
           to={routesPaths.materials}
           startIcon={<Book />}
+          aria-label="Материалы"
         >
           <Typography sx={linkSx(drawer)}>Материалы</Typography>
         </Button>
@@ -72,6 +74,7 @@ export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
           component={Link}
           to={routesPaths.news}
           startIcon={<Event />}
+          aria-label="Новости"
         >
           <Typography sx={linkSx(drawer)}>Новости</Typography>
         </Button>
@@ -82,6 +85,7 @@ export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
           component={Link}
           to={routesPaths.authors}
           startIcon={<Star />}
+          aria-label="Авторы"
         >
           <Typography sx={linkSx(drawer)}>Авторы</Typography>
         </Button>

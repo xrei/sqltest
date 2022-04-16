@@ -9,6 +9,7 @@ import {
   CardContent,
   Paper,
 } from '@mui/material'
+import {DesktopMac} from '@mui/icons-material'
 import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
 import {Logo} from 'src/ui/Logo'
@@ -122,6 +123,8 @@ export const HomePage: React.FC = () => {
             variant="contained"
             component={Link}
             to="/about"
+            startIcon={<DesktopMac />}
+            aria-label="Подробнее"
           >
             Подробнее о системе
           </Button>
@@ -143,6 +146,7 @@ const FeatureCard = ({card}: FeatureCardProps) => {
         sx={{p: 2, width: 'auto'}}
         height="194"
         width={225}
+        alt={card.title}
       />
       <CardContent
         sx={{
@@ -157,7 +161,7 @@ const FeatureCard = ({card}: FeatureCardProps) => {
         <Typography variant="h1" color="primary" fontWeight="bold" gutterBottom>
           {card.title}
         </Typography>
-        <Typography sx={{fontSize: 20}} variant="subtitle2" color="text.primary">
+        <Typography sx={{fontSize: 20}} component="span" variant="subtitle1" color="text.primary">
           {card.description}
         </Typography>
       </CardContent>
