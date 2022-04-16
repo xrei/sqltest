@@ -12,7 +12,6 @@ export const fetchSubjectsFx = attach({
   source: $user,
   async effect(user) {
     if (!user) return []
-    console.log('fetch subj')
     const res = await (await getAvailableSubjects({Id: user.Id})).json()
     return res
   },

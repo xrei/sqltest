@@ -25,7 +25,6 @@ export const fetchThemeListFx = attach({
   async effect([user, subjId]) {
     if (!user || !subjId) return []
 
-    console.log('fetch available theme list')
     const res = await (await getThemeList({UserId: user.Id, SubjectId: Number(subjId)})).json()
     return res
   },
@@ -43,4 +42,9 @@ forward({
 reset({
   stores: [$themeList, $selectedThemeId],
   trigger: clearThemes,
+})
+
+reset({
+  stores: [$themeList, $selectedThemeId],
+  trigger: SubjectsModel.selectSubject,
 })

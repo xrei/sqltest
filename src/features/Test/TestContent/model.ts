@@ -110,7 +110,7 @@ export const finishTestFx = attach({
     }
 
     const res = await (await saveTestResult(test)).json()
-    console.log('test result: ', res)
+    // console.log('test result: ', res)
     // stop timer
     abortTimer()
 

@@ -39,6 +39,6 @@ forward({from: loginFx.doneData, to: setUser})
 forward({from: registerFx.doneData, to: setUser})
 forward({from: authLogOff.doneData, to: clearUser})
 
-$user.watch((u) => {
-  console.log('USER: ', u)
-})
+// $user.watch((u) => {
+//   console.log('USER: ', u)
+// })

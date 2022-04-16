@@ -20,7 +20,6 @@ export const fetchUserRatingsFx = attach({
     }
 
     const res = await (await getUserRatings({StuId: user.Id, TestId: themeId})).json()
-    console.log(res)
     return res.map((v) => ({...v, id: v.RatingId}))
   },
 })
