@@ -97,7 +97,7 @@ export const HomePage: React.FC = () => {
               flexWrap: 'wrap',
               gap: {xs: 2, sm: 4},
               flex: 1,
-              justifyContent: 'space-between',
+              justifyContent: {xs: 'center', sm: 'space-between'},
             }}
           >
             {logos.map((logo, id) => (
@@ -145,7 +145,6 @@ const FeatureCard = ({card}: FeatureCardProps) => {
         image={card.image}
         sx={{p: 2, width: 'auto'}}
         height="194"
-        width={225}
         alt={card.title}
       />
       <CardContent

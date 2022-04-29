@@ -13,7 +13,7 @@ export const NewsPage: React.FC = () => {
       <NewsPageGate></NewsPageGate>
       <Box sx={{display: 'flex', flexFlow: 'column', mt: 2, height: '100%'}}>
         <Typography variant="h1" gutterBottom>
-          Последние публикации:
+          Последние публикации
         </Typography>
 
         {isLoading ? <CenteredLoader fullHeight /> : <NewsList />}

@@ -11,7 +11,7 @@ export const MaterialsPage: React.FC = () => {
   return (
     <Box display="flex" flexDirection="column" mt={2}>
       <Typography gutterBottom variant="h1">
-        Материалы:
+        Материалы
       </Typography>
       <Stack gap={4}>
         <MaterialsList />
