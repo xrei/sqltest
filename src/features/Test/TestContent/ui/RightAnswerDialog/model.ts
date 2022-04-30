@@ -31,3 +31,6 @@ forward({
   from: onRightAnswClicked,
   to: dialogToggled,
 })
+
+$answer.reset(TestContentModel.finishTestFx.doneData)
+$dialogOpen.reset(TestContentModel.finishTestFx.doneData)

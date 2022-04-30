@@ -66,4 +66,5 @@ $isOpen.watch((open) => {
   }
 })
 
-$queryResult.reset([resetResult])
+$queryResult.reset([resetResult, TestContentModel.finishTestFx.doneData])
+$isOpen.reset(TestContentModel.finishTestFx.doneData)

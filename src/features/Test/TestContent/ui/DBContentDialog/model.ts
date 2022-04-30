@@ -29,3 +29,6 @@ forward({
   from: fetchDBContentFx.doneData,
   to: toggle,
 })
+
+$dbContent.reset([TestContentModel.finishTestFx.doneData])
+$isOpen.reset([TestContentModel.finishTestFx.doneData])
