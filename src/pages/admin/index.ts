@@ -11,6 +11,7 @@ const createLazyAdminPages = () => {
     AdminSystemDbEditPage: React.lazy(() => import('src/pages/admin/system-db/_id/edit')),
     AdminSystemQueryPage: React.lazy(() => import('src/pages/admin/system-query')),
     AdminSystemUsersPage: React.lazy(() => import('src/pages/admin/system-users')),
+    AdminSystemInfosPage: React.lazy(() => import('src/pages/admin/system-info')),
   }
   return pages
 }

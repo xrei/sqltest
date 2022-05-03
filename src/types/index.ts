@@ -260,3 +260,8 @@ export type NewSystemUserDto = {
   subjects: {SubjectId: number; UserId: boolean}[]
   user: SystemUserDto
 }
+
+export type SystemInfo = {
+  name: string
+  info: string
+}
