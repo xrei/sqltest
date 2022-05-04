@@ -38,15 +38,17 @@ const DrawerHeader = styled('div')(({theme}) => ({
 }))
 
 const adminPages = [
+  {to: adminRoutes.studentAnswers, text: 'Ответы студентов'},
+  {to: adminRoutes.journal, text: 'Журнал'},
   {to: adminRoutes.manageTests, text: 'Тесты'},
   {to: adminRoutes.groups, text: 'Группы'},
   {to: adminRoutes.students, text: 'Студенты'},
-  {to: adminRoutes.systemUsers, text: 'Доступы'},
-  {to: adminRoutes.systemQuery, text: 'Системные запросы'},
 ]
 
 const adminEntitiesPages = [
+  {to: adminRoutes.systemUsers, text: 'Доступы'},
   {to: adminRoutes.systemDb, text: 'Базы данных'},
+  {to: adminRoutes.systemQuery, text: 'Системные запросы'},
   {to: adminRoutes.theory, text: 'Теория'},
   {to: adminRoutes.addNews, text: 'Добавить новость'},
   {to: adminRoutes.addAuthor, text: 'Добавить автора'},
@@ -54,8 +56,6 @@ const adminEntitiesPages = [
 ]
 
 const adminStatsPages = [
-  {to: '/admin/student-answers', text: 'Ответы студентов'},
-  {to: '/admin/journal', text: 'Журнал'},
   {to: '/admin/student-rating', text: 'Рейтинги студентов'},
   {to: '/admin/tasks-stats', text: 'Статистика по заданиям'},
   {to: '/admin/online-users', text: 'Пользователи онлайн'},
@@ -81,7 +81,7 @@ export const AdminDrawerLinks = () => {
   }
 
   return (
-    <Box>
+    <Box sx={{display: 'flex', flexFlow: 'column', flex: 1}}>
       <DrawerHeader>
         {!isMobDrawerOpen && (
           <IconButton onClick={() => adminDrawerClosed()}>
@@ -107,7 +107,7 @@ export const AdminDrawerLinks = () => {
         ))}
       </List>
       <Divider />
-      <List>
+      <List disablePadding>
         <ListItem dense button onClick={handleClick}>
           <ListItemText primary="Управление" />
           {open ? <ExpandLess /> : <ExpandMore />}
@@ -129,13 +129,13 @@ export const AdminDrawerLinks = () => {
         </Collapse>
       </List>
       <Divider />
-      <List>
+      <List sx={{flexGrow: 1}}>
         {adminStatsPages.map((page, index) => (
           <ListItem
             component={Link}
             to={page.to}
-            button
             dense
+            button
             key={index}
             onClick={closeMobDrawerOnClick}
           >
@@ -144,7 +144,7 @@ export const AdminDrawerLinks = () => {
         ))}
       </List>
       <Divider />
-      <List>
+      <List dense>
         <ListItem button onClick={onLogout}>
           <IconButton>
             <LogoutIcn />

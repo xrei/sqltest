@@ -18,6 +18,7 @@ export const adminRoutes = {
   addNews: '/admin/news/add',
   editNews: '/admin/news/:id/edit',
   systemInfo: '/admin/system-info/',
+  studentAnswers: '/admin/student-answers',
 }
 
 export const routesPaths = {
