@@ -16,17 +16,12 @@ import {
   TableRow,
   TablePagination,
   TableFooter,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   IconButton,
   Tooltip,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
-  SelectChangeEvent,
 } from '@mui/material'
 import {
   FirstPage as FirstPageIcon,
@@ -39,7 +34,7 @@ import {
 import * as model from './model'
 import {useGate, useStore} from 'effector-react'
 import {AdminGroupsModel} from 'src/features/User/Admin'
-import type {StudentGroup} from 'src/types'
+import {GroupSelector} from 'src/ui/GroupSelector'
 
 const AdminManageStudentsPage = () => {
   useGate(model.AdminManageStudentsPageGate)
@@ -63,26 +58,6 @@ const AdminManageStudentsPage = () => {
 
       <ManageStudentDialog />
     </Box>
-  )
-}
-
-interface GroupSelectorProps {
-  list: StudentGroup[]
-  value: string
-  onChange?: ((event: SelectChangeEvent<string>, child: React.ReactNode) => void) | undefined
-}
-const GroupSelector: React.FC<GroupSelectorProps> = ({list, value, onChange}) => {
-  return (
-    <FormControl sx={{maxWidth: 'sm', mr: 2}} fullWidth variant="outlined" size="small">
-      <InputLabel id="adm-group-sel">Группа</InputLabel>
-      <Select value={value} labelId="adm-group-sel" label="Группа" onChange={onChange}>
-        {list.map((x) => (
-          <MenuItem dense key={x.GroupValue} value={x.GroupValue}>
-            {x.GroupNumber}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
   )
 }
 

@@ -1,9 +1,13 @@
 import React from 'react'
 import {useStore} from 'effector-react'
-import {Card, CardContent, Typography, Stack, Box} from '@mui/material'
+import {Card, CardContent, Typography, Stack, Box, CardActions, Button} from '@mui/material'
 import {AuthorsPageGate, $authors, $isLoading} from './model'
 import {RenderHtml} from 'src/ui/RenderHtml'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {UserModel} from 'src/features/User'
+import {Link as RouterLink} from 'react-router-dom'
+import {adminRoutes} from 'src/router/paths'
+import {deleteAuthorClicked} from '../admin/author/model'
 
 export const AuthorsPage: React.FC = () => {
   const isLoading = useStore($isLoading)
@@ -24,6 +28,7 @@ export const AuthorsPage: React.FC = () => {
 
 const AuthorList = () => {
   const authors = useStore($authors)
+  const isAdmin = useStore(UserModel.$userIsAdmin)
 
   return (
     <Stack spacing={2}>
@@ -39,6 +44,22 @@ const AuthorList = () => {
               <RenderHtml htmlStr={author.AuthorDescription}></RenderHtml>
             </CardContent>
           </Box>
+          {isAdmin && (
+            <CardActions>
+              <Button
+                component={RouterLink}
+                to={adminRoutes.editAuthor.replace(':id', String(author.AuthorId))}
+                color="warning"
+                variant="outlined"
+                sx={{mr: 1}}
+              >
+                Редактировать
+              </Button>
+              <Button color="error" variant="outlined" onClick={() => deleteAuthorClicked()}>
+                Удалить
+              </Button>
+            </CardActions>
+          )}
         </Card>
       ))}
     </Stack>

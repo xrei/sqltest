@@ -3,6 +3,7 @@ import {red, indigo, pink, grey, common, green} from '@mui/material/colors'
 import {PaletteMode} from '@mui/material'
 import {createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {AppGate} from './lib/AppGate'
+import {MUIRichTextEditorTheme} from './features/TextEditor'
 
 export const $themeMode = createStore<PaletteMode>('light')
 export const changeThemeMode = createEvent()
@@ -96,6 +97,10 @@ export const createAppTheme = (mode: PaletteMode) => {
       },
     },
     palette: getPalette(mode),
+    // @ts-expect-error error expected
+    components: {
+      ...MUIRichTextEditorTheme,
+    },
   })
   return responsiveFontSizes(theme)
 }

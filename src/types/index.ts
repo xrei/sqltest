@@ -265,3 +265,10 @@ export type SystemInfo = {
   name: string
   info: string
 }
+
+export type JournalData = {
+  avgMark: number
+  stuFIO: string
+  testCount: number
+  themeName: string
+}

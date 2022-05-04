@@ -3,12 +3,16 @@ import {InputLabel, MenuItem, Select, FormControl} from '@mui/material'
 import {useStore} from 'effector-react'
 import * as SubjectsModel from '../Subjects/model'
 
-export const SubjectSelect = () => {
+type SubjectSelectProps = {
+  dense?: boolean
+  size?: 'small' | 'medium'
+}
+export const SubjectSelect = (props: SubjectSelectProps) => {
   const subjVal = useStore(SubjectsModel.$selectedSubjectId)
   const subjList = useStore(SubjectsModel.$availableSubjects)
 
   return (
-    <FormControl variant="outlined" sx={{width: '100%'}}>
+    <FormControl variant="outlined" sx={{width: '100%'}} size={props.size}>
       <InputLabel id="stud-subj-sel">Дисциплина</InputLabel>
       <Select
         value={subjVal}

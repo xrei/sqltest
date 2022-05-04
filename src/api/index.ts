@@ -24,6 +24,7 @@ import {
   SystemUsers,
   NewSystemUserDto,
   SystemInfo,
+  JournalData,
 } from 'src/types'
 
 // home
@@ -149,6 +150,11 @@ export const deleteSystemInfo = createRequestFx<SystemInfo, string>(
   'POST'
 )
 
+export const deleteAuthor = createRequestFx<{AuthorId: number}, string>(
+  'Admin/DeleteAuthor',
+  'POST'
+)
+
 export const getStudentsGroupsRatings = createRequestFx<
   {userId: number; subjId: string},
   StudRating[]
@@ -156,6 +162,17 @@ export const getStudentsGroupsRatings = createRequestFx<
 
 export const getArticle = createRequestFx<{Id: number}, MaterialArticle>(
   'Admin/GetArticle',
+  'GET',
+  true
+)
+
+export const getAdminJournal = createRequestFx<{groupId: string; subjId: string}, JournalData[]>(
+  'Admin/GetCorrectJournalModal',
+  'GET',
+  true
+)
+export const getAdminSubjects = createRequestFx<{Id: number}, Subject[]>(
+  'Admin/GetAdminSubjects',
   'GET',
   true
 )
