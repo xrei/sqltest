@@ -3,28 +3,20 @@ import {
   Box,
   Paper,
   Typography,
-  Button,
-  TextField,
-  Link,
-  Divider,
   Table,
   TableContainer,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
-  FormControlLabel,
-  Checkbox,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
 } from '@mui/material'
 import {LoadingButton} from '@mui/lab'
 import {useGate, useStore} from 'effector-react'
 import {GroupSelector} from 'src/ui/GroupSelector'
 import {AdminGroupsModel} from 'src/features/User/Admin'
+import {SubjectsModel} from 'src/features/Test'
 import * as model from './model'
+import {SubjectSelector} from 'src/ui/SubjectSelector'
 
 const AdminJournalPage = () => {
   useGate(model.JournalPageGate)
@@ -32,6 +24,8 @@ const AdminJournalPage = () => {
   const groupId = useStore(model.$groupId)
   const isBtnActive = useStore(model.$isFormJournalActive)
   const loading = useStore(model.fetchJournalDataFx.pending)
+  const subjList = useStore(SubjectsModel.$adminSubjects)
+  const subjValue = useStore(model.$subjId)
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', my: 2}}>
@@ -39,7 +33,7 @@ const AdminJournalPage = () => {
         Журнал
       </Typography>
       <Box sx={{display: 'flex', flexFlow: 'column', gap: 2, maxWidth: '600px'}}>
-        <SubjSelector></SubjSelector>
+        <SubjectSelector list={subjList} value={subjValue} onChange={model.subjSelected} />
         <GroupSelector
           value={groupId}
           list={groupList}
@@ -84,28 +78,6 @@ const JournalTable = () => {
         </TableBody>
       </Table>
     </TableContainer>
-  )
-}
-
-const SubjSelector: React.FC = () => {
-  const list = useStore(model.$adminSubjects)
-  const value = useStore(model.$subjId)
-  return (
-    <FormControl sx={{maxWidth: 'sm', mr: 2}} fullWidth variant="outlined" size="small">
-      <InputLabel id="adm-group-sel">Дисциплина</InputLabel>
-      <Select
-        value={value}
-        labelId="adm-group-sel"
-        label="Дисциплина"
-        onChange={model.subjSelected}
-      >
-        {list.map((x) => (
-          <MenuItem dense key={x.SubjectId} value={x.SubjectId}>
-            {x.SubjectName}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
   )
 }
 

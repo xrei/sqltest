@@ -6,8 +6,6 @@ import {loginFx} from 'src/features/Auth/loginModel'
 import {registerFx} from 'src/features/Auth/registerModel'
 import type {SelectChangeEvent} from '@mui/material'
 
-export const $availableSubjects = createStore<Subject[]>([])
-
 export const fetchSubjectsFx = attach({
   source: $user,
   async effect(user) {
@@ -22,6 +20,12 @@ export const fetchSubjectsFx = attach({
     }
   },
 })
+
+export const $adminSubjects = createStore<Subject[]>([])
+
+$adminSubjects.on(fetchSubjectsFx.doneData, (_, data) => data)
+
+export const $availableSubjects = createStore<Subject[]>([])
 
 $availableSubjects.on(fetchSubjectsFx.doneData, (_, data) => data)
 

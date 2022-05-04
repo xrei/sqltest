@@ -4,13 +4,9 @@ import {createGate} from 'effector-react'
 import {getAdminJournal} from 'src/api'
 import {SubjectsModel} from 'src/features/Test'
 import {reset} from 'src/lib/reset'
-import {JournalData, Subject} from 'src/types'
+import {JournalData} from 'src/types'
 
 export const JournalPageGate = createGate()
-
-export const $adminSubjects = createStore<Subject[]>([])
-
-$adminSubjects.on(SubjectsModel.fetchSubjectsFx.doneData, (_, data) => data)
 
 export const $journal = createStore<JournalData[]>([])
 
