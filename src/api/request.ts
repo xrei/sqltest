@@ -17,6 +17,7 @@ export const createRequestFx = <T = unknown, R = unknown>(
   return createEffect<T, ResponseType<R>>(async (params) => {
     const config: Options = {
       method,
+      prefixUrl: resource.startsWith('http') ? '' : '/api',
     }
     if (!url) {
       config.json = params

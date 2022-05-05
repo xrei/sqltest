@@ -8,17 +8,18 @@ export const adminRoutes = {
   systemDb: '/admin/system-db',
   systemDbAdd: '/admin/system-db/add',
   systemDbEdit: '/admin/system-db/:id/edit',
-  theory: '/admin/theory',
-  articleAdd: '/admin/theory/add-article',
-  linkAdd: '/admin/theory/add-link',
-  articleEdit: '/admin/theory/edit-article/:id',
-  linkEdit: '/admin/theory/edit-link/:id',
+  materials: '/admin/materials',
+  articleAdd: '/admin/materials/add-article',
+  linkAdd: '/admin/materials/add-link',
+  articleEdit: '/admin/materials/edit-article/:id',
+  linkEdit: '/admin/materials/edit-link/:id',
   addAuthor: '/admin/author/add',
   editAuthor: '/admin/author/:id/edit',
   addNews: '/admin/news/add',
   editNews: '/admin/news/:id/edit',
   systemInfo: '/admin/system-info/',
   studentAnswers: '/admin/student-answers',
+  studentComplaints: '/admin/student-complaints',
 }
 
 export const routesPaths = {

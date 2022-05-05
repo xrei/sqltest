@@ -7,4 +7,4 @@ const apiUrl = () => {
   return url
 }
 
-export const api = ky.create({prefixUrl: '/api'})
+export const api = ky.create({retry: 2})

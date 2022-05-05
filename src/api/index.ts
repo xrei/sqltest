@@ -32,7 +32,9 @@ export const getSomeNews = createRequestFx<void, NewsPost[]>('Home/GetSomeNews')
 export const getAbout = createRequestFx<void, string>('Home/GetAbout')
 export const getGroupList = createRequestFx<void, StudentGroup[]>('Home/GetGroupList')
 export const getStudentSuggestions = createRequestFx<{Login: number}>('Home/GetStudentSuggestions')
-export const getMaterials = createRequestFx<void, Material[]>('Home/GetMaterials')
+export const getMaterials = createRequestFx<void, Material[]>(
+  'https://rgrty.ru/sqltest/Home/GetMaterials'
+)
 export const getAvailableSubjects = createRequestFx<{Id: number}, Subject[]>(
   'Home/GetAvailibleSubjects/',
   'GET',

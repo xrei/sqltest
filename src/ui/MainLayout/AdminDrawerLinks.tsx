@@ -49,7 +49,7 @@ const adminEntitiesPages = [
   {to: adminRoutes.systemUsers, text: 'Доступы'},
   {to: adminRoutes.systemDb, text: 'Базы данных'},
   {to: adminRoutes.systemQuery, text: 'Системные запросы'},
-  {to: adminRoutes.theory, text: 'Теория'},
+  {to: adminRoutes.materials, text: 'Материалы'},
   {to: adminRoutes.addNews, text: 'Добавить новость'},
   {to: adminRoutes.addAuthor, text: 'Добавить автора'},
   {to: adminRoutes.systemInfo, text: 'Информация для режима студента'},
