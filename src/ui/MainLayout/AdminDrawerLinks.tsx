@@ -59,7 +59,7 @@ const adminStatsPages = [
   {to: '/admin/student-rating', text: 'Рейтинги студентов'},
   {to: '/admin/tasks-stats', text: 'Статистика по заданиям'},
   {to: '/admin/online-users', text: 'Пользователи онлайн'},
-  {to: '/admin/user-complaints', text: 'Замечания студентов'},
+  {to: adminRoutes.studentComplaints, text: 'Замечания студентов'},
 ]
 
 export const AdminDrawerLinks = () => {

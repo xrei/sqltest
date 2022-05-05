@@ -9,6 +9,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Divider,
 } from '@mui/material'
 import {LoadingButton} from '@mui/lab'
 import {useGate, useStore} from 'effector-react'
@@ -29,9 +30,8 @@ const AdminJournalPage = () => {
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', my: 2}}>
-      <Typography variant="h1" sx={{mb: 2}}>
-        Журнал
-      </Typography>
+      <Typography variant="h1">Журнал</Typography>
+      <Divider sx={{my: 2}} />
       <Box sx={{display: 'flex', flexFlow: 'column', gap: 2, maxWidth: '600px'}}>
         <SubjectSelector list={subjList} value={subjValue} onChange={model.subjSelected} />
         <GroupSelector
