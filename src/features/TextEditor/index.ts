@@ -1,3 +1,4 @@
+import {convertFromHTML, ContentState, convertToRaw} from 'draft-js'
 import {RichTextEditor} from './RichTextEditor'
 import {indigo} from '@mui/material/colors'
 
@@ -7,12 +8,23 @@ export const MUIRichTextEditorTheme = {
       root: {
         border: `1px solid ${indigo[400]}`,
         borderRadius: '6px',
-        minHeight: '200px',
+        minHeight: '220px',
         padding: '0 12px',
       },
       container: {},
+      editor: {},
+      placeHolder: {
+        minHeight: '170px',
+      },
     },
   },
+}
+
+export const html2Editor = (html: string) => {
+  const contentHtml = convertFromHTML(html)
+  const state = ContentState.createFromBlockArray(contentHtml.contentBlocks, contentHtml.entityMap)
+  console.log(html)
+  return convertToRaw(state)
 }
 
 export {RichTextEditor}

@@ -34,7 +34,9 @@ const AuthorList = () => {
     <Stack spacing={2}>
       {authors.map((author) => (
         <Card key={author.AuthorId} sx={{pt: 2, pl: 2}} elevation={3} aria-label="Author">
-          <Typography variant="h4">{author.AuthorName}</Typography>
+          <Typography variant="h4" gutterBottom>
+            {author.AuthorName}
+          </Typography>
           <Box display="flex">
             <Box
               sx={{display: 'flex', alignItems: 'center'}}
@@ -55,7 +57,11 @@ const AuthorList = () => {
               >
                 Редактировать
               </Button>
-              <Button color="error" variant="outlined" onClick={() => deleteAuthorClicked()}>
+              <Button
+                color="error"
+                variant="outlined"
+                onClick={() => deleteAuthorClicked(author.AuthorId)}
+              >
                 Удалить
               </Button>
             </CardActions>

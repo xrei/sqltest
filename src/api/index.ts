@@ -150,6 +150,11 @@ export const deleteSystemInfo = createRequestFx<SystemInfo, string>(
   'POST'
 )
 
+export const editAuthor = createRequestFx<Author, string>('Admin/EditAuthor', 'POST')
+export const addAuthor = createRequestFx<Omit<Author, 'AuthorId'>, string>(
+  'Admin/AddAuthor',
+  'POST'
+)
 export const deleteAuthor = createRequestFx<{AuthorId: number}, string>(
   'Admin/DeleteAuthor',
   'POST'

@@ -37,7 +37,9 @@ export const SystemInfoPage = () => {
       <Stack>
         {infos.map((info, idx) => (
           <Accordion key={idx}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>{info.name}</AccordionSummary>
+            <AccordionSummary sx={{fontWeight: '500'}} expandIcon={<ExpandMoreIcon />}>
+              {info.name}
+            </AccordionSummary>
             <AccordionDetails>
               <div dangerouslySetInnerHTML={{__html: info.info}}></div>
             </AccordionDetails>

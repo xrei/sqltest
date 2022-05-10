@@ -7,7 +7,7 @@ export const AuthorsPageGate = createGate('AuthorsPage')
 
 export const $authors = createStore<Author[]>([])
 
-const fetchAuthorsData = createEffect<void, Author[]>(async () => {
+export const fetchAuthorsData = createEffect<void, Author[]>(async () => {
   const resp = await getAuthors()
   const authors = await resp.json()
   return authors
