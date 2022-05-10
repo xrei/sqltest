@@ -187,6 +187,27 @@ export const getTaskErrors = createRequestFx<{Query: string}, DBTableContent[]>(
   'POST'
 )
 
+export const getAdminTheme = createRequestFx<{SubjectId: number}, Theme[]>(
+  'Admin/GetAdminTheme',
+  'GET',
+  true
+)
+export const getPrepTheme = createRequestFx<{SubjectId: number}, Theme[]>(
+  'Prep/GetAdminTheme',
+  'GET',
+  true
+)
+export const getAdminTest = createRequestFx<{ThemeId: number}, Test[]>(
+  'Admin/GetAdminTest',
+  'GET',
+  true
+)
+export const getPrepTest = createRequestFx<{ThemeId: number}, Test[]>(
+  'Prep/GetAdminTest',
+  'GET',
+  true
+)
+
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')
