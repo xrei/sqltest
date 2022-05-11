@@ -2,7 +2,7 @@ import {SelectChangeEvent} from '@mui/material'
 import {combine, createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {getAdminJournal} from 'src/api'
-import {SubjectsModel} from 'src/features/Test'
+import {fetchAdminDataFx} from 'src/features/User/Admin/AdminData'
 import {reset} from 'src/lib/reset'
 import {JournalData} from 'src/types'
 
@@ -34,7 +34,7 @@ export const $isFormJournalActive = combine($groupId, $subjId, (a, b) => Boolean
 
 forward({
   from: JournalPageGate.open,
-  to: SubjectsModel.fetchSubjectsFx,
+  to: fetchAdminDataFx,
 })
 
 sample({
