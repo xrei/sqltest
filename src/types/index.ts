@@ -272,3 +272,25 @@ export type JournalData = {
   testCount: number
   themeName: string
 }
+
+export type StudentsRatings = {
+  AnswerCount: number
+  CountRightAnswers: number
+  ErrorQsn: any
+  Mark: number
+  RatingId: number
+  TimeEnd: string
+  TimeStart: string
+  countComplex: number
+  countEasy: number
+  countMiddle: number
+  countUser: number
+  percent: number
+}
+
+export type StudentRating = {
+  BestMark: number
+  RatingCount: number
+  StudentsFio: string
+  StudentsRatings: StudentsRatings
+}

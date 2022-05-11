@@ -25,6 +25,7 @@ import {
   NewSystemUserDto,
   SystemInfo,
   JournalData,
+  StudentRating,
 } from 'src/types'
 
 // home
@@ -207,6 +208,16 @@ export const getPrepTest = createRequestFx<{ThemeId: number}, Test[]>(
   'GET',
   true
 )
+
+export const getPrepGroupRating = createRequestFx<{StuId: number; TestId: number}, StudentRating[]>(
+  'Prep/GetGroupRatings',
+  'GET',
+  true
+)
+export const getAdminGroupRating = createRequestFx<
+  {StuId: number; TestId: number},
+  StudentRating[]
+>('Admin/GetGroupRatings', 'GET', true)
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

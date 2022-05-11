@@ -1,7 +1,14 @@
 import {attach, createEffect, createStore} from 'effector'
-import {getAdminTest, getAdminTheme, getPrepTest, getPrepTheme} from 'src/api'
+import {
+  getAdminGroupRating,
+  getAdminTest,
+  getAdminTheme,
+  getPrepGroupRating,
+  getPrepTest,
+  getPrepTheme,
+} from 'src/api'
 import {SubjectsModel} from 'src/features/Test'
-import {Test, Theme, User} from 'src/types'
+import {StudentRating, Test, Theme, User} from 'src/types'
 import {UserModel} from '..'
 import * as AdminGroupsModel from './adminGroupsModel'
 
@@ -54,3 +61,27 @@ $adminThemes.on(fetchAdminThemesFx.doneData, (_, data) => data)
 
 export const $adminTests = createStore<Test[]>([])
 $adminTests.on(fetchAdminTestsFx.doneData, (_, data) => data)
+
+const fetchAdminGroupRatings = createEffect<
+  {user: User | null; TestId: number; StuId: number},
+  StudentRating[]
+>(async ({user, TestId, StuId}) => {
+  if (!user) return []
+  const payload = {TestId, StuId}
+  if (user?.Role === 1) {
+    const res = await (await getPrepGroupRating(payload)).json()
+    return res
+  }
+  if (user.Role === 2) {
+    const res = await (await getAdminGroupRating(payload)).json()
+    console.log(res)
+    return res
+  }
+  return []
+})
+
+export const fetchAdminGroupRatingsFx = attach({
+  source: UserModel.$user,
+  effect: fetchAdminGroupRatings,
+  mapParams: ({groupId, TestId}, user) => ({user, TestId, StuId: groupId}),
+})
