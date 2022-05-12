@@ -1,11 +1,12 @@
-import {attach, createEffect, createEvent, createStore, forward, sample} from 'effector'
-import {createAdminNews, deleteAdminNews, editAdminNews, getSomeNews} from 'src/api'
+import {attach, createEffect, createEvent, createStore, sample} from 'effector'
+import {createAdminNews, deleteAdminNews, editAdminNews} from 'src/api'
 import {enqueueAlert} from 'src/features/Alerts'
 import {reset} from 'src/lib/reset'
 import {NewsPost} from 'src/types'
 
 export const $isEdit = createStore<NewsPost | null>(null)
 export const $manageNewsDialog = createStore(false)
+export const $postText = createStore<string>('')
 
 export const editNewsClicked = createEvent<NewsPost>()
 export const addNewsClicked = createEvent()
@@ -13,13 +14,10 @@ export const deleteNewsClicked = createEvent<number>()
 export const manageNewsDialogToggled = createEvent()
 export const resetStores = createEvent()
 export const actualEditNewsClicked = createEvent()
+export const textChanged = createEvent<string>()
 
 $isEdit.on(editNewsClicked, (_, data) => data)
 $manageNewsDialog.on(manageNewsDialogToggled, (open) => !open)
-
-export const textChanged = createEvent<string>()
-
-export const $postText = createStore<string>('')
 $postText.on(textChanged, (_, value) => value)
 $postText.on(editNewsClicked, (_, value) => value.Content)
 
