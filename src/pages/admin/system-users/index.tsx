@@ -152,7 +152,7 @@ const UsersTable = (props: UsersTableProps) => {
               <TableCell>{tr.user_name}</TableCell>
               <TableCell align="center" sx={{width: 140}}>
                 <Tooltip title="Редактировать">
-                  <IconButton sx={{mr: 2}} onClick={() => 1}>
+                  <IconButton sx={{mr: 2}} onClick={() => manageUserModel.editUserClicked(tr)}>
                     <EditIcon />
                   </IconButton>
                 </Tooltip>
@@ -262,6 +262,14 @@ const ManageUserDialog = () => {
   const availableSubjectsShown = useStore(manageUserModel.$availableSubjectsShown)
   const allFilled = useStore(manageUserModel.$allFieldsFilled)
 
+  const onClick = () => {
+    if (isEdit) {
+      manageUserModel.actualEditUserClicked()
+    } else {
+      manageUserModel.addUserClicked()
+    }
+  }
+
   return (
     <Dialog
       maxWidth="md"
@@ -315,11 +323,7 @@ const ManageUserDialog = () => {
       </DialogContent>
       <DialogActions>
         <Button onClick={() => manageUserModel.dialogToggled()}>Закрыть</Button>
-        <Button
-          disabled={!allFilled || !isSamePwds}
-          variant="contained"
-          onClick={() => manageUserModel.addUserClicked()}
-        >
+        <Button disabled={!allFilled || !isSamePwds} variant="contained" onClick={() => onClick()}>
           {isEdit ? 'Редактировать' : 'Добавить'}
         </Button>
       </DialogActions>
