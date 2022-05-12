@@ -219,6 +219,16 @@ export const getAdminGroupRating = createRequestFx<
   StudentRating[]
 >('Admin/GetGroupRatings', 'GET', true)
 
+export const deleteAdminNews = createRequestFx<{Id: number}, string>('Admin/DeleteNews', 'POST')
+export const editAdminNews = createRequestFx<{Id: number; Content: string}, string>(
+  'Admin/EditNews',
+  'POST'
+)
+export const createAdminNews = createRequestFx<{Content: string}, string>(
+  'Admin/CreateNews',
+  'POST'
+)
+
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')

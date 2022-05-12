@@ -15,8 +15,6 @@ export const adminRoutes = {
   linkEdit: '/admin/materials/edit-link/:id',
   addAuthor: '/admin/author/add',
   editAuthor: '/admin/author/:id/edit',
-  addNews: '/admin/news/add',
-  editNews: '/admin/news/:id/edit',
   systemInfo: '/admin/system-info/',
   studentAnswers: '/admin/student-answers',
   studentComplaints: '/admin/student-complaints',

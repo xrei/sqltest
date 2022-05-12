@@ -28,7 +28,7 @@ const AdminSystemDbEditPage = () => {
         <IconButton component={RouterLink} to={{pathname: adminRoutes.systemDb}} sx={{mr: 2}}>
           <ArrowBackIcon />
         </IconButton>
-        Редактироавть базу данных
+        Редактировать базу данных
       </Typography>
       <Divider sx={{my: 2}} />
 

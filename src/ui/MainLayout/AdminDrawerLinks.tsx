@@ -28,6 +28,7 @@ import {authLogOff} from 'src/api'
 import {adminRoutes} from 'src/router/paths'
 import {$userRole} from 'src/features/User/model'
 import {ModeButton} from './ThemeModeSwitch'
+import {AdminNewsModel} from 'src/features/User/Admin/AdminNews'
 
 const DrawerHeader = styled('div')(({theme}) => ({
   display: 'flex',
@@ -50,7 +51,7 @@ const adminEntitiesPages = [
   {to: adminRoutes.systemDb, text: 'Базы данных'},
   {to: adminRoutes.systemQuery, text: 'Системные запросы'},
   {to: adminRoutes.materials, text: 'Материалы'},
-  {to: adminRoutes.addNews, text: 'Добавить новость'},
+  {to: '#', text: 'Добавить новость', onClick: AdminNewsModel.manageNewsDialogToggled},
   {to: adminRoutes.addAuthor, text: 'Добавить автора'},
   {to: adminRoutes.systemInfo, text: 'Информация для режима студента'},
 ]
@@ -100,7 +101,9 @@ export const AdminDrawerLinks = () => {
             button
             dense
             key={index}
-            onClick={closeMobDrawerOnClick}
+            onClick={() => {
+              closeMobDrawerOnClick()
+            }}
           >
             <ListItemText primary={page.text} />
           </ListItem>
@@ -121,7 +124,12 @@ export const AdminDrawerLinks = () => {
               button
               dense
               key={index}
-              onClick={closeMobDrawerOnClick}
+              onClick={() => {
+                closeMobDrawerOnClick()
+                if (typeof page.onClick === 'function') {
+                  page.onClick()
+                }
+              }}
             >
               <ListItemText primary={page.text} />
             </ListItem>

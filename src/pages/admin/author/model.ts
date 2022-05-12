@@ -53,9 +53,7 @@ export const $authorForm = createStore<Author>({
 
 $authorForm.on(setAuthorToEdit, (_, author) => author)
 $authorForm.reset([EditAuthorPageGate.close, AddAuthorPageGate.close])
-$authorForm.watch((a) => {
-  console.log('authorForm', a)
-})
+$authorForm.watch(console.log)
 
 export const $authorDescriptionState = createStore('')
 $authorDescriptionState.reset([EditAuthorPageGate.close, AddAuthorPageGate.close])
