@@ -21,7 +21,8 @@ type Props = {
 }
 export const DBContentTables = ({tables}: Props) => {
   const [expandedId, setExpandedId] = React.useState(0)
-  const hasData = tables.every((table) => table.TotalRowsCount > 0)
+
+  const hasData = Array.isArray(tables) ? tables.every((table) => table.TotalRowsCount > 0) : false
   const oneTable = tables.length === 1
 
   const handleExpandClick = (idx: number) => {
@@ -32,7 +33,11 @@ export const DBContentTables = ({tables}: Props) => {
   if (!hasData) {
     return (
       <Typography variant="h5">
-        В результате вернулась пустая таблица <br /> Возможно проблема в самом запросе
+        <div>
+          В результате вернулась пустая таблица <br /> Возможно проблема в самом запросе
+        </div>
+        <br />
+        <div>{tables.toString()}</div>
       </Typography>
     )
   }

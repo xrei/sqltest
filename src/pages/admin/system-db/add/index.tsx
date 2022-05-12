@@ -17,6 +17,7 @@ import {useStore} from 'effector-react'
 import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
 import {adminRoutes} from 'src/router/paths'
+import {RichTextEditor} from 'src/features/TextEditor'
 
 const AdminSystemDbAddPage = () => {
   const newDb = useStore(model.$dbDto)
@@ -47,13 +48,15 @@ const AdminSystemDbAddPage = () => {
           error={nameErr}
           onChange={model.nameChanged}
         />
-        <TextField
-          value={newDb.description}
-          label="Описание"
-          multiline
-          minRows={5}
-          onChange={model.descriptionChanged}
-        />
+        <Box sx={{display: 'flex', flexFlow: 'column', my: 1}}>
+          <Typography gutterBottom>Описание</Typography>
+          <RichTextEditor
+            EditorProps={{
+              label: 'Описание',
+            }}
+            onChange={(html) => model.descriptionChanged(html)}
+          />
+        </Box>
         <TextField
           value={newDb.connection_string}
           required
@@ -62,12 +65,15 @@ const AdminSystemDbAddPage = () => {
           multiline
           onChange={model.connStrChanged}
         />
-        <TextField
-          value={newDb.creation_script}
-          label="Скрипт"
-          multiline
-          onChange={model.creationScriptChanged}
-        />
+        <Box sx={{display: 'flex', flexFlow: 'column', my: 1}}>
+          <Typography gutterBottom>Скрипт подключения</Typography>
+          <RichTextEditor
+            EditorProps={{
+              label: 'Скрипт подключения',
+            }}
+            onChange={(html) => model.creationScriptChanged(html)}
+          />
+        </Box>
 
         <Button
           sx={{mt: 1}}

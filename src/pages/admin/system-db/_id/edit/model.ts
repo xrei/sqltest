@@ -48,6 +48,8 @@ export const $editDbDto = createStore<EditDbDto>({
   creation_script: '',
   description: '',
 })
+export const $dbDescr = createStore('')
+export const $dbCreationScript = createStore('')
 
 export const $isDbsLoading = fetchDatabasesFx.pending
 
@@ -55,35 +57,43 @@ export const $nameErr = $editDbDto.map((db) => !db.name)
 export const $connStrErr = $editDbDto.map((db) => !db.connection_string)
 export const $editDisabled = combine($nameErr, $connStrErr, (a, b) => a || b)
 
-$editDbDto.on(addDbToEditClicked, (_, db) => db)
-$editDbDto.watch((db) => {
-  console.log(db)
-})
-
 export const nameChanged = createEvent<ChangeEvent<HTMLInputElement>>()
 export const connStrChanged = createEvent<ChangeEvent<HTMLInputElement>>()
-export const descriptionChanged = createEvent<ChangeEvent<HTMLInputElement>>()
-export const creationScriptChanged = createEvent<ChangeEvent<HTMLInputElement>>()
+export const creationScriptChanged = createEvent<string>()
+export const descriptionChanged = createEvent<string>()
 export const editDbClicked = createEvent()
+
+$editDbDto.on(addDbToEditClicked, (_, db) => db)
 
 $editDbDto.on(nameChanged, (state, e) => ({...state, name: e.target.value}))
 $editDbDto.on(connStrChanged, (state, e) => ({...state, connection_string: e.target.value}))
-$editDbDto.on(descriptionChanged, (state, e) => ({...state, description: e.target.value}))
-$editDbDto.on(creationScriptChanged, (state, e) => ({...state, creation_script: e.target.value}))
+$dbCreationScript.on(creationScriptChanged, (state, e) => e)
+$dbDescr.on(descriptionChanged, (state, e) => e)
 
-const editDbFx = createEffect<EditDbDto, string>(async (db) => {
-  const res = await (await postEditDatabase(db)).json()
+const editDbFx = createEffect<{db: EditDbDto; description: string; script: string}, string>(
+  async ({db, description, script}) => {
+    const payload = {
+      ...db,
+      description,
+      creation_script: script,
+    }
+    const res = await (await postEditDatabase(payload)).json()
 
-  enqueueAlert({
-    message: 'База данных успешно отредактирована',
-  })
-  return res
-})
+    enqueueAlert({
+      message: 'База данных успешно отредактирована',
+    })
+    return res
+  }
+)
 
 sample({
-  source: $editDbDto,
+  source: {
+    db: $editDbDto,
+    description: $dbDescr,
+    script: $dbCreationScript,
+  },
   clock: editDbClicked,
-  filter: (db) => Boolean(db.id) && Boolean(db.connection_string) && Boolean(db.name),
+  filter: ({db}) => Boolean(db.id) && Boolean(db.connection_string) && Boolean(db.name),
   target: editDbFx,
 })
 

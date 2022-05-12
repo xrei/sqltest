@@ -7,6 +7,7 @@ import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
 import {adminRoutes} from 'src/router/paths'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {RichTextEditor} from 'src/features/TextEditor'
 
 const AdminSystemDbEditPage = () => {
   const params = useParams()
@@ -40,14 +41,16 @@ const AdminSystemDbEditPage = () => {
           error={nameErr}
           onChange={model.nameChanged}
         />
-        <TextField
-          maxRows={10}
-          value={editDb.description}
-          label="Описание"
-          multiline
-          minRows={5}
-          onChange={model.descriptionChanged}
-        />
+        <Box sx={{display: 'flex', flexFlow: 'column', my: 1}}>
+          <Typography gutterBottom>Описание</Typography>
+          <RichTextEditor
+            EditorProps={{
+              label: 'Описание',
+            }}
+            html={editDb.description}
+            onChange={(html) => model.descriptionChanged(html)}
+          />
+        </Box>
         <TextField
           maxRows={10}
           value={editDb.connection_string}
@@ -57,13 +60,16 @@ const AdminSystemDbEditPage = () => {
           multiline
           onChange={model.connStrChanged}
         />
-        <TextField
-          maxRows={10}
-          value={editDb.creation_script}
-          label="Скрипт"
-          multiline
-          onChange={model.creationScriptChanged}
-        />
+        <Box sx={{display: 'flex', flexFlow: 'column', my: 1}}>
+          <Typography gutterBottom>Скрипт подключения</Typography>
+          <RichTextEditor
+            EditorProps={{
+              label: 'Скрипт подключения',
+            }}
+            html={editDb.creation_script}
+            onChange={(html) => model.creationScriptChanged(html)}
+          />
+        </Box>
 
         <Button
           sx={{mt: 1}}

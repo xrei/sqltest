@@ -12,7 +12,11 @@ export const MUIRichTextEditorTheme = {
         padding: '0 12px',
       },
       container: {},
-      editor: {},
+      editor: {
+        maxHeight: '800px',
+        overflow: 'auto',
+        paddingBottom: '16px',
+      },
       placeHolder: {
         minHeight: '170px',
       },
