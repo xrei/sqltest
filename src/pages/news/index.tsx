@@ -5,8 +5,6 @@ import {RenderHtml} from 'src/ui/RenderHtml'
 import {NewsPageGate, $posts, $isLoading} from './model'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
 import {UserModel} from 'src/features/User'
-import {Link as RouterLink} from 'react-router-dom'
-import {adminRoutes} from 'src/router/paths'
 import {AdminNewsModel} from 'src/features/User/Admin/AdminNews'
 
 export const NewsPage: React.FC = () => {
