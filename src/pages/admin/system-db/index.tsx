@@ -23,7 +23,7 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material'
 import {useGate, useStore} from 'effector-react'
-import {Link as RouterLink} from 'react-router-dom'
+import {Link as RouterLink, useNavigate} from 'react-router-dom'
 import {DBInfo} from 'src/types'
 import * as model from './model'
 import {adminRoutes} from 'src/router/paths'
@@ -68,6 +68,7 @@ export const AdminSystemDbPage = () => {
 
 const DbCard: React.FC<{db: DBInfo}> = ({db}) => {
   const [expanded, setExpanded] = React.useState(false)
+  const navigate = useNavigate()
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
@@ -96,10 +97,10 @@ const DbCard: React.FC<{db: DBInfo}> = ({db}) => {
         </Tooltip>
         <Tooltip title="Редактировать">
           <IconButton
-            component={RouterLink}
-            to={adminRoutes.systemDbEdit.replace(':id', String(db.id))}
             aria-label="Редактировать"
-            onClick={() => model.addDbToEditClicked(db)}
+            onClick={() => {
+              navigate(adminRoutes.systemDbEdit.replace(':id', String(db.id)))
+            }}
           >
             <EditIcon />
           </IconButton>

@@ -7,6 +7,14 @@ import {postEditDatabase} from 'src/api'
 import {enqueueAlert} from 'src/features/Alerts'
 
 export const SysDbEditPageGate = createGate<{id: number}>()
+export const $dbIdToEdit = createStore<number>(0)
+$dbIdToEdit.reset(SysDbEditPageGate.close)
+
+sample({
+  clock: SysDbEditPageGate.open,
+  fn: ({id}) => id,
+  target: $dbIdToEdit,
+})
 
 // load databases if came from direct link to edit page
 // that is because there is no api to get just one entity by id..
@@ -17,12 +25,20 @@ sample({
   target: fetchDatabasesFx,
 })
 
-// Gate remembers our route param
-// then after DBs are loaded, find ours
-const getDbById = sample({
-  source: SysDbEditPageGate.open,
+// fill db to edit either after load source
+sample({
   clock: $dbs,
-  fn: ({id}, dbs) => dbs.find((v) => v.id === id),
+  source: $dbIdToEdit,
+  fn: (id, dbs) => dbs.find((v) => v.id === id)!,
+  target: addDbToEditClicked,
+})
+// or from existing source
+sample({
+  source: $dbs,
+  clock: $dbIdToEdit,
+  filter: (dbs) => Boolean(dbs.length),
+  fn: (dbs, id) => dbs.find((v) => v.id === id)!,
+  target: addDbToEditClicked,
 })
 
 export const $editDbDto = createStore<EditDbDto>({
@@ -40,7 +56,9 @@ export const $connStrErr = $editDbDto.map((db) => !db.connection_string)
 export const $editDisabled = combine($nameErr, $connStrErr, (a, b) => a || b)
 
 $editDbDto.on(addDbToEditClicked, (_, db) => db)
-$editDbDto.on(getDbById, (_, db) => db)
+$editDbDto.watch((db) => {
+  console.log(db)
+})
 
 export const nameChanged = createEvent<ChangeEvent<HTMLInputElement>>()
 export const connStrChanged = createEvent<ChangeEvent<HTMLInputElement>>()
@@ -69,4 +87,4 @@ sample({
   target: editDbFx,
 })
 
-// $editDbDto.reset(editDbFx.doneData)
+$editDbDto.reset([editDbFx.doneData, SysDbEditPageGate.close])
