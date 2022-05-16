@@ -298,3 +298,16 @@ export type StudentRating = {
 }
 
 export type GetStudentRatingParams = {StuId: number; TestId: number}
+
+export type RatingQnA = {
+  AnswersText: string[]
+  IsRight: boolean
+  QsnDifficulty: string
+  QsnID: number
+  QsnType: string
+  QsnTypeId: number
+  QuestionText: string
+  RatingId: number
+  StudentName: string
+  SystemAnswersText: string[]
+}

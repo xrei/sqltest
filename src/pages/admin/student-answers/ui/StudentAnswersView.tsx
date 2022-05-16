@@ -3,7 +3,6 @@ import {
   Typography,
   Collapse,
   Card,
-  CardActions,
   CardContent,
   IconButton,
   Tooltip,
@@ -17,12 +16,14 @@ import {
 } from '@mui/icons-material'
 import type {GridColDef} from '@mui/x-data-grid'
 import React from 'react'
+import {Link as RouterLink} from 'react-router-dom'
 import {useList, useStore} from 'effector-react'
 import {StudentRating, StudentsRatings} from 'src/types'
 import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
 import * as FormModel from './FormModel'
 import * as ManageAnswersModel from './ManageAnswersModel'
+import {adminRoutes} from 'src/router/paths'
 
 const DataGrid = React.lazy(() =>
   import('@mui/x-data-grid').then((module) => ({default: module.DataGrid}))
@@ -76,7 +77,6 @@ const StudentRatingCard: React.FC<{student: StudentRating}> = ({student}) => {
           Лучший результат: <b> {student.BestMark}</b>
         </Typography>
       </CardContent>
-      <CardActions sx={{p: 1, pt: 0}}></CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Box sx={{width: '100%', height: 600}}>
@@ -116,7 +116,13 @@ const TableCols: GridColDef[] = [
     renderCell: (cellVals) => {
       return (
         <Tooltip title="Подробнее">
-          <IconButton size="small" color="success" aria-label="Подробнее" onClick={() => 1}>
+          <IconButton
+            component={RouterLink}
+            to={adminRoutes.studentAnswersRatingId.replace(':ratingId', cellVals.row.RatingId)}
+            size="small"
+            color="success"
+            aria-label="Подробнее"
+          >
             <ReadMoreIcon />
           </IconButton>
         </Tooltip>

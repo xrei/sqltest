@@ -16,6 +16,9 @@ const createLazyAdminPages = () => {
     AdminEditAuthorPage: React.lazy(() => import('src/pages/admin/author/_id/edit')),
     AdminStudentComplaintsPage: React.lazy(() => import('src/pages/admin/student-complaints')),
     AdminStudentAnswersPage: React.lazy(() => import('src/pages/admin/student-answers')),
+    AdminStudentAnswersRatingIdPage: React.lazy(
+      () => import('src/pages/admin/student-answers/_ratingId')
+    ),
   }
   return pages
 }

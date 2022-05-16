@@ -13,6 +13,7 @@ export const adminRoutes = {
   editAuthor: '/admin/author/:id/edit',
   systemInfo: '/admin/system-info/',
   studentAnswers: '/admin/student-answers',
+  studentAnswersRatingId: '/admin/student-answers/:ratingId',
   studentComplaints: '/admin/student-complaints',
 }
 

@@ -34,10 +34,10 @@ export const DBContentTables = ({tables}: Props) => {
     return (
       <Typography variant="h5">
         <div>
-          В результате вернулась пустая таблица <br /> Возможно проблема в самом запросе
+          В результате вернулась пустая таблица <br /> Возможно, проблема в самом запросе
         </div>
         <br />
-        <div>{tables.toString()}</div>
+        {typeof tables === 'string' && <div>{tables}</div>}
       </Typography>
     )
   }

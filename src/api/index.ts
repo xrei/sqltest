@@ -27,6 +27,7 @@ import {
   JournalData,
   StudentRating,
   GetStudentRatingParams,
+  RatingQnA,
 } from 'src/types'
 
 // home
@@ -242,6 +243,12 @@ export const editAdminNews = createRequestFx<{Id: number; Content: string}, stri
 export const createAdminNews = createRequestFx<{Content: string}, string>(
   'Admin/CreateNews',
   'POST'
+)
+
+export const getAdminUserQnA = createRequestFx<{RatingId: number}, RatingQnA[]>(
+  'Admin/GetUserQnA',
+  'GET',
+  true
 )
 
 // auth
