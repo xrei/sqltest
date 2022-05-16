@@ -1,9 +1,9 @@
 import {createEffect} from 'effector'
-import {SubjectsModel} from 'src/features/Test'
-import {AdminGroupsModel} from '.'
+import {GroupModel} from 'src/entities/Group'
+import {SubjectsModel} from 'src/entities/Subject'
 
 export const fetchAdminDataFx = createEffect(async () => {
-  AdminGroupsModel.fetchGroupsFx()
+  GroupModel.fetchAdminGroupsFx()
   SubjectsModel.fetchSubjectsFx()
   return
 })

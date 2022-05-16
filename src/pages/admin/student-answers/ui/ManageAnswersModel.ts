@@ -1,8 +1,8 @@
 import {createEffect, createEvent, createStore, sample} from 'effector'
+import type {StudentRating} from 'src/types'
 import {deleteAdminGroupRating, reCalcAdminGroupRating} from 'src/api'
 import {enqueueAlert} from 'src/features/Alerts'
 import {AdminModel} from 'src/features/Admin'
-import type {StudentRating} from 'src/types'
 import {$groupId, $testId} from './FormModel'
 
 type RatingId = {RatingId: number; studentRatingId: number}

@@ -1,4 +1,5 @@
-import * as AdminGroupsModel from './adminGroupsModel'
 import * as AdminModel from './AdminModel'
+import {AdminNewsModel} from './ManageAdminNews'
+import {ManageNewsDialog} from './ManageAdminNews/ManageNewsDialog'
 
-export {AdminGroupsModel, AdminModel}
+export {AdminModel, AdminNewsModel, ManageNewsDialog}

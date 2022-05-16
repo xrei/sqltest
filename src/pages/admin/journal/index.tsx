@@ -13,15 +13,13 @@ import {
 } from '@mui/material'
 import {LoadingButton} from '@mui/lab'
 import {useGate, useStore} from 'effector-react'
-import {GroupSelector} from 'src/ui/GroupSelector'
-import {AdminGroupsModel} from 'src/features/Admin'
-import {SubjectsModel} from 'src/features/Test'
-import {SubjectSelector} from 'src/ui/SubjectSelector'
+import {GroupSelector, GroupModel} from 'src/entities/Group'
+import {SubjectsModel, SubjectSelector} from 'src/entities/Subject'
 import * as model from './model'
 
 const AdminJournalPage = () => {
   useGate(model.JournalPageGate)
-  const groupList = useStore(AdminGroupsModel.$adminGroups)
+  const groupList = useStore(GroupModel.$adminGroups)
   const groupId = useStore(model.$groupId)
   const isBtnActive = useStore(model.$isFormJournalActive)
   const loading = useStore(model.fetchJournalDataFx.pending)

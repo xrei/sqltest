@@ -1,5 +1,7 @@
 import {SelectChangeEvent} from '@mui/material'
 import {combine, createEvent, createStore, sample} from 'effector'
+import {TestModel} from 'src/entities/Test'
+import {ThemesModel} from 'src/entities/Theme'
 import {AdminModel} from 'src/features/Admin'
 import {reset} from 'src/lib/reset'
 import {StudentRating} from 'src/types'
@@ -12,8 +14,10 @@ export const $subjId = createStore('')
 export const $themeId = createStore('')
 export const $testId = createStore('')
 
-export const $currentThemeSelected = combine(AdminModel.$adminThemes, $themeId, (themes, themeId) =>
-  themes.find((v) => v.ThemeId === Number(themeId))
+export const $currentThemeSelected = combine(
+  ThemesModel.$adminThemes,
+  $themeId,
+  (themes, themeId) => themes.find((v) => v.ThemeId === Number(themeId))
 )
 
 export const groupSelected = createEvent<SelectChangeEvent<string>>()
@@ -39,13 +43,13 @@ reset({
 sample({
   clock: $subjId,
   fn: (id) => Number(id),
-  target: AdminModel.fetchAdminThemesFx,
+  target: ThemesModel.fetchAdminThemesFx,
 })
 
 sample({
   clock: $themeId,
   fn: (id) => Number(id),
-  target: AdminModel.fetchAdminTestsFx,
+  target: TestModel.fetchAdminTestsFx,
 })
 
 sample({

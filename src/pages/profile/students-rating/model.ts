@@ -1,9 +1,9 @@
 import {createEvent, createStore, attach, sample, forward} from 'effector'
 import {createGate} from 'effector-react'
-import {getStudentsGroupsRatings} from 'src/api'
-import {SubjectsModel} from 'src/features/Test'
-import {UserModel} from 'src/features/User'
 import type {StudRating} from 'src/types'
+import {getStudentsGroupsRatings} from 'src/api'
+import {SubjectsModel} from 'src/entities/Subject'
+import {UserModel} from 'src/features/User'
 
 export const StudRatingPageGate = createGate()
 

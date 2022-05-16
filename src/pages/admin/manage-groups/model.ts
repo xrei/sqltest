@@ -3,7 +3,7 @@ import type {ChangeEvent} from 'react'
 import {createGate} from 'effector-react'
 import {postAddGroup, postDeleteGroup, postEditGroup} from 'src/api'
 import {StudentGroup, NewGroupDto} from 'src/types'
-import {AdminGroupsModel} from 'src/features/Admin'
+import {GroupModel} from 'src/entities/Group'
 
 export const AdminGroupsPageGate = createGate()
 
@@ -71,5 +71,5 @@ forward({
     deleteGroupFx.doneData,
     editGroupFx.doneData,
   ],
-  to: AdminGroupsModel.fetchGroupsFx,
+  to: GroupModel.fetchAdminGroupsFx,
 })

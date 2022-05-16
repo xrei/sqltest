@@ -1,7 +1,7 @@
 import {createEffect, createStore, forward} from 'effector'
 import {createGate} from 'effector-react'
 import {fetchRegRules} from 'src/features/Auth/registerModel'
-import {SubjectsModel} from 'src/features/Test'
+import {SubjectsModel} from 'src/entities/Subject'
 import {fetchUser} from 'src/features/User/model'
 
 export const AppGate = createGate()

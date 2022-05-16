@@ -1,7 +1,7 @@
-import {adminRoutes} from 'src/router/paths'
-import {AdminNewsModel} from 'src/features/Admin/AdminNews'
 import type {User} from 'src/types'
-import {$user} from 'src/features/User/model'
+import {adminRoutes} from 'src/router/paths'
+import {AdminNewsModel} from 'src/features/Admin/'
+import {UserModel} from 'src/features/User'
 
 const adminPages = [
   {to: adminRoutes.studentAnswers, text: 'Ответы студентов'},
@@ -41,7 +41,7 @@ const createAdminNavigation = (user: User) => {
   }
 }
 
-export const $adminNavigationPages = $user.map((user) => {
+export const $adminNavigationPages = UserModel.$user.map((user) => {
   if (!user)
     return {
       adminPages: [],

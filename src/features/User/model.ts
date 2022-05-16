@@ -1,9 +1,10 @@
 import {head, split, map, join, take} from 'ramda'
-import {combine, createEffect, createEvent, createStore, forward} from 'effector'
+import {combine, createEffect, createEvent, createStore, forward, sample} from 'effector'
 import type {User} from 'src/types'
 import {getUser, authLogOff} from 'src/api'
 import {loginFx} from '../Auth/loginModel'
 import {registerFx} from '../Auth/registerModel'
+import {GroupModel} from 'src/entities/Group'
 
 export const roles: {[key: number]: string} = {
   0: 'Студент',
@@ -23,6 +24,9 @@ export const $userNameLetters = $user.map((u) => {
   // @ts-expect-error: untypable
   return join('', map(head, take(2, split(' ', u.Name))))
 })
+export const $currentGroup = combine($user, GroupModel.$studGroups, (u, groups) =>
+  groups.find((v) => v.GroupValue === u?.Group)
+)
 
 export const setUser = createEvent<User>()
 export const clearUser = createEvent<void>()
@@ -40,3 +44,16 @@ forward({from: fetchUser.doneData, to: setUser})
 forward({from: loginFx.doneData, to: setUser})
 forward({from: registerFx.doneData, to: setUser})
 forward({from: authLogOff.doneData, to: clearUser})
+
+sample({
+  source: $user,
+  clock: fetchUser.done,
+  filter: (user) => (user ? user.Role !== 0 : false),
+  target: GroupModel.fetchAdminGroupsFx,
+})
+
+sample({
+  source: $user,
+  clock: fetchUser.done,
+  target: GroupModel.fetchStudentGroupsFx,
+})

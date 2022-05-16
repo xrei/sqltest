@@ -19,11 +19,11 @@ import {
 import {useGate, useStore} from 'effector-react'
 import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
-import {AdminGroupsModel} from 'src/features/Admin'
+import {GroupModel} from 'src/entities/Group'
 
 export const AdminManageGroupsPage = () => {
   useGate(model.AdminGroupsPageGate)
-  const groups = useStore(AdminGroupsModel.$adminGroups)
+  const groups = useStore(GroupModel.$adminGroups)
 
   return (
     <Box display="flex" flexDirection="column" sx={{my: 2}}>

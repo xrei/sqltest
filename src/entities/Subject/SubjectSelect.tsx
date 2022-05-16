@@ -1,7 +1,7 @@
 import React from 'react'
 import {InputLabel, MenuItem, Select, FormControl} from '@mui/material'
 import {useStore} from 'effector-react'
-import * as SubjectsModel from '../Subjects/model'
+import * as SubjectsModel from './model'
 
 type SubjectSelectProps = {
   dense?: boolean

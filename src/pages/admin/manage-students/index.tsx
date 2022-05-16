@@ -31,10 +31,9 @@ import {
   Edit as EditIcon,
   Delete as DeleteIcon,
 } from '@mui/icons-material'
-import * as model from './model'
 import {useGate, useStore} from 'effector-react'
-import {AdminGroupsModel} from 'src/features/Admin'
-import {GroupSelector} from 'src/ui/GroupSelector'
+import {GroupSelector, GroupModel} from 'src/entities/Group'
+import * as model from './model'
 
 const AdminManageStudentsPage = () => {
   useGate(model.AdminManageStudentsPageGate)
@@ -63,7 +62,7 @@ const AdminManageStudentsPage = () => {
 
 const GroupSelect = () => {
   const groupVal = useStore(model.$selectedGroup)
-  const groupList = useStore(AdminGroupsModel.$adminGroups)
+  const groupList = useStore(GroupModel.$adminGroups)
 
   return (
     <Box
@@ -257,7 +256,7 @@ const ManageStudentDialog = () => {
   const open = useStore(model.$studentDialog)
   const stud = useStore(model.$studentDto)
   const isEdit = useStore(model.$isEditing)
-  const groupList = useStore(AdminGroupsModel.$adminGroups)
+  const groupList = useStore(GroupModel.$adminGroups)
 
   const handleConfirmClick = () => {
     if (isEdit) {

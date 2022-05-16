@@ -1,7 +1,7 @@
 import {createEffect, createStore, forward} from 'effector'
 import {createGate} from 'effector-react'
-import {getAuthors} from 'src/api'
 import type {Author} from 'src/types'
+import {getAuthors} from 'src/api'
 
 export const AuthorsPageGate = createGate('AuthorsPage')
 

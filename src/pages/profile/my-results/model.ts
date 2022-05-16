@@ -1,9 +1,10 @@
 import {attach, createEvent, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
 import type {TestResult} from 'src/types'
-import {ThemesModel, SubjectsModel} from 'src/features/Test'
-import {UserModel} from 'src/features/User'
 import {getUserRatings} from 'src/api'
+import {UserModel} from 'src/features/User'
+import {SubjectsModel} from 'src/entities/Subject'
+import {ThemesModel} from 'src/entities/Theme'
 
 export const ResultsPageGate = createGate()
 

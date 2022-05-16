@@ -1,13 +1,12 @@
 import React from 'react'
 import {Box, Typography, Grid} from '@mui/material'
 import {useStore} from 'effector-react'
-import {$user, $userRole} from 'src/features/User/model'
-import {$currentGroup} from 'src/features/User/Student/model'
+import {UserModel} from 'src/features/User'
 
 export const ProfileInfoPage = () => {
-  const user = useStore($user)
-  const userRole = useStore($userRole)
-  const currStudGroup = useStore($currentGroup)
+  const user = useStore(UserModel.$user)
+  const userRole = useStore(UserModel.$userRole)
+  const currStudGroup = useStore(UserModel.$currentGroup)
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>

@@ -2,7 +2,7 @@ import React from 'react'
 import {InputLabel, MenuItem, Select, FormControl} from '@mui/material'
 import {useStore} from 'effector-react'
 import {length} from 'ramda'
-import * as ThemesModel from '../Themes/model'
+import * as ThemesModel from './model'
 
 export const ThemeSelect = () => {
   const themeVal = useStore(ThemesModel.$selectedThemeId)

@@ -2,12 +2,11 @@ import React from 'react'
 import {Box} from '@mui/material'
 import {LoadingButton} from '@mui/lab'
 import {useStore} from 'effector-react'
-import {GroupSelector} from 'src/ui/GroupSelector'
-import {SubjectSelector} from 'src/ui/SubjectSelector'
-import {AdminGroupsModel, AdminModel} from 'src/features/Admin'
-import {SubjectsModel} from 'src/features/Test'
-import {ThemeSelector} from 'src/ui/ThemeSelector'
-import {TestSelector} from 'src/ui/TestSelector'
+import {GroupModel, GroupSelector} from 'src/entities/Group'
+import {AdminModel} from 'src/features/Admin'
+import {SubjectsModel, SubjectSelector} from 'src/entities/Subject'
+import {ThemeSelector} from 'src/entities/Theme/'
+import {TestSelector} from 'src/entities/Test/'
 import * as FormModel from './FormModel'
 
 export const AnswersSelectForm = () => {
@@ -17,7 +16,7 @@ export const AnswersSelectForm = () => {
   const selectedTest = useStore(FormModel.$testId)
   const disabled = useStore(FormModel.$isFormButtonDisabled)
   const subjects = useStore(SubjectsModel.$adminSubjects)
-  const groups = useStore(AdminGroupsModel.$adminGroups)
+  const groups = useStore(GroupModel.$adminGroups)
   const themes = useStore(AdminModel.$adminThemes)
   const tests = useStore(AdminModel.$adminTests)
   const loading = useStore(AdminModel.fetchAdminGroupRatingsFx.pending)

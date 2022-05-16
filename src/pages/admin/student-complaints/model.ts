@@ -1,7 +1,7 @@
-import {createEffect, createEvent, createStore, sample} from 'effector'
 import {ChangeEvent} from 'react'
+import {createEffect, createEvent, createStore, sample} from 'effector'
+import type {DBTableContent} from 'src/types'
 import {getTaskErrors} from 'src/api'
-import {DBTableContent} from 'src/types'
 
 export const $complaintsData = createStore<DBTableContent[]>([])
 

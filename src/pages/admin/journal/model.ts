@@ -1,10 +1,10 @@
-import {SelectChangeEvent} from '@mui/material'
+import type {SelectChangeEvent} from '@mui/material'
+import type {JournalData} from 'src/types'
 import {combine, createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {getAdminJournal} from 'src/api'
 import {fetchAdminDataFx} from 'src/features/Admin/AdminData'
 import {reset} from 'src/lib/reset'
-import type {JournalData} from 'src/types'
 
 export const JournalPageGate = createGate()
 

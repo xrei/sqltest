@@ -2,9 +2,10 @@ import React from 'react'
 import {Box, Typography} from '@mui/material'
 import {useGate, useStore} from 'effector-react'
 import type {GridColDef} from '@mui/x-data-grid'
-import {ThemeSelect, SubjectSelect} from 'src/features/Test'
-import {$results, ResultsPageGate} from './model'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {SubjectSelect} from 'src/entities/Subject'
+import {ThemeSelect} from 'src/entities/Theme'
+import {$results, ResultsPageGate} from './model'
 
 const DataGrid = React.lazy(() =>
   import('@mui/x-data-grid').then((module) => ({default: module.DataGrid}))

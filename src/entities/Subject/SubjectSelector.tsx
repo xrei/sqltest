@@ -1,6 +1,6 @@
 import React from 'react'
 import {FormControl, InputLabel, Select, MenuItem, SelectChangeEvent} from '@mui/material'
-import {Subject} from 'src/types'
+import type {Subject} from 'src/types'
 
 interface SubjectSelectorProps {
   list: Subject[]

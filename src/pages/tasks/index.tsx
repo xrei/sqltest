@@ -3,8 +3,9 @@ import {Box, Typography, Grid, Stack} from '@mui/material'
 import LoadingButton from '@mui/lab/LoadingButton'
 import {useNavigate} from 'react-router'
 import {useGate, useStore} from 'effector-react'
+import {ThemesModel, ThemeSelect} from 'src/entities/Theme'
+import {SubjectSelect} from 'src/entities/Subject'
 import {TasksGate, startTestFx} from './model'
-import {ThemesModel, SubjectSelect, ThemeSelect} from 'src/features/Test'
 
 const TasksPage = () => {
   const navigate = useNavigate()

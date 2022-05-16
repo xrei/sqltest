@@ -1,8 +1,8 @@
 import {attach, createEffect, createEvent, createStore, sample} from 'effector'
+import type {NewsPost} from 'src/types'
 import {createAdminNews, deleteAdminNews, editAdminNews} from 'src/api'
 import {enqueueAlert} from 'src/features/Alerts'
 import {reset} from 'src/lib/reset'
-import {NewsPost} from 'src/types'
 
 export const $isEdit = createStore<NewsPost | null>(null)
 export const $manageNewsDialog = createStore(false)

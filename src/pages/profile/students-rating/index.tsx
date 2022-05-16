@@ -11,8 +11,8 @@ import {
   Paper,
 } from '@mui/material'
 import {useGate, useStore} from 'effector-react'
+import {SubjectSelect} from 'src/entities/Subject'
 import {$results, StudRatingPageGate} from './model'
-import {SubjectSelect} from 'src/features/Test'
 
 export const StudentsRatingPage = () => {
   useGate(StudRatingPageGate)
@@ -22,10 +22,7 @@ export const StudentsRatingPage = () => {
       <Typography variant="h3">Рейтинг студентов вашей группы</Typography>
 
       <Box maxWidth="sm" sx={{my: 4}}>
-        {/* <Typography sx={{mb: 1}} variant="h5">
-          Дисциплина:
-        </Typography> */}
-        <SubjectSelect></SubjectSelect>
+        <SubjectSelect />
       </Box>
 
       <RatingsTable />

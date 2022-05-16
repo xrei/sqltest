@@ -1,16 +1,14 @@
 import {forward, attach} from 'effector'
 import {createGate} from 'effector-react'
-import {ThemesModel, SubjectsModel, TestContentModel} from 'src/features/Test'
+import {ThemesModel} from 'src/entities/Theme'
+import {SubjectsModel} from 'src/entities/Subject'
+import {TestContentModel} from 'src/features/Test'
 
 export const TasksGate = createGate()
 
 forward({
   from: TasksGate.close,
-  to: ThemesModel.clearThemes,
-})
-forward({
-  from: TasksGate.close,
-  to: SubjectsModel.resetSelectedSubject,
+  to: [ThemesModel.clearThemes, SubjectsModel.resetSelectedSubject],
 })
 
 export const startTestFx = attach({

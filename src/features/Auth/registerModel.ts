@@ -1,10 +1,10 @@
 import {createStore, createEvent, guard, createEffect, combine, forward, sample} from 'effector'
 import type {ChangeEvent} from 'react'
 import type {SelectChangeEvent} from '@mui/material'
+import type {RegisterDTO, User} from 'src/types'
 import {reset} from 'src/lib/reset'
 import {getRegistrationRules, authRegister} from 'src/api'
 import {ResponseError} from 'src/api/error'
-import {RegisterDTO, User} from 'src/types'
 import {dialogClosed} from './dialog'
 import {enqueueAlert, Alert} from 'src/features/Alerts'
 
