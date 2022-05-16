@@ -5,8 +5,8 @@ import {useStore} from 'effector-react'
 import {GroupModel, GroupSelector} from 'src/entities/Group'
 import {AdminModel} from 'src/features/Admin'
 import {SubjectsModel, SubjectSelector} from 'src/entities/Subject'
-import {ThemeSelector} from 'src/entities/Theme/'
-import {TestSelector} from 'src/entities/Test/'
+import {ThemeSelector, ThemesModel} from 'src/entities/Theme/'
+import {TestSelector, TestModel} from 'src/entities/Test/'
 import * as FormModel from './FormModel'
 
 export const AnswersSelectForm = () => {
@@ -17,8 +17,8 @@ export const AnswersSelectForm = () => {
   const disabled = useStore(FormModel.$isFormButtonDisabled)
   const subjects = useStore(SubjectsModel.$adminSubjects)
   const groups = useStore(GroupModel.$adminGroups)
-  const themes = useStore(AdminModel.$adminThemes)
-  const tests = useStore(AdminModel.$adminTests)
+  const themes = useStore(ThemesModel.$adminThemes)
+  const tests = useStore(TestModel.$adminTests)
   const loading = useStore(AdminModel.fetchAdminGroupRatingsFx.pending)
 
   return (
