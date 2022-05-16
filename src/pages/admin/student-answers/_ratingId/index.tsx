@@ -21,7 +21,9 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
+  alpha,
 } from '@mui/material'
+import {useTheme} from '@mui/system'
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
 import type {RatingQnA} from 'src/types'
 import {ArrowBack as ArrowBackIcon} from '@mui/icons-material'
@@ -75,6 +77,7 @@ type RatingBlockProps = {
   rating: RatingQnA
 }
 const RatingBlock = (props: RatingBlockProps) => {
+  const theme = useTheme()
   const rating = props.rating
   const [expanded, setExpanded] = React.useState(false)
 
@@ -104,7 +107,9 @@ const RatingBlock = (props: RatingBlockProps) => {
           </TableHead>
           <TableBody
             sx={{
-              backgroundColor: rating.IsRight ? 'success.light' : 'error.main',
+              backgroundColor: rating.IsRight
+                ? alpha(theme.palette.success.light, 0.3)
+                : alpha(theme.palette.error.main, 0.3),
             }}
           >
             <TableRow>
