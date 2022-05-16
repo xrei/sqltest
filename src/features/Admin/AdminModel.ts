@@ -7,10 +7,8 @@ import {
   getPrepTest,
   getPrepTheme,
 } from 'src/api'
-import {SubjectsModel} from 'src/features/Test'
 import {StudentRating, Test, Theme, User} from 'src/types'
-import {UserModel} from '..'
-import * as AdminGroupsModel from './adminGroupsModel'
+import {UserModel} from '../User'
 
 const fetchAdminThemes = createEffect<{user: User | null; SubjectId: number}, Theme[]>(
   async ({user, SubjectId}) => {
@@ -67,15 +65,23 @@ const fetchAdminGroupRatings = createEffect<
   StudentRating[]
 >(async ({user, TestId, StuId}) => {
   if (!user) return []
+
+  const addId = (xs: StudentRating[]) =>
+    xs.map((x, idx) => ({
+      ...x,
+      id: idx,
+      StudentsRatings: x.StudentsRatings.map((y) => ({...y, id: y.RatingId, studentRatingId: idx})),
+    }))
+
   const payload = {TestId, StuId}
   if (user?.Role === 1) {
     const res = await (await getPrepGroupRating(payload)).json()
-    return res
+    return addId(res)
   }
   if (user.Role === 2) {
     const res = await (await getAdminGroupRating(payload)).json()
     console.log(res)
-    return res
+    return addId(res)
   }
   return []
 })

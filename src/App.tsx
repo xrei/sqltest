@@ -7,14 +7,14 @@ import {createAppTheme, $themeMode} from './theme'
 import {DBInfoDialog} from 'src/features/DBInfo'
 import {AuthDialogs} from 'src/features/Auth'
 import {createRoutes} from './router'
-import {$userIsAdmin} from './features/User/model'
+import {$isPrepOrAdmin} from './features/User/model'
 import {AlertsProvider} from './features/Alerts'
-import {ManageNewsDialog} from './features/User/Admin/AdminNews/ManageNewsDialog'
+import {ManageNewsDialog} from './features/Admin/AdminNews/ManageNewsDialog'
 
 const App: React.FC = () => {
-  const isUserAdmin = useStore($userIsAdmin)
+  const shouldCreateAdminRoutes = useStore($isPrepOrAdmin)
 
-  const pages = useRoutes(createRoutes(isUserAdmin))
+  const pages = useRoutes(createRoutes(shouldCreateAdminRoutes))
   const themeMode = useStore($themeMode)
   const theme = React.useMemo(() => createAppTheme(themeMode), [themeMode])
 

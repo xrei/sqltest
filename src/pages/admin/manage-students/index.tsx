@@ -33,7 +33,7 @@ import {
 } from '@mui/icons-material'
 import * as model from './model'
 import {useGate, useStore} from 'effector-react'
-import {AdminGroupsModel} from 'src/features/User/Admin'
+import {AdminGroupsModel} from 'src/features/Admin'
 import {GroupSelector} from 'src/ui/GroupSelector'
 
 const AdminManageStudentsPage = () => {

@@ -26,6 +26,7 @@ import {
   SystemInfo,
   JournalData,
   StudentRating,
+  GetStudentRatingParams,
 } from 'src/types'
 
 // home
@@ -182,6 +183,11 @@ export const getAdminSubjects = createRequestFx<{Id: number}, Subject[]>(
   'GET',
   true
 )
+export const getPrepSubjects = createRequestFx<{Id: number}, Subject[]>(
+  'Prep/GetAdminSubjects',
+  'GET',
+  true
+)
 
 export const getTaskErrors = createRequestFx<{Query: string}, DBTableContent[]>(
   'Admin/GetTaskErrors',
@@ -209,15 +215,24 @@ export const getPrepTest = createRequestFx<{ThemeId: number}, Test[]>(
   true
 )
 
-export const getPrepGroupRating = createRequestFx<{StuId: number; TestId: number}, StudentRating[]>(
+export const getPrepGroupRating = createRequestFx<GetStudentRatingParams, StudentRating[]>(
   'Prep/GetGroupRatings',
   'GET',
   true
 )
-export const getAdminGroupRating = createRequestFx<
-  {StuId: number; TestId: number},
-  StudentRating[]
->('Admin/GetGroupRatings', 'GET', true)
+export const getAdminGroupRating = createRequestFx<GetStudentRatingParams, StudentRating[]>(
+  'Admin/GetGroupRatings',
+  'GET',
+  true
+)
+export const deleteAdminGroupRating = createRequestFx<{RatingId: number}, string>(
+  'Admin/DeleteRating',
+  'POST'
+)
+export const reCalcAdminGroupRating = createRequestFx<{RatingId: number}, string>(
+  'Admin/ReCalcRating',
+  'POST'
+)
 
 export const deleteAdminNews = createRequestFx<{Id: number}, string>('Admin/DeleteNews', 'POST')
 export const editAdminNews = createRequestFx<{Id: number; Content: string}, string>(

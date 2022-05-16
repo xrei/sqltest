@@ -3,7 +3,7 @@ import type {ChangeEvent} from 'react'
 import {createGate} from 'effector-react'
 import {postAddGroup, postDeleteGroup, postEditGroup} from 'src/api'
 import {StudentGroup, NewGroupDto} from 'src/types'
-import {AdminGroupsModel} from 'src/features/User/Admin'
+import {AdminGroupsModel} from 'src/features/Admin'
 
 export const AdminGroupsPageGate = createGate()
 

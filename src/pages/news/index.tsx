@@ -2,10 +2,10 @@ import React from 'react'
 import {useStore} from 'effector-react'
 import {Card, Typography, Stack, Box, Button, CardActions} from '@mui/material'
 import {RenderHtml} from 'src/ui/RenderHtml'
-import {NewsPageGate, $posts, $isLoading} from './model'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
 import {UserModel} from 'src/features/User'
-import {AdminNewsModel} from 'src/features/User/Admin/AdminNews'
+import {AdminNewsModel} from 'src/features/Admin/AdminNews'
+import {NewsPageGate, $posts, $isLoading} from './model'
 
 export const NewsPage: React.FC = () => {
   const isLoading = useStore($isLoading)

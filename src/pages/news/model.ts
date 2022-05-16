@@ -2,7 +2,7 @@ import {createEffect, createStore, forward} from 'effector'
 import {createGate} from 'effector-react'
 import {reverse} from 'ramda'
 import {getSomeNews} from 'src/api'
-import {AdminNewsModel} from 'src/features/User/Admin/AdminNews'
+import {AdminNewsModel} from 'src/features/Admin/AdminNews'
 import type {NewsPost} from 'src/types'
 
 export const NewsPageGate = createGate('NewsPage')

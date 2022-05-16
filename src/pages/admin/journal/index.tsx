@@ -14,10 +14,10 @@ import {
 import {LoadingButton} from '@mui/lab'
 import {useGate, useStore} from 'effector-react'
 import {GroupSelector} from 'src/ui/GroupSelector'
-import {AdminGroupsModel} from 'src/features/User/Admin'
+import {AdminGroupsModel} from 'src/features/Admin'
 import {SubjectsModel} from 'src/features/Test'
-import * as model from './model'
 import {SubjectSelector} from 'src/ui/SubjectSelector'
+import * as model from './model'
 
 const AdminJournalPage = () => {
   useGate(model.JournalPageGate)

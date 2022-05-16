@@ -26,15 +26,16 @@ import {
 } from './drawerModel'
 import {authLogOff} from 'src/api'
 import {adminRoutes} from 'src/router/paths'
-import {$userRole} from 'src/features/User/model'
+
 import {ModeButton} from './ThemeModeSwitch'
-import {AdminNewsModel} from 'src/features/User/Admin/AdminNews'
+import {AdminNewsModel} from 'src/features/Admin/AdminNews'
+import {$adminNavigationPages} from 'src/features/User/userMenuNavigation'
+import {UserModel} from 'src/features/User'
 
 const DrawerHeader = styled('div')(({theme}) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  justifyContent: 'space-between',
   minHeight: '48px',
 }))
 
@@ -64,9 +65,12 @@ const adminStatsPages = [
 ]
 
 export const AdminDrawerLinks = () => {
-  const userRole = useStore($userRole)
+  const userRole = useStore(UserModel.$userRole)
+  const adminNavigation = useStore($adminNavigationPages)
   const isMobDrawerOpen = useStore($adminMobDrawer)
   const [open, setOpen] = React.useState(false)
+
+  const showEntitiesBlock = adminNavigation.adminEntitiesPages.length > 0
 
   const handleClick = () => {
     setOpen(!open)
@@ -89,12 +93,11 @@ export const AdminDrawerLinks = () => {
             <ChevronRightIcon />
           </IconButton>
         )}
-        <Typography>{userRole}</Typography>
-        <ModeButton />
+        <Typography sx={{ml: 1}}>{userRole}</Typography>
       </DrawerHeader>
       <Divider />
       <List>
-        {adminPages.map((page, index) => (
+        {adminNavigation.adminPages.map((page, index) => (
           <ListItem
             component={Link}
             to={page.to}
@@ -109,36 +112,41 @@ export const AdminDrawerLinks = () => {
           </ListItem>
         ))}
       </List>
-      <Divider />
-      <List disablePadding>
-        <ListItem dense button onClick={handleClick}>
-          <ListItemText primary="Управление" />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          {adminEntitiesPages.map((page, index) => (
-            <ListItem
-              sx={{ml: 2}}
-              component={Link}
-              to={page.to}
-              button
-              dense
-              key={index}
-              onClick={() => {
-                closeMobDrawerOnClick()
-                if (typeof page.onClick === 'function') {
-                  page.onClick()
-                }
-              }}
-            >
-              <ListItemText primary={page.text} />
+      {showEntitiesBlock && (
+        <>
+          <Divider />
+          <List disablePadding>
+            <ListItem dense button onClick={handleClick}>
+              <ListItemText primary="Управление" />
+              {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-          ))}
-        </Collapse>
-      </List>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              {adminNavigation.adminEntitiesPages.map((page, index) => (
+                <ListItem
+                  sx={{ml: 2}}
+                  component={Link}
+                  to={page.to}
+                  button
+                  dense
+                  key={index}
+                  onClick={() => {
+                    closeMobDrawerOnClick()
+                    if (typeof page.onClick === 'function') {
+                      page.onClick()
+                    }
+                  }}
+                >
+                  <ListItemText primary={page.text} />
+                </ListItem>
+              ))}
+            </Collapse>
+          </List>
+        </>
+      )}
+
       <Divider />
       <List sx={{flexGrow: 1}}>
-        {adminStatsPages.map((page, index) => (
+        {adminNavigation.adminStatsPages.map((page, index) => (
           <ListItem
             component={Link}
             to={page.to}
@@ -150,6 +158,9 @@ export const AdminDrawerLinks = () => {
             <ListItemText primary={page.text} />
           </ListItem>
         ))}
+      </List>
+      <List dense>
+        <ModeButton />
       </List>
       <Divider />
       <List dense>

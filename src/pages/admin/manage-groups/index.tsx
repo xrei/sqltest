@@ -19,7 +19,7 @@ import {
 import {useGate, useStore} from 'effector-react'
 import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
-import {AdminGroupsModel} from 'src/features/User/Admin'
+import {AdminGroupsModel} from 'src/features/Admin'
 
 export const AdminManageGroupsPage = () => {
   useGate(model.AdminGroupsPageGate)

@@ -1,5 +1,5 @@
 import {createStore, createEvent, attach, forward} from 'effector'
-import {getAdminSubjects, getAvailableSubjects} from 'src/api'
+import {getAdminSubjects, getAvailableSubjects, getPrepSubjects} from 'src/api'
 import {Subject} from 'src/types'
 import {$user} from 'src/features/User/model'
 import {loginFx} from 'src/features/Auth/loginModel'
@@ -10,14 +10,17 @@ export const fetchSubjectsFx = attach({
   source: $user,
   async effect(user) {
     if (!user) return []
-    if (user.Role === 1 || user.Role === 2) {
+    if (user.Role === 2) {
       const res = await (await getAdminSubjects({Id: user.Id})).json()
       return res
-    } else {
-      const res = await (await getAvailableSubjects({Id: user.Id})).json()
-
+    } else if (user.Role === 1) {
+      const res = await (await getPrepSubjects({Id: user.Id})).json()
       return res
     }
+
+    const res = await (await getAvailableSubjects({Id: user.Id})).json()
+
+    return res
   },
 })
 

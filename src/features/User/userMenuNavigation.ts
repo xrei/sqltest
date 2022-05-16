@@ -1,0 +1,52 @@
+import {adminRoutes} from 'src/router/paths'
+import {AdminNewsModel} from 'src/features/Admin/AdminNews'
+import type {User} from 'src/types'
+import {$user} from './model'
+
+const adminPages = [
+  {to: adminRoutes.studentAnswers, text: 'Ответы студентов'},
+  {to: adminRoutes.journal, text: 'Журнал'},
+  {to: adminRoutes.manageTests, text: 'Тесты', isAdmin: true},
+  {to: adminRoutes.groups, text: 'Группы'},
+  {to: adminRoutes.students, text: 'Студенты'},
+]
+
+const adminEntitiesPages = [
+  {to: adminRoutes.systemUsers, text: 'Доступы'},
+  {to: adminRoutes.systemDb, text: 'Базы данных'},
+  {to: adminRoutes.systemQuery, text: 'Системные запросы'},
+  {to: adminRoutes.materials, text: 'Материалы'},
+  {to: '#', text: 'Добавить новость', onClick: AdminNewsModel.manageNewsDialogToggled},
+  {to: adminRoutes.addAuthor, text: 'Добавить автора'},
+  {to: adminRoutes.systemInfo, text: 'Информация для режима студента'},
+]
+
+const adminStatsPages = [
+  {to: '/admin/student-rating', text: 'Рейтинги студентов'},
+  {to: '/admin/student-rating-theme', text: 'Рейтинги студентов по темам'},
+  {to: '/admin/tasks-stats', text: 'Статистика по заданиям', isAdmin: true},
+  {to: '/admin/online-users', text: 'Пользователи онлайн', isAdmin: true},
+  {to: adminRoutes.studentComplaints, text: 'Замечания студентов', isAdmin: true},
+  {to: '#', text: 'Удаление доступа группы к тесту'},
+]
+
+const createAdminNavigation = (user: User) => {
+  const isAdmin = user.Role === 2
+  const mapRoutes = (xs: any[]) => xs.filter((v) => (isAdmin ? true : !v.isAdmin))
+
+  return {
+    adminPages: mapRoutes(adminPages),
+    adminEntitiesPages: isAdmin ? adminEntitiesPages : [],
+    adminStatsPages: mapRoutes(adminStatsPages),
+  }
+}
+
+export const $adminNavigationPages = $user.map((user) => {
+  if (!user)
+    return {
+      adminPages: [],
+      adminEntitiesPages: [],
+      adminStatsPages: [],
+    }
+  return createAdminNavigation(user)
+})

@@ -286,11 +286,15 @@ export type StudentsRatings = {
   countMiddle: number
   countUser: number
   percent: number
+  studentRatingId: number
 }
 
 export type StudentRating = {
   BestMark: number
   RatingCount: number
-  StudentsFio: string
-  StudentsRatings: StudentsRatings
+  StudentsFIO: string
+  StudentsRatings: StudentsRatings[]
+  id: number
 }
+
+export type GetStudentRatingParams = {StuId: number; TestId: number}

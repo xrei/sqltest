@@ -1,5 +1,5 @@
 import {head, split, map, join, take} from 'ramda'
-import {createEffect, createEvent, createStore, forward} from 'effector'
+import {combine, createEffect, createEvent, createStore, forward} from 'effector'
 import type {User} from 'src/types'
 import {getUser, authLogOff} from 'src/api'
 import {loginFx} from '../Auth/loginModel'
@@ -15,7 +15,9 @@ export const $user = createStore<User | null>(null)
 export const $hasUser = $user.map((v) => Boolean(v))
 export const $userRole = $user.map((v) => (v ? roles[v.Role] : ''))
 export const $userIsStudent = $user.map((v) => v?.Role === 0)
-export const $userIsAdmin = $user.map((user) => user?.Role === 1 || user?.Role === 2)
+export const $userIsPrep = $user.map((user) => user?.Role === 1)
+export const $userIsAdmin = $user.map((user) => user?.Role === 2)
+export const $isPrepOrAdmin = combine($userIsAdmin, $userIsPrep, (a, b) => a || b)
 export const $userNameLetters = $user.map((u) => {
   if (!u) return ''
   // @ts-expect-error: untypable
@@ -38,7 +40,3 @@ forward({from: fetchUser.doneData, to: setUser})
 forward({from: loginFx.doneData, to: setUser})
 forward({from: registerFx.doneData, to: setUser})
 forward({from: authLogOff.doneData, to: clearUser})
-
-// $user.watch((u) => {
-//   console.log('USER: ', u)
-// })
