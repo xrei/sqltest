@@ -28,6 +28,7 @@ import {
   StudentRating,
   GetStudentRatingParams,
   RatingQnA,
+  QuestionStats,
 } from 'src/types'
 
 // home
@@ -250,6 +251,31 @@ export const getAdminUserQnA = createRequestFx<{RatingId: number}, RatingQnA[]>(
   'GET',
   true
 )
+
+export const adminGetAllQsnStats = createRequestFx<{ThemeId: number}, QuestionStats[]>(
+  'Admin/GetAllQsnStats',
+  'GET',
+  true
+)
+export const adminGetAllQsnStatsGroupOne = createRequestFx<
+  {themeId: number; groupId: number},
+  QuestionStats[]
+>('Admin/GetAllQsnStatsGroupOne', 'GET', true)
+
+export const adminGetGroupsRatings = createRequestFx<
+  {subjId: number; groupId: number},
+  StudRating[]
+>('Admin/GetAdminGroupsRatings', 'GET', true)
+
+export const adminGetGroupsRatingsSuccess = createRequestFx<
+  {subjId: number; groupId: number},
+  StudRating[]
+>('Admin/GetAdminGroupsRatingsSuccess', 'GET', true)
+
+export const adminGetGroupsThemeRatings = createRequestFx<
+  {themeId: number; groupId: number},
+  StudRating[]
+>('Admin/GetAdminGroupsThemeRatings', 'GET', true)
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

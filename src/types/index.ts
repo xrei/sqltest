@@ -311,3 +311,15 @@ export type RatingQnA = {
   StudentName: string
   SystemAnswersText: string[]
 }
+
+export type QuestionStats = {
+  countInThemesQsn: number
+  discriminate_coefficient: number
+  easy_coefficient: number
+  exit_difficulty: string
+  group_id: string | null
+  hard_coefficient: number
+  qsn_id: number
+  qsn_type: number
+  standart_deviation: number
+}
