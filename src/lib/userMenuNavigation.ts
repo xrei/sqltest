@@ -1,7 +1,7 @@
 import {adminRoutes} from 'src/router/paths'
 import {AdminNewsModel} from 'src/features/Admin/AdminNews'
 import type {User} from 'src/types'
-import {$user} from './model'
+import {$user} from 'src/features/User/model'
 
 const adminPages = [
   {to: adminRoutes.studentAnswers, text: 'Ответы студентов'},

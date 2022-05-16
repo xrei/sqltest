@@ -25,11 +25,8 @@ import {
   adminDrawerMobClosed,
 } from './drawerModel'
 import {authLogOff} from 'src/api'
-import {adminRoutes} from 'src/router/paths'
-
 import {ModeButton} from './ThemeModeSwitch'
-import {AdminNewsModel} from 'src/features/Admin/AdminNews'
-import {$adminNavigationPages} from 'src/features/User/userMenuNavigation'
+import {$adminNavigationPages} from 'src/lib/userMenuNavigation'
 import {UserModel} from 'src/features/User'
 
 const DrawerHeader = styled('div')(({theme}) => ({
@@ -38,31 +35,6 @@ const DrawerHeader = styled('div')(({theme}) => ({
   padding: theme.spacing(0, 1),
   minHeight: '48px',
 }))
-
-const adminPages = [
-  {to: adminRoutes.studentAnswers, text: 'Ответы студентов'},
-  {to: adminRoutes.journal, text: 'Журнал'},
-  {to: adminRoutes.manageTests, text: 'Тесты'},
-  {to: adminRoutes.groups, text: 'Группы'},
-  {to: adminRoutes.students, text: 'Студенты'},
-]
-
-const adminEntitiesPages = [
-  {to: adminRoutes.systemUsers, text: 'Доступы'},
-  {to: adminRoutes.systemDb, text: 'Базы данных'},
-  {to: adminRoutes.systemQuery, text: 'Системные запросы'},
-  {to: adminRoutes.materials, text: 'Материалы'},
-  {to: '#', text: 'Добавить новость', onClick: AdminNewsModel.manageNewsDialogToggled},
-  {to: adminRoutes.addAuthor, text: 'Добавить автора'},
-  {to: adminRoutes.systemInfo, text: 'Информация для режима студента'},
-]
-
-const adminStatsPages = [
-  {to: '/admin/student-rating', text: 'Рейтинги студентов'},
-  {to: '/admin/tasks-stats', text: 'Статистика по заданиям'},
-  {to: '/admin/online-users', text: 'Пользователи онлайн'},
-  {to: adminRoutes.studentComplaints, text: 'Замечания студентов'},
-]
 
 export const AdminDrawerLinks = () => {
   const userRole = useStore(UserModel.$userRole)
