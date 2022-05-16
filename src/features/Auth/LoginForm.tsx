@@ -60,7 +60,8 @@ export const LoginForm = () => {
             autoFocus
             placeholder="Логин:"
             label="Логин:"
-            type="text"
+            type="password"
+            autoComplete="username name"
             fullWidth
             variant="outlined"
             required
