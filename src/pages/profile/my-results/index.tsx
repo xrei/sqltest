@@ -58,6 +58,16 @@ const ResultsTable = () => {
   return (
     <React.Suspense fallback={<CenteredLoader />}>
       <DataGrid
+        sx={{
+          '& .MuiDataGrid-cell, & .MuiDataGrid-columnHeaderTitle': {
+            textOverflow: 'clip',
+            lineHeight: '1.43rem',
+            whiteSpace: 'normal',
+          },
+          '& .lastcolumnSeparator .MuiDataGrid-columnSeparator--sideRight': {
+            display: 'none !important',
+          },
+        }}
         rows={results}
         columns={TableCols}
         pageSize={7}
