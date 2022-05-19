@@ -41,7 +41,7 @@ export const StudentAnswersView = () => {
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
       <Typography variant="h3">{currentTheme?.ThemeName}</Typography>
 
-      <Stack sx={{mt: 4}}>{ratings.length ? ratingsList : <CenteredLoader />}</Stack>
+      <Stack sx={{mt: 4, gap: 1}}>{ratings.length ? ratingsList : <CenteredLoader />}</Stack>
     </Box>
   )
 }
@@ -54,7 +54,9 @@ const StudentRatingCard: React.FC<{student: StudentRating}> = ({student}) => {
   }
   return (
     <Card sx={{maxWidth: '100%'}}>
-      <CardContent sx={{display: 'flex', alignItems: 'center', p: 1, px: 2}}>
+      <CardContent
+        sx={{display: 'flex', alignItems: 'center', p: 1, px: 2, '&:last-child': {pb: 1}}}
+      >
         <Box sx={{flex: 1, display: 'flex', gap: 2, alignItems: 'center'}}>
           <ExpandMoreButton
             expand={expanded}
