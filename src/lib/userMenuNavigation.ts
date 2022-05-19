@@ -23,7 +23,6 @@ const adminEntitiesPages = [
 
 const adminStatsPages = [
   {to: '/admin/student-rating', text: 'Рейтинги студентов'},
-  {to: '/admin/student-rating-theme', text: 'Рейтинги студентов по темам'},
   {to: '/admin/tasks-stats', text: 'Статистика по заданиям', isAdmin: true},
   {to: '/admin/online-users', text: 'Пользователи онлайн', isAdmin: true},
   {to: adminRoutes.studentComplaints, text: 'Замечания студентов', isAdmin: true},

@@ -15,6 +15,7 @@ export const adminRoutes = {
   studentAnswers: '/admin/student-answers',
   studentAnswersRatingId: '/admin/student-answers/:ratingId',
   studentComplaints: '/admin/student-complaints',
+  studentRating: '/admin/student-rating',
 }
 
 export const routesPaths = {

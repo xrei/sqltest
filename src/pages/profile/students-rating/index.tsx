@@ -1,21 +1,13 @@
 import React from 'react'
-import {
-  Box,
-  Typography,
-  Table,
-  TableContainer,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Paper,
-} from '@mui/material'
+import {Box, Typography} from '@mui/material'
 import {useGate, useStore} from 'effector-react'
+import {RatingsTable} from 'src/ui/RatingsTable'
 import {SubjectSelect} from 'src/entities/Subject'
 import {$results, StudRatingPageGate} from './model'
 
 export const StudentsRatingPage = () => {
   useGate(StudRatingPageGate)
+  const results = useStore($results)
 
   return (
     <Box display="flex" flexDirection="column" mt={2}>
@@ -25,34 +17,7 @@ export const StudentsRatingPage = () => {
         <SubjectSelect />
       </Box>
 
-      <RatingsTable />
+      <RatingsTable results={results} />
     </Box>
-  )
-}
-
-const RatingsTable = () => {
-  const results = useStore($results)
-
-  return (
-    <TableContainer component={Paper} sx={{backgroundColor: 'background.default'}}>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell sx={{fontWeight: 'bold'}}>Ф.И.О</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}}>Средний балл</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}}>Пройдено тестов</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {results.map((tr, idx) => (
-            <TableRow key={idx}>
-              <TableCell>{tr.stuFIO}</TableCell>
-              <TableCell>{tr.avgMark}</TableCell>
-              <TableCell>{tr.testCount}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
   )
 }

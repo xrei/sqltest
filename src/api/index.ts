@@ -263,17 +263,20 @@ export const adminGetAllQsnStatsGroupOne = createRequestFx<
 >('Admin/GetAllQsnStatsGroupOne', 'GET', true)
 
 export const adminGetGroupsRatings = createRequestFx<
-  {subjId: number; groupId: number},
+  {subjId: string | number; groupId: string | number},
   StudRating[]
 >('Admin/GetAdminGroupsRatings', 'GET', true)
 
 export const adminGetGroupsRatingsSuccess = createRequestFx<
-  {subjId: number; groupId: number},
+  {subjId: string | number; groupId: string | number},
   StudRating[]
 >('Admin/GetAdminGroupsRatingsSuccess', 'GET', true)
 
 export const adminGetGroupsThemeRatings = createRequestFx<
-  {themeId: number; groupId: number},
+  {
+    themeId: number | string
+    groupId: number | string
+  },
   StudRating[]
 >('Admin/GetAdminGroupsThemeRatings', 'GET', true)
 
