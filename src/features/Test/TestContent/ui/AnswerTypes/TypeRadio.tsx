@@ -15,7 +15,12 @@ export const TypeRadio: React.FC = () => {
   return (
     <RadioGroup name="answer-radio" value={currQsn.UserAnswer} onChange={onInput}>
       {answers.map((answ) => (
-        <FormControlLabel key={answ.Id} value={answ.Id} control={<Radio />} label={answ.Content} />
+        <FormControlLabel
+          key={answ.Id}
+          value={answ.Id}
+          control={<Radio />}
+          label={<div dangerouslySetInnerHTML={{__html: answ.Content}} />}
+        />
       ))}
     </RadioGroup>
   )

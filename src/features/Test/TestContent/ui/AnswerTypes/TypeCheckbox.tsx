@@ -19,9 +19,13 @@ export const TypeCheckbox: React.FC = () => {
           key={answ.Id}
           name={'answer-checkbox_' + answ.Id}
           control={
-            <Checkbox checked={answ.Correct} value={answ.Correct} onChange={(e) => onInput(e, answ.Id)} />
+            <Checkbox
+              checked={answ.Correct}
+              value={answ.Correct}
+              onChange={(e) => onInput(e, answ.Id)}
+            />
           }
-          label={answ.Content}
+          label={<div dangerouslySetInnerHTML={{__html: answ.Content}} />}
         />
       ))}
     </>
