@@ -12,7 +12,7 @@ import {
 import {DesktopMac} from '@mui/icons-material'
 import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
-import {Logo} from 'src/ui/Logo'
+// import {Logo} from 'src/ui/Logo'
 import SQLImage from 'src/static/sql.png'
 import NoSQLImage from 'src/static/nosql.webp'
 import FirebirdLogo from 'src/static/firebird_logo.svg?raw'
@@ -48,15 +48,44 @@ export const HomePage: React.FC = () => {
           color: 'common.white',
         }}
       >
-        <Box mb={2}>
-          <Logo width={240} />
+        <Box
+          sx={{
+            mb: 4,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: {xs: 2, sm: 4},
+            flex: 1,
+            justifyContent: {xs: 'center', sm: 'space-between'},
+          }}
+        >
+          {logos.map((logo, id) => (
+            <Paper
+              variant="outlined"
+              key={id}
+              dangerouslySetInnerHTML={{__html: logo}}
+              sx={{
+                p: {xs: 2, sm: 4},
+                width: {xs: 100, sm: 200},
+                height: {xs: 100, sm: 200},
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                bgcolor: isDark ? 'primary.light' : 'white',
+                flex: 1,
+
+                '& svg': {
+                  height: '100%',
+                },
+              }}
+            ></Paper>
+          ))}
         </Box>
         <Typography
           variant="inherit"
           sx={{fontSize: {xs: 32, sm: 40, md: 54}, lineHeight: '48px'}}
           gutterBottom
         >
-          SQL & NoSQL тренажер
+          Тренажер SQL & NoSQL
         </Typography>
         <Typography variant="h4">Интеллектуальное обучение SQL & NoSQL программированию</Typography>
       </Box>
@@ -84,7 +113,7 @@ export const HomePage: React.FC = () => {
             }}
           />
         </Box>
-        <Box sx={{display: 'flex', flexFlow: 'column', mt: 8}}>
+        {/* <Box sx={{display: 'flex', flexFlow: 'column', mt: 8}}>
           <Typography textAlign="center" variant="h1" sx={{fontWeight: '500', mb: 1}}>
             Системы управления БД
           </Typography>
@@ -115,7 +144,7 @@ export const HomePage: React.FC = () => {
               ></Paper>
             ))}
           </Box>
-        </Box>
+        </Box> */}
         <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 10}}>
           <Button
             size="large"
