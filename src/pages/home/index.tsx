@@ -20,12 +20,13 @@ import MongoLogo from 'src/static/mongodb_logo.svg?raw'
 import MssqlLogo from 'src/static/mssql-logo.svg?raw'
 import OracleLogo from 'src/static/oracle_logo.svg?raw'
 import Neo4jLogo from 'src/static/neo4j-logo.svg?raw'
+import PostgresqlLogo from 'src/static/postgresql.svg?raw'
 import {$themeMode} from 'src/theme'
 
 export const HomePage: React.FC = () => {
   const isDark = useStore($themeMode) === 'dark'
 
-  const logos = [FirebirdLogo, MssqlLogo, OracleLogo, MongoLogo, Neo4jLogo]
+  const logos = [FirebirdLogo, MssqlLogo, OracleLogo, MongoLogo, Neo4jLogo, PostgresqlLogo]
 
   return (
     <Box
