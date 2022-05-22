@@ -29,6 +29,7 @@ import {
   GetStudentRatingParams,
   RatingQnA,
   QuestionStats,
+  UserOnline,
 } from 'src/types'
 
 // home
@@ -282,6 +283,9 @@ export const adminGetGroupsThemeRatings = createRequestFx<
   },
   StudRating[]
 >('Admin/GetAdminGroupsThemeRatings', 'GET', true)
+
+export const adminGetAllUsersOnline = createRequestFx<void, UserOnline[]>('Admin/GetAllUsersOnline')
+export const adminDeleteUserOnline = createRequestFx<void, string>('Admin/DeleteUserOnline', 'POST')
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

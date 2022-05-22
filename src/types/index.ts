@@ -323,3 +323,9 @@ export type QuestionStats = {
   qsn_type: number
   standart_deviation: number
 }
+
+export type UserOnline = {
+  FIO: string
+  groupName: string
+  creationDate: string
+}
