@@ -7,6 +7,7 @@ import {NewsPage} from './news'
 import {ProfilePage, MyResultsPage, StudentsRatingPage, ProfileInfoPage} from './profile'
 import {TaskResultPage} from './tasks/result'
 import {AboutPage} from './about'
+import {NotFoundPage} from './not-found'
 
 const TasksPage = React.lazy(() => import('src/pages/tasks'))
 const ThemeIdPage = React.lazy(() => import('src/pages/tasks/_themeId'))
@@ -27,4 +28,5 @@ export {
   MyResultsPage,
   StudentsRatingPage,
   TaskResultPage,
+  NotFoundPage,
 }

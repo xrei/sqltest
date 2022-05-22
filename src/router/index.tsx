@@ -64,5 +64,6 @@ export const createRoutes = (createAdminRoutes: boolean): RouteObject[] => {
       ],
     },
     ...adminRoutesArr,
+    {path: '*', element: <Pages.NotFoundPage />},
   ]
 }
