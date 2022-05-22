@@ -22,6 +22,7 @@ const createLazyAdminPages = () => {
     AdminStudentRatingPage: React.lazy(() => import('src/pages/admin/student-rating')),
     AdminTaskStatisticsPage: React.lazy(() => import('src/pages/admin/task-statistics')),
     AdminUsersOnlinePage: React.lazy(() => import('src/pages/admin/users-online')),
+    AdminDeleteTestForGroupPage: React.lazy(() => import('src/pages/admin/delete-test-for-group')),
   }
   return pages
 }

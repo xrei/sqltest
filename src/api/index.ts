@@ -287,6 +287,14 @@ export const adminGetGroupsThemeRatings = createRequestFx<
 export const adminGetAllUsersOnline = createRequestFx<void, UserOnline[]>('Admin/GetAllUsersOnline')
 export const adminDeleteUserOnline = createRequestFx<void, string>('Admin/DeleteUserOnline', 'POST')
 
+export const adminDeleteGroupForTest = createRequestFx<
+  {
+    themeId: number | string
+    groupId: number | string
+  },
+  string
+>('Admin/DeleteGroupForTest', 'POST')
+
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')

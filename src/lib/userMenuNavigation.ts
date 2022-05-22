@@ -26,7 +26,7 @@ const adminStatsPages = [
   {to: adminRoutes.taskStatistics, text: 'Статистика по заданиям', isAdmin: true},
   {to: adminRoutes.usersOnline, text: 'Пользователи онлайн', isAdmin: true},
   {to: adminRoutes.studentComplaints, text: 'Замечания студентов', isAdmin: true},
-  {to: '#', text: 'Удаление доступа группы к тесту'},
+  {to: adminRoutes.deleteTestForGroup, text: 'Удаление доступа группы к тесту'},
 ]
 
 const createAdminNavigation = (user: User) => {

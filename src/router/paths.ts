@@ -18,6 +18,7 @@ export const adminRoutes = {
   studentRating: '/admin/student-rating',
   taskStatistics: '/admin/task-statistics',
   usersOnline: '/admin/users-online',
+  deleteTestForGroup: '/admin/delete-test-for-group',
 }
 
 export const routesPaths = {
