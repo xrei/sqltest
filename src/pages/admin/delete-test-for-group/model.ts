@@ -1,5 +1,5 @@
 import {SelectChangeEvent} from '@mui/material'
-import {attach, combine, createEvent, createStore, forward, sample} from 'effector'
+import {attach, createEvent, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {adminDeleteGroupForTest} from 'src/api'
 import {ThemesModel} from 'src/entities/Theme'
