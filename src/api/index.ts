@@ -252,13 +252,16 @@ export const getAdminUserQnA = createRequestFx<{RatingId: number}, RatingQnA[]>(
   true
 )
 
-export const adminGetAllQsnStats = createRequestFx<{ThemeId: number}, QuestionStats[]>(
+export const adminGetAllQsnStats = createRequestFx<{ThemeId: number | string}, QuestionStats[]>(
   'Admin/GetAllQsnStats',
   'GET',
   true
 )
 export const adminGetAllQsnStatsGroupOne = createRequestFx<
-  {themeId: number; groupId: number},
+  {
+    themeId: number | string
+    groupId: number | string
+  },
   QuestionStats[]
 >('Admin/GetAllQsnStatsGroupOne', 'GET', true)
 

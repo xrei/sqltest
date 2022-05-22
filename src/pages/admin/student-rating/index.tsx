@@ -2,12 +2,10 @@ import React from 'react'
 import {
   Box,
   Divider,
-  IconButton,
   Typography,
   Switch,
   FormControlLabel,
   FormGroup,
-  Button,
   Paper,
   Tooltip,
 } from '@mui/material'
@@ -21,7 +19,6 @@ import * as model from './model'
 
 export const AdminStudentRatingPage = () => {
   useGate(model.AdminStudentRatingPageGate)
-  const ratingSwitchState = useStore(model.$ratingTypeSwitchVal)
   const ratingsData = useStore(model.$ratingsData)
   const loading = useStore(model.$isRatingsLoading)
 

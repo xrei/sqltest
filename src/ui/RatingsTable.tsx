@@ -7,7 +7,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Box,
 } from '@mui/material'
 import {StudRating} from 'src/types'
 import {CenteredLoader} from './CenteredLoader'

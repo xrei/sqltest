@@ -20,6 +20,7 @@ const createLazyAdminPages = () => {
       () => import('src/pages/admin/student-answers/_ratingId')
     ),
     AdminStudentRatingPage: React.lazy(() => import('src/pages/admin/student-rating')),
+    AdminTaskStatisticsPage: React.lazy(() => import('src/pages/admin/task-statistics')),
   }
   return pages
 }

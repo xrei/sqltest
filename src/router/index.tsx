@@ -40,6 +40,7 @@ export const createRoutes = (createAdminRoutes: boolean): RouteObject[] => {
         element: WithAuth(<AdminPages.AdminStudentComplaintsPage />),
       },
       {path: adminRoutes.studentRating, element: WithAuth(<AdminPages.AdminStudentRatingPage />)},
+      {path: adminRoutes.taskStatistics, element: WithAuth(<AdminPages.AdminTaskStatisticsPage />)},
     ]
   }
 

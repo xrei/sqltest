@@ -5,11 +5,18 @@ import {StudentGroup} from 'src/types'
 interface GroupSelectorProps {
   list: StudentGroup[]
   value: string
+  disabled?: boolean
   onChange?: ((event: SelectChangeEvent<string>, child: React.ReactNode) => void) | undefined
 }
-export const GroupSelector: React.FC<GroupSelectorProps> = ({list, value, onChange}) => {
+export const GroupSelector: React.FC<GroupSelectorProps> = ({list, value, onChange, disabled}) => {
   return (
-    <FormControl sx={{maxWidth: 'sm', mr: 2}} fullWidth variant="outlined" size="small">
+    <FormControl
+      sx={{maxWidth: 'sm', mr: 2}}
+      fullWidth
+      variant="outlined"
+      size="small"
+      disabled={disabled}
+    >
       <InputLabel id="adm-group-sel">Группа</InputLabel>
       <Select value={value} labelId="adm-group-sel" label="Группа" onChange={onChange}>
         {list.map((x) => (

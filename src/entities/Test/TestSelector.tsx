@@ -1,17 +1,32 @@
 import React from 'react'
-import {FormControl, InputLabel, Select, MenuItem, SelectChangeEvent} from '@mui/material'
-import {Test} from 'src/types'
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  SelectChangeEvent,
+  SxProps,
+  Theme as MuiTheme,
+} from '@mui/material'
+import type {Test} from 'src/types'
 
 interface TestSelectorProps {
   list: Test[]
   value: string
   onChange?: ((event: SelectChangeEvent<string>, child: React.ReactNode) => void) | undefined
   disabled?: boolean
+  sx?: SxProps<MuiTheme>
 }
-export const TestSelector: React.FC<TestSelectorProps> = ({list, value, onChange, disabled}) => {
+export const TestSelector: React.FC<TestSelectorProps> = ({
+  list,
+  value,
+  onChange,
+  disabled,
+  sx = {},
+}) => {
   return (
     <FormControl
-      sx={{maxWidth: 'sm', mr: 2}}
+      sx={{maxWidth: 'sm', mr: 2, ...sx}}
       disabled={disabled}
       fullWidth
       variant="outlined"
