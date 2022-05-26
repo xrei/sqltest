@@ -12,12 +12,14 @@ interface ResponseType<R = unknown> extends Response {
 export const createRequestFx = <T = unknown, R = unknown>(
   resource: string,
   method?: Methods,
-  url?: boolean
+  url?: boolean,
+  cfg: Options = {}
 ) => {
   return createEffect<T, ResponseType<R>>(async (params) => {
     const config: Options = {
       method,
       prefixUrl: resource.startsWith('http') ? '' : '/api',
+      ...cfg,
     }
     if (!url) {
       config.json = params

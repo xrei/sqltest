@@ -48,6 +48,8 @@ const fetchStatisticsByGroupFx = attach({
   },
 })
 
+export const $statisticsLoading = fetchStatisticsFx.pending
+export const $statisticsByGroupLoading = fetchStatisticsByGroupFx.pending
 export const $isRatingsLoading = combine(
   [fetchStatisticsFx.pending, fetchStatisticsByGroupFx.pending],
   ([a, b]) => a || b

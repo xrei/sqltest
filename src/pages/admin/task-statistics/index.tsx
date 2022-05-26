@@ -43,6 +43,8 @@ const Form = () => {
   const subjects = useStore(SubjectsModel.$adminSubjects)
   const groups = useStore(GroupModel.$adminGroups)
   const themes = useStore(ThemesModel.$adminThemes)
+  const isStatisticsLoading = useStore(model.$statisticsLoading)
+  const isStatisticsByGroupLoading = useStore(model.$statisticsByGroupLoading)
 
   return (
     <Box
@@ -64,6 +66,7 @@ const Form = () => {
         />
         <LoadingButton
           disabled={!selectedTheme || !selectedSubject}
+          loading={isStatisticsLoading}
           fullWidth
           variant="contained"
           color="primary"
@@ -82,6 +85,7 @@ const Form = () => {
 
         <LoadingButton
           disabled={!selectedTheme || !selectedGroup}
+          loading={isStatisticsByGroupLoading}
           fullWidth
           variant="contained"
           color="secondary"
