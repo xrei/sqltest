@@ -49,7 +49,7 @@ sample({
 sample({
   clock: $themeId,
   fn: (id) => Number(id),
-  target: TestModel.fetchAdminTestsFx,
+  target: TestModel.fetchAdminTestsByThemeFx,
 })
 
 sample({

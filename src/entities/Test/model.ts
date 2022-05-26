@@ -3,7 +3,7 @@ import {getAdminTest, getPrepTest} from 'src/api'
 import type {Test, User} from 'src/types'
 import {UserModel} from 'src/features/User'
 
-const fetchAdminTests = createEffect<{user: User | null; ThemeId: number}, Test[]>(
+const __fetchAdminTestsByThemeFx = createEffect<{user: User | null; ThemeId: number}, Test[]>(
   async ({user, ThemeId}) => {
     if (!user) return []
 
@@ -19,11 +19,11 @@ const fetchAdminTests = createEffect<{user: User | null; ThemeId: number}, Test[
   }
 )
 
-export const fetchAdminTestsFx = attach({
+export const fetchAdminTestsByThemeFx = attach({
   source: UserModel.$user,
-  effect: fetchAdminTests,
+  effect: __fetchAdminTestsByThemeFx,
   mapParams: (ThemeId: number, user) => ({user, ThemeId}),
 })
 
 export const $adminTests = createStore<Test[]>([])
-$adminTests.on(fetchAdminTestsFx.doneData, (_, data) => data)
+$adminTests.on(fetchAdminTestsByThemeFx.doneData, (_, data) => data)
