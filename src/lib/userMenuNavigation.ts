@@ -6,7 +6,7 @@ import {UserModel} from 'src/features/User'
 const adminPages = [
   {to: adminRoutes.studentAnswers, text: 'Ответы студентов'},
   {to: adminRoutes.journal, text: 'Журнал'},
-  {to: adminRoutes.manageTests, text: 'Тесты', isAdmin: true},
+  {to: adminRoutes.tests, text: 'Тесты', isAdmin: true},
   {to: adminRoutes.groups, text: 'Группы'},
   {to: adminRoutes.students, text: 'Студенты'},
 ]

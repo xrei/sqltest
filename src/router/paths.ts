@@ -1,5 +1,5 @@
 export const adminRoutes = {
-  manageTests: '/admin/tests',
+  tests: '/admin/tests',
   groups: '/admin/manage-groups',
   students: '/admin/manage-students',
   journal: '/admin/journal',
