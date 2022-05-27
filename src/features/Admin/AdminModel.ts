@@ -23,7 +23,6 @@ const fetchAdminGroupRatings = createEffect<
   }
   if (user.Role === 2) {
     const res = await (await getAdminGroupRating(payload)).json()
-    console.log(res)
     return addId(res)
   }
   return []
