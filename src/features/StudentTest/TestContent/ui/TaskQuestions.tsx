@@ -1,12 +1,12 @@
 import {useStore} from 'effector-react'
 import React from 'react'
 import {Box, Button, useTheme} from '@mui/material'
-import * as TestContentModel from '../model'
 import {grey, orange, blue, common} from '@mui/material/colors'
+import {$test, $currentQestionId, changeCurrentQuestionId} from '../model'
 
 export const TaskQuestions = () => {
-  const test = useStore(TestContentModel.$test)
-  const currQId = useStore(TestContentModel.$currentQestionId)
+  const test = useStore($test)
+  const currQId = useStore($currentQestionId)
 
   if (!test) return <></>
 
@@ -22,7 +22,7 @@ export const TaskQuestions = () => {
             qsnDifficulty={q.Difficulty}
             current={q.Id === currQId}
             hasAnswer={Boolean(q.UserAnswer)}
-            onClick={() => TestContentModel.changeCurrentQuestionId(q.Id)}
+            onClick={() => changeCurrentQuestionId(q.Id)}
           >
             {q.NumInTest + 1}
           </QuestionBtn>

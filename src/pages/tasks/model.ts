@@ -2,7 +2,7 @@ import {forward, attach} from 'effector'
 import {createGate} from 'effector-react'
 import {ThemesModel} from 'src/entities/Theme'
 import {SubjectsModel} from 'src/entities/Subject'
-import {TestContentModel} from 'src/features/Test'
+import {TestContentModel} from 'src/features/StudentTest'
 
 export const TasksGate = createGate()
 

@@ -159,10 +159,13 @@ export type Test = {
   subjId: number
   themeId: number
   themeName: string
-  themesList: unknown[]
+  themesList: unknown[] | null
+  valueCan: number
   valueComplex: number
   valueEasy: number
+  valueKnow: number
   valueMiddle: number
+  valueOwn: number
   viewCorrectAndRight: number
 }
 
@@ -328,4 +331,23 @@ export type UserOnline = {
   FIO: string
   groupName: string
   creationDate: string
+}
+
+type AdminTest = Test
+
+type AdminTheme = {
+  Availible: boolean
+  Description: string
+  ThemeId: number
+  ThemeName: string
+  ThemeSubjId: number
+  ThemeTests: AdminTest
+}
+
+export type AdminSubject = {
+  Availible: boolean
+  Description: string
+  SubjId: number
+  SubjName: string
+  ThemesList: AdminTheme[]
 }

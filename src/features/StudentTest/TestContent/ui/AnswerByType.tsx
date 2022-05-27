@@ -1,11 +1,11 @@
 import {Box} from '@mui/material'
 import {useStore} from 'effector-react'
 import React from 'react'
-import * as TestContentModel from '../model'
 import {TypeText, TypeCheckbox, TypeRadio, TypeEditor} from './AnswerTypes'
+import {$currQuestion} from '../model'
 
 export const AnswerByType = () => {
-  const currQsn = useStore(TestContentModel.$currQuestion)
+  const currQsn = useStore($currQuestion)
   const ansType = currQsn.Type
 
   const Components: {[key: number]: React.FC} = {

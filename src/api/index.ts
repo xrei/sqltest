@@ -30,6 +30,7 @@ import {
   RatingQnA,
   QuestionStats,
   UserOnline,
+  AdminSubject,
 } from 'src/types'
 
 // home
@@ -294,6 +295,8 @@ export const adminDeleteGroupForTest = createRequestFx<
   },
   string
 >('Admin/DeleteGroupForTest', 'POST')
+
+export const getAdminTestsList = createRequestFx<void, AdminSubject[]>('Admin/GetTests')
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

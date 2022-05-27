@@ -14,8 +14,8 @@ import {
   QueryResultButtons,
   QueryResultDialog,
   RightAnswerDialog,
-} from 'src/features/Test/TestContent'
-import {TestContentModel} from 'src/features/Test'
+} from 'src/features/StudentTest/TestContent'
+import {TestContentModel} from 'src/features/StudentTest'
 
 const beforeLeave = (e: Event) => {
   e.preventDefault()

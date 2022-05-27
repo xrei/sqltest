@@ -18,7 +18,7 @@ import {useNavigate} from 'react-router'
 import {useGate, useStore} from 'effector-react'
 import {TestResultsGate} from './model'
 import {UserModel} from 'src/features/User'
-import {TestContentModel} from 'src/features/Test'
+import {TestContentModel} from 'src/features/StudentTest'
 
 export const TaskResultPage = () => {
   useGate(TestResultsGate)
