@@ -342,6 +342,11 @@ export const adminDeleteTest = createRequestFx<{TestId: number}, string>('Admin/
 
 // questions
 
+export const adminCopyTaskToOtherTheme = createRequestFx<Question, string>(
+  'Admin/CopyTaskToOtherTheme',
+  'POST'
+)
+
 export const adminDeleteQuestion = createRequestFx<{Id: number}, string>(
   'Admin/DeleteQuestion',
   'POST'

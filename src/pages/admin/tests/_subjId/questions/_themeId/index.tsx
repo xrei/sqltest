@@ -5,7 +5,6 @@ import {
   Paper,
   Divider,
   Typography,
-  Button,
   IconButton,
   Tooltip,
   Table,
@@ -26,8 +25,16 @@ import {Navigate, useParams} from 'react-router-dom'
 import type {Question} from 'src/types'
 import {adminRoutes} from 'src/router/paths'
 import {QuestionTypes, QuestionCategories, QuestionDifficulties} from 'src/lib/questionMaps'
-import {TaskStatisticsDialog, openStatisticsDialog} from 'src/features/AdminSubjects/ui'
+import {
+  TaskStatisticsDialog,
+  openStatisticsDialog,
+  TaskQueryDialog,
+  queryDialogOpened,
+  SingleTaskCopyDialog,
+  copyDialogOpenedWithQsn,
+} from 'src/features/AdminSubjects/ui'
 import {ArrowBackButton} from 'src/ui/ArrowBackButton'
+import {AdminSubjectsModel} from 'src/features/AdminSubjects'
 import * as model from './model'
 
 export const AdminTestsQuestionsThemeIdPage = () => {
@@ -50,6 +57,8 @@ export const AdminTestsQuestionsThemeIdPage = () => {
       <QuestionsTable />
 
       <TaskStatisticsDialog />
+      <TaskQueryDialog />
+      <SingleTaskCopyDialog />
     </Box>
   )
 }
@@ -72,7 +81,7 @@ const QuestionsTable = () => {
         </TableHead>
         <TableBody>
           {qsns.map((tr, idx) => (
-            <TableRow key={idx}>
+            <TableRow key={idx} hover>
               <TableCell>{tr.Id}</TableCell>
               <TableCell>
                 <div dangerouslySetInnerHTML={{__html: tr.Content}}></div>
@@ -101,7 +110,11 @@ const QuestionControls = ({qsn}: QuestionControlsProps) => {
     <Box sx={{display: 'flex', gap: 1, justifyContent: 'flex-end'}}>
       {canExecQuery && (
         <Tooltip title="Выполнить запрос" arrow>
-          <IconButton size="small" sx={{'&:hover': {color: 'primary.main'}}}>
+          <IconButton
+            size="small"
+            sx={{'&:hover': {color: 'primary.main'}}}
+            onClick={() => queryDialogOpened(qsn.Id)}
+          >
             <LaunchIcon />
           </IconButton>
         </Tooltip>
@@ -116,7 +129,11 @@ const QuestionControls = ({qsn}: QuestionControlsProps) => {
         </IconButton>
       </Tooltip>
       <Tooltip title="Копировать в другую тему" arrow>
-        <IconButton size="small" sx={{'&:hover': {color: 'primary.main'}}}>
+        <IconButton
+          size="small"
+          sx={{'&:hover': {color: 'primary.main'}}}
+          onClick={() => copyDialogOpenedWithQsn(qsn)}
+        >
           <ContentCopyIcon />
         </IconButton>
       </Tooltip>
@@ -126,7 +143,11 @@ const QuestionControls = ({qsn}: QuestionControlsProps) => {
         </IconButton>
       </Tooltip>
       <Tooltip title="Удалить" arrow>
-        <IconButton size="small" sx={{'&:hover': {color: 'error.main'}}} onClick={() => 1}>
+        <IconButton
+          size="small"
+          sx={{'&:hover': {color: 'error.main'}}}
+          onClick={() => model.deleteTaskClicked(qsn.Id)}
+        >
           <DeleteIcon />
         </IconButton>
       </Tooltip>

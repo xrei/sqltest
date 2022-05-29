@@ -2,6 +2,7 @@ import {createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {
   adminChangeSubjectActivity,
   adminChangeThemeActivity,
+  adminDeleteQuestion,
   adminDeleteSubject,
   adminDeleteTest,
   adminDeleteTheme,
