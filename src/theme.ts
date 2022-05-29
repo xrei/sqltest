@@ -39,6 +39,7 @@ const getPalette = (mode: PaletteMode) => ({
           main: indigo['200'],
         },
         lightGrey: {
+          light: grey[900],
           main: grey[800],
           dark: grey[400],
         },
@@ -58,6 +59,7 @@ const getPalette = (mode: PaletteMode) => ({
           main: green[600],
         },
         lightGrey: {
+          light: grey[50],
           main: grey[200],
           dark: grey[800],
         },

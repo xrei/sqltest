@@ -1,4 +1,4 @@
-import {Test, Theme, Question, TestResult} from 'src/types'
+import {Test, Theme, TestResult} from 'src/types'
 
 export type TestResultStore = {
   completedTheme: Theme

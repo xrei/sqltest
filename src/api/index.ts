@@ -31,6 +31,7 @@ import {
   QuestionStats,
   UserOnline,
   AdminSubject,
+  Question,
 } from 'src/types'
 
 // home
@@ -254,6 +255,18 @@ export const getAdminUserQnA = createRequestFx<{RatingId: number}, RatingQnA[]>(
   true
 )
 
+export const adminGetQuestionsByTheme = createRequestFx<{ThemeId: number | string}, Question[]>(
+  'Admin/GetQuestionsForTheme',
+  'GET',
+  true
+)
+
+export const adminGetQsnStats = createRequestFx<{Id: number | string}, QuestionStats>(
+  'Admin/GetQsnStats',
+  'GET',
+  true
+)
+
 export const adminGetAllQsnStats = createRequestFx<{ThemeId: number | string}, QuestionStats[]>(
   'Admin/GetAllQsnStats',
   'GET',
@@ -296,7 +309,36 @@ export const adminDeleteGroupForTest = createRequestFx<
   string
 >('Admin/DeleteGroupForTest', 'POST')
 
+// admin subjects
 export const getAdminTestsList = createRequestFx<void, AdminSubject[]>('Admin/GetTests')
+export const adminChangeSubjectActivity = createRequestFx<{SubjId: number}, string>(
+  'Admin/ChangeSubjectActivity',
+  'GET',
+  true
+)
+export const adminChangeThemeActivity = createRequestFx<{ThemeId: number}, string>(
+  'Admin/ChangeThemeActivity',
+  'GET',
+  true
+)
+export const adminAddSubject = createRequestFx<{Description: string; SubjName: string}, string>(
+  'Admin/AddSubject'
+)
+export const adminEditSubject = createRequestFx<
+  {SubjId: number; Description: string; SubjName: string},
+  string
+>('Admin/ChangeSubjectInfo', 'GET', true)
+export const adminDeleteSubject = createRequestFx<{SubjId: number}, string>(
+  'Admin/DeleteSubject',
+  'GET',
+  true
+)
+export const adminDeleteTheme = createRequestFx<{ThemeId: number}, string>(
+  'Admin/DeleteTheme',
+  'GET',
+  true
+)
+export const adminDeleteTest = createRequestFx<{TestId: number}, string>('Admin/DeleteTest', 'POST')
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

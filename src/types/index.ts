@@ -333,15 +333,15 @@ export type UserOnline = {
   creationDate: string
 }
 
-type AdminTest = Test
+export type AdminTest = Test
 
-type AdminTheme = {
+export type AdminTheme = {
   Availible: boolean
   Description: string
   ThemeId: number
   ThemeName: string
   ThemeSubjId: number
-  ThemeTests: AdminTest
+  ThemeTests: AdminTest[]
 }
 
 export type AdminSubject = {

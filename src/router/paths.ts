@@ -1,5 +1,7 @@
 export const adminRoutes = {
   tests: '/admin/tests',
+  testsSubjId: '/admin/tests/:subjId',
+  testsSubjIdQuestionsThemeId: '/admin/tests/:subjId/questions/:themeId',
   groups: '/admin/manage-groups',
   students: '/admin/manage-students',
   journal: '/admin/journal',

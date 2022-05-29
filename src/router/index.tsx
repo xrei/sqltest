@@ -19,6 +19,11 @@ export const createRoutes = (createAdminRoutes: boolean): RouteObject[] => {
     const AdminPages = createLazyAdminPages()
     adminRoutesArr = [
       {path: adminRoutes.tests, element: WithAuth(<AdminPages.AdminTestsPage />)},
+      {path: adminRoutes.testsSubjId, element: WithAuth(<AdminPages.AdminSubjectIdPage />)},
+      {
+        path: adminRoutes.testsSubjIdQuestionsThemeId,
+        element: WithAuth(<AdminPages.AdminTestsQuestionsThemeIdPage />),
+      },
       {path: adminRoutes.students, element: WithAuth(<AdminPages.AdminManageStudentsPage />)},
       {path: adminRoutes.groups, element: WithAuth(<AdminPages.AdminManageGroupsPage />)},
       {path: adminRoutes.journal, element: WithAuth(<AdminPages.AdminJournalPage />)},
