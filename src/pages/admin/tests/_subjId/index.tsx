@@ -27,6 +27,7 @@ import {AdminTheme} from 'src/types'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
 import {AdminSubjectsModel} from 'src/features/AdminSubjects'
 import {ExpandMoreIcon} from 'src/ui/ExpandMoreButton'
+import {AllTasksCopyDialog, copyDialogOpenedWithThemeId} from 'src/features/AdminSubjects/ui'
 
 export const AdminSubjectIdPage = () => {
   const params = useParams()
@@ -54,6 +55,8 @@ export const AdminSubjectIdPage = () => {
         Список тем в дисциплине
       </Typography>
       <ThemesList />
+
+      <AllTasksCopyDialog />
     </Box>
   )
 }
@@ -134,7 +137,9 @@ const SubjThemeCard = ({theme}: SubjThemeCardProps) => {
               </Tooltip>
             </Box>
             <Box sx={{display: 'flex', gap: 1}}>
-              <Button size="small">Копирование заданий</Button>
+              <Button size="small" onClick={() => copyDialogOpenedWithThemeId(theme.ThemeId)}>
+                Копирование заданий
+              </Button>
             </Box>
           </Box>
         </Box>
