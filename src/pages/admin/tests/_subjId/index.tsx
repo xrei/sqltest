@@ -28,6 +28,7 @@ import {CenteredLoader} from 'src/ui/CenteredLoader'
 import {AdminSubjectsModel} from 'src/features/AdminSubjects'
 import {ExpandMoreIcon} from 'src/ui/ExpandMoreButton'
 import {AllTasksCopyDialog, copyDialogOpenedWithThemeId} from 'src/features/AdminSubjects/ui'
+import {ArrowBackButton} from 'src/ui/ArrowBackButton'
 
 export const AdminSubjectIdPage = () => {
   const params = useParams()
@@ -43,7 +44,10 @@ export const AdminSubjectIdPage = () => {
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', my: 2}}>
-      <Typography variant="h1">Дисциплина: {subject.SubjName}</Typography>
+      <Box sx={{display: 'flex', alignItems: 'center'}}>
+        <ArrowBackButton sx={{mr: 2}} to={adminRoutes.tests} />
+        <Typography variant="h1">Дисциплина: {subject.SubjName}</Typography>
+      </Box>
       <Divider sx={{my: 2}} />
 
       <Box sx={{display: 'flex', flexFlow: 'column'}}>
