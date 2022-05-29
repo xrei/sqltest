@@ -340,6 +340,13 @@ export const adminDeleteTheme = createRequestFx<{ThemeId: number}, string>(
 )
 export const adminDeleteTest = createRequestFx<{TestId: number}, string>('Admin/DeleteTest', 'POST')
 
+// questions
+
+export const adminDeleteQuestion = createRequestFx<{Id: number}, string>(
+  'Admin/DeleteQuestion',
+  'POST'
+)
+
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')
