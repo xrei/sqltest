@@ -41,7 +41,7 @@ export const RatingsTable = (props: RatingsTableProps) => {
             results.map((tr, idx) => (
               <TableRow key={idx}>
                 <TableCell>{tr.stuFIO}</TableCell>
-                <TableCell>{tr.avgMark}</TableCell>
+                <TableCell>{tr.avgMark.toFixed(2)}</TableCell>
                 <TableCell>{tr.testCount}</TableCell>
               </TableRow>
             ))

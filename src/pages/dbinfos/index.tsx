@@ -14,11 +14,13 @@ import {
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
 import {useStore, useGate} from 'effector-react'
 import {DBInfoModel} from 'src/features/DBInfo'
-import {DbInfoPage} from './model'
+import {DbInfoPage, $isLoading} from './model'
+import {CenteredLoader} from 'src/ui/CenteredLoader'
 
 const DBInfosPage = () => {
   useGate(DbInfoPage)
   const list = useStore(DBInfoModel.$dbInfosList)
+  const loading = useStore($isLoading)
   const [openedDialog, setDialog] = useState(0)
   const [expanded, setExpanded] = useState<number | false>(false)
 
@@ -30,52 +32,67 @@ const DBInfosPage = () => {
     setDialog(0)
   }
 
-  return (
-    <>
-      <Box sx={{flexFlow: 'column', mt: 2}}>
-        <Typography variant="h1" gutterBottom>
-          Описание баз данных
-        </Typography>
-        <Typography gutterBottom>
-          Ниже представлено описание учебных БД, а так же скрипты для их создания
-        </Typography>
-        {list.map((val) => {
-          return (
-            <Accordion
-              expanded={expanded === val.id}
-              elevation={3}
-              key={val.id}
-              TransitionProps={{unmountOnExit: true}}
-              onChange={handleExpand(val.id)}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls={`db-${val.id}`}
-                id={`db-${val.id}`}
-              >
-                <Typography>{val.name}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Button variant="contained" size="large" onClick={() => setDialog(val.id)}>
-                  Скрипт для создания базы данных
-                </Button>
-                {expanded === val.id ? (
-                  <div dangerouslySetInnerHTML={{__html: val.description}} />
-                ) : (
-                  <div />
-                )}
-              </AccordionDetails>
+  const renderList = list.map((val) => {
+    return (
+      <Accordion
+        expanded={expanded === val.id}
+        elevation={3}
+        key={val.id}
+        TransitionProps={{unmountOnExit: true}}
+        onChange={handleExpand(val.id)}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls={`db-${val.id}`}
+          id={`db-${val.id}`}
+        >
+          <Typography>{val.name}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Button variant="contained" size="large" onClick={() => setDialog(val.id)}>
+            Скрипт для создания базы данных
+          </Button>
+          {expanded === val.id ? (
+            <div dangerouslySetInnerHTML={{__html: val.description}} />
+          ) : (
+            <div />
+          )}
+        </AccordionDetails>
 
-              <DBScriptDialog
-                script={val.creation_script}
-                open={openedDialog === val.id}
-                onClose={onClose}
-              ></DBScriptDialog>
-            </Accordion>
-          )
-        })}
-      </Box>
-    </>
+        <DBScriptDialog
+          script={val.creation_script}
+          open={openedDialog === val.id}
+          onClose={onClose}
+        ></DBScriptDialog>
+      </Accordion>
+    )
+  })
+
+  return (
+    <Box sx={{flexFlow: 'column', mt: 2, height: '100%'}}>
+      <Typography variant="h1" gutterBottom>
+        Описание баз данных
+      </Typography>
+      <Typography gutterBottom>
+        Ниже представлено описание учебных БД, а так же скрипты для их создания
+      </Typography>
+      {loading ? (
+        <Box
+          sx={{
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexFlow: 'column',
+            flex: 1,
+          }}
+        >
+          <CenteredLoader />
+        </Box>
+      ) : (
+        renderList
+      )}
+    </Box>
   )
 }
 
