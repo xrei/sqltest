@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, {KeyboardEvent} from 'react'
+import React, {KeyboardEvent, useState} from 'react'
 import {
   Button,
   TextField,
@@ -15,14 +15,21 @@ import {
   useTheme,
   IconButton,
   Typography,
+  InputAdornment,
 } from '@mui/material'
-import {Close as CloseIcon} from '@mui/icons-material'
+import {
+  Close as CloseIcon,
+  Visibility as VisibilityIcon,
+  VisibilityOff as VisibilityOffIcon,
+} from '@mui/icons-material'
 import {useStore} from 'effector-react'
 import * as DialogModel from './dialog'
 import * as LoginModel from './loginModel'
 
 export const LoginForm = () => {
   const theme = useTheme()
+  const [showLogin, toggleShowLogin] = useState(false)
+  const [showPwd, toggleShowPwd] = useState(false)
   const fullscreen = useMediaQuery(theme.breakpoints.down('md'))
   const open = useStore(DialogModel.$loginOpen)
   const login = useStore(LoginModel.$login)
@@ -60,7 +67,7 @@ export const LoginForm = () => {
             autoFocus
             placeholder="Логин:"
             label="Логин:"
-            type="password"
+            type={showLogin ? 'text' : 'password'}
             autoComplete="username name"
             fullWidth
             variant="outlined"
@@ -68,22 +75,89 @@ export const LoginForm = () => {
             disabled={isPending}
             onChange={LoginModel.loginChanged}
             onKeyPress={onEnterClick}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  component={'div'}
+                  onClick={() => toggleShowLogin(!showLogin)}
+                  position="start"
+                >
+                  {showLogin ? (
+                    <VisibilityOffIcon
+                      htmlColor="lightGrey"
+                      sx={{
+                        '&:hover': {
+                          color: 'lightGrey.dark',
+                          transition: 'color .2s ease-out',
+                          cursor: 'pointer',
+                        },
+                      }}
+                    />
+                  ) : (
+                    <VisibilityIcon
+                      htmlColor="lightGrey"
+                      sx={{
+                        '&:hover': {
+                          color: 'lightGrey.dark',
+                          transition: 'color .2s ease-out',
+                          cursor: 'pointer',
+                        },
+                      }}
+                    />
+                  )}
+                </InputAdornment>
+              ),
+            }}
           />
           <TextField
             value={pwd}
             placeholder="Пароль:"
             label="Пароль:"
-            type="password"
+            type={showPwd ? 'text' : 'password'}
+            autoComplete="password"
             fullWidth
             variant="outlined"
             required
             disabled={isPending}
             onChange={LoginModel.pwdChanged}
             onKeyPress={onEnterClick}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  component={'div'}
+                  onClick={() => toggleShowPwd(!showPwd)}
+                  position="start"
+                >
+                  {showPwd ? (
+                    <VisibilityOffIcon
+                      htmlColor="lightGrey"
+                      sx={{
+                        '&:hover': {
+                          color: 'lightGrey.dark',
+                          transition: 'color .2s ease-out',
+                          cursor: 'pointer',
+                        },
+                      }}
+                    />
+                  ) : (
+                    <VisibilityIcon
+                      htmlColor="lightGrey"
+                      sx={{
+                        '&:hover': {
+                          color: 'lightGrey.dark',
+                          transition: 'color .2s ease-out',
+                          cursor: 'pointer',
+                        },
+                      }}
+                    />
+                  )}
+                </InputAdornment>
+              ),
+            }}
           />
           <FormControlLabel
             label="Запомнить меня"
-            control={<Checkbox value={rememberMe} onChange={LoginModel.rememberMeChanged} />}
+            control={<Checkbox checked={rememberMe} onChange={LoginModel.rememberMeChanged} />}
           />
 
           {error && (
