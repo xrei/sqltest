@@ -2,7 +2,7 @@ import {attach, combine, createEvent, createStore, forward, split} from 'effecto
 import {isNil} from 'ramda'
 import {getCompleteBasicQuery, getCompleteUserQuery} from 'src/api'
 import * as TestContentModel from '../../model'
-import {DBTableContent} from 'src/types'
+import type {DBTableContent} from 'src/types'
 
 export type QueryType = 'user' | 'reference'
 
