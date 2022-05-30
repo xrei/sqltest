@@ -20,12 +20,12 @@ import {
   VisibilityOff as VisibilityOffIcon,
   Edit as EditIcon,
 } from '@mui/icons-material'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link as RouterLink} from 'react-router-dom'
 import type {AdminSubject} from 'src/types'
-import * as model from './model'
 import {AdminSubjectsModel} from 'src/features/AdminSubjects'
 import {adminRoutes} from 'src/router/paths'
 import {ExpandMoreIcon} from 'src/ui/ExpandMoreButton'
+import * as model from './model'
 
 const AdminTestsPage = () => {
   useGate(model.AdminTestsPageGate)
@@ -53,7 +53,12 @@ const AdminTestsPage = () => {
             }}
             elevation={5}
           >
-            <Button variant="contained" color="warning">
+            <Button
+              component={RouterLink}
+              to={adminRoutes.testsAdd}
+              variant="contained"
+              color="warning"
+            >
               Добавить предмет
             </Button>
             <Button variant="outlined" color="primary">
@@ -135,7 +140,12 @@ const SubjectCard = ({subj}: SubjCardProps) => {
               </IconButton>
             </Tooltip>
             <Tooltip title="Редактировать" arrow>
-              <IconButton size="small" sx={{'&:hover': {color: 'warning.main'}}}>
+              <IconButton
+                component={RouterLink}
+                to={adminRoutes.testsSubjIdEdit.replace(':subjId', String(subj.SubjId))}
+                size="small"
+                sx={{'&:hover': {color: 'warning.main'}}}
+              >
                 <EditIcon />
               </IconButton>
             </Tooltip>

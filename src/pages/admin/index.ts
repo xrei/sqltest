@@ -5,7 +5,6 @@ const createLazyAdminPages = () => {
     AdminManageStudentsPage: React.lazy(() => import('src/pages/admin/manage-students')),
     AdminJournalPage: React.lazy(() => import('src/pages/admin/journal')),
     AdminManageGroupsPage: React.lazy(() => import('src/pages/admin/manage-groups')),
-    AdminTestsPage: React.lazy(() => import('src/pages/admin/tests')),
     AdminSystemDbPage: React.lazy(() => import('src/pages/admin/system-db')),
     AdminSystemDbAddPage: React.lazy(() => import('src/pages/admin/system-db/add')),
     AdminSystemDbEditPage: React.lazy(() => import('src/pages/admin/system-db/_id/edit')),
@@ -23,7 +22,10 @@ const createLazyAdminPages = () => {
     AdminTaskStatisticsPage: React.lazy(() => import('src/pages/admin/task-statistics')),
     AdminUsersOnlinePage: React.lazy(() => import('src/pages/admin/users-online')),
     AdminDeleteTestForGroupPage: React.lazy(() => import('src/pages/admin/delete-test-for-group')),
+    AdminTestsPage: React.lazy(() => import('src/pages/admin/tests')),
+    AdminSubjectAddPage: React.lazy(() => import('src/pages/admin/tests/add')),
     AdminSubjectIdPage: React.lazy(() => import('src/pages/admin/tests/_subjId')),
+    AdminSubjectIdEditPage: React.lazy(() => import('src/pages/admin/tests/_subjId/edit')),
     AdminTestsQuestionsThemeIdPage: React.lazy(
       () => import('src/pages/admin/tests/_subjId/questions/_themeId')
     ),

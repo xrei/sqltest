@@ -34,7 +34,6 @@ import {
   copyDialogOpenedWithQsn,
 } from 'src/features/AdminSubjects/ui'
 import {ArrowBackButton} from 'src/ui/ArrowBackButton'
-import {AdminSubjectsModel} from 'src/features/AdminSubjects'
 import * as model from './model'
 
 export const AdminTestsQuestionsThemeIdPage = () => {

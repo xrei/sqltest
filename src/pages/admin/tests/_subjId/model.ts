@@ -16,7 +16,3 @@ export const $subject = combine(
   (list, gateState) => list.find((v) => v.SubjId === Number(gateState.SubjId))
 )
 export const $themes = $subject.map((subj) => subj?.ThemesList || [])
-
-$subject.watch((v) => {
-  console.log(v)
-})
