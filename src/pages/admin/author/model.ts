@@ -1,4 +1,4 @@
-import {createStore, createEvent, createEffect, sample, forward} from 'effector'
+import {createStore, createEvent, createEffect, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {ChangeEvent} from 'react'
 import {addAuthor, deleteAuthor, editAuthor} from 'src/api'

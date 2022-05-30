@@ -351,3 +351,9 @@ export type AdminSubject = {
   SubjName: string
   ThemesList: AdminTheme[]
 }
+
+export type SubjectDTO = {
+  Description: string
+  SubjId?: number
+  SubjName: string
+}

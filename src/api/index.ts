@@ -32,6 +32,7 @@ import {
   UserOnline,
   AdminSubject,
   Question,
+  SubjectDTO,
 } from 'src/types'
 
 // home
@@ -321,13 +322,11 @@ export const adminChangeThemeActivity = createRequestFx<{ThemeId: number}, strin
   'GET',
   true
 )
-export const adminAddSubject = createRequestFx<{Description: string; SubjName: string}, string>(
-  'Admin/AddSubject'
+export const adminAddSubject = createRequestFx<SubjectDTO, string>('Admin/AddSubject', 'POST')
+export const adminEditSubject = createRequestFx<SubjectDTO, string>(
+  'Admin/ChangeSubjectInfo',
+  'POST'
 )
-export const adminEditSubject = createRequestFx<
-  {SubjId: number; Description: string; SubjName: string},
-  string
->('Admin/ChangeSubjectInfo', 'GET', true)
 export const adminDeleteSubject = createRequestFx<{SubjId: number}, string>(
   'Admin/DeleteSubject',
   'GET',
