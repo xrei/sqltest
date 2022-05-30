@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Stack, TextField, Typography, Button} from '@mui/material'
+import {Stack, TextField, Typography, Button} from '@mui/material'
 import {useGate, useStore} from 'effector-react'
 import {RichTextEditor} from 'src/features/TextEditor'
 import * as model from './model'
