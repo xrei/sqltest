@@ -11,7 +11,8 @@ export const AdminSubjectEditPage = () => {
   const params = useParams()
   const subjId = Number(params.subjId)
 
-  if (subjId && !Number.isInteger(subjId)) return <Navigate to={adminRoutes.tests} />
+  if (Number.isNaN(subjId) || subjId === 0 || !Number.isInteger(subjId))
+    return <Navigate to={adminRoutes.tests} />
 
   useGate(model.SubjectEditPageGate, {subjId})
 

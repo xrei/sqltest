@@ -55,6 +55,10 @@ const editSubjectFx = attach({
     descr: $subjectDescr,
   },
   async effect({subjDto, descr}) {
+    if (!subjDto.SubjId) {
+      enqueueAlert({message: `Ошибка! Id дисциплины не существует!`, variant: 'error'})
+      throw Error('subject id is not defined')
+    }
     const payload: SubjectDTO = {
       SubjId: subjDto.SubjId,
       Description: descr,
