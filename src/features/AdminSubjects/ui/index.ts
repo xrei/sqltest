@@ -3,6 +3,7 @@ import {TaskStatisticsDialog, openStatisticsDialog} from './TaskStatisticsDialog
 import {SingleTaskCopyDialog, copyDialogOpenedWithQsn} from './SingleTaskCopyDialog'
 import {AllTasksCopyDialog, copyDialogOpenedWithThemeId} from './AllTasksCopyDialog'
 import {ManageSubjectForm} from './ManageSubjectForm'
+import {ManageThemeForm} from './ManageThemeForm'
 
 export {
   TaskStatisticsDialog,
@@ -14,4 +15,5 @@ export {
   AllTasksCopyDialog,
   copyDialogOpenedWithThemeId,
   ManageSubjectForm,
+  ManageThemeForm,
 }

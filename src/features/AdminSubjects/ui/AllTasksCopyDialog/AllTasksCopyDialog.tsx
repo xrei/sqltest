@@ -48,7 +48,7 @@ export const AllTasksCopyDialog = () => {
           sx={{maxWidth: '100%', mb: 1}}
           value={selectedSubject}
           list={subjects}
-          onChange={model.subjSelected}
+          onSelectChange={model.subjSelected}
         />
 
         <Button

@@ -55,7 +55,7 @@ const Form = () => {
         sx={{maxWidth: '100%'}}
         value={selectedSubject}
         list={subjects}
-        onChange={model.subjSelected}
+        onSelectChange={model.subjSelected}
       />
       <Box sx={{display: 'flex', gap: {xs: 1, sm: 0}, flexFlow: {xs: 'column', sm: 'row'}}}>
         <ThemeSelector

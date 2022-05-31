@@ -31,7 +31,7 @@ const AdminJournalPage = () => {
       <Typography variant="h1">Журнал</Typography>
       <Divider sx={{my: 2}} />
       <Box sx={{display: 'flex', flexFlow: 'column', gap: 2, maxWidth: '600px'}}>
-        <SubjectSelector list={subjList} value={subjValue} onChange={model.subjSelected} />
+        <SubjectSelector list={subjList} value={subjValue} onSelectChange={model.subjSelected} />
         <GroupSelector
           value={groupId}
           list={groupList}

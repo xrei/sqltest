@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useGate, useList} from 'effector-react'
+import {useGate, useStore} from 'effector-react'
 import {
   Grid,
   Box,
@@ -61,7 +61,12 @@ const AdminTestsPage = () => {
             >
               Добавить предмет
             </Button>
-            <Button variant="outlined" color="primary">
+            <Button
+              component={RouterLink}
+              to={adminRoutes.testsThemeAdd}
+              variant="outlined"
+              color="primary"
+            >
               Добавить тему
             </Button>
             <Button variant="outlined" color="info">
@@ -77,10 +82,11 @@ const AdminTestsPage = () => {
   )
 }
 
-const SubjectCardList = () =>
-  useList(AdminSubjectsModel.$subjectsList, (subj, idx) => {
-    return <SubjectCard subj={subj} />
-  })
+const SubjectCardList = () => {
+  const subjects = useStore(AdminSubjectsModel.$subjectsList)
+  const list = subjects.map((subj) => <SubjectCard key={subj.SubjId} subj={subj} />)
+  return list as unknown as React.ReactElement
+}
 type SubjCardProps = {
   subj: AdminSubject
 }

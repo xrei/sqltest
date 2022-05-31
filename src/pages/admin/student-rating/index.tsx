@@ -94,7 +94,11 @@ const Form = () => {
       component={Paper}
       sx={{display: 'flex', flexFlow: 'column', my: 2, gap: 2, p: 2, maxWidth: 'sm'}}
     >
-      <SubjectSelector value={selectedSubject} list={subjects} onChange={model.subjSelected} />
+      <SubjectSelector
+        value={selectedSubject}
+        list={subjects}
+        onSelectChange={model.subjSelected}
+      />
       <GroupSelector value={selectedGroup} list={groups} onChange={model.groupSelected} />
       {ratingSwitchState && (
         <ThemeSelector

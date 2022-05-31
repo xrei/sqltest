@@ -23,7 +23,11 @@ export const AnswersSelectForm = () => {
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', my: 2, gap: 2, maxWidth: 'sm'}}>
-      <SubjectSelector value={selectedSubject} list={subjects} onChange={FormModel.subjSelected} />
+      <SubjectSelector
+        value={selectedSubject}
+        list={subjects}
+        onSelectChange={FormModel.subjSelected}
+      />
       <ThemeSelector
         disabled={!selectedSubject}
         value={selectedTheme}

@@ -66,9 +66,22 @@ export const AdminSubjectIdPage = () => {
 }
 
 const ThemesList = () => {
-  const themeList = useList(model.$themes, (theme) => <SubjThemeCard theme={theme} />)
+  const themes = useStore(model.$themes)
+  const themeList = themes.map((theme) => <SubjThemeCard key={theme.ThemeId} theme={theme} />)
 
-  return <Stack gap={2}>{themeList}</Stack>
+  return (
+    <Stack gap={2}>
+      {themeList}
+      <Button
+        component={RouterLink}
+        to={adminRoutes.testsThemeAdd}
+        sx={{maxWidth: 300, mt: 4}}
+        variant="outlined"
+      >
+        Добавить тему
+      </Button>
+    </Stack>
+  )
 }
 
 type SubjThemeCardProps = {
@@ -126,7 +139,14 @@ const SubjThemeCard = ({theme}: SubjThemeCardProps) => {
                 </IconButton>
               </Tooltip>
               <Tooltip title="Редактировать" arrow>
-                <IconButton size="small" sx={{'&:hover': {color: 'warning.main'}}}>
+                <IconButton
+                  component={RouterLink}
+                  to={adminRoutes.testsSubjIdThemeIdEdit
+                    .replace(':themeId', String(theme.ThemeId))
+                    .replace(':subjId', String(theme.ThemeSubjId))}
+                  size="small"
+                  sx={{'&:hover': {color: 'warning.main'}}}
+                >
                   <EditIcon />
                 </IconButton>
               </Tooltip>

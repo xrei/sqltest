@@ -357,3 +357,10 @@ export type SubjectDTO = {
   SubjId?: number
   SubjName: string
 }
+
+export type ThemeDTO = {
+  Description: string
+  ThemeId?: number
+  ThemeName: string
+  ThemeSubjId: number | string
+}

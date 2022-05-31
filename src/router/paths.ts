@@ -4,6 +4,8 @@ export const adminRoutes = {
   testsSubjId: '/admin/tests/:subjId',
   testsSubjIdEdit: '/admin/tests/:subjId/edit',
   testsSubjIdQuestionsThemeId: '/admin/tests/:subjId/questions/:themeId',
+  testsThemeAdd: '/admin/tests/theme/add',
+  testsSubjIdThemeIdEdit: '/admin/tests/:subjId/theme/:themeId/edit',
   groups: '/admin/manage-groups',
   students: '/admin/manage-students',
   journal: '/admin/journal',

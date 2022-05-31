@@ -26,6 +26,11 @@ export const createRoutes = (createAdminRoutes: boolean): RouteObject[] => {
         path: adminRoutes.testsSubjIdQuestionsThemeId,
         element: WithAuth(<AdminPages.AdminTestsQuestionsThemeIdPage />),
       },
+      {path: adminRoutes.testsThemeAdd, element: WithAuth(<AdminPages.AdminThemeAddPage />)},
+      {
+        path: adminRoutes.testsSubjIdThemeIdEdit,
+        element: WithAuth(<AdminPages.AdminThemeIdEditPage />),
+      },
       {path: adminRoutes.students, element: WithAuth(<AdminPages.AdminManageStudentsPage />)},
       {path: adminRoutes.groups, element: WithAuth(<AdminPages.AdminManageGroupsPage />)},
       {path: adminRoutes.journal, element: WithAuth(<AdminPages.AdminJournalPage />)},

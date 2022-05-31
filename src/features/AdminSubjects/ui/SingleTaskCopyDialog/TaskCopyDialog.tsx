@@ -29,7 +29,7 @@ export const SingleTaskCopyDialog = () => {
             sx={{maxWidth: '100%', mb: 1}}
             value={selectedSubject}
             list={subjects}
-            onChange={model.subjSelected}
+            onSelectChange={model.subjSelected}
           />
           <Typography variant="subtitle1" gutterBottom>
             Из темы <i>{taskToCopy?.ThemeName}</i> в тему:

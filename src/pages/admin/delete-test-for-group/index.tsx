@@ -33,7 +33,7 @@ const Form = () => {
         sx={{maxWidth: '100%'}}
         value={selectedSubject}
         list={subjects}
-        onChange={model.subjSelected}
+        onSelectChange={model.subjSelected}
       />
       <ThemeSelector
         disabled={!selectedSubject}

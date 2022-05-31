@@ -1,5 +1,5 @@
 import {createRequestFx} from './request'
-import {
+import type {
   DBInfo,
   LoginDTO,
   User,
@@ -33,6 +33,7 @@ import {
   AdminSubject,
   Question,
   SubjectDTO,
+  ThemeDTO,
 } from 'src/types'
 
 // home
@@ -327,6 +328,10 @@ export const adminEditSubject = createRequestFx<SubjectDTO, string>(
   'Admin/ChangeSubjectInfo',
   'POST'
 )
+
+export const adminAddTheme = createRequestFx<ThemeDTO, string>('Admin/AddTheme', 'POST')
+export const adminEditTheme = createRequestFx<ThemeDTO, string>('Admin/EditTheme', 'POST')
+
 export const adminDeleteSubject = createRequestFx<{SubjId: number}, string>(
   'Admin/DeleteSubject',
   'GET',
