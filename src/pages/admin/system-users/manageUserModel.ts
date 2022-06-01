@@ -121,6 +121,7 @@ sample({
 $userDto.reset([createUserFx.done, formResetted])
 $userGroups.reset([createUserFx.done, formResetted])
 $userSubjects.reset([createUserFx.done, formResetted])
+$isEditing.reset([createUserFx.done, formResetted])
 
 $manageDialog.watch((state) => {
   if (!state) {
