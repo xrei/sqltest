@@ -1,7 +1,7 @@
 import type {User} from 'src/types'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 import {AdminNewsModel} from 'src/features/Admin/'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 
 const adminPages = [
   {to: adminRoutes.studentAnswers, text: 'Ответы студентов'},

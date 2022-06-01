@@ -3,9 +3,9 @@ import {attach, createEvent, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {adminDeleteGroupForTest} from 'src/api'
 import {ThemesModel} from 'src/entities/Theme'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 import {fetchAdminDataFx} from 'src/features/Admin/AdminData'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 
 export const AdminDeleteTestForGroupPageGate = createGate()
 

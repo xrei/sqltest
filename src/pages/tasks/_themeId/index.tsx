@@ -3,7 +3,7 @@ import {Navigate} from 'react-router-dom'
 import {useGate, useStore} from 'effector-react'
 import {Box, Typography, Paper, useTheme, useMediaQuery, Divider} from '@mui/material'
 import {LoadingButton} from '@mui/lab'
-import {routesPaths} from 'src/router/paths'
+import {routesPaths} from 'src/app/router/paths'
 import {ThemeTestGate} from './model'
 import {
   TaskQuestions,

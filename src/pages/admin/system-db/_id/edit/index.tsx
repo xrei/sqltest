@@ -5,7 +5,7 @@ import {useGate, useStore} from 'effector-react'
 import {useParams} from 'react-router'
 import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
 import {RichTextEditor} from 'src/features/TextEditor'
 

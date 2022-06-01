@@ -5,7 +5,7 @@ import {reject, isNil} from 'ramda'
 import {authLogOn} from 'src/api'
 import {ResponseError} from 'src/api/error'
 import {dialogClosed} from './dialog'
-import {enqueueAlert, Alert} from 'src/features/Alerts'
+import {enqueueAlert, Alert} from 'src/shared/ui/Alerts'
 
 const rejectIsNil = reject(isNil)
 

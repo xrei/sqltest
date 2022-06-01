@@ -1,7 +1,7 @@
 import {createStore, createEvent, attach, forward} from 'effector'
 import {getAdminSubjects, getAvailableSubjects, getPrepSubjects} from 'src/api'
 import {Subject} from 'src/types'
-import {$user} from 'src/features/User/model'
+import {$user} from 'src/entities/User/model'
 import {loginFx} from 'src/features/Auth/loginModel'
 import {registerFx} from 'src/features/Auth/registerModel'
 import type {SelectChangeEvent} from '@mui/material'

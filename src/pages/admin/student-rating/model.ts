@@ -4,7 +4,7 @@ import {attach, combine, createEvent, createStore, forward, sample} from 'effect
 import {createGate} from 'effector-react'
 import {fetchAdminDataFx} from 'src/features/Admin/AdminData'
 import {ThemesModel} from 'src/entities/Theme'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 import {
   adminGetGroupsRatings,
   adminGetGroupsRatingsSuccess,

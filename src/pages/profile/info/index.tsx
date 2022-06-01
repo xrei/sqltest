@@ -1,7 +1,7 @@
 import React from 'react'
 import {Box, Typography, Grid} from '@mui/material'
 import {useStore} from 'effector-react'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 
 export const ProfileInfoPage = () => {
   const user = useStore(UserModel.$user)

@@ -4,9 +4,9 @@ import {Card, CardContent, Typography, Stack, Box, CardActions, Button} from '@m
 import {AuthorsPageGate, $authors, $isLoading} from './model'
 import {RenderHtml} from 'src/ui/RenderHtml'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 import {Link as RouterLink} from 'react-router-dom'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 import {deleteAuthorClicked} from '../admin/author/model'
 
 export const AuthorsPage: React.FC = () => {

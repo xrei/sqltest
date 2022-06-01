@@ -1,7 +1,7 @@
 import {attach, createEffect} from 'effector'
 import type {StudentRating, User} from 'src/types'
 import {getAdminGroupRating, getPrepGroupRating} from 'src/api'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 
 const fetchAdminGroupRatings = createEffect<
   {user: User | null; TestId: number; StuId: number},

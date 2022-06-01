@@ -8,7 +8,7 @@ import {
   postExecQueryPresets,
 } from 'src/api'
 import {DBTableContent, QueryPreset} from 'src/types'
-import {enqueueAlert, Alert} from 'src/features/Alerts'
+import {enqueueAlert, Alert} from 'src/shared/ui/Alerts'
 
 export const SystemQueryPageGate = createGate()
 

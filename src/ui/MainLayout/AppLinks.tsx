@@ -5,7 +5,7 @@ import {Box, Typography, Stack, Button} from '@mui/material'
 import {Book, Event, Star} from '@mui/icons-material'
 import {Link} from 'react-router-dom'
 import {TestButton} from 'src/features/StudentTest/TestContent'
-import {routesPaths} from 'src/router/paths'
+import {routesPaths} from 'src/app/router/paths'
 import {Logo} from '../Logo'
 
 const buttonCss = (drawer?: boolean) => (theme: any) =>

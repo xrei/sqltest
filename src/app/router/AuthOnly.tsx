@@ -1,7 +1,7 @@
 import {useStore} from 'effector-react'
 import React from 'react'
 import {Navigate, useLocation} from 'react-router'
-import {$hasUser} from 'src/features/User/model'
+import {$hasUser} from 'src/entities/User/model'
 
 export const AuthOnly: React.FC<{children: JSX.Element}> = ({children}) => {
   const auth = useStore($hasUser)

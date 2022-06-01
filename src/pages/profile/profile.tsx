@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react'
 import {Link, Outlet, Navigate, useLocation} from 'react-router-dom'
 import {Box, Tab, Tabs} from '@mui/material'
-import {routesPaths} from 'src/router/paths'
+import {routesPaths} from 'src/app/router/paths'
 
 export const ProfilePage: React.FC = () => {
   const [tab, setTab] = useState(0)

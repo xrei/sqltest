@@ -2,7 +2,7 @@ import {createStore, createEvent, createEffect, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {ChangeEvent} from 'react'
 import {addAuthor, deleteAuthor, editAuthor} from 'src/api'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 import {$authors, fetchAuthorsData} from 'src/pages/authors/model'
 import {Author} from 'src/types'
 

@@ -22,7 +22,7 @@ import {
 } from '@mui/icons-material'
 import {Navigate, useParams, Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 import {AdminTheme} from 'src/types'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
 import {AdminSubjectsModel} from 'src/features/AdminSubjects'

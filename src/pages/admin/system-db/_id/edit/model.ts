@@ -4,7 +4,7 @@ import {createGate} from 'effector-react'
 import type {EditDbDto} from 'src/types'
 import {addDbToEditClicked, $dbs, fetchDatabasesFx} from '../../model'
 import {postEditDatabase} from 'src/api'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 
 export const SysDbEditPageGate = createGate<{id: number}>()
 export const $dbIdToEdit = createStore<number>(0)

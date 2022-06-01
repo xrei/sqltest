@@ -3,7 +3,7 @@ import {useStore} from 'effector-react'
 import {Card, Typography, Stack, Box, Button, CardActions} from '@mui/material'
 import {RenderHtml} from 'src/ui/RenderHtml'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 import {AdminNewsModel} from 'src/features/Admin/'
 import {NewsPageGate, $posts, $isLoading} from './model'
 

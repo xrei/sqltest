@@ -4,7 +4,7 @@ import {createGate} from 'effector-react'
 import type {QuestionStats} from 'src/types'
 import {fetchAdminDataFx} from 'src/features/Admin/AdminData'
 import {ThemesModel} from 'src/entities/Theme'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 import {adminGetAllQsnStats, adminGetAllQsnStatsGroupOne} from 'src/api'
 
 export const AdminStatisticsPageGate = createGate()

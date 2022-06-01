@@ -12,7 +12,6 @@ import {
 import {DesktopMac} from '@mui/icons-material'
 import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
-// import {Logo} from 'src/ui/Logo'
 import SQLImage from 'src/static/sql.png'
 import NoSQLImage from 'src/static/nosql.webp'
 import FirebirdLogo from 'src/static/firebird_logo.svg?raw'
@@ -21,7 +20,7 @@ import MssqlLogo from 'src/static/mssql-logo.svg?raw'
 import OracleLogo from 'src/static/oracle_logo.svg?raw'
 import Neo4jLogo from 'src/static/neo4j-logo.svg?raw'
 import PostgresqlLogo from 'src/static/postgresql.svg?raw'
-import {$themeMode} from 'src/theme'
+import {$themeMode} from 'src/shared/theme'
 
 export const HomePage: React.FC = () => {
   const isDark = useStore($themeMode) === 'dark'

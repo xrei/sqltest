@@ -2,9 +2,9 @@ import {createStore, createEvent, createEffect, attach, forward, combine} from '
 import type {SelectChangeEvent} from '@mui/material'
 import type {Theme, User} from 'src/types'
 import {getThemeList, getPrepTheme, getAdminTheme} from 'src/api'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 import {SubjectsModel} from 'src/entities/Subject'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 
 export const $themeList = createStore<Theme[]>([])
 // id Дисциплины

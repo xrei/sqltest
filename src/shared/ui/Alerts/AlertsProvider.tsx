@@ -1,7 +1,7 @@
 import React from 'react'
+import {useStore} from 'effector-react'
 import {Stack, Alert, Slide} from '@mui/material'
 import * as alertModel from './model'
-import {useStore} from 'effector-react'
 
 export const AlertsProvider = () => {
   const alertsList = useStore(alertModel.$alerts)

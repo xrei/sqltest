@@ -23,7 +23,7 @@ import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
 import * as FormModel from './FormModel'
 import * as ManageAnswersModel from './ManageAnswersModel'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 
 const DataGrid = React.lazy(() =>
   import('@mui/x-data-grid').then((module) => ({default: module.DataGrid}))

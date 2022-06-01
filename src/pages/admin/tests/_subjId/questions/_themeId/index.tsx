@@ -23,8 +23,8 @@ import {
 } from '@mui/icons-material'
 import {Navigate, useParams} from 'react-router-dom'
 import type {Question} from 'src/types'
-import {adminRoutes} from 'src/router/paths'
-import {QuestionTypes, QuestionCategories, QuestionDifficulties} from 'src/lib/questionMaps'
+import {adminRoutes} from 'src/app/router/paths'
+import {QuestionTypes, QuestionCategories, QuestionDifficulties} from 'src/shared/lib/questionMaps'
 import {
   TaskStatisticsDialog,
   openStatisticsDialog,

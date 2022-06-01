@@ -1,7 +1,7 @@
 import {attach, createEffect, createStore} from 'effector'
 import {getAdminTest, getPrepTest} from 'src/api'
 import type {Test, User} from 'src/types'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 
 const __fetchAdminTestsByThemeFx = createEffect<{user: User | null; ThemeId: number}, Test[]>(
   async ({user, ThemeId}) => {

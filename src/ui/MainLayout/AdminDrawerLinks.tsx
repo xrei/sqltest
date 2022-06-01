@@ -26,8 +26,8 @@ import {
 } from './drawerModel'
 import {authLogOff} from 'src/api'
 import {ModeButton} from './ThemeModeSwitch'
-import {$adminNavigationPages} from 'src/lib/userMenuNavigation'
-import {UserModel} from 'src/features/User'
+import {$adminNavigationPages} from 'src/shared/lib/userMenuNavigation'
+import {UserModel} from 'src/entities/User'
 
 const DrawerHeader = styled('div')(({theme}) => ({
   display: 'flex',

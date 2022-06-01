@@ -4,7 +4,7 @@ import {useGate} from 'effector-react'
 import * as model from './model'
 import {ManageSubjectForm} from 'src/features/AdminSubjects/ui'
 import {ArrowBackButton} from 'src/ui/ArrowBackButton'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 
 export const AdminSubjectsAddPage = () => {
   useGate(model.SubjectAddPageGate)

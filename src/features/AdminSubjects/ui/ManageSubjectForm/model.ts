@@ -2,13 +2,13 @@ import {ChangeEvent} from 'react'
 import {attach, createEffect, createEvent, createStore, sample, split} from 'effector'
 import {createGate} from 'effector-react'
 import type {SubjectDTO} from 'src/types'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 import {isEmpty} from 'ramda'
 import {AdminSubjectsModel} from '../..'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 import {adminAddSubject, adminEditSubject} from 'src/api'
-import {history} from 'src/router/history'
-import {adminRoutes} from 'src/router/paths'
+import {history} from 'src/app/router/appHistory'
+import {adminRoutes} from 'src/app/router/paths'
 
 export const ManageSubjectFormGate = createGate<{subjId?: number}>()
 

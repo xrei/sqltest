@@ -3,8 +3,8 @@ import {createEffect, createEvent, createStore, sample} from 'effector'
 import {adminCopyTaskToOtherTheme} from 'src/api'
 import type {Question} from 'src/types'
 import {ThemesModel} from 'src/entities/Theme'
-import {enqueueAlert} from 'src/features/Alerts'
-import {reset} from 'src/lib/reset'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
+import {reset} from 'src/shared/lib/reset'
 
 const copyTaskToThemeFx = createEffect(
   async ({qsn, newThemeId}: {qsn: Question; newThemeId: number}) => {

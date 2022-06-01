@@ -1,5 +1,5 @@
 import {createEvent, createStore} from 'effector'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 
 export const onOpen = createEvent()
 export const onClose = createEvent()

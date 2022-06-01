@@ -15,8 +15,8 @@ import {
   Divider,
 } from '@mui/material'
 import {authLogOff} from 'src/api'
-import {routesPaths} from 'src/router/paths'
-import {$user, $userNameLetters, $userIsStudent} from 'src/features/User/model'
+import {routesPaths} from 'src/app/router/paths'
+import {$user, $userNameLetters, $userIsStudent} from 'src/entities/User/model'
 import {adminDrawerToggled, adminDrawerMobToggled} from './drawerModel'
 import {ModeButton} from './ThemeModeSwitch'
 

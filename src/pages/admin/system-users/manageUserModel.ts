@@ -3,7 +3,7 @@ import {SelectChangeEvent} from '@mui/material/Select'
 import {createEffect, createEvent, createStore, sample} from 'effector'
 import {SystemUser, SystemUserDto} from 'src/types'
 import {postAddSystemUser, postEditSystemUser} from 'src/api'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 
 export const $manageDialog = createStore(false)
 export const $isEditing = createStore(false)

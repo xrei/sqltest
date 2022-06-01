@@ -1,8 +1,8 @@
 import {attach, createEffect, createEvent, createStore, sample} from 'effector'
 import type {NewsPost} from 'src/types'
 import {createAdminNews, deleteAdminNews, editAdminNews} from 'src/api'
-import {enqueueAlert} from 'src/features/Alerts'
-import {reset} from 'src/lib/reset'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
+import {reset} from 'src/shared/lib/reset'
 
 export const $isEdit = createStore<NewsPost | null>(null)
 export const $manageNewsDialog = createStore(false)
@@ -40,6 +40,7 @@ export const addNewsFx = attach({
 
     manageNewsDialogToggled()
     resetStores()
+    enqueueAlert({message: 'Новость успешно добавлена'})
 
     return res
   },
@@ -66,7 +67,6 @@ export const editNewsFx = attach({
 
     manageNewsDialogToggled()
     resetStores()
-
     return res
   },
 })

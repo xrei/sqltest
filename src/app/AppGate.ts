@@ -2,7 +2,8 @@ import {createEffect, createStore, forward} from 'effector'
 import {createGate} from 'effector-react'
 import {fetchRegRules} from 'src/features/Auth/registerModel'
 import {SubjectsModel} from 'src/entities/Subject'
-import {fetchUser} from 'src/features/User/model'
+import {fetchUser} from 'src/entities/User/model'
+import {getModeLsFx} from 'src/shared/theme'
 
 export const AppGate = createGate()
 
@@ -23,7 +24,7 @@ export const initAppFx = createEffect<void, void>(async () => {
 
 forward({
   from: AppGate.open,
-  to: initAppFx,
+  to: [initAppFx, getModeLsFx],
 })
 
 $appLoading.on(initAppFx.doneData, () => false)

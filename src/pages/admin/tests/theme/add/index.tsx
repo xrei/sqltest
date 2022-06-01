@@ -1,6 +1,6 @@
 import React from 'react'
 import {Box, Divider, Typography} from '@mui/material'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 import {ArrowBackButton} from 'src/ui/ArrowBackButton'
 import {ManageThemeForm} from 'src/features/AdminSubjects/ui'
 

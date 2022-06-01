@@ -9,7 +9,7 @@ import {
   getAdminTestsList,
 } from 'src/api'
 import type {AdminSubject} from 'src/types'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 
 // idk why it's called Test, clearly it is Subjects
 export const fetchAdminTestListFx = createEffect<void, AdminSubject[]>(async () => {

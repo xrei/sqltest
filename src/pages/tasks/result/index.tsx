@@ -17,7 +17,7 @@ import {LoadingButton} from '@mui/lab'
 import {useNavigate} from 'react-router'
 import {useGate, useStore} from 'effector-react'
 import {TestResultsGate} from './model'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 import {TestContentModel} from 'src/features/StudentTest'
 
 export const TaskResultPage = () => {

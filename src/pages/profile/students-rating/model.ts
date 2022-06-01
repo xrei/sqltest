@@ -3,7 +3,7 @@ import {createGate} from 'effector-react'
 import type {StudRating} from 'src/types'
 import {getStudentsGroupsRatings} from 'src/api'
 import {SubjectsModel} from 'src/entities/Subject'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 
 export const StudRatingPageGate = createGate()
 

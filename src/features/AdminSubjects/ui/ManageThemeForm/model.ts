@@ -4,10 +4,10 @@ import {AdminSubject, AdminTheme, ThemeDTO} from 'src/types'
 import {createGate} from 'effector-react'
 import {createStore, createEvent, attach, sample, createEffect} from 'effector'
 import {isEmpty, find, prop, pipe, propEq} from 'ramda'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 import {adminAddTheme, adminEditTheme} from 'src/api'
-import {history} from 'src/router/history'
-import {adminRoutes} from 'src/router/paths'
+import {history} from 'src/app/router/appHistory'
+import {adminRoutes} from 'src/app/router/paths'
 import {AdminSubjectsModel} from '../..'
 
 type MetaInfo = {themeId: number; subjId: number}

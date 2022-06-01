@@ -2,11 +2,11 @@ import {createStore, createEvent, guard, createEffect, combine, forward, sample}
 import type {ChangeEvent} from 'react'
 import type {SelectChangeEvent} from '@mui/material'
 import type {RegisterDTO, User} from 'src/types'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 import {getRegistrationRules, authRegister} from 'src/api'
 import {ResponseError} from 'src/api/error'
 import {dialogClosed} from './dialog'
-import {enqueueAlert, Alert} from 'src/features/Alerts'
+import {enqueueAlert, Alert} from 'src/shared/ui/Alerts'
 
 // fields
 export const $fio = createStore('')

@@ -1,9 +1,9 @@
 import {attach, combine, createEffect, createEvent, createStore, forward, sample} from 'effector'
 import {getTestContent, saveTestResult} from 'src/api'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 import {Test, Theme, Question} from 'src/types'
-import {history} from 'src/router/history'
-import {routesPaths} from 'src/router/paths'
+import {history} from 'src/app/router/appHistory'
+import {routesPaths} from 'src/app/router/paths'
 import type {
   TestResultStore,
   ChangeAnswerGenericPayload,

@@ -1,7 +1,7 @@
 import {createEffect, createEvent, createStore, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {adminDeleteUserOnline, adminGetAllUsersOnline} from 'src/api'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 import type {UserOnline} from 'src/types'
 
 export const AdminUsersOnlinePage = createGate()

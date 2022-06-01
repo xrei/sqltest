@@ -1,7 +1,7 @@
 import {createEffect, createStore, sample, createEvent} from 'effector'
 import {createGate} from 'effector-react'
 import {adminGetQuestionsByTheme, adminDeleteQuestion} from 'src/api'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 import type {Question} from 'src/types'
 
 export const AdminQsnByThemePageGate = createGate<{themeId: number}>()

@@ -4,7 +4,7 @@ import {combine, createEffect, createEvent, createStore, forward, sample} from '
 import {createGate} from 'effector-react'
 import {getAdminJournal} from 'src/api'
 import {fetchAdminDataFx} from 'src/features/Admin/AdminData'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 
 export const JournalPageGate = createGate()
 

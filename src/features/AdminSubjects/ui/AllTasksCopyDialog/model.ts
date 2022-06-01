@@ -2,8 +2,8 @@ import type {ChangeEvent} from 'react'
 import type {SelectChangeEvent} from '@mui/material'
 import {createStore, createEvent, split, attach, sample} from 'effector'
 import {adminCopyThemeAllQuestions, adminCopyThemeQuestions} from 'src/api'
-import {enqueueAlert} from 'src/features/Alerts'
-import {reset} from 'src/lib/reset'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
+import {reset} from 'src/shared/lib/reset'
 
 export const $copyTypeSwitchVal = createStore(false)
 export const $copyAllTasksDialogOpen = createStore(false)

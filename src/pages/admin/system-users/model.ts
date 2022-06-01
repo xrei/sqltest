@@ -1,7 +1,7 @@
 import {createEffect, createEvent, createStore, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {getSystemUsers, postDeleteSystemUser} from 'src/api'
-import {enqueueAlert} from 'src/features/Alerts'
+import {enqueueAlert} from 'src/shared/ui/Alerts'
 import type {SystemUsers, SystemUser} from 'src/types'
 import {createUserFx} from './manageUserModel'
 

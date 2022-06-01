@@ -2,7 +2,7 @@ import React from 'react'
 import {DarkMode, LightMode} from '@mui/icons-material'
 import {Tooltip, MenuItem, ListItemIcon} from '@mui/material'
 import {useStore} from 'effector-react'
-import {$themeMode, changeThemeMode} from 'src/theme'
+import {$themeMode, changeThemeMode} from 'src/shared/theme'
 
 export const ModeButton = () => {
   const currMode = useStore($themeMode)

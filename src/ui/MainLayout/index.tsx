@@ -13,7 +13,7 @@ import {
 import {useStore} from 'effector-react'
 import {AppLinks} from './AppLinks'
 import * as drawerModel from './drawerModel'
-import {$userIsStudent} from 'src/features/User/model'
+import {$userIsStudent} from 'src/entities/User/model'
 import {AppToolbar} from './Toolbar'
 import {AdminDrawerLinks} from './AdminDrawerLinks'
 import {Footer} from './Footer'

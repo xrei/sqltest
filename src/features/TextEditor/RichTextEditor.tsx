@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef} from 'react'
 import MUIRichTextEditor, {TMUIRichTextEditorProps} from 'mui-rte'
 import {EditorState, convertToRaw, convertFromHTML, ContentState} from 'draft-js'
 import {stateToHTML} from 'draft-js-export-html'

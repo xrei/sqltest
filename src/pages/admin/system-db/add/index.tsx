@@ -16,7 +16,7 @@ import {ArrowBack as ArrowBackIcon} from '@mui/icons-material'
 import {useStore} from 'effector-react'
 import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 import {RichTextEditor} from 'src/features/TextEditor'
 
 const AdminSystemDbAddPage = () => {

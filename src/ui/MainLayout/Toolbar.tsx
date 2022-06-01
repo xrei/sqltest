@@ -5,7 +5,7 @@ import {AppBar as MuiAppBar, Toolbar, Hidden, IconButton, styled} from '@mui/mat
 import {Menu} from '@mui/icons-material'
 import {AppLinks} from './AppLinks'
 import {useStore} from 'effector-react'
-import {UserModel} from 'src/features/User'
+import {UserModel} from 'src/entities/User'
 import {onOpen} from './drawerModel'
 import {AuthBlock} from './AuthBlock'
 import {UserBlock} from './UserBlock'

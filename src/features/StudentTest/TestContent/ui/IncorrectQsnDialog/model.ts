@@ -1,7 +1,7 @@
 import {attach, createEvent, createStore} from 'effector'
 import {ChangeEvent} from 'react'
 import {sendErrorMessageWithInfo} from 'src/api'
-import {$user} from 'src/features/User/model'
+import {$user} from 'src/entities/User/model'
 import * as TestContentModel from '../../model'
 
 export const $isOpen = createStore(false)

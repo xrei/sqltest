@@ -1,16 +1,15 @@
 import {createTheme, responsiveFontSizes} from '@mui/material/styles'
 import {red, indigo, pink, grey, common, green} from '@mui/material/colors'
 import {PaletteMode} from '@mui/material'
-import {createEffect, createEvent, createStore, forward, sample} from 'effector'
-import {AppGate} from './lib/AppGate'
-import {MUIRichTextEditorTheme} from './features/TextEditor'
+import {createEffect, createEvent, createStore, sample} from 'effector'
+import {MUIRichTextEditorTheme} from 'src/features/TextEditor'
 
 export const $themeMode = createStore<PaletteMode>('light')
 export const changeThemeMode = createEvent()
 const saveModeLsFx = createEffect<PaletteMode, void>((mode) => {
   localStorage.setItem('theme', mode)
 })
-const getModeLsFx = createEffect<void, PaletteMode>(() => {
+export const getModeLsFx = createEffect<void, PaletteMode>(() => {
   const mode = localStorage.getItem('theme') || 'light'
   return mode as PaletteMode
 })
@@ -20,11 +19,6 @@ $themeMode.on(getModeLsFx.doneData, (_, p) => p)
 sample({
   source: $themeMode,
   target: saveModeLsFx,
-})
-
-forward({
-  from: AppGate.open,
-  to: getModeLsFx,
 })
 
 const getPalette = (mode: PaletteMode) => ({

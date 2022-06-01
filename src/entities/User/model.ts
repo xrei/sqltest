@@ -2,8 +2,8 @@ import {head, split, map, join, take} from 'ramda'
 import {combine, createEffect, createEvent, createStore, forward, sample} from 'effector'
 import type {User} from 'src/types'
 import {getUser, authLogOff} from 'src/api'
-import {loginFx} from '../Auth/loginModel'
-import {registerFx} from '../Auth/registerModel'
+import {loginFx} from '../../features/Auth/loginModel'
+import {registerFx} from '../../features/Auth/registerModel'
 import {GroupModel} from 'src/entities/Group'
 
 export const roles: {[key: number]: string} = {

@@ -3,7 +3,7 @@ import {combine, createEvent, createStore, sample} from 'effector'
 import {TestModel} from 'src/entities/Test'
 import {ThemesModel} from 'src/entities/Theme'
 import {AdminModel} from 'src/features/Admin'
-import {reset} from 'src/lib/reset'
+import {reset} from 'src/shared/lib/reset'
 import {StudentRating} from 'src/types'
 
 export const resetForm = createEvent()

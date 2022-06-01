@@ -4,8 +4,8 @@ import React from 'react'
 import {Button, Typography, Box} from '@mui/material'
 import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
-import {routesPaths} from 'src/router/paths'
-import {UserModel} from 'src/features/User'
+import {routesPaths} from 'src/app/router/paths'
+import {UserModel} from 'src/entities/User'
 import * as TestContentModel from '../model'
 
 type TestButtonProps = {

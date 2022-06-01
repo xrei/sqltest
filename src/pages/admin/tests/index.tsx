@@ -23,7 +23,7 @@ import {
 import {useNavigate, Link as RouterLink} from 'react-router-dom'
 import type {AdminSubject} from 'src/types'
 import {AdminSubjectsModel} from 'src/features/AdminSubjects'
-import {adminRoutes} from 'src/router/paths'
+import {adminRoutes} from 'src/app/router/paths'
 import {ExpandMoreIcon} from 'src/ui/ExpandMoreButton'
 import * as model from './model'
 

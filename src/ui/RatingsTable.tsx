@@ -8,7 +8,7 @@ import {
   TableRow,
   Paper,
 } from '@mui/material'
-import {StudRating} from 'src/types'
+import type {StudRating} from 'src/types'
 import {CenteredLoader} from './CenteredLoader'
 
 type RatingsTableProps = {
