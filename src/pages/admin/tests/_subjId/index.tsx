@@ -50,9 +50,13 @@ export const AdminSubjectIdPage = () => {
       </Box>
       <Divider sx={{my: 2}} />
 
-      <Box sx={{display: 'flex', flexFlow: 'column'}}>
+      <Box sx={{display: 'flex', flexFlow: 'column', mb: 2}}>
         <Typography variant="h2">Описание</Typography>
-        <div dangerouslySetInnerHTML={{__html: subject.Description}}></div>
+        {subject.Description.length ? (
+          <div dangerouslySetInnerHTML={{__html: subject.Description}}></div>
+        ) : (
+          <Typography variant="caption">Описание отсутствует</Typography>
+        )}
       </Box>
 
       <Typography variant="h2" gutterBottom>
