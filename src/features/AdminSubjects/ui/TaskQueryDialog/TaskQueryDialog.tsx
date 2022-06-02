@@ -2,8 +2,8 @@ import React from 'react'
 import {Typography, Button, Divider, Dialog, DialogTitle, DialogContent} from '@mui/material'
 import {useStore} from 'effector-react'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
 import * as model from './model'
-import {DBContentTables} from 'src/features/DBContentTables'
 
 export const TaskQueryDialog = () => {
   const open = useStore(model.$queryDialogOpen)

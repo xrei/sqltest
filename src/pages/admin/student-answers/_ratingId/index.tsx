@@ -22,18 +22,18 @@ import {
   DialogTitle,
   DialogContent,
   alpha,
+  useTheme,
 } from '@mui/material'
-import {useTheme} from '@mui/system'
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
-import type {RatingQnA} from 'src/types'
 import {ArrowBack as ArrowBackIcon} from '@mui/icons-material'
 import {Link as RouterLink, useParams, Navigate} from 'react-router-dom'
-import {adminRoutes} from 'src/app/router/paths'
-import * as model from './model'
 import {useGate, useList, useStore} from 'effector-react'
+import type {RatingQnA} from 'src/types'
+import {adminRoutes} from 'src/app/router/paths'
 import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
-import {DBContentTables} from 'src/features/DBContentTables'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
+import * as model from './model'
 
 export const UserRatingIdPage = () => {
   const params = useParams()

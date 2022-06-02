@@ -9,8 +9,8 @@ import {
   Box,
 } from '@mui/material'
 import {useStore} from 'effector-react'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
 import * as QueryResultModel from './model'
-import {DBContentTables} from 'src/features/DBContentTables'
 
 export const QueryResultDialog = () => {
   const open = useStore(QueryResultModel.$isOpen)

@@ -4,23 +4,19 @@ import type {DBTableContent} from 'src/types'
 import {getTaskErrors} from 'src/api'
 
 export const $complaintsData = createStore<DBTableContent[]>([])
-
 export const $date = createStore('')
+
 export const dateChanged = createEvent<ChangeEvent<HTMLInputElement>>()
-$date.on(dateChanged, (_, e) => e.target.value)
+export const viewBtnClicked = createEvent()
 
 export const getComplaintsFx = createEffect(async (date: string) => {
-  console.log(date)
   const res = await (await getTaskErrors({Query: date})).json()
-  console.log(res)
   return res
 })
 
+$date.on(dateChanged, (_, e) => e.target.value)
+
 $complaintsData.on(getComplaintsFx.doneData, (_, data) => data)
-
-getComplaintsFx.failData.watch(console.log)
-
-export const viewBtnClicked = createEvent()
 
 sample({
   clock: viewBtnClicked,

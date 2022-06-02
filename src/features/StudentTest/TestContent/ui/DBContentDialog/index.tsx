@@ -1,9 +1,9 @@
 import React from 'react'
-import {Button, Dialog, DialogContent, DialogTitle, Box} from '@mui/material'
-import * as model from './model'
 import {useStore} from 'effector-react'
+import {Button, Dialog, DialogContent, DialogTitle, Box} from '@mui/material'
 import funcModelImg from '../../assets/FuncModel3.jpg'
-import {DBContentTables} from 'src/features/DBContentTables'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
+import * as model from './model'
 
 export const DBContentDialog = () => {
   const open = useStore(model.$isOpen)

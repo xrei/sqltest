@@ -25,11 +25,11 @@ import {
 import {useGate, useStore} from 'effector-react'
 import {Link as RouterLink, useNavigate} from 'react-router-dom'
 import {DBInfo} from 'src/types'
-import * as model from './model'
 import {adminRoutes} from 'src/app/router/paths'
-import {DBContentTables} from 'src/features/DBContentTables'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
 import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
 import {CenteredLoader} from 'src/ui/CenteredLoader'
+import * as model from './model'
 
 export const AdminSystemDbPage = () => {
   useGate(model.SystemDbPageGate)

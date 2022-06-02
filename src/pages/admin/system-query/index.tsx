@@ -19,9 +19,9 @@ import {
   DialogContent,
   DialogActions,
 } from '@mui/material'
-import {DBContentTables} from 'src/features/DBContentTables'
-import * as model from './model'
 import type {QueryPreset} from 'src/types'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
+import * as model from './model'
 
 export const AdminSystemQueryPage = () => {
   useGate(model.SystemQueryPageGate)
