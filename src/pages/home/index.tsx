@@ -20,12 +20,21 @@ import MssqlLogo from 'src/static/mssql-logo.svg?raw'
 import OracleLogo from 'src/static/oracle_logo.svg?raw'
 import Neo4jLogo from 'src/static/neo4j-logo.svg?raw'
 import PostgresqlLogo from 'src/static/postgresql.svg?raw'
+import RedDBLogo from 'src/static/reddb_logo.svg?raw'
 import {$themeMode} from 'src/shared/theme'
 
 export const HomePage: React.FC = () => {
   const isDark = useStore($themeMode) === 'dark'
 
-  const logos = [FirebirdLogo, MssqlLogo, OracleLogo, MongoLogo, Neo4jLogo, PostgresqlLogo]
+  const logos = [
+    FirebirdLogo,
+    MssqlLogo,
+    OracleLogo,
+    MongoLogo,
+    Neo4jLogo,
+    PostgresqlLogo,
+    RedDBLogo,
+  ]
 
   return (
     <Box
@@ -37,8 +46,8 @@ export const HomePage: React.FC = () => {
     >
       <Box
         sx={{
-          py: {xs: 4, sm: 8},
-          px: {xs: 1, sm: 2, md: 0},
+          py: {xs: 3, sm: 6},
+          px: {xs: 2, sm: 2, md: 0},
           display: 'flex',
           flexFlow: 'column',
           alignItems: 'center',
@@ -65,8 +74,9 @@ export const HomePage: React.FC = () => {
               dangerouslySetInnerHTML={{__html: logo}}
               sx={{
                 p: {xs: 2, sm: 4},
-                width: {xs: 100, sm: 200},
-                height: {xs: 100, sm: 200},
+                width: {xs: 100, sm: 180},
+                height: {xs: 100, sm: 180},
+                maxWidth: {xs: 100, sm: '100%'},
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
