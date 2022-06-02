@@ -20,7 +20,7 @@ import {
   DialogActions,
 } from '@mui/material'
 import type {QueryPreset} from 'src/types'
-import {DBContentTables} from 'src/widgets/DBContentTables'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
 import * as model from './model'
 
 export const AdminSystemQueryPage = () => {

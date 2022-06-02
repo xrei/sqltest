@@ -22,7 +22,7 @@ import {StudentRating, StudentsRatings} from 'src/types'
 import {ExpandMoreButton} from 'src/shared/ui/ExpandMoreButton'
 import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import {adminRoutes} from 'src/app/router/paths'
-import * as FormModel from './FormModel'
+import * as FormModel from './Form/FormModel'
 import * as ManageAnswersModel from './ManageAnswersModel'
 
 const DataGrid = React.lazy(() =>

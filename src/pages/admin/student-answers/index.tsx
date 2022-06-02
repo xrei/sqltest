@@ -1,10 +1,10 @@
+import React from 'react'
 import {Box, Divider, IconButton, Typography} from '@mui/material'
 import {ArrowBack as ArrowBackIcon} from '@mui/icons-material'
-import React from 'react'
 import {useGate, useStore} from 'effector-react'
+import {StudentAnswersView} from 'src/widgets/StudentAnswers'
+import {AnswersSelectForm} from 'src/widgets/StudentAnswers/Form'
 import * as model from './model'
-import {StudentAnswersView} from './ui/StudentAnswersView'
-import {AnswersSelectForm} from './ui/Form'
 
 export const AdminStudentAnswersPage = () => {
   const resultsView = useStore(model.$resultsView)

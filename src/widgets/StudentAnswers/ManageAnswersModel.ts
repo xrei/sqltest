@@ -3,7 +3,7 @@ import type {StudentRating} from 'src/types'
 import {deleteAdminGroupRating, reCalcAdminGroupRating} from 'src/api'
 import {enqueueAlert} from 'src/shared/ui/Alerts'
 import {AdminModel} from 'src/features/Admin'
-import {$groupId, $testId} from './FormModel'
+import {$groupId, $testId} from './Form/FormModel'
 
 type RatingId = {RatingId: number; studentRatingId: number}
 

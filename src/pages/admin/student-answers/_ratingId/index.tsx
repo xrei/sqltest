@@ -31,7 +31,7 @@ import {useGate, useList, useStore} from 'effector-react'
 import type {RatingQnA} from 'src/types'
 import {adminRoutes} from 'src/app/router/paths'
 import {ExpandMoreButton} from 'src/shared/ui/ExpandMoreButton'
-import {DBContentTables} from 'src/widgets/DBContentTables'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
 import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import * as model from './model'
 

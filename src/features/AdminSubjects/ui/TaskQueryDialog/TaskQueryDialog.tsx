@@ -2,7 +2,7 @@ import React from 'react'
 import {Typography, Button, Divider, Dialog, DialogTitle, DialogContent} from '@mui/material'
 import {useStore} from 'effector-react'
 import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
-import {DBContentTables} from 'src/widgets/DBContentTables'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
 import * as model from './model'
 
 export const TaskQueryDialog = () => {

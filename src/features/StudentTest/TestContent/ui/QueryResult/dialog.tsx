@@ -9,7 +9,7 @@ import {
   Box,
 } from '@mui/material'
 import {useStore} from 'effector-react'
-import {DBContentTables} from 'src/widgets/DBContentTables'
+import {DBContentTables} from 'src/shared/ui/DBContentTables'
 import * as QueryResultModel from './model'
 
 export const QueryResultDialog = () => {
