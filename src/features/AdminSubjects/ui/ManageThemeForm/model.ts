@@ -9,6 +9,7 @@ import {adminAddTheme, adminEditTheme} from 'src/api'
 import {history} from 'src/app/router/appHistory'
 import {adminRoutes} from 'src/app/router/paths'
 import {AdminSubjectsModel} from '../..'
+import {SubjectsModel} from 'src/entities/Subject'
 
 type MetaInfo = {themeId: number; subjId: number}
 
@@ -103,6 +104,11 @@ sample({
 sample({
   clock: editClicked,
   target: editThemeFx,
+})
+
+sample({
+  clock: ManageThemeFormGate.open,
+  target: SubjectsModel.fetchSubjectsFx,
 })
 
 sample({
