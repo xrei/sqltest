@@ -43,7 +43,7 @@ const $form = combine([$fio, $login, $pwd, $group, $studCode], ([a, b, c, d, e])
   } as RegisterDTO
 })
 
-const $isFioValid = $fio.map((v) => Boolean(v.length))
+export const $isFioValid = $fio.map((v) => Boolean(v.length) && lettersOnly(v))
 const $isLoginValid = $login.map((v) => Boolean(v.length))
 const $isPwdValid = $pwd.map((v) => Boolean(v.length))
 const $isGroupValid = $group.map((v) => Boolean(v.length))
@@ -106,3 +106,8 @@ export const fetchRegRules = createEffect<void, string>(async () => {
 })
 
 $regRules.on(fetchRegRules.doneData, (_, data) => data)
+
+function lettersOnly(str: string) {
+  const regexp = /^[A-Za-zА-Яа-я]+$/
+  return Boolean(str.match(regexp))
+}

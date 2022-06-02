@@ -29,6 +29,7 @@ export const RegisterForm = () => {
   const fullscreen = useMediaQuery(theme.breakpoints.down('md'))
   const open = useStore(DialogModel.$registerOpen)
   const fio = useStore(RegisterModel.$fio)
+  const isFioValid = useStore(RegisterModel.$isFioValid)
   const login = useStore(RegisterModel.$login)
   const pwd = useStore(RegisterModel.$pwd)
   const isPending = useStore(RegisterModel.$isPending)
@@ -61,6 +62,11 @@ export const RegisterForm = () => {
             fullWidth
             variant="outlined"
             required
+            color={isFioValid ? 'success' : 'primary'}
+            error={Boolean(fio.length) && !isFioValid}
+            helperText={
+              !isFioValid && 'Поле обязательно для заполнения. Допускаются только символы алфавита.'
+            }
             disabled={isPending}
             onChange={RegisterModel.fioChanged}
           />
