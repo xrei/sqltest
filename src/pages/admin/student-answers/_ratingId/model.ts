@@ -39,12 +39,10 @@ forward({
 })
 
 const compareAnswersFx = createEffect<CompareAnswersParams, ComparedResults>(async (payload) => {
-  console.log(payload)
   const result = await Promise.all([
     getCompleteUserQuery({Id: payload.Id, UserAnswer: payload.UserAnswer}).then((r) => r.json()),
     getCompleteBasicQuery({Id: payload.Id}).then((r) => r.json()),
   ])
-  console.log(result)
 
   return {
     user: result[0],

@@ -17,7 +17,7 @@ import {
 import type {GridColDef} from '@mui/x-data-grid'
 import React from 'react'
 import {Link as RouterLink} from 'react-router-dom'
-import {useList, useStore} from 'effector-react'
+import {useStore} from 'effector-react'
 import {StudentRating, StudentsRatings} from 'src/types'
 import {ExpandMoreButton} from 'src/shared/ui/ExpandMoreButton'
 import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
@@ -32,16 +32,15 @@ const DataGrid = React.lazy(() =>
 export const StudentAnswersView = () => {
   const currentTheme = useStore(FormModel.$currentThemeSelected)
   const ratings = useStore(ManageAnswersModel.$results)
+  const loading = useStore(ManageAnswersModel.$ratingIsLoading)
 
-  const ratingsList = useList(ManageAnswersModel.$results, (rating, idx) => (
-    <StudentRatingCard student={rating} />
-  ))
+  const ratingsList = ratings.map((rating, idx) => <StudentRatingCard key={idx} student={rating} />)
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
       <Typography variant="h3">{currentTheme?.ThemeName}</Typography>
 
-      <Stack sx={{mt: 4, gap: 1}}>{ratings.length ? ratingsList : <CenteredLoader />}</Stack>
+      <Stack sx={{mt: 4, gap: 1}}>{!loading ? ratingsList : <CenteredLoader />}</Stack>
     </Box>
   )
 }

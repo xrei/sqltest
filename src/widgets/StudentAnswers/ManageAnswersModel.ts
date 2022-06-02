@@ -8,6 +8,7 @@ import {$groupId, $testId} from './Form/FormModel'
 type RatingId = {RatingId: number; studentRatingId: number}
 
 export const $results = createStore<StudentRating[]>([])
+export const $ratingIsLoading = AdminModel.fetchAdminGroupRatingsFx.pending
 
 $results.on(AdminModel.fetchAdminGroupRatingsFx.doneData, (_, data) => data)
 
