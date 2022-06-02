@@ -17,7 +17,7 @@ import {GroupModel, GroupSelector} from 'src/entities/Group'
 import {SubjectsModel, SubjectSelector} from 'src/entities/Subject'
 import {ThemeSelector, ThemesModel} from 'src/entities/Theme/'
 import * as model from './model'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 
 export const AdminTaskStatisticsPage = () => {
   useGate(model.AdminStatisticsPageGate)

@@ -2,7 +2,7 @@ import {Button, Divider, TextField, Typography, Stack} from '@mui/material'
 import {Box} from '@mui/system'
 import {useStore} from 'effector-react'
 import React, {ChangeEvent, useState} from 'react'
-import {RichTextEditor} from 'src/features/TextEditor'
+import {RichTextEditor} from 'src/shared/ui/TextEditor'
 import * as model from './model'
 
 type Props = {

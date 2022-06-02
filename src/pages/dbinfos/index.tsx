@@ -13,9 +13,9 @@ import {
 } from '@mui/material'
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
 import {useStore, useGate} from 'effector-react'
-import {DBInfoModel} from 'src/features/DBInfo'
+import {DBInfoModel} from 'src/widgets/DBInfoDialog'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import {DbInfoPage, $isLoading} from './model'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
 
 const DBInfosPage = () => {
   useGate(DbInfoPage)

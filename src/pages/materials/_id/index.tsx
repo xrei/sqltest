@@ -3,7 +3,7 @@ import {Box, Typography, Divider, IconButton} from '@mui/material'
 import {ArrowBack as ArrowBackIcon} from '@mui/icons-material'
 import {useGate, useStore} from 'effector-react'
 import {useParams, Link as RouterLink} from 'react-router-dom'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 
 import * as model from './model'
 

@@ -1,6 +1,6 @@
 import {forward} from 'effector'
 import {createGate} from 'effector-react'
-import {DBInfoModel} from 'src/features/DBInfo'
+import {DBInfoModel} from 'src/widgets/DBInfoDialog'
 
 export const DbInfoPage = createGate('DbInfoPage')
 export const $isLoading = DBInfoModel.fetchDbInfo.pending

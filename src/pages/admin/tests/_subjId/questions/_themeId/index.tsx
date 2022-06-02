@@ -33,7 +33,7 @@ import {
   SingleTaskCopyDialog,
   copyDialogOpenedWithQsn,
 } from 'src/features/AdminSubjects/ui'
-import {ArrowBackButton} from 'src/ui/ArrowBackButton'
+import {ArrowBackButton} from 'src/shared/ui/ArrowBackButton'
 import * as model from './model'
 
 export const AdminTestsQuestionsThemeIdPage = () => {

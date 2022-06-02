@@ -2,7 +2,7 @@ import {createTheme, responsiveFontSizes} from '@mui/material/styles'
 import {red, indigo, pink, grey, common, green} from '@mui/material/colors'
 import {PaletteMode} from '@mui/material'
 import {createEffect, createEvent, createStore, sample} from 'effector'
-import {MUIRichTextEditorTheme} from 'src/features/TextEditor'
+import {MUIRichTextEditorTheme} from 'src/shared/ui/TextEditor'
 
 export const $themeMode = createStore<PaletteMode>('light')
 export const changeThemeMode = createEvent()

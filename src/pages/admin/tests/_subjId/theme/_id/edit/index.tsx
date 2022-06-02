@@ -2,7 +2,7 @@ import React from 'react'
 import {Box, Divider, Typography} from '@mui/material'
 import {useParams, Navigate} from 'react-router-dom'
 import {adminRoutes} from 'src/app/router/paths'
-import {ArrowBackButton} from 'src/ui/ArrowBackButton'
+import {ArrowBackButton} from 'src/shared/ui/ArrowBackButton'
 import {ManageThemeForm} from 'src/features/AdminSubjects/ui'
 import {any} from 'ramda'
 

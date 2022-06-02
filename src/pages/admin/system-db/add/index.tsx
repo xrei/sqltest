@@ -17,7 +17,7 @@ import {useStore} from 'effector-react'
 import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
 import {adminRoutes} from 'src/app/router/paths'
-import {RichTextEditor} from 'src/features/TextEditor'
+import {RichTextEditor} from 'src/shared/ui/TextEditor'
 
 const AdminSystemDbAddPage = () => {
   const newDb = useStore(model.$dbDto)

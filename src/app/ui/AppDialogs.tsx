@@ -1,7 +1,7 @@
 import React from 'react'
-import {DBInfoDialog} from 'src/features/DBInfo'
+import {DBInfoDialog} from 'src/widgets/DBInfoDialog'
 import {AuthDialogs} from 'src/features/Auth'
-import {ManageNewsDialog} from 'src/features/Admin'
+import {ManageNewsDialog} from 'src/features/ManageAdminNews'
 
 const AppDialogs = () => {
   return (

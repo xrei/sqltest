@@ -13,7 +13,7 @@ import {
   Button,
 } from '@mui/material'
 import {useGate, useStore} from 'effector-react'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import * as model from './model'
 
 export const AdminUsersOnlinePage = () => {

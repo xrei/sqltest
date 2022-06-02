@@ -1,10 +1,10 @@
 import React from 'react'
 import {useStore} from 'effector-react'
 import {Card, Typography, Stack, Box, Button, CardActions} from '@mui/material'
-import {RenderHtml} from 'src/ui/RenderHtml'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {RenderHtml} from 'src/shared/ui/RenderHtml'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import {UserModel} from 'src/entities/User'
-import {AdminNewsModel} from 'src/features/Admin/'
+import {AdminNewsModel} from 'src/features/ManageAdminNews'
 import {NewsPageGate, $posts, $isLoading} from './model'
 
 export const NewsPage: React.FC = () => {

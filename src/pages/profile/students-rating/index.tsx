@@ -1,7 +1,7 @@
 import React from 'react'
 import {Box, Typography} from '@mui/material'
 import {useGate, useStore} from 'effector-react'
-import {RatingsTable} from 'src/ui/RatingsTable'
+import {RatingsTable} from 'src/widgets/RatingsTable'
 import {SubjectSelect} from 'src/entities/Subject'
 import {$results, StudRatingPageGate} from './model'
 

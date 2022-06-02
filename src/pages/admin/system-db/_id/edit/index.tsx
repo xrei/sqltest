@@ -6,8 +6,8 @@ import {useParams} from 'react-router'
 import {Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
 import {adminRoutes} from 'src/app/router/paths'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
-import {RichTextEditor} from 'src/features/TextEditor'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
+import {RichTextEditor} from 'src/shared/ui/TextEditor'
 
 const AdminSystemDbEditPage = () => {
   const params = useParams()

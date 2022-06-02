@@ -5,7 +5,7 @@ import {useParams, Navigate} from 'react-router-dom'
 import {adminRoutes} from 'src/app/router/paths'
 import * as model from './model'
 import {ManageSubjectForm} from 'src/features/AdminSubjects/ui'
-import {ArrowBackButton} from 'src/ui/ArrowBackButton'
+import {ArrowBackButton} from 'src/shared/ui/ArrowBackButton'
 
 export const AdminSubjectEditPage = () => {
   const params = useParams()

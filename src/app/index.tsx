@@ -3,14 +3,14 @@ import {useRoutes} from 'react-router'
 import {useStore} from 'effector-react'
 import {ThemeProvider, CssBaseline} from '@mui/material'
 import {createAppTheme, $themeMode} from 'src/shared/theme'
-import {MainLayout} from '../ui/MainLayout'
 import {createRoutes} from 'src/app/router'
 import {AlertsProvider} from 'src/shared/ui/Alerts'
 import {UserModel} from 'src/entities/User'
 import {WithRouter} from './router/WithRouter'
-import AppDialogs from './AppDialogs'
 import {AppGate, $appLoading} from './AppGate'
-import AppLoader from './AppLoader'
+import {MainLayout} from './ui/MainLayout'
+import AppDialogs from './ui/AppDialogs'
+import AppLoader from './ui/AppLoader'
 
 const AppTheme: React.FC<{children: React.ReactElement}> = ({children}) => {
   const themeMode = useStore($themeMode)

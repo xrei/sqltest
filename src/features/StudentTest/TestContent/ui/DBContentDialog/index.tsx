@@ -2,7 +2,7 @@ import React from 'react'
 import {useStore} from 'effector-react'
 import {Button, Dialog, DialogContent, DialogTitle, Box} from '@mui/material'
 import funcModelImg from '../../assets/FuncModel3.jpg'
-import {DBContentTables} from 'src/shared/ui/DBContentTables'
+import {DBContentTables} from 'src/widgets/DBContentTables'
 import * as model from './model'
 
 export const DBContentDialog = () => {

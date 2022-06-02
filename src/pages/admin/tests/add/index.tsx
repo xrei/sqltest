@@ -3,7 +3,7 @@ import {Box, Divider, Typography} from '@mui/material'
 import {useGate} from 'effector-react'
 import * as model from './model'
 import {ManageSubjectForm} from 'src/features/AdminSubjects/ui'
-import {ArrowBackButton} from 'src/ui/ArrowBackButton'
+import {ArrowBackButton} from 'src/shared/ui/ArrowBackButton'
 import {adminRoutes} from 'src/app/router/paths'
 
 export const AdminSubjectsAddPage = () => {

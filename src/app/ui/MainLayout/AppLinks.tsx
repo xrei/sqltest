@@ -6,7 +6,7 @@ import {Book, Event, Star} from '@mui/icons-material'
 import {Link} from 'react-router-dom'
 import {TestButton} from 'src/features/StudentTest/TestContent'
 import {routesPaths} from 'src/app/router/paths'
-import {Logo} from '../Logo'
+import {Logo} from 'src/shared/ui/Logo'
 
 const buttonCss = (drawer?: boolean) => (theme: any) =>
   css`
@@ -54,7 +54,6 @@ export const AppLinks: React.FC<{drawer?: boolean}> = ({drawer}) => {
           aria-label="Главная"
         >
           <Logo width={drawer ? 128 : 60} />
-          {/* <Typography sx={{...linkSx(drawer), pl: 2}}>Главная</Typography> */}
         </Button>
         <Button
           css={buttonCss(drawer)}

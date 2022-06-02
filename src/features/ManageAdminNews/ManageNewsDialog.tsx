@@ -2,7 +2,7 @@ import React from 'react'
 import {Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography} from '@mui/material'
 import {useStore} from 'effector-react'
 import * as model from './model'
-import {RichTextEditor} from 'src/features/TextEditor'
+import {RichTextEditor} from 'src/shared/ui/TextEditor'
 
 export const ManageNewsDialog = () => {
   const open = useStore(model.$manageNewsDialog)

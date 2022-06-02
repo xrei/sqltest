@@ -1,7 +1,7 @@
 import React from 'react'
 import {Typography, Button, Divider, Stack, Dialog, DialogTitle, DialogContent} from '@mui/material'
 import {useStore} from 'effector-react'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import * as model from './model'
 
 export const TaskStatisticsDialog = () => {

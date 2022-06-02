@@ -19,11 +19,11 @@ import React from 'react'
 import {Link as RouterLink} from 'react-router-dom'
 import {useList, useStore} from 'effector-react'
 import {StudentRating, StudentsRatings} from 'src/types'
-import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {ExpandMoreButton} from 'src/shared/ui/ExpandMoreButton'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
+import {adminRoutes} from 'src/app/router/paths'
 import * as FormModel from './FormModel'
 import * as ManageAnswersModel from './ManageAnswersModel'
-import {adminRoutes} from 'src/app/router/paths'
 
 const DataGrid = React.lazy(() =>
   import('@mui/x-data-grid').then((module) => ({default: module.DataGrid}))

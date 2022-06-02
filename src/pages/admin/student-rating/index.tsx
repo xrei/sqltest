@@ -14,7 +14,7 @@ import {useGate, useStore} from 'effector-react'
 import {GroupModel, GroupSelector} from 'src/entities/Group'
 import {SubjectsModel, SubjectSelector} from 'src/entities/Subject'
 import {ThemeSelector, ThemesModel} from 'src/entities/Theme/'
-import {RatingsTable} from 'src/ui/RatingsTable'
+import {RatingsTable} from 'src/widgets/RatingsTable'
 import * as model from './model'
 
 export const AdminStudentRatingPage = () => {

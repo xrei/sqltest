@@ -1,7 +1,7 @@
 import React from 'react'
 import {Stack, TextField, Typography, Button} from '@mui/material'
 import {useGate, useStore} from 'effector-react'
-import {RichTextEditor} from 'src/features/TextEditor'
+import {RichTextEditor} from 'src/shared/ui/TextEditor'
 import * as model from './model'
 
 type ManageSubjectFormProps = {

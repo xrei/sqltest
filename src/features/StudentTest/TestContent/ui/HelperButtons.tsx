@@ -3,10 +3,10 @@ import {Box, Button} from '@mui/material'
 import {fetchDBContentFx} from './DBContentDialog/model'
 import {LoadingButton} from '@mui/lab'
 import {useStore} from 'effector-react'
-import * as TestContentModel from '../model'
-import {DBInfoModel} from 'src/features/DBInfo'
+import {DBInfoModel} from 'src/widgets/DBInfoDialog'
 import {toggleIncorrectQsnDialog} from './IncorrectQsnDialog/model'
 import {onRightAnswClicked} from './RightAnswerDialog/model'
+import * as TestContentModel from '../model'
 
 export const HelperButtons = () => {
   const test = useStore(TestContentModel.$test)

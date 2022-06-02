@@ -1,6 +1,6 @@
 import type {User} from 'src/types'
 import {adminRoutes} from 'src/app/router/paths'
-import {AdminNewsModel} from 'src/features/Admin/'
+import {AdminNewsModel} from 'src/features/ManageAdminNews'
 import {UserModel} from 'src/entities/User'
 
 const adminPages = [

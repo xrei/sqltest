@@ -24,11 +24,11 @@ import {Navigate, useParams, Link as RouterLink} from 'react-router-dom'
 import * as model from './model'
 import {adminRoutes} from 'src/app/router/paths'
 import {AdminTheme} from 'src/types'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import {AdminSubjectsModel} from 'src/features/AdminSubjects'
-import {ExpandMoreIcon} from 'src/ui/ExpandMoreButton'
+import {ExpandMoreIcon} from 'src/shared/ui/ExpandMoreButton'
 import {AllTasksCopyDialog, copyDialogOpenedWithThemeId} from 'src/features/AdminSubjects/ui'
-import {ArrowBackButton} from 'src/ui/ArrowBackButton'
+import {ArrowBackButton} from 'src/shared/ui/ArrowBackButton'
 
 export const AdminSubjectIdPage = () => {
   const params = useParams()

@@ -30,9 +30,9 @@ import {Link as RouterLink, useParams, Navigate} from 'react-router-dom'
 import {useGate, useList, useStore} from 'effector-react'
 import type {RatingQnA} from 'src/types'
 import {adminRoutes} from 'src/app/router/paths'
-import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
-import {DBContentTables} from 'src/shared/ui/DBContentTables'
-import {CenteredLoader} from 'src/ui/CenteredLoader'
+import {ExpandMoreButton} from 'src/shared/ui/ExpandMoreButton'
+import {DBContentTables} from 'src/widgets/DBContentTables'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import * as model from './model'
 
 export const UserRatingIdPage = () => {

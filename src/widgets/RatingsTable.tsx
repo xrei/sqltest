@@ -9,7 +9,7 @@ import {
   Paper,
 } from '@mui/material'
 import type {StudRating} from 'src/types'
-import {CenteredLoader} from './CenteredLoader'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 
 type RatingsTableProps = {
   results: StudRating[]

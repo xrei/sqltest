@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
 import type {DBTableContent} from 'src/types'
-import {ExpandMoreButton} from 'src/ui/ExpandMoreButton'
+import {ExpandMoreButton} from 'src/shared/ui/ExpandMoreButton'
 
 type Props = {
   tables: DBTableContent[]
