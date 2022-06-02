@@ -74,6 +74,10 @@ const ResultsTable = () => {
         density={'comfortable'}
         rowsPerPageOptions={[7]}
         disableColumnMenu
+        localeText={{
+          noRowsLabel: 'Нет данных',
+          footerTotalRows: 'Строк:',
+        }}
       />
     </React.Suspense>
   )
