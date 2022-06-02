@@ -7,6 +7,7 @@ import {getRegistrationRules, authRegister} from 'src/api'
 import {ResponseError} from 'src/api/error'
 import {dialogClosed} from './dialog'
 import {enqueueAlert, Alert} from 'src/shared/ui/Alerts'
+import {setUser} from 'src/entities/User/model'
 
 // fields
 export const $fio = createStore('')
@@ -88,6 +89,7 @@ forward({
   from: registerFx.doneData,
   to: dialogClosed,
 })
+forward({from: registerFx.doneData, to: setUser})
 
 sample({
   clock: registerFx.failData,

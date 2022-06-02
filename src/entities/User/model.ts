@@ -2,8 +2,6 @@ import {head, split, map, join, take} from 'ramda'
 import {combine, createEffect, createEvent, createStore, forward, sample} from 'effector'
 import type {User} from 'src/types'
 import {getUser, authLogOff} from 'src/api'
-import {loginFx} from '../../features/Auth/loginModel'
-import {registerFx} from '../../features/Auth/registerModel'
 import {GroupModel} from 'src/entities/Group'
 
 export const roles: {[key: number]: string} = {
@@ -41,8 +39,6 @@ $user.on(setUser, (_, user) => user)
 $user.on(clearUser, () => null)
 
 forward({from: fetchUser.doneData, to: setUser})
-forward({from: loginFx.doneData, to: setUser})
-forward({from: registerFx.doneData, to: setUser})
 forward({from: authLogOff.doneData, to: clearUser})
 
 sample({

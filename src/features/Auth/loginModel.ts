@@ -6,6 +6,7 @@ import {authLogOn} from 'src/api'
 import {ResponseError} from 'src/api/error'
 import {dialogClosed} from './dialog'
 import {enqueueAlert, Alert} from 'src/shared/ui/Alerts'
+import {setUser} from 'src/entities/User/model'
 
 const rejectIsNil = reject(isNil)
 
@@ -24,9 +25,9 @@ export const login = createEvent()
 export const loginFx = createEffect<LoginDTO, User, ResponseError<{ErrorMessage: string}>>(
   async (params) => {
     const res = await authLogOn(params)
-    const u = await res.json()
+    const user = await res.json()
 
-    return u
+    return user
   }
 )
 
@@ -69,6 +70,11 @@ guard({
 forward({
   from: loginFx.doneData,
   to: dialogClosed,
+})
+
+sample({
+  clock: loginFx.doneData,
+  target: setUser,
 })
 
 sample({
