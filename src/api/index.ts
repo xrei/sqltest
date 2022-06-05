@@ -34,6 +34,7 @@ import type {
   Question,
   SubjectDTO,
   ThemeDTO,
+  AdminAddTaskDTO,
 } from 'src/types'
 
 // home
@@ -364,6 +365,26 @@ export const adminDeleteQuestion = createRequestFx<{Id: number}, string>(
   'Admin/DeleteQuestion',
   'POST'
 )
+
+export const adminGetCountQuestionsForThemeCategory = createRequestFx<{ThemeId: string}, number[]>(
+  'Admin/GetCountQuestionsForThemeCategory',
+  'GET',
+  true
+)
+export const adminGetCountQuestionsForTheme = createRequestFx<{ThemeId: string}, number[]>(
+  'Admin/GetCountQuestionsForTheme',
+  'GET',
+  true
+)
+
+export const adminAddQuestion = createRequestFx<AdminAddTaskDTO, string>(
+  'Admin/AddQuestion',
+  'POST'
+)
+export const adminGetResultForTaskToAdd = createRequestFx<
+  {DatabaseId: string; Type: string; UserAnswer: string},
+  DBTableContent[]
+>('Admin/GetResultForTaskToAdd', 'GET', true)
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

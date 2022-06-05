@@ -364,3 +364,13 @@ export type ThemeDTO = {
   ThemeName: string
   ThemeSubjId: number | string
 }
+
+export type AdminAddTaskDTO = {
+  Answers: Omit<Answer, 'Id'>[]
+  Category: string | number
+  Content: string
+  Difficulty: string | number
+  NumInTest: string | number
+  SubjectId: string | number
+  Type: string | number
+}

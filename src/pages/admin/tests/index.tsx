@@ -69,10 +69,20 @@ const AdminTestsPage = () => {
             >
               Добавить тему
             </Button>
-            <Button variant="outlined" color="info">
+            <Button
+              component={RouterLink}
+              to={adminRoutes.testsTestAdd}
+              variant="outlined"
+              color="info"
+            >
               Добавить тест
             </Button>
-            <Button variant="outlined" color="info">
+            <Button
+              component={RouterLink}
+              to={adminRoutes.testsTaskAdd}
+              variant="outlined"
+              color="info"
+            >
               Добавить задание
             </Button>
           </Paper>
