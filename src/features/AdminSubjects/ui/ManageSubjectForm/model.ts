@@ -1,5 +1,5 @@
 import {ChangeEvent} from 'react'
-import {attach, createEffect, createEvent, createStore, sample, split} from 'effector'
+import {attach, createEffect, createEvent, createStore, sample} from 'effector'
 import {createGate} from 'effector-react'
 import type {SubjectDTO} from 'src/types'
 import {enqueueAlert} from 'src/shared/ui/Alerts'
