@@ -31,6 +31,16 @@ export const createRoutes = (createAdminRoutes: boolean): RouteObject[] => {
         path: adminRoutes.testsSubjIdThemeIdEdit,
         element: WithAuth(<AdminPages.AdminThemeIdEditPage />),
       },
+      {path: adminRoutes.testsTestAdd, element: WithAuth(<AdminPages.AdminTestsTestAddPage />)},
+      {
+        path: adminRoutes.testsTestIdEdit,
+        element: WithAuth(<AdminPages.AdminTestsTestIdEditPage />),
+      },
+      {path: adminRoutes.testsTaskAdd, element: WithAuth(<AdminPages.AdminTestsTaskAddPage />)},
+      {
+        path: adminRoutes.testsTaskIdEdit,
+        element: WithAuth(<AdminPages.AdminTestsTaskIdEditPage />),
+      },
       {path: adminRoutes.students, element: WithAuth(<AdminPages.AdminManageStudentsPage />)},
       {path: adminRoutes.groups, element: WithAuth(<AdminPages.AdminManageGroupsPage />)},
       {path: adminRoutes.journal, element: WithAuth(<AdminPages.AdminJournalPage />)},

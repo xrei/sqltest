@@ -31,6 +31,10 @@ const createLazyAdminPages = () => {
     ),
     AdminThemeAddPage: React.lazy(() => import('src/pages/admin/tests/theme/add')),
     AdminThemeIdEditPage: React.lazy(() => import('src/pages/admin/tests/_subjId/theme/_id/edit')),
+    AdminTestsTestAddPage: React.lazy(() => import('src/pages/admin/tests/test/add')),
+    AdminTestsTestIdEditPage: React.lazy(() => import('src/pages/admin/tests/test/_testId/edit')),
+    AdminTestsTaskAddPage: React.lazy(() => import('src/pages/admin/tests/task/add')),
+    AdminTestsTaskIdEditPage: React.lazy(() => import('src/pages/admin/tests/task/_taskId/edit')),
   }
   return pages
 }
