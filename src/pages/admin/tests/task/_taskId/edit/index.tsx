@@ -7,9 +7,9 @@ import {ManageTaskForm} from 'src/features/AdminSubjects/ui/ManageTaskForm'
 
 const AdminTestsTaskIdEditPage = () => {
   const params = useParams()
-  const testId = Number(params.testId)
+  const taskId = Number(params.taskId)
 
-  if (Number.isNaN(testId) || testId === 0 || !Number.isInteger(testId))
+  if (Number.isNaN(taskId) || taskId === 0 || !Number.isInteger(taskId))
     return <Navigate to={adminRoutes.tests} />
 
   return (

@@ -21,7 +21,7 @@ import {
   Edit as EditIcon,
   QueryStats as QueryStatsIcon,
 } from '@mui/icons-material'
-import {Navigate, useParams} from 'react-router-dom'
+import {Navigate, useParams, Link as RouterLink} from 'react-router-dom'
 import type {Question} from 'src/types'
 import {adminRoutes} from 'src/app/router/paths'
 import {QuestionTypes, QuestionCategories, QuestionDifficulties} from 'src/shared/lib/questionMaps'
@@ -137,7 +137,12 @@ const QuestionControls = ({qsn}: QuestionControlsProps) => {
         </IconButton>
       </Tooltip>
       <Tooltip title="Редактировать" arrow>
-        <IconButton size="small" sx={{'&:hover': {color: 'warning.main'}}}>
+        <IconButton
+          component={RouterLink}
+          to={adminRoutes.testsTaskIdEdit.replace(':taskId', String(qsn.Id))}
+          size="small"
+          sx={{'&:hover': {color: 'warning.main'}}}
+        >
           <EditIcon />
         </IconButton>
       </Tooltip>
