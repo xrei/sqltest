@@ -18,7 +18,6 @@ const adminEntitiesPages = [
   {to: adminRoutes.materials, text: 'Материалы'},
   {to: '#', text: 'Добавить новость', onClick: AdminNewsModel.manageNewsDialogToggled},
   {to: adminRoutes.addAuthor, text: 'Добавить автора'},
-  {to: adminRoutes.systemInfo, text: 'Информация для режима студента'},
 ]
 
 const adminStatsPages = [

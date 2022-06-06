@@ -48,7 +48,9 @@ export const UserRatingIdPage = () => {
   const loading = useStore(model.$pageLoading)
   const ratingList = useStore(model.$ratingList)
   const sorted = ratingList.sort((a, b) =>
-    a.QsnDifficulty.localeCompare(b.QsnDifficulty) || a.QsnCategory.localeCompare(b.QsnCategory)
+    a.QsnID - b.QsnID ||
+    a.QsnDifficulty.localeCompare(b.QsnDifficulty) ||
+    a.QsnCategory.localeCompare(b.QsnCategory)
       ? 1
       : -1
   )
