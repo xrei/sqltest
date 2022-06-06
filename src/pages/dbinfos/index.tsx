@@ -19,10 +19,11 @@ import {DbInfoPage, $isLoading} from './model'
 
 const DBInfosPage = () => {
   useGate(DbInfoPage)
-  const list = useStore(DBInfoModel.$dbInfosList)
-  const loading = useStore($isLoading)
   const [openedDialog, setDialog] = useState(0)
   const [expanded, setExpanded] = useState<number | false>(false)
+
+  const list = useStore(DBInfoModel.$dbInfosList)
+  const loading = useStore($isLoading)
 
   const handleExpand = (v: number) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? v : false)

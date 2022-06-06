@@ -5,15 +5,16 @@ import type {DBInfo} from 'src/types'
 export const $dbInfosList = createStore<DBInfo[]>([])
 
 export const fetchDbInfo = createEffect<void, DBInfo[]>(async () => {
-  const res = await getDBInfos()
-  const list = await res.json()
+  const res = await (await getDBInfos()).json()
 
-  const mapped = list.map((v) => {
+  const mapped = res.map((v) => {
     return {
       ...v,
       creation_script: v.creation_script.replaceAll(/style="[^"]*"/g, ''),
     }
   })
+
+  console.log('db infos list: ', mapped)
 
   return mapped
 })
