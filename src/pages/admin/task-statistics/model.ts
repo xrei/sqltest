@@ -84,3 +84,7 @@ reset({
   stores: [$groupId, $subjId, $themeId, $statsData],
   trigger: AdminStatisticsPageGate.close,
 })
+
+$statsData.reset($subjId)
+$themeId.reset($subjId)
+$groupId.reset($subjId)
