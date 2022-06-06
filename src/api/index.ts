@@ -376,7 +376,11 @@ export const adminGetCountQuestionsForTheme = createRequestFx<{ThemeId: string},
   'GET',
   true
 )
-
+export const adminGetQuestion = createRequestFx<{qsnId: string | number}, Question>(
+  'Admin/GetQuestion',
+  'GET',
+  true
+)
 export const adminAddQuestion = createRequestFx<AdminAddTaskDTO, string>(
   'Admin/AddQuestion',
   'POST'
