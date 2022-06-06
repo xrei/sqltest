@@ -310,6 +310,7 @@ export type RatingQnA = {
   QsnType: string
   QsnTypeId: number
   QuestionText: string
+  QsnCategory: string
   RatingId: number
   StudentName: string
   SystemAnswersText: string[]

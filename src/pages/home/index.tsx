@@ -13,7 +13,7 @@ import {DesktopMac} from '@mui/icons-material'
 import {useStore} from 'effector-react'
 import {Link} from 'react-router-dom'
 import SQLImage from 'src/static/sql.png'
-import NoSQLImage from 'src/static/nosql.webp'
+import NoSQLImage from 'src/static/nosql-logo.png'
 import FirebirdLogo from 'src/static/firebird_logo.svg?raw'
 import MongoLogo from 'src/static/mongodb_logo.svg?raw'
 import MssqlLogo from 'src/static/mssql-logo.svg?raw'
@@ -183,7 +183,7 @@ const FeatureCard = ({card}: FeatureCardProps) => {
         component="img"
         image={card.image}
         sx={{p: 2, width: 'auto'}}
-        height="194"
+        height="190"
         alt={card.title}
       />
       <CardContent

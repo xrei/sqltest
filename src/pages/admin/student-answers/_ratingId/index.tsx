@@ -11,6 +11,7 @@ import {
   TableRow,
   TableCell,
   TableContainer,
+  TableSortLabel,
   Collapse,
   Paper,
   Card,
@@ -27,7 +28,7 @@ import {
 import {ExpandMore as ExpandMoreIcon} from '@mui/icons-material'
 import {ArrowBack as ArrowBackIcon} from '@mui/icons-material'
 import {Link as RouterLink, useParams, Navigate} from 'react-router-dom'
-import {useGate, useList, useStore} from 'effector-react'
+import {useGate, useStore} from 'effector-react'
 import type {RatingQnA} from 'src/types'
 import {adminRoutes} from 'src/app/router/paths'
 import {ExpandMoreButton} from 'src/shared/ui/ExpandMoreButton'
@@ -45,8 +46,14 @@ export const UserRatingIdPage = () => {
 
   const studentName = useStore(model.$studentFio)
   const loading = useStore(model.$pageLoading)
-
-  const renderList = useList(model.$ratingList, (rating) => <RatingBlock rating={rating} />)
+  const ratingList = useStore(model.$ratingList)
+  const sorted = ratingList.sort((a, b) =>
+    a.QsnDifficulty.localeCompare(b.QsnDifficulty) || a.QsnCategory.localeCompare(b.QsnCategory)
+      ? 1
+      : -1
+  )
+  // #TODO: change this to map
+  const renderList = sorted.map((rating, idx) => <RatingBlock rating={rating} key={idx} />)
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', my: 2}}>
@@ -76,9 +83,8 @@ export const UserRatingIdPage = () => {
 type RatingBlockProps = {
   rating: RatingQnA
 }
-const RatingBlock = (props: RatingBlockProps) => {
+const RatingBlock = ({rating}: RatingBlockProps) => {
   const theme = useTheme()
-  const rating = props.rating
   const [expanded, setExpanded] = React.useState(false)
 
   const handleExpandClick = () => {
@@ -102,7 +108,7 @@ const RatingBlock = (props: RatingBlockProps) => {
               <TableCell sx={{fontWeight: 'bold', flex: 1}}>Текст</TableCell>
               <TableCell sx={{fontWeight: 'bold', width: 120}}>Тип</TableCell>
               <TableCell sx={{fontWeight: 'bold', width: 100}}>Сложность</TableCell>
-              <TableCell sx={{fontWeight: 'bold', width: 100}}>Категория</TableCell>
+              <TableCell sx={{fontWeight: 'bold', width: 100}}>Компетенция</TableCell>
             </TableRow>
           </TableHead>
           <TableBody
@@ -113,13 +119,13 @@ const RatingBlock = (props: RatingBlockProps) => {
             }}
           >
             <TableRow>
-              <TableCell>{rating.RatingId}</TableCell>
+              <TableCell>{rating.QsnID}</TableCell>
               <TableCell>
                 <div dangerouslySetInnerHTML={{__html: rating.QuestionText}}></div>
               </TableCell>
               <TableCell>{rating.QsnType}</TableCell>
               <TableCell>{rating.QsnDifficulty}</TableCell>
-              <TableCell></TableCell>
+              <TableCell>{rating.QsnCategory}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
