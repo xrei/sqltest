@@ -36,18 +36,26 @@ type ManageTaskFormProps = {
 export const ManageTaskForm = ({isEdit, taskId}: ManageTaskFormProps) => {
   useGate(model.ManageTaskFormGate)
 
+  const onClick = () => {
+    if (isEdit) {
+      //
+    } else {
+      model.addTaskFx()
+    }
+  }
+
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', gap: 2}}>
       <TaskText />
-      {!isEdit && <SubjectThemeSelect />}
+      <SubjectThemeSelect />
       <DifficultyAndCategory />
       <TaskType />
       <AddAnswers />
       <TaskAnswers />
 
       <Box sx={{maxWidth: 300, width: '100%', margin: '0 auto', mt: 4}}>
-        <Button size="large" fullWidth variant="contained" onClick={() => model.addTaskFx()}>
-          Добавить задание
+        <Button size="large" fullWidth variant="contained" onClick={onClick}>
+          {isEdit ? 'Редактировать задание' : 'Добавить задание'}
         </Button>
       </Box>
 
