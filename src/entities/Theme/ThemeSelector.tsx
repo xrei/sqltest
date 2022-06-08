@@ -12,10 +12,11 @@ import {Theme} from 'src/types'
 
 interface ThemeSelectorProps {
   list: Theme[]
-  value: string
+  value: string | string[]
   onChange?: ((event: SelectChangeEvent<string>, child: React.ReactNode) => void) | undefined
   disabled?: boolean
   sx?: SxProps<MuiTheme>
+  multiple?: boolean
 }
 export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
   list,
@@ -23,6 +24,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
   onChange,
   disabled,
   sx = {},
+  multiple,
 }) => {
   return (
     <FormControl
@@ -33,7 +35,14 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
       size="small"
     >
       <InputLabel id="adm-theme-sel">Тема</InputLabel>
-      <Select value={value} labelId="adm-theme-sel" label="Тема" onChange={onChange}>
+      <Select
+        multiple={multiple}
+        // @ts-expect-error idk how to type it
+        value={value}
+        labelId="adm-theme-sel"
+        label="Тема"
+        onChange={onChange}
+      >
         {list.map((x) => (
           <MenuItem dense key={x.ThemeId} value={x.ThemeId}>
             {x.ThemeName}

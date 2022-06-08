@@ -390,6 +390,8 @@ export const adminGetResultForTaskToAdd = createRequestFx<
   DBTableContent[]
 >('Admin/GetResultForTaskToAdd', 'GET', true)
 
+export const adminCreateTest = createRequestFx<any, string>('Admin/AddTestNew', 'POST')
+
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')
