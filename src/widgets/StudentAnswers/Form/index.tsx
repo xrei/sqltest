@@ -1,7 +1,7 @@
 import React from 'react'
 import {Box} from '@mui/material'
 import {LoadingButton} from '@mui/lab'
-import {useStore} from 'effector-react'
+import {useGate, useStore} from 'effector-react'
 import {AdminModel} from 'src/features/Admin'
 import {GroupModel, GroupSelector} from 'src/entities/Group'
 import {SubjectsModel, SubjectSelector} from 'src/entities/Subject'
@@ -10,6 +10,7 @@ import {TestSelector, TestModel} from 'src/entities/Test/'
 import * as FormModel from './FormModel'
 
 export const AnswersSelectForm = () => {
+  useGate(FormModel.FormGate)
   const selectedGroup = useStore(FormModel.$groupId)
   const selectedSubject = useStore(FormModel.$subjId)
   const selectedTheme = useStore(FormModel.$themeId)

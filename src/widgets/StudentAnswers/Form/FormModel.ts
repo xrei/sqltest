@@ -1,13 +1,15 @@
 import {SelectChangeEvent} from '@mui/material'
 import {combine, createEvent, createStore, sample} from 'effector'
+import {createGate} from 'effector-react'
 import {TestModel} from 'src/entities/Test'
 import {ThemesModel} from 'src/entities/Theme'
 import {AdminModel} from 'src/features/Admin'
 import {reset} from 'src/shared/lib/reset'
 import {StudentRating} from 'src/types'
 
+export const FormGate = createGate()
+
 export const resetForm = createEvent()
-export const resetSubjectChilds = createEvent()
 
 export const $groupId = createStore('')
 export const $subjId = createStore('')
@@ -30,16 +32,6 @@ $subjId.on(subjSelected, (_, s) => String(s.target.value))
 $themeId.on(themeSelected, (_, s) => String(s.target.value))
 $testId.on(testSelected, (_, s) => String(s.target.value))
 
-reset({
-  stores: [$groupId, $subjId, $themeId, $testId],
-  trigger: resetForm,
-})
-
-reset({
-  stores: [$themeId, $testId],
-  trigger: resetSubjectChilds,
-})
-
 sample({
   clock: $subjId,
   fn: (id) => Number(id),
@@ -50,11 +42,6 @@ sample({
   clock: $themeId,
   fn: (id) => Number(id),
   target: TestModel.fetchAdminTestsByThemeFx,
-})
-
-sample({
-  clock: $subjId,
-  target: resetSubjectChilds,
 })
 
 export const $isFormButtonDisabled = combine([$groupId, $subjId, $testId, $themeId], (xs) =>
@@ -75,3 +62,15 @@ sample({
 
 export const $groupRatings = createStore<StudentRating[]>([])
 $groupRatings.on(AdminModel.fetchAdminGroupRatingsFx.doneData, (_, data) => data)
+
+// sample({
+//   clock: FormGate.close,
+//   target: resetForm,
+// })
+reset({
+  stores: [$groupId, $subjId, $themeId, $testId],
+  trigger: resetForm,
+})
+
+$themeId.reset([$subjId])
+$testId.reset([$subjId, $themeId])

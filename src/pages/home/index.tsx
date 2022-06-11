@@ -47,7 +47,7 @@ export const HomePage: React.FC = () => {
       <Box
         sx={{
           py: {xs: 3, sm: 6},
-          px: {xs: 2, sm: 2, md: 0},
+          px: {xs: 2, sm: 2},
           display: 'flex',
           flexFlow: 'column',
           alignItems: 'center',
@@ -62,9 +62,9 @@ export const HomePage: React.FC = () => {
             mb: 4,
             display: 'flex',
             flexWrap: 'wrap',
-            gap: {xs: 2, sm: 4},
+            gap: {xs: 2, sm: 3},
             flex: 1,
-            justifyContent: {xs: 'center', sm: 'space-between'},
+            justifyContent: {xs: 'center'},
           }}
         >
           {logos.map((logo, id) => (
@@ -73,10 +73,10 @@ export const HomePage: React.FC = () => {
               key={id}
               dangerouslySetInnerHTML={{__html: logo}}
               sx={{
-                p: {xs: 2, sm: 4},
-                width: {xs: 100, sm: 180},
-                height: {xs: 100, sm: 180},
-                maxWidth: {xs: 100, sm: '100%'},
+                p: {xs: 2, sm: 3},
+                width: {xs: 85, sm: 160, md: 140, lg: 135, xl: 170},
+                height: {xs: 85, sm: 160, md: 140, lg: 135, xl: 170},
+                maxWidth: {xs: 85, sm: 160, md: 140, lg: 135, xl: 170},
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
