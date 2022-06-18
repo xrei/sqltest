@@ -376,7 +376,7 @@ export const adminGetCountQuestionsForTheme = createRequestFx<{ThemeId: string},
   'GET',
   true
 )
-export const adminGetQuestion = createRequestFx<{qsnId: string | number}, Question>(
+export const adminGetQuestion = createRequestFx<{QsnId: string | number}, Question>(
   'Admin/GetQuestion',
   'GET',
   true

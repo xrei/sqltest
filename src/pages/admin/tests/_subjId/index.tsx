@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useGate, useStore, useList} from 'effector-react'
+import {useGate, useStore} from 'effector-react'
 import {
   Stack,
   Box,
@@ -76,14 +76,25 @@ const ThemesList = () => {
   return (
     <Stack gap={2}>
       {themeList}
-      <Button
-        component={RouterLink}
-        to={adminRoutes.testsThemeAdd}
-        sx={{maxWidth: 300, mt: 4}}
-        variant="outlined"
-      >
-        Добавить тему
-      </Button>
+      <Box sx={{display: 'flex', gap: 2, mt: 4}}>
+        <Button
+          component={RouterLink}
+          to={adminRoutes.testsThemeAdd}
+          sx={{maxWidth: 300}}
+          variant="outlined"
+        >
+          Добавить тему
+        </Button>
+        <Button
+          component={RouterLink}
+          to={adminRoutes.testsTaskAdd}
+          sx={{maxWidth: 300}}
+          variant="outlined"
+          color="warning"
+        >
+          Добавить задание
+        </Button>
+      </Box>
     </Stack>
   )
 }

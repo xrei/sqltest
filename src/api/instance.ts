@@ -7,4 +7,7 @@ const apiUrl = () => {
   return url
 }
 
-export const api = ky.create({retry: 2, timeout: 120 * 1000})
+export const api = ky.create({
+  retry: 2,
+  timeout: 120 * 100000,
+})

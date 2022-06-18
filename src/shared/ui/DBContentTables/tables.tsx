@@ -21,8 +21,7 @@ type Props = {
 }
 export const DBContentTables = ({tables}: Props) => {
   const [expandedId, setExpandedId] = React.useState(0)
-
-  const hasData = Array.isArray(tables) ? tables.every((table) => table.TotalRowsCount > 0) : false
+  const isArray = Array.isArray(tables)
   const oneTable = tables.length === 1
 
   const handleExpandClick = (idx: number) => {
@@ -30,7 +29,7 @@ export const DBContentTables = ({tables}: Props) => {
     setExpandedId(idx)
   }
 
-  if (!hasData) {
+  if (!isArray) {
     return (
       <Typography variant="h5">
         <div>

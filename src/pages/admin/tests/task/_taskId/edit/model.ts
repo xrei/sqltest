@@ -9,7 +9,7 @@ const $task = createStore<Question | null>(null)
 
 const getTaskByIdFx = createEffect(async (id: number) => {
   try {
-    const res = await (await adminGetQuestion({qsnId: id})).json()
+    const res = await (await adminGetQuestion({QsnId: id})).json()
     console.log(res)
 
     return res

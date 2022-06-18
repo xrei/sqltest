@@ -7,16 +7,7 @@ export const $dbInfosList = createStore<DBInfo[]>([])
 export const fetchDbInfo = createEffect<void, DBInfo[]>(async () => {
   const res = await (await getDBInfos()).json()
 
-  const mapped = res.map((v) => {
-    return {
-      ...v,
-      creation_script: v.creation_script.replaceAll(/style="[^"]*"/g, ''),
-    }
-  })
-
-  console.log('db infos list: ', mapped)
-
-  return mapped
+  return res
 })
 
 $dbInfosList.on(fetchDbInfo.doneData, (_, list) => list)
@@ -30,8 +21,5 @@ $isOpen.on(toggleDialog, (s) => !s)
 sample({
   clock: toggleDialog,
   source: $dbInfosList,
-  filter(list) {
-    return !list.length
-  },
   target: fetchDbInfo,
 })

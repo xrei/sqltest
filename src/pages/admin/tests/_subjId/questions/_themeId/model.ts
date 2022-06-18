@@ -22,7 +22,7 @@ const fetchQuestionsFx = createEffect(async (id: number) => {
 
 export const $isLoading = fetchQuestionsFx.pending
 export const $questions = createStore<Question[]>([])
-export const $themeName = $questions.map((xs) => xs[1]?.ThemeName || '')
+export const $themeName = $questions.map((xs) => xs[0]?.ThemeName || '')
 
 $questions.on(fetchQuestionsFx.doneData, (_, data) => data)
 
