@@ -108,6 +108,6 @@ export const fetchRegRules = createEffect<void, string>(async () => {
 $regRules.on(fetchRegRules.doneData, (_, data) => data)
 
 function lettersOnly(str: string) {
-  const regexp = /^[A-Za-zА-Яа-я]+$/
+  const regexp = /^[A-Za-zА-Яа-я- ]+$/
   return Boolean(str.match(regexp))
 }
