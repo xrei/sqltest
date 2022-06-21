@@ -5,6 +5,8 @@ import type {EditDbDto} from 'src/types'
 import {addDbToEditClicked, $dbs, fetchDatabasesFx} from '../../model'
 import {postEditDatabase} from 'src/api'
 import {enqueueAlert} from 'src/shared/ui/Alerts'
+import {history} from 'src/app/router/appHistory'
+import {adminRoutes} from 'src/app/router/paths'
 
 export const SysDbEditPageGate = createGate<{id: number}>()
 export const $dbIdToEdit = createStore<number>(0)
@@ -82,6 +84,7 @@ const editDbFx = createEffect<{db: EditDbDto; description: string; script: strin
     enqueueAlert({
       message: 'База данных успешно отредактирована',
     })
+    history.push(adminRoutes.systemDb)
     return res
   }
 )

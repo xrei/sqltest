@@ -15,7 +15,6 @@ const adminEntitiesPages = [
   {to: adminRoutes.systemUsers, text: 'Доступы'},
   {to: adminRoutes.systemDb, text: 'Базы данных'},
   {to: adminRoutes.systemQuery, text: 'Системные запросы'},
-  {to: adminRoutes.materials, text: 'Материалы'},
   {to: '#', text: 'Добавить новость', onClick: AdminNewsModel.manageNewsDialogToggled},
   {to: adminRoutes.addAuthor, text: 'Добавить автора'},
 ]

@@ -77,7 +77,7 @@ const AdminSystemDbEditPage = () => {
           disabled={editDisabled}
           onClick={() => model.editDbClicked()}
         >
-          Редактировать
+          Сохранить
         </Button>
       </Stack>
     </Box>

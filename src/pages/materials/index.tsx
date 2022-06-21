@@ -1,5 +1,5 @@
 import {Box, Typography, Link, Stack, Divider} from '@mui/material'
-import {useGate, useList} from 'effector-react'
+import {useGate, useStore} from 'effector-react'
 import React from 'react'
 import {useNavigate} from 'react-router'
 import * as model from './model'
@@ -27,42 +27,50 @@ const MaterialsList = () => {
     navigate(`/materials/${article.Id}`)
   }
 
-  const materials = useList(model.$materials, (m) => {
-    return (
-      <Box display="flex" flexDirection="column">
-        <Divider sx={{mb: 4}}></Divider>
+  const materials = useStore(model.$materials)
 
-        <Typography variant="h3">{m.SubjName}</Typography>
-        <div dangerouslySetInnerHTML={{__html: m.Description}}></div>
+  return (
+    <>
+      {materials.map((m, idx) => {
+        return (
+          <Box key={idx} display="flex" flexDirection="column">
+            <Divider sx={{mb: 4}}></Divider>
 
-        {m.ListOfLinks.length ? (
-          <>
-            <Typography variant="h4">Ссылки:</Typography>
-            <Box display="flex" flexDirection="column" mb={2}>
-              {m.ListOfLinks.map((link) => (
-                <Link key={link.Id} href={link.Name}>
-                  {link.Name}
-                </Link>
-              ))}
-            </Box>
-          </>
-        ) : null}
+            <Typography variant="h3">{m.SubjName}</Typography>
+            <div dangerouslySetInnerHTML={{__html: m.Description}}></div>
 
-        {m.ListOfArticles.length ? (
-          <>
-            <Typography variant="h4" gutterBottom>
-              Статьи:
-            </Typography>
-            {m.ListOfArticles.map((article) => (
-              <Link sx={{cursor: 'pointer'}} key={article.Id} onClick={() => goToArticle(article)}>
-                {article.Name}
-              </Link>
-            ))}
-          </>
-        ) : null}
-      </Box>
-    )
-  })
+            {m.ListOfLinks.length ? (
+              <>
+                <Typography variant="h4">Ссылки:</Typography>
+                <Box display="flex" flexDirection="column" mb={2}>
+                  {m.ListOfLinks.map((link) => (
+                    <Link key={link.Id} href={link.Name}>
+                      {link.Name}
+                    </Link>
+                  ))}
+                </Box>
+              </>
+            ) : null}
 
-  return materials
+            {m.ListOfArticles.length ? (
+              <>
+                <Typography variant="h4" gutterBottom>
+                  Статьи:
+                </Typography>
+                {m.ListOfArticles.map((article) => (
+                  <Link
+                    sx={{cursor: 'pointer'}}
+                    key={article.Id}
+                    onClick={() => goToArticle(article)}
+                  >
+                    {article.Name}
+                  </Link>
+                ))}
+              </>
+            ) : null}
+          </Box>
+        )
+      })}
+    </>
+  )
 }
