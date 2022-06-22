@@ -1,6 +1,6 @@
 import {ChangeEvent} from 'react'
 import {SelectChangeEvent} from '@mui/material'
-import {createStore, createEvent, createEffect, sample} from 'effector'
+import {createStore, createEvent, createEffect, sample, forward} from 'effector'
 import {createGate} from 'effector-react'
 import {
   getStudentsForGroup,
@@ -10,6 +10,7 @@ import {
   postEditStudent,
 } from 'src/api'
 import type {Student, StudentDto} from 'src/types'
+import {GroupModel} from 'src/entities/Group'
 
 export const AdminManageStudentsPageGate = createGate()
 
@@ -111,6 +112,11 @@ sample({
   filter: (id) => Boolean(id),
   fn: (id) => Number(id),
   target: fetchStudentsFx,
+})
+
+forward({
+  from: AdminManageStudentsPageGate.open,
+  to: GroupModel.fetchAdminGroupsFx,
 })
 
 $studentDialog.reset([editStudentFx.doneData, addStudentFx.doneData])

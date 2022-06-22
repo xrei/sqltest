@@ -35,6 +35,7 @@ import {
 } from 'src/features/AdminSubjects/ui'
 import {ArrowBackButton} from 'src/shared/ui/ArrowBackButton'
 import * as model from './model'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 
 export const AdminTestsQuestionsThemeIdPage = () => {
   const params = useParams()
@@ -45,6 +46,22 @@ export const AdminTestsQuestionsThemeIdPage = () => {
   useGate(model.AdminQsnByThemePageGate, {themeId})
 
   const themeName = useStore(model.$themeName)
+  const isLoading = useStore(model.$isLoading)
+
+  if (isLoading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          height: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <CenteredLoader />
+      </Box>
+    )
+  }
 
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', my: 2}}>
