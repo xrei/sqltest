@@ -314,6 +314,7 @@ export type RatingQnA = {
   RatingId: number
   StudentName: string
   SystemAnswersText: string[]
+  ThemeName: string
 }
 
 export type QuestionStats = {

@@ -101,3 +101,5 @@ sample({
 })
 
 $editDbDto.reset([editDbFx.doneData, SysDbEditPageGate.close])
+$dbDescr.reset([editDbFx.doneData, SysDbEditPageGate.close])
+$dbCreationScript.reset([editDbFx.doneData, SysDbEditPageGate.close])

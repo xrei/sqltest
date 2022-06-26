@@ -111,6 +111,7 @@ const RatingBlock = ({rating}: RatingBlockProps) => {
               <TableCell sx={{fontWeight: 'bold', width: 120}}>Тип</TableCell>
               <TableCell sx={{fontWeight: 'bold', width: 100}}>Сложность</TableCell>
               <TableCell sx={{fontWeight: 'bold', width: 100}}>Компетенция</TableCell>
+              <TableCell sx={{fontWeight: 'bold', width: 100}}>Тема</TableCell>
             </TableRow>
           </TableHead>
           <TableBody
@@ -128,6 +129,7 @@ const RatingBlock = ({rating}: RatingBlockProps) => {
               <TableCell>{rating.QsnType}</TableCell>
               <TableCell>{rating.QsnDifficulty}</TableCell>
               <TableCell>{rating.QsnCategory}</TableCell>
+              <TableCell>{rating.ThemeName}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -169,14 +171,26 @@ const RatingBlock = ({rating}: RatingBlockProps) => {
                 <Typography textAlign={'center'} gutterBottom>
                   <b>Ответ студента</b>
                 </Typography>
-                <Box component={'code'}>{rating.AnswersText[0]}</Box>
+                <Box component={'code'}>
+                  <ul>
+                    {rating.AnswersText.map((v, i) => (
+                      <li key={i}>{v}</li>
+                    ))}
+                  </ul>
+                </Box>
               </Box>
               <Divider orientation="vertical" variant="middle" flexItem />
               <Box sx={{display: 'flex', flexFlow: 'column', flex: 1, overflowX: 'auto'}}>
                 <Typography textAlign={'center'} gutterBottom>
                   <b>Правильный ответ</b>
                 </Typography>
-                <Box component={'code'}>{rating.SystemAnswersText[0]}</Box>
+                <Box component={'code'}>
+                  <ul>
+                    {rating.SystemAnswersText.map((v, i) => (
+                      <li key={i}>{v}</li>
+                    ))}
+                  </ul>
+                </Box>
               </Box>
             </Box>
           </CardContent>
