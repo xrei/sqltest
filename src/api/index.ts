@@ -35,6 +35,7 @@ import type {
   SubjectDTO,
   ThemeDTO,
   AdminAddTaskDTO,
+  Answer,
 } from 'src/types'
 
 // home
@@ -347,6 +348,15 @@ export const adminDeleteTest = createRequestFx<{TestId: number}, string>('Admin/
 
 // questions
 
+export const adminGetQuestionsWithWrongAnswers = createRequestFx<{ThemeId: number}, Question[]>(
+  'Admin/GetQuestionsWithWrongAnswers',
+  'GET',
+  true
+)
+export const adminGetQuestionsWithWrongAnswersMongoDB = createRequestFx<{ThemeId: number}, string>(
+  'Admin/GetQuestionsWithWrongAnswersMongoDB'
+)
+
 export const adminCopyThemeQuestions = createRequestFx<
   {ThemeId: number; ThemeName: number},
   string
@@ -385,6 +395,12 @@ export const adminAddQuestion = createRequestFx<AdminAddTaskDTO, string>(
   'Admin/AddQuestion',
   'POST'
 )
+export const adminEditQuestion = createRequestFx<AdminAddTaskDTO, string>(
+  'Admin/EditQuestion',
+  'POST'
+)
+export const adminEditAnswer = createRequestFx<Answer, string>('Admin/EditAnswer', 'POST')
+
 export const adminGetResultForTaskToAdd = createRequestFx<
   {DatabaseId: string; Type: string; UserAnswer: string},
   DBTableContent[]

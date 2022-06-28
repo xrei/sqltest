@@ -18,7 +18,7 @@ export const TaskFormAnswerQueryDialog = () => {
       maxWidth="xl"
       onClose={() => model.taskFormQueryDialogClosed()}
     >
-      <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
+      <DialogTitle component="div" sx={{display: 'flex', justifyContent: 'space-between'}}>
         <Typography variant="h3">Результат выполнения эталонного запроса:</Typography>
         <Button variant="outlined" onClick={() => model.taskFormQueryDialogClosed()}>
           Закрыть

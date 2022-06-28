@@ -13,6 +13,7 @@ import {
   TableCell,
   TableHead,
   TableBody,
+  Button,
 } from '@mui/material'
 import {
   Delete as DeleteIcon,
@@ -36,6 +37,7 @@ import {
 import {ArrowBackButton} from 'src/shared/ui/ArrowBackButton'
 import * as model from './model'
 import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
+import {LoadingButton} from '@mui/lab'
 
 export const AdminTestsQuestionsThemeIdPage = () => {
   const params = useParams()
@@ -47,6 +49,9 @@ export const AdminTestsQuestionsThemeIdPage = () => {
 
   const themeName = useStore(model.$themeName)
   const isLoading = useStore(model.$isLoading)
+  const qsns = useStore(model.$questions)
+  const isSqlCheckLoading = useStore(model.checkWrongSqlQuestionsFx.pending)
+  const isMongoCheckLoading = useStore(model.checkWrongMongoQuestionsFx.pending)
 
   if (isLoading) {
     return (
@@ -70,7 +75,32 @@ export const AdminTestsQuestionsThemeIdPage = () => {
         <Typography variant="h1">Задания в теме - {themeName}</Typography>
       </Box>
       <Divider sx={{my: 2}} />
-      <QuestionsTable />
+
+      <QuestionsTable questions={qsns} />
+      <Divider sx={{my: 4}} />
+
+      <Box sx={{display: 'flex', flexFlow: {xs: 'column', sm: 'row'}, gap: 2, mb: 2}}>
+        <LoadingButton
+          variant="outlined"
+          color="secondary"
+          size="small"
+          loading={isSqlCheckLoading}
+          onClick={() => model.checkWrongSqlQuestionsFx(themeId)}
+        >
+          Показать некорректные SQL запросы
+        </LoadingButton>
+        <LoadingButton
+          variant="outlined"
+          color="secondary"
+          size="small"
+          loading={isMongoCheckLoading}
+          onClick={() => model.checkWrongMongoQuestionsFx(themeId)}
+        >
+          Показать некорректные MongoDB-запросы
+        </LoadingButton>
+      </Box>
+      <WrongSQLQuestions />
+      <WrongMongoQuestions />
 
       <TaskStatisticsDialog />
       <TaskQueryDialog />
@@ -79,9 +109,7 @@ export const AdminTestsQuestionsThemeIdPage = () => {
   )
 }
 
-const QuestionsTable = () => {
-  const qsns = useStore(model.$questions)
-
+const QuestionsTable = ({questions}: {questions: Question[]}) => {
   return (
     <TableContainer component={Paper} sx={{backgroundColor: 'background.default'}}>
       <Table size="small">
@@ -96,7 +124,7 @@ const QuestionsTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {qsns.map((tr, idx) => (
+          {questions.map((tr, idx) => (
             <TableRow key={idx} hover>
               <TableCell>{tr.Id}</TableCell>
               <TableCell>
@@ -174,6 +202,37 @@ const QuestionControls = ({qsn}: QuestionControlsProps) => {
       </Tooltip>
     </Box>
   )
+}
+
+const WrongSQLQuestions = () => {
+  const wrongQsns = useStore(model.$wrongSqlQuestions)
+  if (wrongQsns && Array.isArray(wrongQsns)) {
+    return (
+      <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
+        <Typography variant="h4" gutterBottom>
+          Некорректные SQL задания
+        </Typography>
+        <QuestionsTable questions={wrongQsns} />
+      </Box>
+    )
+  } else {
+    return <></>
+  }
+}
+const WrongMongoQuestions = () => {
+  const wrongQsns = useStore(model.$wrongMongoQuestions)
+  if (wrongQsns && Array.isArray(wrongQsns)) {
+    return (
+      <Box sx={{display: 'flex', flexFlow: 'column', mt: 2}}>
+        <Typography variant="h4" gutterBottom>
+          Некорректные Mongo задания
+        </Typography>
+        <QuestionsTable questions={wrongQsns} />
+      </Box>
+    )
+  } else {
+    return <></>
+  }
 }
 
 export default AdminTestsQuestionsThemeIdPage

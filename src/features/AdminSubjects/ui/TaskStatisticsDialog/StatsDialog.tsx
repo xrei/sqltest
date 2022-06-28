@@ -12,7 +12,7 @@ export const TaskStatisticsDialog = () => {
   return (
     <Dialog maxWidth="lg" fullWidth open={open} onClose={() => model.closeStatisticsDialog()}>
       <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
-        <Typography variant="h3">Статистические характеристики задания:</Typography>
+        Статистические характеристики задания
         <Button variant="outlined" onClick={() => model.closeStatisticsDialog()}>
           Закрыть
         </Button>

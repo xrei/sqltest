@@ -16,7 +16,7 @@ export const SingleTaskCopyDialog = () => {
   return (
     <Dialog open={open} scroll="paper" fullWidth maxWidth="sm" onClose={() => model.dialogClosed()}>
       <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
-        <Typography variant="h3">Выберите новую тему:</Typography>
+        Выберите новую тему
         <Button variant="outlined" onClick={() => model.dialogClosed()}>
           Закрыть
         </Button>

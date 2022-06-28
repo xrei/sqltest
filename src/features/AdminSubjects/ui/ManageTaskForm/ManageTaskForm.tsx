@@ -17,8 +17,9 @@ import {
   Radio,
   RadioGroup,
   IconButton,
+  Tooltip,
 } from '@mui/material'
-import {Delete as DeleteIcon} from '@mui/icons-material'
+import {Delete as DeleteIcon, Edit as EditIcon} from '@mui/icons-material'
 import {useGate, useStore} from 'effector-react'
 import {RichTextEditor} from 'src/shared/ui/TextEditor'
 import {SubjectSelector, SubjectsModel} from 'src/entities/Subject'
@@ -27,6 +28,7 @@ import {QuestionTypes} from 'src/shared/lib/questionMaps'
 import {$databases} from './dbModel'
 import * as model from './model'
 import {taskFormQueryDialogOpened, TaskFormAnswerQueryDialog} from './QueryDialog'
+import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 
 type ManageTaskFormProps = {
   isEdit?: boolean
@@ -34,11 +36,29 @@ type ManageTaskFormProps = {
 }
 
 export const ManageTaskForm = ({isEdit, taskId}: ManageTaskFormProps) => {
-  useGate(model.ManageTaskFormGate)
+  useGate(model.ManageTaskFormGate, {taskId})
+  const taskAnswers = useStore(model.$taskAnswers)
+
+  const isEditTaskLoading = useStore(model.getTaskByIdFx.pending)
+
+  if (isEdit && isEditTaskLoading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          height: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <CenteredLoader />
+      </Box>
+    )
+  }
 
   const onClick = () => {
     if (isEdit) {
-      //
+      model.editTaskFx()
     } else {
       model.addTaskFx()
     }
@@ -50,13 +70,23 @@ export const ManageTaskForm = ({isEdit, taskId}: ManageTaskFormProps) => {
       <SubjectThemeSelect />
       <DifficultyAndCategory />
       <TaskType />
-      <AddAnswers />
+      <AddAnswers isEdit={Boolean(isEdit)} />
       <TaskAnswers />
 
       <Box sx={{maxWidth: 300, width: '100%', margin: '0 auto', mt: 4}}>
-        <Button size="large" fullWidth variant="contained" onClick={onClick}>
-          {isEdit ? 'Редактировать задание' : 'Добавить задание'}
-        </Button>
+        <Tooltip title="Необходимо добавить ответы" arrow>
+          <span>
+            <Button
+              disabled={!isEdit && !taskAnswers.length}
+              size="large"
+              fullWidth
+              variant="contained"
+              onClick={onClick}
+            >
+              {isEdit ? 'Редактировать задание' : 'Добавить задание'}
+            </Button>
+          </span>
+        </Tooltip>
       </Box>
 
       <TaskFormAnswerQueryDialog />
@@ -65,7 +95,7 @@ export const ManageTaskForm = ({isEdit, taskId}: ManageTaskFormProps) => {
 }
 
 const TaskText = () => {
-  const defState = ''
+  const defState = useStore(model.$taskDefaultContent)
   return (
     <Stack component={Paper} sx={{gap: 2, p: 2}}>
       <Typography variant="h3" gutterBottom>
@@ -207,7 +237,7 @@ const DBSelector = () => {
 
 type PropsChildren = {children?: React.ReactNode}
 
-const AddAnswers = () => {
+const AddAnswers = ({isEdit}: {isEdit: boolean}) => {
   const taskType = useStore(model.$taskType)
 
   const Components: {[key: number | string]: React.FC<PropsChildren>} = {
@@ -223,11 +253,12 @@ const AddAnswers = () => {
   }
 
   const CurrAnsComponent = Components[taskType] || Unimplemented
+  // const isAnswerTypeCode = [4, 5, 6, 7, 8].some((v) => v === Number(taskType))
 
   return (
     <Stack component={Paper} gap={2} sx={{p: 2}}>
       <CurrAnsComponent>
-        <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
+        <Box sx={{display: 'flex', justifyContent: 'flex-end', gap: 2}}>
           <Button variant="contained" color="info" onClick={() => model.answerAddClicked()}>
             Добавить ответ
           </Button>
@@ -272,10 +303,15 @@ const AnswerTypeCode: React.FC<PropsChildren> = ({children}) => {
   const dbId = useStore(model.$selectedDbId)
   const taskType = useStore(model.$taskType)
 
+  const titles: {[key: string]: string} = {
+    '7': 'Запрос MongoDB:',
+    '8': 'Запрос Neo4j:',
+  }
+
   return (
     <Box sx={{display: 'flex', flexFlow: 'column', gap: 2}}>
       <DBSelector />
-      <Typography variant="h3">SQL-Запрос:</Typography>
+      <Typography variant="h3">{titles[taskType] || 'SQL-Запрос:'}</Typography>
       <TextField
         multiline
         rows={3}
@@ -303,11 +339,19 @@ const TaskAnswers = () => {
 
   const renderAnswers = taskAnswers.map((answer, idx) => (
     <Box key={idx} sx={{display: 'flex', gap: 2, alignItems: 'center'}}>
-      <Typography color={answer.Correct ? 'success.main' : 'error.main'}>
+      <Typography
+        sx={{cursor: 'pointer'}}
+        color={answer.Correct ? 'success.main' : 'error.main'}
+        onClick={() => model.changeAnswerVisibilityClicked(answer.Id)}
+      >
         {answer.Content}
       </Typography>
+
       <IconButton onClick={() => model.deleteAnswerClicked(answer.Id)}>
         <DeleteIcon />
+      </IconButton>
+      <IconButton onClick={() => model.editAnswerClicked(answer)}>
+        <EditIcon />
       </IconButton>
     </Box>
   ))

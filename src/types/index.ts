@@ -101,6 +101,8 @@ export type Question = {
   Difficulty: number
   Id: number
   NumInTest: number
+  SubjectId: number
+  ThemeId: number
   ThemeName: string | null
   /** Type of task
    *

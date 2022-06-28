@@ -1,5 +1,5 @@
 import React from 'react'
-import {Typography, Button, Divider, Dialog, DialogTitle, DialogContent} from '@mui/material'
+import {Button, Divider, Dialog, DialogTitle, DialogContent} from '@mui/material'
 import {useStore} from 'effector-react'
 import {CenteredLoader} from 'src/shared/ui/CenteredLoader'
 import {DBContentTables} from 'src/shared/ui/DBContentTables'
@@ -19,7 +19,7 @@ export const TaskQueryDialog = () => {
       onClose={() => model.queryDialogClosed()}
     >
       <DialogTitle sx={{display: 'flex', justifyContent: 'space-between'}}>
-        <Typography variant="h3">Результат выполнения эталонного запроса:</Typography>
+        Результат выполнения эталонного запроса
         <Button variant="outlined" onClick={() => model.queryDialogClosed()}>
           Закрыть
         </Button>

@@ -23,7 +23,7 @@ const AdminTestsTaskIdEditPage = () => {
         <Typography variant="h1">Редактировать учебное задание</Typography>
       </Box>
       <Divider sx={{my: 2}} />
-      <ManageTaskForm isEdit={true} />
+      <ManageTaskForm isEdit={true} taskId={taskId} />
     </Box>
   )
 }

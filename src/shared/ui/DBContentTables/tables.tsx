@@ -30,15 +30,7 @@ export const DBContentTables = ({tables}: Props) => {
   }
 
   if (!isArray) {
-    return (
-      <Typography variant="h5">
-        <div>
-          В результате вернулась пустая таблица <br /> Возможно, проблема в самом запросе
-        </div>
-        <br />
-        {typeof tables === 'string' && <div>{tables}</div>}
-      </Typography>
-    )
+    return <Typography variant="h5">{typeof tables === 'string' && <div>{tables}</div>}</Typography>
   }
 
   return (
