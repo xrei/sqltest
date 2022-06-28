@@ -408,6 +408,8 @@ export const adminGetResultForTaskToAdd = createRequestFx<
 
 export const adminCreateTest = createRequestFx<any, string>('Admin/AddTestNew', 'POST')
 
+export const adminEditAbout = createRequestFx<{Content: string}, string>('Admin/EditAbout', 'POST')
+
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')
 export const authLogOn = createRequestFx<LoginDTO, User>('Auth/LogOn', 'POST')

@@ -19,7 +19,11 @@ import {
   IconButton,
   Tooltip,
 } from '@mui/material'
-import {Delete as DeleteIcon, Edit as EditIcon} from '@mui/icons-material'
+import {
+  Delete as DeleteIcon,
+  Edit as EditIcon,
+  HelpOutline as HelpOutlineIcon,
+} from '@mui/icons-material'
 import {useGate, useStore} from 'effector-react'
 import {RichTextEditor} from 'src/shared/ui/TextEditor'
 import {SubjectSelector, SubjectsModel} from 'src/entities/Subject'
@@ -338,7 +342,7 @@ const TaskAnswers = () => {
   const taskAnswers = useStore(model.$taskAnswers)
 
   const renderAnswers = taskAnswers.map((answer, idx) => (
-    <Box key={idx} sx={{display: 'flex', gap: 2, alignItems: 'center'}}>
+    <Box key={idx} sx={{display: 'flex', gap: 1, alignItems: 'center'}}>
       <Typography
         sx={{cursor: 'pointer'}}
         color={answer.Correct ? 'success.main' : 'error.main'}
@@ -358,7 +362,13 @@ const TaskAnswers = () => {
 
   return (
     <Stack component={Paper} gap={2} sx={{p: 2}}>
-      <Typography variant="h3">Ответы:</Typography>
+      <Box sx={{display: 'flex', alignItems: 'center', gap: 2}}>
+        <Typography variant="h3">Ответы:</Typography>
+        <Tooltip title="Для редактирования ответа необходимо нажать на кнопку редактирования. После редактирования ОБЯЗАТЕЛЬНО нужно нажать кнопку 'Добавить ответ' для сохранения результата редактирования.">
+          <HelpOutlineIcon fontSize={'small'} />
+        </Tooltip>
+      </Box>
+
       {taskAnswers.length ? renderAnswers : <Typography>Необходимо добавить ответы!</Typography>}
     </Stack>
   )

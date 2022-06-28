@@ -1,6 +1,6 @@
 import {createEffect, createStore, forward} from 'effector'
 import {createGate} from 'effector-react'
-import {getAbout} from 'src/api'
+import {getAbout, adminEditAbout} from 'src/api'
 
 export const AboutPageGate = createGate('AboutPage')
 
@@ -12,6 +12,6 @@ const fetchAboutData = createEffect<void, string>(async () => {
   return html.replaceAll('color: #333333; ', '')
 })
 
-forward({from: AboutPageGate.open, to: fetchAboutData})
+forward({from: [AboutPageGate.open, adminEditAbout.doneData], to: fetchAboutData})
 
 $about.on(fetchAboutData.doneData, (_, p) => p)
