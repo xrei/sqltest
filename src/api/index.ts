@@ -36,6 +36,7 @@ import type {
   ThemeDTO,
   AdminAddTaskDTO,
   Answer,
+  MaterialLinkDTO,
 } from 'src/types'
 
 // home
@@ -409,6 +410,13 @@ export const adminGetResultForTaskToAdd = createRequestFx<
 export const adminCreateTest = createRequestFx<any, string>('Admin/AddTestNew', 'POST')
 
 export const adminEditAbout = createRequestFx<{Content: string}, string>('Admin/EditAbout', 'POST')
+
+export const adminEditLink = createRequestFx<MaterialLinkDTO, string>('Admin/EditLink', 'POST')
+export const adminAddLink = createRequestFx<MaterialLinkDTO, string>('Admin/AddLink', 'POST')
+export const adminDeleteLink = createRequestFx<{Id: number}, string>('Admin/DeleteLink', 'POST')
+export const prepEditLink = createRequestFx<MaterialLinkDTO, string>('Prep/EditLink', 'POST')
+export const prepAddLink = createRequestFx<MaterialLinkDTO, string>('Prep/AddLink', 'POST')
+export const prepDeleteLink = createRequestFx<{Id: number}, string>('Prep/DeleteLink', 'POST')
 
 // auth
 export const getUser = createRequestFx<void, User>('Auth/GetUser', 'POST')

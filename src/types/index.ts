@@ -227,11 +227,15 @@ export type MaterialArticle = {
   Name: string
   SubjectId?: number
 }
+
+export type MaterialLink = {Id: number; Name: string; Description: string; SubjectId: number}
+export type MaterialLinkDTO = {id: number; name: string; description: string; subjectId: number}
+
 export type Material = {
   SubjId: number
   Description: string
   ListOfArticles: MaterialArticle[]
-  ListOfLinks: {Id: number; Name: string; Description: string; SubjectId: number}[]
+  ListOfLinks: MaterialLink[]
   SubjName: string
 }
 

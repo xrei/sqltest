@@ -1,1 +1,1 @@
-export const k = {}
+export * from './Link'

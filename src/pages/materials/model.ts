@@ -1,6 +1,7 @@
 import {createEffect, createStore, forward, sample} from 'effector'
 import {createGate} from 'effector-react'
 import {getMaterials} from 'src/api'
+import {actionsOnLinkDone} from 'src/features/AdminMaterials'
 import type {Material} from 'src/types'
 import {ArticlePageGate} from './_id/model'
 
@@ -25,5 +26,10 @@ sample({
   clock: ArticlePageGate.open,
   source: $materials,
   filter: (xs) => !xs.length,
+  target: fetchMaterialsData,
+})
+
+sample({
+  clock: actionsOnLinkDone,
   target: fetchMaterialsData,
 })
